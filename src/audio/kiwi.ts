@@ -34,6 +34,9 @@ export interface KiwiOptions {
 
 export class KiwiSource implements AudioSource {
   readonly label: string;
+  readonly silenceHint =
+    'The receiver accepted the connection but never sent any audio. A KiwiSDR has only ' +
+    'four channels and yours may all be in use — try another receiver.';
 
   private socket: WebSocket | null = null;
   private node: AudioWorkletNode | null = null;

@@ -60,8 +60,8 @@ Then in the browser, under **Diagnostics** on the Live tab:
 
 - **Recording, CORS correct** → a waterfall appears and the detector locks on 2.4 s
   within about 20 seconds.
-- **Recording, CORS missing** → playback runs, the waterfall stays black, and the status
-  line says *connected but no audio reached the analyser*.
+- **Recording, CORS missing** → playback runs, the waterfall stays black, and after
+  about eight seconds the status line reports no audio and names the likely cause.
 
 If the second one paints a waterfall, the silence check has regressed and the app can no
 longer tell a CORS failure from a dead antenna. That check is the only thing standing
@@ -81,6 +81,10 @@ Three causes, in order of likelihood.
    KiwiSDR (a WebSocket is not subject to the rule). The stream is missing
    `Access-Control-Allow-Origin`, or the `<audio>` element lost its `crossOrigin`
    attribute. Playback works, the analyser reads zeros, nothing throws or logs.
+
+A **transient** version of this is expected and self-correcting: audio can take several
+seconds to arrive over a mobile network, and the check waits eight seconds before
+saying anything. If it does warn and audio then starts, the warning clears itself.
 
 ### Connection closes immediately
 

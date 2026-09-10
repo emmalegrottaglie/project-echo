@@ -167,8 +167,9 @@ Vertical order on a phone:
 4. **Detector strip.** The one piece of live interpretation on the screen. Four states,
    §7.1.
 5. **Transport.** Connect / Stop as a single primary control that swaps role, plus a
-   secondary control for the synthetic marker. On a phone this is a fixed bar directly
-   above the tab bar so it never scrolls away — see 2.8.
+   secondary control for the demo signal, labelled **Demo** — "Synthetic" meant nothing
+   to the first person who used the app. On a phone this is a fixed bar directly above
+   the tab bar so it never scrolls away — see 2.8.
 6. **Propagation** and **Diagnostics**, collapsed by default, below the fold.
 
 Landscape: the waterfall takes the full height, the detector strip overlays its bottom
@@ -409,7 +410,12 @@ controls hide rather than fail. Draw both configurations of the live view.
 
 ## 11. Explicit non-goals
 
-- No onboarding carousel, no tour, no tooltips-on-first-run.
+- No onboarding carousel, no tour, no tooltips-on-first-run. **Amended after first
+  use:** there is now one explanatory screen, reachable from a `?` in the header and
+  offered once to someone with no receiver saved. The first real session on a phone
+  produced "I'm not quite sure I know what it all means", which made this non-goal
+  wrong. A carousel and a tour are still ruled out — this is a single page the user can
+  dismiss and return to.
 - No gamification of detections. No streaks, badges, or celebration.
 - No map view. Receiver geography matters, but a map is a later, separate decision.
 - No message decoding UI, ever — there is no such feature and there will not be. Nothing

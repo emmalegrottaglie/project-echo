@@ -21,6 +21,11 @@ export class RelaySource implements AudioSource {
   private node: MediaElementAudioSourceNode | null = null;
   private hls: { destroy(): void } | null = null;
 
+  readonly silenceHint =
+    'The stream played but no audio reached the analyser. If it is served from another ' +
+    'origin it needs Access-Control-Allow-Origin, which is the one failure that looks ' +
+    'exactly like a dead antenna.';
+
   constructor(
     private readonly url: string,
     readonly label: string,

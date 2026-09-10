@@ -7,7 +7,7 @@ import {
   RELAY_URL,
   type DirectoryReceiver,
 } from '../api';
-import { createAnalyser, hasSignal } from '../audio/analyser';
+import { createAnalyser, hasEnergy, waitForSignal } from '../audio/analyser';
 import { KiwiSource } from '../audio/kiwi';
 import { RelaySource } from '../audio/relay';
 import { createContext, type AudioSource } from '../audio/source';
@@ -193,7 +193,9 @@ export function liveView(): { element: HTMLElement; destroy: () => void } {
     stationSlot.innerHTML = pickerRow({
       label: 'Station',
       value: `${current.station.enigmaId} ${current.station.name}`,
-      meta: `· ${current.frequency.khz} kHz ${current.frequency.mode}`,
+      meta:
+        `· ${current.frequency.khz} kHz ${current.frequency.mode}` +
+        (current.frequency.timeOfDay ? ` · ${current.frequency.timeOfDay}` : ''),
       live: current.station.tier === 'live',
       periodSec: current.station.markerPeriodSec,
       flagWord: current.frequency.disputed ? 'disputed' : null,
@@ -241,7 +243,7 @@ export function liveView(): { element: HTMLElement; destroy: () => void } {
     teardownAudio();
     setPhase('connecting');
     syntheticButton.disabled = true;
-    renderStatus(`connecting to ${next.label}…`);
+    renderStatus(`Connecting to ${next.label}…`);
 
     context = createContext();
     const { analyser, visibleBins } = createAnalyser(context);
@@ -257,7 +259,7 @@ export function liveView(): { element: HTMLElement; destroy: () => void } {
 
     source = next;
     setPhase('running');
-    renderStatus(`running — ${next.label}`, 'live');
+    renderStatus(`Listening — ${next.label}`, 'live');
 
     waterfall = new Waterfall(viewport, analyser, visibleBins, (atMs, bins) =>
       detector.feed(atMs, bins),
@@ -269,6 +271,15 @@ export function liveView(): { element: HTMLElement; destroy: () => void } {
     lastPosted = 0;
 
     detectorTimer = window.setInterval(() => {
+      // Audio that arrives late must clear the warning. The first screenshots from a
+      // phone showed the marker drawing in the waterfall under a red "no audio"
+      // message that had latched during the connect, which is worse than saying
+      // nothing: the app was contradicting itself.
+      if (phase === 'stalled' && hasEnergy(analyser)) {
+        setPhase('running');
+        renderStatus(`Listening — ${next.label}`, 'live');
+      }
+
       const detection = detector.read(performance.now());
       renderDetector(detection.state, describe(detection, expected));
 
@@ -295,14 +306,9 @@ export function liveView(): { element: HTMLElement; destroy: () => void } {
     // Both a CORS-silenced graph and a receiver that accepted the connection without
     // sending look exactly like a dead antenna, and neither throws. See
     // src/audio/analyser.ts.
-    if (!(await hasSignal(analyser))) {
+    if (!(await waitForSignal(analyser))) {
       setPhase('stalled');
-      renderStatus(
-        'connected but no audio reached the analyser. Either the receiver is not ' +
-          'sending (all channels busy) or the source is cross-origin without CORS headers.',
-        'danger',
-        true,
-      );
+      renderStatus(`No audio yet. ${next.silenceHint}`, 'danger', true);
     }
   };
 
@@ -587,7 +593,7 @@ export function liveView(): { element: HTMLElement; destroy: () => void } {
       if (phase === 'idle') connect();
       else {
         teardownAudio();
-        renderStatus('idle');
+        renderStatus('Not listening.');
       }
       return;
     }
@@ -614,7 +620,7 @@ export function liveView(): { element: HTMLElement; destroy: () => void } {
 
   renderReceiver();
   renderStation();
-  renderStatus('idle');
+  renderStatus('Not listening.');
   renderDetector('idle', 'listening…');
 
   // The relay and the diagnostics need the server. Without it the app is the static

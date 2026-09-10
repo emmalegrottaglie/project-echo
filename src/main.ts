@@ -1,6 +1,8 @@
 import './style.css';
 import { checkDue, POLL_MS } from './alerts';
 import { STATIONS } from './data/stations';
+import { helpHasBeenSeen, openHelp } from './help';
+import { listReceivers } from './receiver';
 import { gapNotice } from './ui';
 import { liveView } from './views/live';
 import { scheduleView } from './views/schedule';
@@ -40,6 +42,7 @@ function mountShell(): void {
   app.innerHTML = `
     <header class="echo-header">
       <h1 class="echo-wordmark">Project Echo</h1>
+      <button class="echo-help-button" type="button" name="help" aria-label="What is this?">?</button>
       <div class="echo-themes" role="radiogroup" aria-label="Theme">
         ${THEMES.map(
           (theme) =>
@@ -75,6 +78,10 @@ function mountShell(): void {
   };
 
   applyTheme(localStorage.getItem(THEME_KEY) ?? 'phosphor');
+
+  app.querySelector<HTMLButtonElement>('[name="help"]')!.addEventListener('click', () => {
+    openHelp();
+  });
 
   app.querySelector('.echo-themes')!.addEventListener('click', (event) => {
     const button = (event.target as HTMLElement).closest<HTMLButtonElement>('[data-theme]');
@@ -135,6 +142,10 @@ function mountShell(): void {
 
   window.addEventListener('hashchange', navigate);
   navigate();
+
+  // Offered once, to someone who has not got a receiver yet and has not seen it. Not
+  // a tour: one screen, and the `?` brings it back whenever.
+  if (!helpHasBeenSeen() && listReceivers().length === 0) openHelp();
 
   // Alerts belong to the shell, not the schedule view: a reminder is useless if it
   // only fires while the user is looking at the schedule.

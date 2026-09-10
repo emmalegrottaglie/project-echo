@@ -10,7 +10,10 @@ import type { AudioSource } from './source';
  * configured period, over shaped noise standing in for band hiss.
  */
 export class SyntheticSource implements AudioSource {
-  readonly label = 'synthetic marker (no receiver)';
+  readonly label = 'demo signal';
+  readonly silenceHint =
+    'The demo signal produced no sound, which should not happen. The browser may be ' +
+    'holding audio until the page is tapped.';
 
   private nodes: AudioNode[] = [];
   private oscillator: OscillatorNode | null = null;

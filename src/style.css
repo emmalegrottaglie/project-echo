@@ -74,6 +74,9 @@ a {
   align-items: center;
   justify-content: space-between;
   padding: var(--space-2) var(--space-3) var(--space-2) var(--space-4);
+  /* Below the status bar. `viewport-fit=cover` puts the page under it, and without this
+     the wordmark is drawn behind the clock. */
+  padding-top: calc(var(--space-2) + var(--safe-top));
   border-bottom: var(--hairline-width) solid var(--border);
   background: var(--bg);
 }
@@ -89,6 +92,7 @@ a {
 
 .echo-themes {
   display: flex;
+  flex: 0 0 auto;
   gap: var(--space-1);
 }
 
@@ -207,6 +211,89 @@ main {
   color: var(--dim);
   font: var(--text-label) / var(--leading-body) var(--font-sans);
   text-wrap: pretty;
+}
+
+/* The way back to the explanation, from any tab. */
+.echo-help-button {
+  display: grid;
+  width: var(--touch-min);
+  height: var(--touch-min);
+  flex: 0 0 auto;
+  margin-left: auto;
+  border: var(--hairline-width) solid var(--border);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--dim);
+  font: var(--weight-medium) var(--text-body) / 1 var(--font-mono);
+  cursor: pointer;
+  place-items: center;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/*
+ * The explanation. Prose, so it breaks the app's usual rule and reads in sans at a
+ * comfortable measure — someone opening this does not want a data readout.
+ */
+.echo-help {
+  padding-bottom: var(--space-4);
+  color: var(--fg);
+  font: var(--text-body) / var(--leading-body) var(--font-sans);
+  text-wrap: pretty;
+}
+
+.echo-help h4 {
+  margin: var(--space-5) 0 var(--space-2);
+  color: var(--accent);
+  font: var(--weight-medium) var(--text-label) / var(--leading-tight) var(--font-mono);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+}
+
+.echo-help p {
+  margin: 0 0 var(--space-3);
+  max-width: 60ch;
+}
+
+.echo-help__lede {
+  color: var(--fg);
+  font-size: var(--text-title);
+  line-height: 1.45;
+}
+
+.echo-help__steps {
+  margin: 0;
+  padding-left: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.echo-help__steps strong,
+.echo-help__states dt {
+  color: var(--accent);
+}
+
+.echo-help__steps em,
+.echo-help p em {
+  color: var(--fg);
+  font-style: normal;
+  font-family: var(--font-mono);
+}
+
+.echo-help__states {
+  display: grid;
+  margin: 0;
+  gap: var(--space-1) var(--space-3);
+}
+
+.echo-help__states dt {
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+}
+
+.echo-help__states dd {
+  margin: 0 0 var(--space-3);
+  color: var(--dim);
 }
 
 /* ------------------------------------------------------------------ core ------ */
@@ -761,6 +848,7 @@ main {
   gap: var(--space-3);
   align-items: center;
   padding: var(--space-2) var(--gutter) var(--space-2) var(--space-2);
+  padding-top: calc(var(--space-2) + var(--safe-top));
   border-bottom: var(--hairline-width) solid var(--border);
   background: var(--bg);
 }
@@ -1104,6 +1192,7 @@ tr.disputed {
   border-radius: var(--radius-sheet) var(--radius-sheet) 0 0;
   background: var(--surface-elevated);
   padding-bottom: var(--safe-bottom);
+  margin-top: var(--safe-top);
   animation: echo-sheet-in var(--dur-slow) var(--ease-out) both;
 }
 

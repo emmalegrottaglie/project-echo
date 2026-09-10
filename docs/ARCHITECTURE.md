@@ -67,10 +67,17 @@ a worklet is loaded by URL at runtime, not imported.
 `smoothingTimeConstant` is 0 — the analyser's temporal averaging blurs exactly the short
 marker pulses this app exists to show.
 
-`hasSignal()` lives here, and it is not optional. A cross-origin
+`waitForSignal()` lives here, and it is not optional. A cross-origin
 `MediaElementAudioSourceNode` outputs silence with no error and no log, and a busy
 receiver that accepts a connection without sending looks identical. Nothing else in the
 system can tell those apart from a dead antenna.
+
+It polls on a timer for eight seconds rather than sampling a fixed number of animation
+frames. The frame-counting version expired in about half a second, which was shorter
+than the first audio took to cross a mobile network and fill the worklet's ring buffer,
+so the app warned about silence while the marker drew on screen. What silence *means*
+comes from the transport — `AudioSource.silenceHint` — because only it knows whether to
+blame a full receiver or a missing CORS header.
 
 **4. Rendering — [`src/waterfall.ts`](../src/waterfall.ts).**
 A canvas twice the viewport height with every row written twice, at `y = cursor` and
@@ -140,7 +147,9 @@ wrong period for S28 ([RESEARCH.md](RESEARCH.md) §7).
 **Two audio sources exist because both are needed now.** `SyntheticSource` generates a
 marker so the waterfall and detector can be exercised without occupying a volunteer's
 receiver — for development, and for anyone who wants to see the app work before finding
-a node. `RelaySource` is the media-element path. Neither is a hook left open for later.
+a node. It is labelled **Demo** in the interface: the first person to use the app asked
+what "Synthetic" was for, which is a fair question about a button that fabricates a
+signal. `RelaySource` is the media-element path. Neither is a hook left open for later.
 
 ## Testing
 

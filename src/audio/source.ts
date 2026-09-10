@@ -8,6 +8,12 @@
  */
 export interface AudioSource {
   readonly label: string;
+  /**
+   * What to tell the user if no audio ever arrives. Silence means something different
+   * for each transport — a busy receiver, a missing CORS header, a blocked audio
+   * context — and only the transport knows which.
+   */
+  readonly silenceHint: string;
   /** Connects and begins producing audio into `destination`. Resolves once running. */
   start(context: AudioContext, destination: AudioNode): Promise<void>;
   stop(): void;

@@ -31,27 +31,45 @@ export function createAnalyser(context: AudioContext): Analysis {
 }
 
 /**
- * Confirms the analyser is receiving audio rather than digital silence.
+ * True if the analyser sees any energy in this instant.
  *
- * Two different failures look identical in the UI — a dead waterfall — and neither
- * throws or logs:
+ * Cheap enough to poll. Used both to wait for the first audio and, afterwards, to
+ * notice that audio has started arriving after a stall was reported.
+ */
+export function hasEnergy(analyser: AnalyserNode): boolean {
+  const bins = new Uint8Array(analyser.frequencyBinCount);
+  analyser.getByteFrequencyData(bins);
+  return bins.some((value) => value > 0);
+}
+
+/**
+ * Waits for the first audio to reach the analyser.
+ *
+ * Two different failures produce digital silence and neither throws or logs:
  *
  *   - a cross-origin `MediaElementAudioSourceNode`, which the Web Audio spec requires
  *     to output silence when the media element lacks `crossOrigin` or the server omits
  *     `Access-Control-Allow-Origin` (docs/RESEARCH.md §4);
- *   - a connected but stalled stream, which is the usual outcome of a busy Kiwi.
+ *   - a receiver that accepted the connection and sent nothing, which is what a busy
+ *     KiwiSDR does.
  *
- * There is no feature test for the first and `createMediaElementSource` cannot be
- * reverted, so the only reliable check is to look at the samples. Resolves true if any
- * frame carries energy within the window.
+ * **The wait has to be generous.** An earlier version sampled thirty animation frames,
+ * about half a second, and on a phone over mobile data that expired before the first
+ * samples had crossed the network and filled the worklet's ring buffer — so the app
+ * reported a stall over a signal that was arriving perfectly well, while the waterfall
+ * beside it drew the marker. Polling on a timer rather than on animation frames also
+ * keeps this honest in a throttled WebView, where frames are not delivered on schedule.
  */
-export async function hasSignal(analyser: AnalyserNode, frames = 30): Promise<boolean> {
-  const bins = new Uint8Array(analyser.frequencyBinCount);
+export async function waitForSignal(
+  analyser: AnalyserNode,
+  timeoutMs = 8000,
+  pollMs = 100,
+): Promise<boolean> {
+  const deadline = Date.now() + timeoutMs;
 
-  for (let i = 0; i < frames; i++) {
-    await new Promise((resolve) => requestAnimationFrame(resolve));
-    analyser.getByteFrequencyData(bins);
-    if (bins.some((value) => value > 0)) return true;
+  while (Date.now() < deadline) {
+    if (hasEnergy(analyser)) return true;
+    await new Promise((resolve) => setTimeout(resolve, pollMs));
   }
-  return false;
+  return hasEnergy(analyser);
 }

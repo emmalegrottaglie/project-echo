@@ -200,7 +200,7 @@ export function transportBar(showSynthetic: boolean): string {
   return (
     `<div class="echo-transport">` +
     button({ label: 'Connect', variant: 'primary', size: 'lg', name: 'connect', full: true }) +
-    button({ label: 'Synthetic', size: 'lg', name: 'synthetic', hidden: !showSynthetic }) +
+    button({ label: 'Demo', size: 'lg', name: 'synthetic', hidden: !showSynthetic }) +
     `</div>`
   );
 }

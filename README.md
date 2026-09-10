@@ -164,8 +164,11 @@ to IMA ADPCM; asking for uncompressed audio gets raw signed 16-bit samples inste
 problem — but the liveness check stays.** A cross-origin `MediaElementAudioSourceNode`
 outputs silence with no error and no log, and a busy Kiwi that accepts the connection
 without sending audio looks identical. Both are caught by
-[`hasSignal`](src/audio/analyser.ts), which reports the difference between "band is
-quiet" and "nothing is arriving".
+[`waitForSignal`](src/audio/analyser.ts), which reports the difference between "band is
+quiet" and "nothing is arriving". It waits eight seconds, not half a second: the first
+version timed out before audio had crossed a mobile network and reported a stall over a
+signal the waterfall was drawing beside it. If audio turns up after the warning, the
+warning clears.
 
 ## Data
 
