@@ -60,16 +60,21 @@ export class Waterfall {
   private running = false;
 
   /**
-   * Called once per painted row with the row's timestamp and its peak bin on a 0–1
-   * scale. The marker detector consumes this rather than reading the analyser on a
-   * loop of its own: the frames are already being fetched here, and a second timer
-   * would sample the same data at a different cadence for no gain.
+   * Called once per painted row with the row's timestamp and the frame itself. The
+   * marker detector consumes this rather than reading the analyser on a loop of its
+   * own: the frames are already being fetched here, and a second timer would sample the
+   * same data at a different cadence for no gain.
+   *
+   * The whole frame rather than a summary: which bin matters is the detector's
+   * decision, and reducing it to a single peak here is what stopped it from ever
+   * locking onto a real signal. The array is reused every frame, so a consumer must
+   * read what it needs synchronously.
    */
   constructor(
     viewport: HTMLElement,
     private readonly analyser: AnalyserNode,
     private readonly visibleBins: number,
-    private readonly onRow?: (atMs: number, peak: number) => void,
+    private readonly onRow?: (atMs: number, bins: Uint8Array) => void,
   ) {
     this.canvas = document.createElement('canvas');
     this.canvas.width = visibleBins;
@@ -124,13 +129,9 @@ export class Waterfall {
     this.analyser.getByteFrequencyData(this.bins);
     this.paintRow();
 
-    if (this.onRow) {
-      let peak = 0;
-      for (let x = 0; x < this.visibleBins; x++) {
-        if (this.bins[x]! > peak) peak = this.bins[x]!;
-      }
-      this.onRow(now, peak / 255);
-    }
+    // Only the passband is offered: the bins above 3 kHz are outside an SSB signal and
+    // would give the detector somewhere irrelevant to lock onto.
+    this.onRow?.(now, this.bins.subarray(0, this.visibleBins));
   };
 
   private paintRow(): void {

@@ -256,8 +256,8 @@ export function liveView(): { element: HTMLElement; destroy: () => void } {
     setPhase('running');
     renderStatus(`running — ${next.label}`, 'live');
 
-    waterfall = new Waterfall(viewport, analyser, visibleBins, (atMs, peak) =>
-      detector.feed(atMs, peak),
+    waterfall = new Waterfall(viewport, analyser, visibleBins, (atMs, bins) =>
+      detector.feed(atMs, bins),
     );
     waterfall.start();
     waterfallPanelElement.classList.add('is-live');
