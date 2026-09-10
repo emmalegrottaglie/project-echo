@@ -1,0 +1,1419 @@
+/*
+ * Project Echo — application styles.
+ *
+ * Tokens come from the design system bundle unchanged; everything below is the phone
+ * layout from docs/MOBILE_UI_SPEC.md and "Project Echo Design System"/HANDOFF.md,
+ * written mobile-first with the desktop layout restored at 768 px.
+ *
+ * Animation rules, enforced throughout: only transform, opacity and filter animate.
+ * The alert switch's track colour is the one documented exception, because a track is
+ * never near the waterfall. No continuous decorative animation runs while audio is
+ * live — the detector's scanning bar and the directory skeletons are the only loops,
+ * and the second only runs while fetching.
+ */
+
+@import './tokens/fonts.css';
+@import './tokens/colors.css';
+@import './tokens/typography.css';
+@import './tokens/spacing.css';
+@import './tokens/motion.css';
+@import './tokens/instrument.css';
+
+/* ------------------------------------------------------------------- base ----- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  /* dvh, not vh: the mobile URL bar changes vh, and a resize would restart the
+     waterfall canvas and lose its history. */
+  height: 100dvh;
+}
+
+body {
+  height: 100dvh;
+  margin: 0;
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--fg);
+  font: var(--text-body) / var(--leading-body) var(--font-sans);
+  -webkit-text-size-adjust: 100%;
+}
+
+#app {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
+  overflow: hidden;
+}
+
+a {
+  color: var(--accent);
+}
+
+.echo-dim {
+  color: var(--dim);
+}
+
+/* Focus must be visible against both --panel and --bg in every theme. */
+:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+/* ------------------------------------------------------------------ shell ----- */
+
+.echo-header {
+  display: flex;
+  flex: 0 0 auto;
+  gap: var(--space-3);
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-2) var(--space-3) var(--space-2) var(--space-4);
+  border-bottom: var(--hairline-width) solid var(--border);
+  background: var(--bg);
+}
+
+/* The wordmark is the whole brand: there is no logo, and none is to be drawn. */
+.echo-wordmark {
+  margin: 0;
+  color: var(--accent);
+  font: var(--weight-semibold) var(--text-title) / var(--leading-tight) var(--font-mono);
+  letter-spacing: var(--tracking-brand);
+  text-transform: uppercase;
+}
+
+.echo-themes {
+  display: flex;
+  gap: var(--space-1);
+}
+
+.echo-theme {
+  display: grid;
+  width: var(--touch-min);
+  height: var(--touch-min);
+  border: var(--hairline-width) solid transparent;
+  border-radius: var(--radius-control);
+  background: transparent;
+  cursor: pointer;
+  place-items: center;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.echo-theme[aria-checked='true'] {
+  border-color: var(--accent);
+}
+
+.echo-theme span {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--swatch);
+}
+
+.echo-theme[aria-checked='true'] span {
+  box-shadow: 0 0 8px var(--swatch);
+}
+
+/*
+ * Positioned so the pushed station detail covers the content area and not the tab bar:
+ * navigation stays reachable while a detail is open.
+ */
+main {
+  position: relative;
+  display: flex;
+  flex: 1 1 auto;
+  min-height: 0;
+  flex-direction: column;
+}
+
+/* Tabs are peers, not a stack: the incoming view fades and lifts, never slides. */
+.view {
+  display: flex;
+  flex: 1 1 auto;
+  min-height: 0;
+  flex-direction: column;
+  animation: echo-tab var(--dur-base) var(--ease-out) both;
+}
+
+@keyframes echo-tab {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.echo-scroll {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+.echo-tabbar {
+  display: grid;
+  flex: 0 0 auto;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  border-top: var(--hairline-width) solid var(--border);
+  background: var(--panel);
+  padding-bottom: var(--safe-bottom);
+}
+
+.echo-tab {
+  position: relative;
+  min-height: var(--tabbar-height);
+  border: 0;
+  background: transparent;
+  color: var(--dim);
+  font: var(--weight-medium) var(--text-label) / var(--leading-tight) var(--font-mono);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.echo-tab[aria-current='page'] {
+  color: var(--accent);
+}
+
+.echo-tab::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 2px;
+  background: transparent;
+}
+
+.echo-tab[aria-current='page']::before {
+  background: var(--accent);
+  box-shadow: var(--glow-accent);
+}
+
+.echo-footnote {
+  margin: 0;
+  padding: var(--space-4);
+  color: var(--dim);
+  font: var(--text-label) / var(--leading-body) var(--font-sans);
+  text-wrap: pretty;
+}
+
+/* ------------------------------------------------------------------ core ------ */
+
+.echo-button {
+  display: inline-flex;
+  gap: var(--space-2);
+  align-items: center;
+  justify-content: center;
+  min-width: var(--touch-min);
+  min-height: var(--touch-min);
+  padding: 0 var(--space-3);
+  border: var(--hairline-width) solid var(--border);
+  border-radius: var(--radius-control);
+  background: var(--panel);
+  color: var(--fg);
+  font: var(--weight-medium) var(--text-body) / var(--leading-tight) var(--font-mono);
+  letter-spacing: var(--tracking-title);
+  cursor: pointer;
+  transition:
+    opacity var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.echo-button--lg {
+  min-height: 48px;
+  padding: 0 var(--space-4);
+}
+
+.echo-button--full {
+  flex: 1;
+  width: 100%;
+}
+
+.echo-button--primary {
+  border-color: var(--accent);
+  background: var(--tint-accent-weak);
+  color: var(--accent);
+}
+
+.echo-button--ghost {
+  border-color: transparent;
+  background: transparent;
+  color: var(--dim);
+}
+
+.echo-button--danger {
+  border-color: var(--danger);
+  background: transparent;
+  color: var(--danger);
+}
+
+.echo-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+/* Mono, because what gets typed here is usually a designator. */
+.echo-search {
+  width: 100%;
+  min-height: var(--touch-min);
+  padding: 0 var(--space-3);
+  border: var(--hairline-width) solid var(--border);
+  border-radius: var(--radius-control);
+  background: var(--panel);
+  color: var(--fg);
+  font: var(--weight-regular) var(--text-body) / var(--leading-tight) var(--font-mono);
+  outline-offset: 2px;
+}
+
+.echo-segmented {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  gap: var(--hairline-width);
+  padding: var(--hairline-width);
+  border: var(--hairline-width) solid var(--border);
+  border-radius: var(--radius-control);
+  background: var(--panel);
+}
+
+.echo-segment {
+  min-height: 36px;
+  padding: 0 var(--space-2);
+  border: 0;
+  border-radius: 2px;
+  background: transparent;
+  color: var(--dim);
+  font: var(--weight-medium) var(--text-label) / var(--leading-tight) var(--font-mono);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color var(--dur-fast) var(--ease-out);
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* A tint, not a filled pill: a filled pill would compete with the live pulse. */
+.echo-segment[aria-selected='true'] {
+  background: var(--tint-accent-weak);
+  color: var(--accent);
+}
+
+.echo-skeleton-row {
+  display: flex;
+  height: 56px;
+  flex-direction: column;
+  gap: var(--space-2);
+  justify-content: center;
+  border-bottom: var(--hairline-width) solid var(--border);
+}
+
+.echo-skeleton-row span {
+  height: 10px;
+  background: var(--border);
+  animation: echo-skeleton var(--dur-skeleton) var(--ease-inout) infinite;
+}
+
+.echo-skeleton-row span:first-child {
+  width: 62%;
+}
+
+.echo-skeleton-row span:last-child {
+  width: 34%;
+  height: 8px;
+}
+
+@keyframes echo-skeleton {
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* -------------------------------------------------------------- instrument ---- */
+
+/* Opacity only, and the period is the station's own. Never scale this. */
+.echo-pulse {
+  display: inline-block;
+  width: var(--pulse-size, 6px);
+  height: var(--pulse-size, 6px);
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: echo-pulse var(--pulse-period, 2.4s) var(--ease-inout) infinite;
+}
+
+@keyframes echo-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.25;
+  }
+}
+
+.echo-flag {
+  display: inline-block;
+  font: var(--weight-medium) var(--text-label) / var(--leading-tight) var(--font-mono);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+}
+
+.echo-flag--accent {
+  color: var(--accent);
+}
+.echo-flag--dim {
+  color: var(--dim);
+}
+.echo-flag--danger {
+  color: var(--danger);
+}
+
+.echo-picker-row {
+  display: grid;
+  width: 100%;
+  min-height: var(--touch-min);
+  grid-template-columns: 1fr auto;
+  gap: var(--space-3);
+  align-items: center;
+  padding: var(--space-2) var(--gutter);
+  border: 0;
+  border-bottom: var(--hairline-width) solid var(--border);
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.echo-picker-row:active {
+  opacity: 0.7;
+}
+
+.echo-picker-row__text {
+  min-width: 0;
+}
+
+.echo-picker-row__label {
+  display: block;
+  color: var(--dim);
+  font: var(--text-label) / var(--leading-tight) var(--font-sans);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+}
+
+.echo-picker-row__value {
+  display: flex;
+  gap: var(--space-2);
+  align-items: center;
+  margin-top: 2px;
+  overflow: hidden;
+  color: var(--fg);
+  font: var(--text-body) / var(--leading-data) var(--font-mono);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.echo-chevron {
+  color: var(--dim);
+  font: var(--text-title) / 1 var(--font-mono);
+}
+
+.echo-status {
+  display: flex;
+  gap: var(--space-3);
+  align-items: flex-start;
+  justify-content: space-between;
+  margin: var(--space-2) var(--gutter);
+  padding: var(--space-2) var(--space-3);
+  border-left: 2px solid var(--dim);
+  background: var(--panel);
+  color: var(--fg);
+  font: var(--text-body) / var(--leading-body) var(--font-mono);
+  transition: opacity var(--dur-fast) var(--ease-inout);
+}
+
+.echo-status--live {
+  border-left-color: var(--accent);
+}
+
+.echo-status--danger {
+  border-left-color: var(--danger);
+  color: var(--danger);
+}
+
+.echo-status--ok {
+  border-left-color: var(--ok);
+}
+
+/*
+ * The spectrogram viewport. Full bleed, square, black, fixed height.
+ *
+ * `contain` keeps the canvas's own transform off the rest of the page's layout and
+ * paint: nothing outside this box re-lays out while it scrolls.
+ */
+.echo-waterfall {
+  position: relative;
+  height: var(--waterfall-rows);
+  overflow: hidden;
+  border-radius: var(--radius-instrument);
+  background: var(--wf-ground);
+  contain: strict;
+  animation: echo-waterfall-reveal var(--dur-base) var(--ease-out) both;
+  /* The visible span is fixed by the FFT and the row rate, so pinch is meaningless. */
+  touch-action: pan-y;
+}
+
+@keyframes echo-waterfall-reveal {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.waterfall-viewport {
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+}
+
+.waterfall-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  image-rendering: pixelated;
+}
+
+.echo-waterfall__scale {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  width: 34px;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: var(--space-1) 0 var(--space-1) var(--space-1);
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.72), transparent);
+  color: var(--dim);
+  font: var(--text-label) / var(--leading-tight) var(--font-mono);
+  pointer-events: none;
+}
+
+.echo-waterfall__empty {
+  position: absolute;
+  display: grid;
+  margin: 0;
+  color: var(--dim);
+  font: var(--text-body) / var(--leading-body) var(--font-mono);
+  inset: 0;
+  place-items: center;
+}
+
+/* Once the canvas exists, the placeholder is gone. */
+.echo-waterfall:has(.waterfall-canvas) .echo-waterfall__empty {
+  display: none;
+}
+
+.echo-detector {
+  border-top: var(--hairline-width) solid var(--border);
+  border-bottom: var(--hairline-width) solid var(--border);
+  background: var(--panel);
+}
+
+.echo-detector__track {
+  position: relative;
+  height: 2px;
+  overflow: hidden;
+  background: var(--border);
+}
+
+.echo-detector__bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 24px;
+  height: 2px;
+  background: transparent;
+}
+
+/* The only loop permitted while audio streams, and it is two pixels tall. */
+.echo-detector--searching .echo-detector__bar {
+  background: var(--accent);
+  animation: echo-scan var(--dur-scan) linear infinite;
+}
+
+.echo-detector--detected .echo-detector__bar {
+  width: 100%;
+  background: var(--accent);
+}
+
+@keyframes echo-scan {
+  from {
+    transform: translateX(-24px);
+  }
+  to {
+    transform: translateX(calc(100vw + 24px));
+  }
+}
+
+.echo-detector__text {
+  display: flex;
+  gap: var(--space-2);
+  align-items: baseline;
+  padding: var(--space-3) var(--gutter);
+  color: var(--dim);
+  font: var(--text-body) / var(--leading-data) var(--font-mono);
+}
+
+/* Fires once on entry, then holds still. An instrument reporting a lock. */
+.echo-detector--detected .echo-detector__text {
+  color: var(--accent);
+  animation: echo-confirm var(--dur-deliberate) var(--ease-out) both;
+}
+
+@keyframes echo-confirm {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.echo-detector__glyph {
+  opacity: 0.8;
+}
+
+.echo-transport {
+  display: flex;
+  flex: 0 0 auto;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--gutter);
+  padding-bottom: calc(var(--space-2) + var(--safe-bottom));
+  border-top: var(--hairline-width) solid var(--border);
+  background: var(--panel);
+}
+
+.echo-transport .echo-button[name='synthetic'] {
+  flex: 0 0 auto;
+  width: 132px;
+}
+
+.echo-details {
+  padding: 0 var(--gutter);
+}
+
+.echo-details > summary {
+  min-height: var(--touch-min);
+  display: flex;
+  align-items: center;
+  color: var(--dim);
+  font: var(--text-label) / var(--leading-tight) var(--font-mono);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.echo-details p {
+  margin: 0 0 var(--space-3);
+  color: var(--dim);
+  font: var(--text-label) / var(--leading-body) var(--font-sans);
+  text-wrap: pretty;
+}
+
+.propagation-map {
+  max-width: 100%;
+  border: var(--hairline-width) solid var(--border);
+}
+
+/* ---------------------------------------------------------------- archive ----- */
+
+.echo-sticky {
+  position: sticky;
+  z-index: 2;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--gutter);
+  border-bottom: var(--hairline-width) solid var(--border);
+  background: var(--bg);
+}
+
+.echo-sticky p {
+  margin: 0;
+  color: var(--dim);
+  font: var(--text-label) / var(--leading-body) var(--font-sans);
+  text-wrap: pretty;
+}
+
+.echo-tier-header {
+  position: sticky;
+  z-index: 1;
+  top: 0;
+  display: flex;
+  gap: var(--space-2);
+  justify-content: space-between;
+  padding: var(--space-2) var(--gutter);
+  border-bottom: var(--hairline-width) solid var(--border);
+  background: var(--panel);
+  color: var(--dim);
+  font: var(--weight-medium) var(--text-label) / var(--leading-tight) var(--font-mono);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+}
+
+.echo-station-row {
+  display: grid;
+  width: 100%;
+  min-height: var(--touch-min);
+  grid-template-columns: 4.5rem 1fr auto;
+  grid-template-rows: auto auto;
+  gap: 0 var(--space-2);
+  padding: var(--space-2) var(--gutter);
+  border: 0;
+  border-bottom: var(--hairline-width) solid var(--border);
+  border-radius: 0;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Press feedback: opacity only, instant, no exit animation, no ripple. */
+.echo-station-row:active {
+  opacity: 0.7;
+}
+
+.echo-station-row__designator {
+  display: flex;
+  grid-row: span 2;
+  gap: var(--space-2);
+  align-items: center;
+  color: var(--accent);
+  font: var(--weight-medium) var(--text-body) / var(--leading-data) var(--font-mono);
+  white-space: nowrap;
+}
+
+.echo-station-row__name {
+  color: var(--fg);
+  font: var(--text-body) / var(--leading-data) var(--font-sans);
+}
+
+.echo-station-row__flag {
+  align-self: center;
+  color: var(--dim);
+  font: var(--text-label) / var(--leading-tight) var(--font-mono);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+}
+
+.echo-station-row__operator {
+  grid-column: 2;
+  color: var(--dim);
+  font: var(--text-label) / var(--leading-body) var(--font-sans);
+}
+
+/* A push, not a sheet: provenance, lore, hearings and links are too much for a sheet. */
+.echo-detail {
+  position: absolute;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  inset: 0;
+  animation: echo-push var(--dur-slow) var(--ease-out) both;
+}
+
+@keyframes echo-push {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.echo-detail__header {
+  display: flex;
+  flex: 0 0 auto;
+  gap: var(--space-3);
+  align-items: center;
+  padding: var(--space-2) var(--gutter) var(--space-2) var(--space-2);
+  border-bottom: var(--hairline-width) solid var(--border);
+  background: var(--bg);
+}
+
+.echo-back {
+  display: grid;
+  width: var(--touch-min);
+  height: var(--touch-min);
+  flex: 0 0 auto;
+  border: 0;
+  background: transparent;
+  color: var(--dim);
+  font: var(--text-display) / 1 var(--font-mono);
+  cursor: pointer;
+  place-items: center;
+}
+
+.echo-detail__title {
+  min-width: 0;
+}
+
+.echo-detail__title-line {
+  display: flex;
+  gap: var(--space-2);
+  align-items: baseline;
+}
+
+.echo-detail__designator {
+  color: var(--accent);
+  font: var(--weight-semibold) var(--text-title) / var(--leading-tight) var(--font-mono);
+  white-space: nowrap;
+}
+
+.echo-detail__name {
+  overflow: hidden;
+  color: var(--fg);
+  font: var(--text-title) / var(--leading-tight) var(--font-sans);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.echo-detail__tier {
+  display: block;
+  color: var(--dim);
+  font: var(--text-label) / 1.4 var(--font-sans);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+}
+
+.echo-detail__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding: var(--gutter);
+}
+
+.echo-detail__body h4 {
+  margin: 0;
+  color: var(--dim);
+  font: var(--weight-medium) var(--text-label) / var(--leading-tight) var(--font-mono);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+}
+
+.echo-lore {
+  margin: 0;
+  color: var(--fg);
+  font: var(--text-body) / var(--leading-body) var(--font-sans);
+  text-wrap: pretty;
+}
+
+.echo-dl {
+  display: grid;
+  margin: 0;
+  grid-template-columns: max-content 1fr;
+  gap: var(--space-2) var(--space-4);
+}
+
+.echo-dl dt {
+  color: var(--dim);
+  font: var(--text-label) / var(--leading-body) var(--font-sans);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+}
+
+.echo-dl dd {
+  margin: 0;
+  color: var(--fg);
+  font: var(--text-body) / var(--leading-body) var(--font-mono);
+}
+
+.echo-table-scroll {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  color: var(--fg);
+  font: var(--text-body) / var(--leading-data) var(--font-mono);
+}
+
+th {
+  padding: var(--space-2) var(--space-2) var(--space-2) 0;
+  border-bottom: var(--hairline-width) solid var(--border);
+  color: var(--dim);
+  font: var(--weight-medium) var(--text-label) / var(--leading-tight) var(--font-mono);
+  letter-spacing: var(--tracking-label);
+  text-align: left;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+td {
+  padding: var(--space-2) var(--space-2) var(--space-2) 0;
+  border-bottom: var(--hairline-width) solid var(--border);
+  vertical-align: top;
+}
+
+/* Both the wash and the word: colour never carries this alone, and it must read as
+   "the sources disagree", not as a validation error. */
+tr.disputed {
+  background: var(--tint-accent-weak);
+}
+
+.echo-gap {
+  padding: var(--gutter);
+  border: var(--hairline-width) solid var(--border);
+  border-radius: var(--radius-control);
+  background: var(--panel);
+}
+
+.echo-gap__title {
+  margin: 0 0 var(--space-2);
+  color: var(--dim);
+  font: var(--weight-medium) var(--text-label) / var(--leading-tight) var(--font-mono);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+}
+
+.echo-gap__body {
+  margin: 0;
+  max-width: 60ch;
+  color: var(--fg);
+  font: var(--text-body) / var(--leading-body) var(--font-sans);
+  text-wrap: pretty;
+}
+
+.echo-gap__links {
+  display: flex;
+  margin: var(--space-3) 0 0;
+  padding: 0;
+  flex-direction: column;
+  gap: var(--space-2);
+  list-style: none;
+}
+
+.echo-gap__links a {
+  font: var(--text-body) / var(--leading-body) var(--font-mono);
+}
+
+.echo-gap__links span {
+  display: block;
+  color: var(--dim);
+  font: var(--text-label) / var(--leading-body) var(--font-sans);
+}
+
+.echo-sources a {
+  margin-right: var(--space-2);
+  font-family: var(--font-mono);
+}
+
+/* --------------------------------------------------------------- schedule ----- */
+
+.echo-coverage {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--gutter);
+  border-bottom: var(--hairline-width) solid var(--border);
+}
+
+.echo-coverage p {
+  margin: 0;
+  max-width: 60ch;
+  color: var(--fg);
+  font: var(--text-body) / var(--leading-body) var(--font-sans);
+  text-wrap: pretty;
+}
+
+.echo-coverage__permission {
+  color: var(--dim);
+  font-size: var(--text-label);
+}
+
+.echo-coverage__permission--denied {
+  color: var(--danger);
+}
+
+.echo-schedule-row {
+  display: grid;
+  grid-template-columns: var(--touch-min) 1fr auto;
+  gap: 0 var(--space-3);
+  align-items: center;
+  padding: var(--space-2) var(--gutter) var(--space-2) var(--space-2);
+  border-bottom: var(--hairline-width) solid var(--border);
+}
+
+.echo-schedule-row__main {
+  min-width: 0;
+}
+
+.echo-schedule-row__title {
+  display: flex;
+  gap: var(--space-2);
+  align-items: baseline;
+}
+
+.echo-schedule-row__designator {
+  color: var(--accent);
+  font: var(--weight-medium) var(--text-body) / var(--leading-data) var(--font-mono);
+  white-space: nowrap;
+}
+
+.echo-schedule-row__name {
+  overflow: hidden;
+  color: var(--fg);
+  font: var(--text-body) / var(--leading-data) var(--font-sans);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.echo-schedule-row__times {
+  color: var(--dim);
+  font: var(--text-label) / var(--leading-body) var(--font-mono);
+}
+
+.echo-schedule-row__note {
+  margin-top: 2px;
+  color: var(--dim);
+  font: var(--text-label) / var(--leading-body) var(--font-sans);
+  text-wrap: pretty;
+}
+
+.echo-schedule-row__countdown {
+  align-self: start;
+  padding-top: 2px;
+  color: var(--fg);
+  font: var(--weight-medium) var(--text-body) / var(--leading-data) var(--font-mono);
+  white-space: nowrap;
+}
+
+/* Under an hour the countdown takes the accent. It never animates on the tick. */
+.echo-schedule-row__countdown--urgent {
+  color: var(--accent);
+}
+
+.echo-switch {
+  display: grid;
+  width: var(--touch-min);
+  height: var(--touch-min);
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  place-items: center;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.echo-switch:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.echo-switch__track {
+  position: relative;
+  width: 34px;
+  height: 20px;
+  border: var(--hairline-width) solid var(--border);
+  border-radius: 10px;
+  background: var(--panel);
+  transition:
+    background-color var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out);
+}
+
+.echo-switch[aria-checked='true'] .echo-switch__track {
+  border-color: var(--accent);
+  background: var(--tint-accent-press);
+}
+
+.echo-switch__knob {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--dim);
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+
+.echo-switch[aria-checked='true'] .echo-switch__knob {
+  background: var(--accent);
+  transform: translateX(14px);
+}
+
+/* ------------------------------------------------------------------ sheet ----- */
+
+.echo-sheet-host {
+  position: fixed;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  inset: 0;
+}
+
+/* Deliberately translucent: it must not fully hide the waterfall behind it. */
+.echo-scrim {
+  position: absolute;
+  background: var(--overlay);
+  inset: 0;
+  animation: echo-fade var(--dur-base) var(--ease-out) both;
+}
+
+@keyframes echo-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.echo-sheet {
+  position: relative;
+  display: flex;
+  max-height: 90%;
+  flex-direction: column;
+  border-top: var(--hairline-width) solid var(--border);
+  border-radius: var(--radius-sheet) var(--radius-sheet) 0 0;
+  background: var(--surface-elevated);
+  padding-bottom: var(--safe-bottom);
+  animation: echo-sheet-in var(--dur-slow) var(--ease-out) both;
+}
+
+@keyframes echo-sheet-in {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.echo-sheet__handle {
+  display: flex;
+  justify-content: center;
+  padding: var(--space-2) 0 var(--space-1);
+  cursor: pointer;
+}
+
+.echo-sheet__handle span {
+  width: 36px;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--border);
+}
+
+.echo-sheet__header {
+  padding: var(--space-2) var(--gutter) var(--space-3);
+}
+
+.echo-sheet__header h2 {
+  margin: 0;
+  color: var(--accent);
+  font: var(--weight-semibold) var(--text-title) / var(--leading-tight) var(--font-mono);
+  letter-spacing: var(--tracking-title);
+}
+
+.echo-sheet__header p {
+  margin: var(--space-2) 0 0;
+  color: var(--dim);
+  font: var(--text-label) / var(--leading-body) var(--font-sans);
+  text-wrap: pretty;
+}
+
+.echo-sheet__body {
+  overflow-y: auto;
+  padding: 0 var(--gutter) var(--gutter);
+}
+
+.echo-sheet__actions {
+  display: flex;
+  gap: var(--space-2);
+  padding-top: var(--space-3);
+}
+
+.echo-directory-row {
+  display: grid;
+  width: 100%;
+  min-height: var(--touch-min);
+  grid-template-columns: 1fr auto auto;
+  gap: var(--space-3);
+  align-items: center;
+  padding: var(--space-2) 0;
+  border: 0;
+  border-bottom: var(--hairline-width) solid var(--border);
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.echo-directory-row:active {
+  opacity: 0.7;
+}
+
+.echo-directory-row__place {
+  min-width: 0;
+}
+
+.echo-directory-row__place strong {
+  display: block;
+  overflow: hidden;
+  color: var(--fg);
+  font: var(--weight-regular) var(--text-body) / var(--leading-data) var(--font-sans);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.echo-directory-row__place span {
+  display: block;
+  color: var(--dim);
+  font: var(--text-label) / var(--leading-tight) var(--font-mono);
+}
+
+.echo-directory-row__users {
+  color: var(--dim);
+  font: var(--text-label) / var(--leading-tight) var(--font-mono);
+}
+
+.echo-directory-row__users--full {
+  color: var(--danger);
+}
+
+.echo-directory-row__snr {
+  min-width: 62px;
+  color: var(--accent);
+  font: var(--text-body) / var(--leading-tight) var(--font-mono);
+  text-align: right;
+}
+
+.echo-sheet-row {
+  display: grid;
+  width: 100%;
+  min-height: var(--touch-min);
+  grid-template-columns: 1fr auto;
+  gap: var(--space-3);
+  align-items: center;
+  padding: var(--space-2) 0;
+  border: 0;
+  border-bottom: var(--hairline-width) solid var(--border);
+  background: transparent;
+  color: var(--fg);
+  font: var(--text-body) / var(--leading-data) var(--font-sans);
+  text-align: left;
+  cursor: pointer;
+}
+
+.echo-sheet-row[aria-selected='true'] {
+  color: var(--accent);
+}
+
+.echo-sheet-row span {
+  color: var(--dim);
+  font: var(--text-label) / var(--leading-tight) var(--font-mono);
+}
+
+.echo-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding-top: var(--space-3);
+}
+
+.echo-form label {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  color: var(--dim);
+  font: var(--text-label) / var(--leading-tight) var(--font-sans);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+}
+
+.echo-form input {
+  min-height: var(--touch-min);
+  padding: 0 var(--space-3);
+  border: var(--hairline-width) solid var(--border);
+  border-radius: var(--radius-control);
+  background: var(--panel);
+  color: var(--fg);
+  font: var(--text-body) / var(--leading-tight) var(--font-mono);
+}
+
+/* --------------------------------------------------------- reduced motion ----- */
+
+/*
+ * The waterfall keeps scrolling: it is data, not decoration, and stopping it would
+ * remove the app's function. Everything decorative goes static.
+ */
+@media (prefers-reduced-motion: reduce) {
+  .view,
+  .echo-detail,
+  .echo-sheet,
+  .echo-waterfall {
+    animation-name: echo-fade;
+  }
+
+  .echo-pulse,
+  .echo-skeleton-row span {
+    animation: none;
+    opacity: 1;
+  }
+
+  .echo-detector--searching .echo-detector__bar {
+    animation: none;
+  }
+
+  .echo-detector--detected .echo-detector__text {
+    animation-name: echo-fade;
+  }
+}
+
+/* --------------------------------------------------------------- desktop ------ */
+
+/*
+ * At 768 px and up the phone layout reflows toward the original desktop build: the tab
+ * bar returns to the top as header navigation, content gets a max width, and the
+ * archive becomes two columns with the detail beside the list rather than pushed over
+ * it.
+ */
+@media (min-width: 768px) {
+  body,
+  html,
+  #app {
+    height: auto;
+    min-height: 100dvh;
+    overflow: visible;
+  }
+
+  #app {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 var(--space-5);
+  }
+
+  main {
+    overflow: visible;
+  }
+
+  .echo-scroll {
+    overflow: visible;
+  }
+
+  /* Navigation moves above the content, styled as the original header links — but
+     below the wordmark, which keeps its place at the top of the page. */
+  .echo-header {
+    order: -2;
+  }
+
+  .echo-tabbar {
+    order: -1;
+    grid-auto-columns: max-content;
+    justify-content: start;
+    gap: var(--space-1);
+    border-top: 0;
+    border-bottom: var(--hairline-width) solid var(--border);
+    background: transparent;
+    padding-bottom: 0;
+  }
+
+  .echo-tab {
+    min-height: 0;
+    padding: var(--space-2) var(--space-3);
+  }
+
+  .echo-tab::before {
+    top: auto;
+    bottom: 0;
+  }
+
+  .echo-waterfall {
+    border: var(--hairline-width) solid var(--border);
+  }
+
+  .echo-transport {
+    border: 0;
+    background: transparent;
+    padding-inline: 0;
+  }
+
+  .echo-status {
+    margin-inline: 0;
+  }
+
+  .echo-picker-row,
+  .echo-station-row,
+  .echo-schedule-row,
+  .echo-coverage,
+  .echo-sticky,
+  .echo-details,
+  .echo-detector__text,
+  .echo-footnote {
+    padding-inline: 0;
+  }
+
+  .echo-station-layout {
+    display: grid;
+    grid-template-columns: minmax(18rem, 22rem) 1fr;
+    gap: var(--space-5);
+    align-items: start;
+  }
+
+  .echo-station-layout .echo-scroll {
+    max-height: 32rem;
+    overflow-y: auto;
+    border: var(--hairline-width) solid var(--border);
+  }
+
+  .echo-detail {
+    position: static;
+    border: var(--hairline-width) solid var(--border);
+    animation: none;
+  }
+
+  .echo-back {
+    display: none;
+  }
+
+  /* A sheet on a desktop is a centred dialog. */
+  .echo-sheet-host {
+    justify-content: center;
+    align-items: center;
+  }
+
+  .echo-sheet {
+    max-width: 34rem;
+    width: 100%;
+    max-height: 80%;
+    border: var(--hairline-width) solid var(--border);
+    border-radius: var(--radius-sheet);
+    animation-name: echo-fade;
+  }
+}

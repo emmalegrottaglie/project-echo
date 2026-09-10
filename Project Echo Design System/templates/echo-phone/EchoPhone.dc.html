@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<!-- @template name="Echo phone screen" description="Project Echo phone shell: header, receiver and station rows, waterfall, detector strip, transport and bottom tabs." -->
+<helmet><script src="./ds-base.js"></script><style>@keyframes echo-tab{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}body{margin:0;background:#000;display:grid;place-items:start center;min-height:100vh}</style></helmet>
+<div style="position:relative;width:393px;height:852px;overflow:hidden;display:flex;flex-direction:column;background:var(--bg);border:1px solid var(--border);font:14px/1.55 var(--font-sans);color:var(--fg)">
+<x-import component-from-global-scope="ProjectEchoDesignSystem_453425.AppHeader" title="Project Echo" hint-size="100%,56px"></x-import>
+<main style="flex:1 1 auto;min-height:0;overflow-y:auto;animation:echo-tab 180ms cubic-bezier(0.2,0,0.2,1) both">
+<x-import component-from-global-scope="ProjectEchoDesignSystem_453425.ReceiverRow" label="Receiver" value="Moscow region" meta="· KO85" hint-size="100%,56px"></x-import>
+<x-import component-from-global-scope="ProjectEchoDesignSystem_453425.ReceiverRow" label="Station" value="S28 The Buzzer" meta="· 4625 kHz USB" live="{{ isLive }}" period-sec="{{ periodSec }}" hint-size="100%,56px"></x-import>
+<div style="padding:8px 16px">
+<x-import component-from-global-scope="ProjectEchoDesignSystem_453425.StatusLine" message="running — Moscow region · KO85" tone="live" hint-size="100%,40px"></x-import>
+</div>
+<x-import component-from-global-scope="ProjectEchoDesignSystem_453425.WaterfallPanel" rows="{{ waterfallRows }}" mock="{{ waterfallMock }}" hint-size="100%,300px"></x-import>
+<x-import component-from-global-scope="ProjectEchoDesignSystem_453425.DetectorStrip" state="{{ detectorState }}" period-sec="{{ measuredSec }}" per-minute="{{ perMinute }}" expected-sec="{{ periodSec }}" hint-size="100%,60px"></x-import>
+<div style="padding:16px;color:var(--dim);font:12px/1.55 var(--font-sans)">
+<p style="margin:0;max-width:60ch;text-wrap:pretty">Live means live while this tab is in front — iOS suspends audio in the background. This app records observations about signals, never their contents.</p>
+</div>
+</main>
+<x-import component-from-global-scope="ProjectEchoDesignSystem_453425.TransportBar" running="{{ running }}" hint-size="100%,76px"></x-import>
+<x-import component-from-global-scope="ProjectEchoDesignSystem_453425.TabBar" value="live" hint-size="100%,56px"></x-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:393,&quot;height&quot;:852},&quot;theme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;phosphor&quot;,&quot;amber&quot;,&quot;midnight&quot;,&quot;nightvision&quot;],&quot;default&quot;:&quot;phosphor&quot;,&quot;tsType&quot;:&quot;'phosphor' | 'amber' | 'midnight' | 'nightvision'&quot;,&quot;section&quot;:&quot;Theme&quot;},&quot;detectorState&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;idle&quot;,&quot;searching&quot;,&quot;detected&quot;,&quot;absent&quot;],&quot;default&quot;:&quot;detected&quot;,&quot;tsType&quot;:&quot;'idle' | 'searching' | 'detected' | 'absent'&quot;,&quot;section&quot;:&quot;Live state&quot;}}">
+class Component extends DCLogic {
+  componentDidMount() {
+    document.documentElement.dataset.theme = this.props.theme ?? 'phosphor';
+  }
+  componentDidUpdate() {
+    document.documentElement.dataset.theme = this.props.theme ?? 'phosphor';
+  }
+  renderVals() {
+    const detectorState = this.props.detectorState ?? 'detected';
+    const detected = detectorState === 'detected';
+    return {
+      detectorState,
+      running: detectorState !== 'idle',
+      isLive: true,
+      periodSec: 2.4,
+      measuredSec: detected ? 2.38 : undefined,
+      perMinute: detected ? 25 : undefined,
+      waterfallRows: 300,
+      waterfallMock: detectorState === 'idle' ? 'blank' : detected ? 'detected' : 'noise',
+    };
+  }
+}
+</script>
+</body>
+</html>

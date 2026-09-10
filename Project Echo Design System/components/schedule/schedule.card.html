@@ -1,0 +1,37 @@
+<!-- @dsCard group="Components" viewport="700x320" name="Schedule" subtitle="Coverage note, window rows, alert switch states" -->
+<!doctype html>
+<html lang="en" data-theme="phosphor">
+<head>
+<meta charset="utf-8">
+<title>Schedule</title>
+<link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+<style>html,body{margin:0;background:var(--bg);color:var(--fg);font:var(--text-body)/var(--leading-body) var(--font-sans)}a{color:var(--accent)}a:hover{color:var(--fg)}.wrap{padding:var(--space-4);display:flex;flex-direction:column;gap:var(--space-4)}.lab{color:var(--dim);font:var(--text-label)/1.4 var(--font-mono);letter-spacing:var(--tracking-label);text-transform:uppercase}.row{display:flex;flex-wrap:wrap;gap:var(--space-2);align-items:center}.col{display:flex;flex-direction:column;gap:var(--space-2)}.panel{border:1px solid var(--border);background:var(--panel)}</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+const { ScheduleRow, AlertSwitch, CoverageNote, Button } = window.ProjectEchoDesignSystem_453425;
+function Card(){
+  const [on, setOn] = React.useState(true);
+  return (
+    <div className="wrap">
+      <div className="panel">
+        <CoverageNote coverage="1 of 26 scheduled stations have imported schedules. Times are as published, in UTC." permission="default" action={<Button onClick={()=>{}}>Enable notifications</Button>} />
+        <ScheduleRow designator="E11" name="Oblique" utc="Mon 03:15 UTC" local="Mon 04:15" countdown="in 18 h 31 m" khz={8102} note="ID 25. Frequency rotates monthly; 8102 kHz is the January listing." alertOn={on} onToggleAlert={setOn} />
+        <ScheduleRow designator="E11" name="Oblique" utc="Tue 05:05 UTC" local="Tue 06:05" countdown="in 42 m" khz={12153} note="ID 33. Frequency rotates monthly." urgent />
+      </div>
+      <div className="col">
+        <span className="lab">Alert switch — off / on / disabled (permission denied)</span>
+        <div className="row"><AlertSwitch on={false} /><AlertSwitch on /><AlertSwitch on={false} disabled /></div>
+      </div>
+    </div>
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<Card />);
+</script>
+</body>
+</html>

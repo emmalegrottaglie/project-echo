@@ -1,0 +1,58 @@
+<!-- @dsCard group="Components" viewport="700x460" name="Archive" subtitle="Station rows, tier headers, detail list, provenance table, flags, gap notice" -->
+<!doctype html>
+<html lang="en" data-theme="phosphor">
+<head>
+<meta charset="utf-8">
+<title>Archive</title>
+<link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+<style>html,body{margin:0;background:var(--bg);color:var(--fg);font:var(--text-body)/var(--leading-body) var(--font-sans)}a{color:var(--accent)}a:hover{color:var(--fg)}.wrap{padding:var(--space-4);display:flex;flex-direction:column;gap:var(--space-4)}.lab{color:var(--dim);font:var(--text-label)/1.4 var(--font-mono);letter-spacing:var(--tracking-label);text-transform:uppercase}.row{display:flex;flex-wrap:wrap;gap:var(--space-2);align-items:center}.col{display:flex;flex-direction:column;gap:var(--space-2)}.panel{border:1px solid var(--border);background:var(--panel)}</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+const { StationRow, TierHeader, DetailList, ProvenanceTable, Flag, GapNotice } = window.ProjectEchoDesignSystem_453425;
+function Card(){
+  return (
+    <div className="wrap">
+      <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'var(--space-4)',alignItems:'start'}}>
+        <div className="col">
+          <span className="lab">Station rows by tier</span>
+          <div className="panel">
+            <TierHeader label="Live markers" count={3} />
+            <StationRow designator="S28" name="The Buzzer" operator="Russian military, 69th communications hub" tier="live" periodSec={2.4} />
+            <StationRow designator="S30" name="The Pip" operator="Russian military, North Caucasus" tier="live" periodSec={1.2} />
+            <StationRow designator="S32" name="The Squeaky Wheel" operator="Russian military, Southern district" tier="live" disputed />
+            <TierHeader label="Historical" count={112} />
+            <StationRow designator="E03" name="The Lincolnshire Poacher" operator="United Kingdom" tier="historical" />
+            <StationRow designator="M13c" name="M13c" operator="Bulgaria" tier="historical" />
+          </div>
+          <span className="lab">Flags</span>
+          <div className="row"><Flag>disputed</Flag><Flag tone="dim">not imported</Flag><Flag tone="dim">never confirmed</Flag></div>
+        </div>
+        <div className="col">
+          <span className="lab">Detail list</span>
+          <DetailList items={[
+            {label:'Classification', value:'Slavic voice'},
+            {label:'Operator', value:'Russian military, 69th comms hub'},
+            {label:'Status', value:'Live marker, last confirmed 2025-11-15'},
+            {label:'Marker', value:'~1.2 s buzz, ~25/min'}]} />
+          <span className="lab">Provenance — S32, sources disagree</span>
+          <ProvenanceTable rows={[
+            {khz:5473, mode:'USB', timeOfDay:'day', lastConfirmed:'2021-12-01', sourceUrl:'#', disputed:true},
+            {khz:5367, mode:'USB', timeOfDay:'day', lastConfirmed:'2025-01-01', sourceUrl:'#', disputed:true},
+            {khz:4625, mode:'USB', timeOfDay:null, lastConfirmed:'2025-11-15', sourceUrl:'#'}]} />
+          <span className="lab">Gap notice</span>
+          <GapNotice title="Roster entry">The designator, name, operator and status are sourced; frequencies, schedules and history have not been imported yet.</GapNotice>
+        </div>
+      </div>
+    </div>
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<Card />);
+</script>
+</body>
+</html>

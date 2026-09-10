@@ -1,0 +1,11 @@
+<!-- @dsCard group="Instrument" viewport="700x210" name="Waterfall geometry" subtitle="320 rows at 22 fps — the row rate is the time axis" -->
+<!doctype html>
+<html lang="en" data-theme="phosphor">
+<head><meta charset="utf-8"><title>Waterfall geometry</title><link rel="stylesheet" href="../styles.css"><style>html,body{margin:0;background:var(--bg);color:var(--fg);font:var(--text-body)/var(--leading-body) var(--font-sans)}a{color:var(--accent)}a:hover{color:var(--fg)}body{padding:var(--space-4)}.lab{color:var(--dim);font:var(--text-label)/1.4 var(--font-mono);letter-spacing:var(--tracking-label);text-transform:uppercase}.mono{font-family:var(--font-mono)}.grid{display:grid;gap:var(--space-2)}.row{display:flex;gap:var(--space-2);align-items:center;flex-wrap:wrap}</style></head>
+<body>
+<div class="grid" style="grid-template-columns:repeat(4,1fr);gap:var(--space-4)">
+<div><div class="mono" style="font-size:var(--text-display);color:var(--accent)">320</div><div style="font-size:var(--text-label);color:var(--dim)">rows in the viewport</div></div><div><div class="mono" style="font-size:var(--text-display);color:var(--accent)">22 fps</div><div style="font-size:var(--text-label);color:var(--dim)">one 1px row painted per frame</div></div><div><div class="mono" style="font-size:var(--text-display);color:var(--accent)">~14.5 s</div><div style="font-size:var(--text-label);color:var(--dim)">history on screen</div></div><div><div class="mono" style="font-size:var(--text-display);color:var(--accent)">0–3 kHz</div><div style="font-size:var(--text-label);color:var(--dim)">of the SSB passband, ~256 bins</div></div>
+</div>
+<p style="margin:var(--space-4) 0 0;font-size:var(--text-label);color:var(--dim);max-width:74ch">The canvas is twice the viewport height with every row written twice, translated under a clipping viewport. Newest row at the bottom. Square corners, radius 0. Nothing in a design may add per-row work, require a repaint of this region, resize it mid-stream, or overlay decorative motion — compositor-only transform and opacity if anything must sit on top.</p>
+</body>
+</html>

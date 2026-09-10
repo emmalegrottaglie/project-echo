@@ -1,0 +1,14 @@
+<!-- @dsCard group="Spacing" viewport="700x180" name="Touch targets" subtitle="44px minimum, including the alert toggles" -->
+<!doctype html>
+<html lang="en" data-theme="phosphor">
+<head><meta charset="utf-8"><title>Touch targets</title><link rel="stylesheet" href="../styles.css"><style>html,body{margin:0;background:var(--bg);color:var(--fg);font:var(--text-body)/var(--leading-body) var(--font-sans)}a{color:var(--accent)}a:hover{color:var(--fg)}body{padding:var(--space-4)}.lab{color:var(--dim);font:var(--text-label)/1.4 var(--font-mono);letter-spacing:var(--tracking-label);text-transform:uppercase}.mono{font-family:var(--font-mono)}.grid{display:grid;gap:var(--space-2)}.row{display:flex;gap:var(--space-2);align-items:center;flex-wrap:wrap}</style></head>
+<body>
+<div class="row" style="gap:var(--space-4)">
+<div style="position:relative;width:44px;height:44px;border:1px dashed var(--accent);display:grid;place-items:center"><span style="width:34px;height:20px;border-radius:10px;border:1px solid var(--border);background:var(--panel)"></span></div>
+<div style="position:relative;width:44px;height:44px;border:1px dashed var(--accent);display:grid;place-items:center"><span style="width:12px;height:12px;border-radius:50%;background:var(--accent)"></span></div>
+<div style="height:44px;padding:0 var(--space-3);border:1px dashed var(--accent);display:grid;place-items:center;font-family:var(--font-mono);font-size:var(--text-body)">Connect</div>
+<div style="height:44px;padding:0 var(--space-4);border:1px dashed var(--accent);display:grid;place-items:center;font-family:var(--font-mono);font-size:var(--text-body);color:var(--dim)">Archive row</div>
+</div>
+<p style="margin:var(--space-4) 0 0;font-size:var(--text-label);color:var(--dim);max-width:70ch">The dashed box is the 44px target, not a border. The desktop build's glyph-sized ◉/○ alert toggle becomes a switch inside one of these. No hover states exist on phone: every hover affordance in the desktop build needs a touch equivalent.</p>
+</body>
+</html>

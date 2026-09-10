@@ -1,0 +1,26 @@
+/* Space and shape. 4px base; six steps. docs/MOBILE_UI_SPEC.md §3.3. */
+:root {
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+
+  --gutter: var(--space-4);
+
+  /* The instrument is square; the interface is slightly soft. */
+  --radius-control: 3px;
+  --radius-sheet: 12px;
+  --radius-instrument: 0;
+
+  --hairline-width: 1px;
+
+  /* Minimum touch target, including the alert toggles. */
+  --touch-min: 44px;
+
+  /* Layout constants (additions — see readme.md "Intentional additions"). */
+  --tabbar-height: 56px;
+  --transport-height: 60px;
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}

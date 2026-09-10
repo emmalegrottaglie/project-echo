@@ -1,0 +1,60 @@
+<!-- @dsCard group="Components" viewport="700x400" name="Instrument" subtitle="Waterfall panel, detector strip, status line, transport, receiver row" -->
+<!doctype html>
+<html lang="en" data-theme="phosphor">
+<head>
+<meta charset="utf-8">
+<title>Instrument</title>
+<link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+<style>html,body{margin:0;background:var(--bg);color:var(--fg);font:var(--text-body)/var(--leading-body) var(--font-sans)}a{color:var(--accent)}a:hover{color:var(--fg)}.wrap{padding:var(--space-4);display:flex;flex-direction:column;gap:var(--space-4)}.lab{color:var(--dim);font:var(--text-label)/1.4 var(--font-mono);letter-spacing:var(--tracking-label);text-transform:uppercase}.row{display:flex;flex-wrap:wrap;gap:var(--space-2);align-items:center}.col{display:flex;flex-direction:column;gap:var(--space-2)}.panel{border:1px solid var(--border);background:var(--panel)}</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+const { WaterfallPanel, DetectorStrip, StatusLine, TransportBar, ReceiverRow, LivePulse, Button } = window.ProjectEchoDesignSystem_453425;
+function Card(){
+  return (
+    <div className="wrap" style={{gap:'var(--space-3)'}}>
+      <div style={{display:'grid',gridTemplateColumns:'240px 1fr',gap:'var(--space-4)',alignItems:'start'}}>
+        <div className="col">
+          <span className="lab">Waterfall viewport</span>
+          <WaterfallPanel rows={200} mock="detected" />
+        </div>
+        <div className="col">
+          <span className="lab">Detector strip — four states</span>
+          <DetectorStrip state="idle" />
+          <DetectorStrip state="searching" />
+          <DetectorStrip state="detected" periodSec={2.38} perMinute={25} expectedSec={2.4} />
+          <DetectorStrip state="absent" />
+          <span className="lab">Status line</span>
+          <StatusLine message="running — Moscow region · KO85" tone="live" />
+          <StatusLine tone="danger" message="connected but no audio reached the analyser" action={<Button variant="ghost">Try another</Button>} />
+        </div>
+      </div>
+      <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'var(--space-4)'}}>
+        <div className="col">
+          <span className="lab">Receiver / station rows</span>
+          <div className="panel">
+            <ReceiverRow label="Receiver" value="Moscow region" meta="· KO85" />
+            <ReceiverRow label="Station" value="S28 The Buzzer" meta="· 4625 kHz USB" live periodSec={2.4} />
+          </div>
+        </div>
+        <div className="col">
+          <span className="lab">Transport bar · live pulse 2.4s / 1.2s</span>
+          <TransportBar running={false} />
+          <div className="row" style={{color:'var(--dim)',font:'var(--text-label)/1.4 var(--font-mono)'}}>
+            <LivePulse periodSec={2.4} /> S28 2.4 s
+            <LivePulse periodSec={1.2} /> S30 1.2 s
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<Card />);
+</script>
+</body>
+</html>

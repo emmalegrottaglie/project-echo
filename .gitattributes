@@ -1,0 +1,8 @@
+# Normalise line endings in the repository so a checkout on another platform does not
+# churn every file. Source is LF; the woff2, wav and sqlite files must stay untouched.
+* text=auto eol=lf
+
+*.woff2 binary
+*.wav binary
+*.sqlite binary
+*.ttf binary

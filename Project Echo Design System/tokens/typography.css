@@ -1,0 +1,28 @@
+/*
+ * Type. Mobile scale is four steps only (docs/MOBILE_UI_SPEC.md §3.2) — 12 / 14 / 16 / 20.
+ * 14 is body. Nothing below 12 anywhere: the desktop build's 0.72rem labels grow on mobile.
+ */
+:root {
+  --size-12: 12px;
+  --size-14: 14px;
+  --size-16: 16px;
+  --size-20: 20px;
+
+  --text-label: var(--size-12);
+  --text-body: var(--size-14);
+  --text-title: var(--size-16);
+  --text-display: var(--size-20);
+
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+
+  --leading-body: 1.55;
+  --leading-data: 1.35;
+  --leading-tight: 1;
+
+  --tracking-label: 0.06em;
+  --tracking-title: 0.03em;
+  --tracking-brand: 0.08em;
+  --tracking-data: 0;
+}

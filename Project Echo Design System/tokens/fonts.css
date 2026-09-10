@@ -1,0 +1,70 @@
+/*
+ * Fonts — self-hosted.
+ *
+ * src/style.css names 'JetBrains Mono', 'Fira Code', ui-monospace, 'Cascadia Mono',
+ * monospace but the repository ships no binaries. They are served from assets/fonts/
+ * here rather than from a CDN: the app runs from 127.0.0.1 with no service worker, so a
+ * third-party request per load is both a privacy liability and a single point of
+ * failure for the face every frequency, designator and timestamp is set in.
+ *
+ * Static per-weight woff2, only the three weights the type system uses (400 regular,
+ * 500 medium, 600 semibold) plus 700 for anything inherited from the desktop build, and
+ * one italic. The uploaded set also contains thin through extrabold and a variable
+ * axis; those are not wired up because nothing in the system asks for them.
+ *
+ * JetBrains Mono is SIL OFL 1.1, which permits self-hosting. Keep OFL.txt alongside the
+ * binaries.
+ *
+ * Prose uses system-ui and needs no webfont — that is the source's own choice.
+ */
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("../assets/fonts/JetBrainsMono-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("../assets/fonts/JetBrainsMono-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("../assets/fonts/JetBrainsMono-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("../assets/fonts/JetBrainsMono-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("../assets/fonts/JetBrainsMono-Italic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+:root {
+  /* Data, frequencies, designators, timestamps, periods, code. */
+  --font-mono: "JetBrains Mono", "Fira Code", ui-monospace, "Cascadia Mono", monospace;
+  /* Labels, prose, notes. Deliberately the platform sans — the app is a browser tab. */
+  --font-sans: system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* Legacy aliases matching src/style.css so copied app CSS keeps working. */
+  --mono: var(--font-mono);
+  --sans: var(--font-sans);
+}

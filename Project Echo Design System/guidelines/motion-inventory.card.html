@@ -1,0 +1,24 @@
+<!-- @dsCard group="Motion" viewport="700x330" name="Motion inventory" subtitle="Fourteen animations exist. If it is not listed, it does not exist" -->
+<!doctype html>
+<html lang="en" data-theme="phosphor">
+<head><meta charset="utf-8"><title>Motion inventory</title><link rel="stylesheet" href="../styles.css"><style>html,body{margin:0;background:var(--bg);color:var(--fg);font:var(--text-body)/var(--leading-body) var(--font-sans)}a{color:var(--accent)}a:hover{color:var(--fg)}body{padding:var(--space-4)}.lab{color:var(--dim);font:var(--text-label)/1.4 var(--font-mono);letter-spacing:var(--tracking-label);text-transform:uppercase}.mono{font-family:var(--font-mono)}.grid{display:grid;gap:var(--space-2)}.row{display:flex;gap:var(--space-2);align-items:center;flex-wrap:wrap}</style></head>
+<body>
+<ol class="mono" style="margin:0;padding-left:1.4em;font-size:var(--text-label);color:var(--fg);columns:2;column-gap:var(--space-5)">
+<li>Tab switch — opacity + translateY 8px, base</li>
+<li>Detail push — translateX 100%→0, slow</li>
+<li>Sheet present — translateY 100%→0, slow</li>
+<li>Live pulse — opacity 1→.25→1, station's own period</li>
+<li>Detector confirm — scale .96→1, deliberate, once</li>
+<li>Detector search — 24px bar, 1400ms linear, loops</li>
+<li>Waterfall reveal — opacity 0→1, base</li>
+<li>Transport swap — label crossfade, no resize</li>
+<li>Alert toggle — knob translateX + track colour</li>
+<li>Countdown threshold — 1 h / 10 min / 1 min only</li>
+<li>Status line — crossfade, fast</li>
+<li>Row press — opacity .7, instant, no ripple</li>
+<li>Directory skeletons — .4→.7, 900ms, while fetching</li>
+<li>Theme change — none. Explicitly instant</li>
+</ol>
+<p style="margin:var(--space-3) 0 0;font-size:var(--text-label);color:var(--dim);max-width:72ch">No page-load entrance, no reveal-on-scroll, no parallax, no ambient loop. Numbers that update on a timer change without flying. Battery is a feature: nothing decorative loops while audio is live except items 6 and 13.</p>
+</body>
+</html>
