@@ -18,6 +18,11 @@ The client also runs standalone with `npm run dev` on <http://127.0.0.1:5173>, w
 the server. Three features need the server and hide themselves without it: the
 in-app receiver directory, saved observations, and the relay.
 
+```bash
+npm test        # 52 tests over the detector, schedules, alerts, receivers, directory
+npm run typecheck
+```
+
 ## What it does
 
 ## Interface
