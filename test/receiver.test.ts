@@ -172,3 +172,66 @@ describe('selection fallback', () => {
     expect(localStorage.getItem('echo.receiver.selected')).toBeNull();
   });
 });
+
+describe('storage unavailable', () => {
+  /**
+   * Safari in private browsing, and any profile with site data blocked, throws on
+   * `setItem`. `selectedReceiver()` writes during a read and runs during view mount, so
+   * an unguarded throw escaped the view factory and took the whole tab down to the
+   * error boundary.
+   */
+  it('survives a storage that throws on every operation', () => {
+    const throwing = {
+      getItem: () => {
+        throw new DOMException('The quota has been exceeded.', 'QuotaExceededError');
+      },
+      setItem: () => {
+        throw new DOMException('The quota has been exceeded.', 'QuotaExceededError');
+      },
+      removeItem: () => {
+        throw new DOMException('The quota has been exceeded.', 'QuotaExceededError');
+      },
+      clear: () => {},
+      key: () => null,
+      length: 0,
+    };
+
+    vi.stubGlobal('localStorage', throwing);
+    try {
+      expect(() => listReceivers()).not.toThrow();
+      expect(listReceivers()).toEqual([]);
+      expect(() => selectedReceiver()).not.toThrow();
+      expect(selectedReceiver()).toBeNull();
+      expect(() => saveReceiver(receiver('a.example:8073'))).not.toThrow();
+      expect(() => selectReceiver('a.example:8073')).not.toThrow();
+      expect(() => removeReceiver('a.example:8073')).not.toThrow();
+    } finally {
+      vi.stubGlobal('localStorage', storage);
+    }
+  });
+
+  it('survives a storage that reads but cannot write', () => {
+    const readOnly = {
+      ...storage,
+      getItem: (key: string) => storage.getItem(key),
+      setItem: () => {
+        throw new DOMException('write blocked', 'QuotaExceededError');
+      },
+      removeItem: () => {},
+      clear: () => {},
+      key: () => null,
+      length: 0,
+    };
+
+    storage.setItem('echo.receivers', JSON.stringify([receiver('a.example:8073', 'Alpha')]));
+    storage.setItem('echo.receiver.selected', 'gone.example:8073');
+
+    vi.stubGlobal('localStorage', readOnly);
+    try {
+      // The fallback cannot be committed, but it must still be returned.
+      expect(selectedReceiver()?.host).toBe('a.example:8073');
+    } finally {
+      vi.stubGlobal('localStorage', storage);
+    }
+  });
+});

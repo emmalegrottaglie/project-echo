@@ -33,13 +33,25 @@ function readSet(key: string): Set<string> {
     const raw = localStorage.getItem(key);
     return new Set(raw ? (JSON.parse(raw) as string[]) : []);
   } catch {
-    localStorage.removeItem(key);
+    // The removal is itself guarded: if storage threw on the read, it throws here too.
+    try {
+      localStorage.removeItem(key);
+    } catch {
+      // Nothing to clean up that we can reach.
+    }
     return new Set();
   }
 }
 
 function writeSet(key: string, value: Set<string>): void {
-  localStorage.setItem(key, JSON.stringify([...value]));
+  // Guarded for the same reason as the receiver list: `checkDue` runs from the app
+  // shell on load, so a storage-blocked browser would take the whole app down before a
+  // view ever mounted.
+  try {
+    localStorage.setItem(key, JSON.stringify([...value]));
+  } catch {
+    // Subscriptions will not survive this session. The alert still fires.
+  }
 }
 
 export function subscriptions(): Set<string> {

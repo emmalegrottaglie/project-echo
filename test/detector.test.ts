@@ -288,6 +288,86 @@ group('MarkerDetector', () => {
     expect(detector.read().state).toBe('absent');
   });
 
+  /**
+   * `edges` used to be bounded by count alone, so a marker that stopped while its bin
+   * still showed range left the last twelve timestamps in place and the strip reported
+   * the same lock. Built on The Pip's 1.2 s period: three periods pass well inside the
+   * seven-second window that sets the thresholds, so the staleness check is what has to
+   * catch this rather than the range falling away.
+   */
+  it('loses the lock when the marker stops pulsing', () => {
+    const detector = new MarkerDetector();
+    const options = {
+      noise: 0.35,
+      toneBin: 140,
+      toneLevel: 0.35,
+      periodSec: 1.2,
+      toneSec: 0.6,
+      count: 24,
+    };
+    feedBand(detector, options);
+
+    const lockedAt = options.periodSec * 1000 * options.count;
+    expect(detector.read(lockedAt).state).toBe('detected');
+
+    // The tone stops switching and simply stays on: no dips, so no new edges, while the
+    // recent history keeps the measured range up.
+    let t = lockedAt;
+    for (; t < lockedAt + 5_000; t += FRAME_MS) {
+      detector.feed(t, frame(options, true, t));
+    }
+
+    expect(detector.read(t).state).not.toBe('detected');
+  });
+
+  it('reports idle rather than a stale lock when frames stop arriving', () => {
+    const detector = new MarkerDetector();
+    const options = {
+      noise: 0.35,
+      toneBin: 90,
+      toneLevel: 0.35,
+      periodSec: 2.4,
+      toneSec: 1.2,
+      count: 12,
+    };
+    feedBand(detector, options);
+
+    const lastFrame = options.periodSec * 1000 * options.count;
+    expect(detector.read(lastFrame).state).toBe('detected');
+
+    // The waterfall stops on `visibilitychange` while the view's 1 s timer keeps
+    // calling read(). Every timestamp the detector holds stops advancing with it, so
+    // only the wall clock can tell that the input has gone away.
+    expect(detector.read(lastFrame + 10_000).state).toBe('idle');
+  });
+
+  /**
+   * Switching bins discards measurements taken against the old one. A voice message
+   * moves the strongest swing to a speech formant mid-lock, and mixing the two gave a
+   * period describing neither.
+   */
+  it('does not carry a lock across a change of tracked bin', () => {
+    const detector = new MarkerDetector();
+    const common = { noise: 0.35, toneLevel: 0.35, periodSec: 2.4, toneSec: 1.2 };
+    feedBand(detector, { ...common, toneBin: 90, count: 12 });
+
+    const switchedAt = common.periodSec * 1000 * 12;
+    expect(detector.read(switchedAt).state).toBe('detected');
+    expect(detector.read(switchedAt).trackedBin).toBe(90);
+
+    // A much stronger pulse appears elsewhere in the passband.
+    let t = switchedAt;
+    for (let i = 0; i < 40; i++, t += FRAME_MS) {
+      const on = ((t - switchedAt) / 1000) % 1.6 < 0.8;
+      detector.feed(t, frame({ noise: 0.35, toneBin: 300, toneLevel: 0.6 }, on, t));
+    }
+
+    const after = detector.read(t);
+    expect(after.trackedBin).toBe(300);
+    // The old bin's edges are gone, so there is nothing to report a period from yet.
+    expect(after.state).not.toBe('detected');
+  });
+
   it('forgets everything on reset', () => {
     const detector = new MarkerDetector();
     feedBand(detector, {

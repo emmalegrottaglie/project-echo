@@ -31,10 +31,15 @@ const MIN_PERIOD_MS = 400;
 const MAX_PERIOD_MS = 8000;
 
 /**
- * Two edges closer together than the shortest plausible period cannot both be real, so
- * the second is a ragged top rather than a pulse.
+ * Rejects a second edge from a ragged pulse top.
+ *
+ * Half the shortest accepted period, not the whole of it: at `MIN_PERIOD_MS` a marker
+ * actually running at the floor of the accepted range lost every second edge to the
+ * debounce, and the doubled interval still passed every downstream check — so half the
+ * true rate was reported at full confidence. Smoothing and arming do most of this work
+ * now; this is the backstop.
  */
-const DEBOUNCE_MS = MIN_PERIOD_MS;
+const DEBOUNCE_MS = MIN_PERIOD_MS / 2;
 
 /**
  * Time constant for smoothing the tracked bin's excursion before it is thresholded.
@@ -85,6 +90,15 @@ const SWING_TAU_SEC = 1;
 const RETRACK_INTERVAL_MS = 800;
 
 /**
+ * How much more a bin must swing than the tracked one before the switch is made.
+ *
+ * Switching discards the level history and the timed edges, because they describe a
+ * different frequency, so it must not happen for a rounding difference between two
+ * adjacent bins of the same pulse.
+ */
+const RETRACK_MARGIN = 1.25;
+
+/**
  * Time to ignore before judging anything.
  *
  * The per-bin baseline starts at the first frame's values, so until it has settled the
@@ -106,6 +120,21 @@ const LEVEL_WINDOW_MS = 7_000;
 
 /** Gaps larger than this are a stall, not a sample interval, and must not skew an EMA. */
 const MAX_FRAME_GAP_MS = 500;
+
+/**
+ * A lock is only as current as its newest edge.
+ *
+ * Edges older than this are discarded outright, and a lock whose newest edge is older
+ * than `STALE_LOCK_PERIODS` times the measured period is no longer reported. Without
+ * both, `edges` was bounded by count alone: a marker that went off the air while the
+ * band stayed noisy — or a tab that stopped feeding frames — left the last twelve
+ * timestamps in place and the strip claimed a lock indefinitely.
+ */
+const EDGE_HISTORY_MS = 60_000;
+const STALE_LOCK_PERIODS = 3;
+
+/** No frames for this long means the answer is unknown, not that the marker stopped. */
+const FEED_STALL_MS = 3_000;
 
 /**
  * How far the tracked bin must swing, on the analyser's 0–1 scale, before any of this
@@ -229,7 +258,20 @@ export class MarkerDetector {
           bestBin = i;
         }
       }
-      this.trackedBin = bestBin;
+
+      if (this.trackedBin === null) {
+        this.trackedBin = bestBin;
+      } else if (bestBin !== this.trackedBin && best > swing[this.trackedBin]! * RETRACK_MARGIN) {
+        // Everything measured so far describes the old bin. Keeping it would mix two
+        // frequencies into one period — which is what a voice message does to the
+        // Buzzer, moving the strongest swing to a speech formant mid-lock.
+        this.trackedBin = bestBin;
+        this.levels = [];
+        this.smoothed = null;
+        this.edges = [];
+        this.lastEdge = 0;
+        this.armed = false;
+      }
     }
 
     const tracked = this.trackedBin;
@@ -274,17 +316,48 @@ export class MarkerDetector {
 
     if (this.armed && level >= rise && atMs - this.lastEdge >= DEBOUNCE_MS) {
       this.edges.push(atMs);
-      if (this.edges.length > MAX_EDGES) this.edges.shift();
       this.lastEdge = atMs;
       this.armed = false;
     }
+
+    // Bounded by age as well as by count, so a long silence empties the history rather
+    // than preserving a lock that has stopped being true.
+    while (
+      this.edges.length > 0 &&
+      (this.edges.length > MAX_EDGES || atMs - this.edges[0]! > EDGE_HISTORY_MS)
+    ) {
+      this.edges.shift();
+    }
   }
 
-  read(): Detection {
+  /**
+   * The current verdict.
+   *
+   * `nowMs` is the wall clock, and it matters: a caller that stops feeding frames — the
+   * waterfall stops on `visibilitychange` — would otherwise see the last verdict frozen
+   * for as long as the tab stays hidden, because every timestamp the detector holds
+   * stops advancing too. Callers on a timer should pass `performance.now()`. The default
+   * falls back to the newest frame, which keeps a purely frame-driven caller honest
+   * about everything except the stall itself.
+   */
+  read(nowMs = this.lastFrameMs ?? 0): Detection {
     const trackedBin = this.trackedBin;
 
     // Still warming up: "listening…" is the honest report, not a verdict on the band.
     if (this.startedAtMs === null || (this.lastFrameMs ?? 0) - this.startedAtMs < WARMUP_MS) {
+      return {
+        state: 'idle',
+        periodSec: null,
+        perMinute: null,
+        consistency: 0,
+        range: 0,
+        trackedBin,
+      };
+    }
+
+    // No frames for a while: nothing can be said about the band right now, and saying
+    // "no marker" would be a claim about a transmitter rather than about our own input.
+    if (this.lastFrameMs !== null && nowMs - this.lastFrameMs > FEED_STALL_MS) {
       return {
         state: 'idle',
         periodSec: null,
@@ -328,6 +401,19 @@ export class MarkerDetector {
     if (period < MIN_PERIOD_MS || period > MAX_PERIOD_MS) {
       return {
         state: 'absent',
+        periodSec: null,
+        perMinute: null,
+        consistency: 0,
+        range,
+        trackedBin,
+      };
+    }
+
+    // The marker has to still be pulsing. Several periods without an edge is loss of
+    // lock, however good the intervals behind it looked.
+    if (nowMs - this.lastEdge > period * STALE_LOCK_PERIODS) {
+      return {
+        state: 'searching',
         periodSec: null,
         perMinute: null,
         consistency: 0,

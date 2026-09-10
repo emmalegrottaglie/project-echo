@@ -177,8 +177,11 @@ export function liveView(): { element: HTMLElement; destroy: () => void } {
 
     connectButton.disabled = !receiver || phase === 'connecting';
 
+    // Torn down unconditionally: leaving the previous receiver's map up when the new one
+    // has no grid square shows a MUF for somewhere the user is not listening from.
+    unmountPropagation?.();
+    unmountPropagation = null;
     if (receiver?.grid) {
-      unmountPropagation?.();
       unmountPropagation = mountPropagation(propagation, receiver.grid);
     }
   };
@@ -266,7 +269,7 @@ export function liveView(): { element: HTMLElement; destroy: () => void } {
     lastPosted = 0;
 
     detectorTimer = window.setInterval(() => {
-      const detection = detector.read();
+      const detection = detector.read(performance.now());
       renderDetector(detection.state, describe(detection, expected));
 
       // A detection repeats every second while the marker is up, so this records at

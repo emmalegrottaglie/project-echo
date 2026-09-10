@@ -22,6 +22,45 @@ const LEGACY_KEY = 'echo.receiver';
 
 export const PUBLIC_LIST_URL = 'http://kiwisdr.com/public/';
 
+/**
+ * Writes that tolerate storage being unavailable.
+ *
+ * Safari in private browsing, and any profile with site data blocked, throws on
+ * `setItem`. These writes happen during a read — `selectedReceiver()` commits its
+ * fallback — and during view mount, so an unguarded throw escaped the view factory and
+ * took the whole tab down to the error boundary for a user whose only real problem was
+ * that their receiver list would not persist. Losing persistence is survivable; losing
+ * the view is not.
+ */
+function persist(key: string, value: string): void {
+  try {
+    localStorage.setItem(key, value);
+  } catch {
+    // Storage is unavailable. The in-memory value stands for this session.
+  }
+}
+
+function forget(key: string): void {
+  try {
+    localStorage.removeItem(key);
+  } catch {
+    // As above.
+  }
+}
+
+/**
+ * Reads through the same guard. Some contexts throw on touching `localStorage` at all,
+ * not only on writing to it, so an unguarded `getItem` is the same crash by another
+ * route.
+ */
+function recall(key: string): string | null {
+  try {
+    return localStorage.getItem(key);
+  } catch {
+    return null;
+  }
+}
+
 /** 'host:port' with something before the colon. */
 function hasHostname(host: string | undefined): boolean {
   return typeof host === 'string' && host.split(':')[0]!.length > 0;
@@ -29,7 +68,7 @@ function hasHostname(host: string | undefined): boolean {
 
 function read(): Receiver[] {
   try {
-    const raw = localStorage.getItem(KEY);
+    const raw = recall(KEY);
     if (raw) {
       const stored = JSON.parse(raw) as Receiver[];
       const usable = stored.filter((receiver) => hasHostname(receiver.host));
@@ -37,19 +76,19 @@ function read(): Receiver[] {
       return usable;
     }
   } catch {
-    localStorage.removeItem(KEY);
+    forget(KEY);
   }
 
-  const legacy = localStorage.getItem(LEGACY_KEY);
+  const legacy = recall(LEGACY_KEY);
   if (legacy) {
-    localStorage.removeItem(LEGACY_KEY);
+    forget(LEGACY_KEY);
     try {
       const receiver = JSON.parse(legacy) as Receiver;
       // An earlier build normalised an empty field to ':8073' and saved it, so a
       // stored value is only worth migrating if it actually names a host.
       if (hasHostname(receiver.host)) {
         write([receiver]);
-        localStorage.setItem(SELECTED_KEY, receiver.id);
+        persist(SELECTED_KEY, receiver.id);
         return [receiver];
       }
     } catch {
@@ -61,7 +100,7 @@ function read(): Receiver[] {
 }
 
 function write(receivers: Receiver[]): void {
-  localStorage.setItem(KEY, JSON.stringify(receivers));
+  persist(KEY, JSON.stringify(receivers));
 }
 
 export function listReceivers(): Receiver[] {
@@ -74,17 +113,17 @@ export function saveReceiver(receiver: Receiver): Receiver {
   receivers.push(receiver);
   receivers.sort((a, b) => a.label.localeCompare(b.label));
   write(receivers);
-  localStorage.setItem(SELECTED_KEY, receiver.id);
+  persist(SELECTED_KEY, receiver.id);
   return receiver;
 }
 
 export function removeReceiver(id: string): void {
   write(read().filter((receiver) => receiver.id !== id));
-  if (localStorage.getItem(SELECTED_KEY) === id) localStorage.removeItem(SELECTED_KEY);
+  if (recall(SELECTED_KEY) === id) forget(SELECTED_KEY);
 }
 
 export function selectReceiver(id: string): void {
-  localStorage.setItem(SELECTED_KEY, id);
+  persist(SELECTED_KEY, id);
 }
 
 /**
@@ -101,12 +140,12 @@ export function selectedReceiver(): Receiver | null {
   const receivers = read();
   if (!receivers.length) return null;
 
-  const id = localStorage.getItem(SELECTED_KEY);
+  const id = recall(SELECTED_KEY);
   const selected = receivers.find((receiver) => receiver.id === id);
   if (selected) return selected;
 
   const fallback = receivers[0]!;
-  localStorage.setItem(SELECTED_KEY, fallback.id);
+  persist(SELECTED_KEY, fallback.id);
   return fallback;
 }
 
