@@ -151,3 +151,24 @@ describe('receiver list', () => {
     expect(listReceivers()).toEqual([]);
   });
 });
+
+describe('selection fallback', () => {
+  it('commits the fallback so display and behaviour cannot diverge', () => {
+    saveReceiver(receiver('a.example:8073', 'Alpha'));
+    saveReceiver(receiver('b.example:8073', 'Bravo'));
+    // A selection left over from a receiver that is no longer saved.
+    localStorage.setItem('echo.receiver.selected', 'gone.example:8073');
+
+    const chosen = selectedReceiver();
+
+    expect(chosen?.host).toBe('a.example:8073');
+    // The whole point: the next read, and any connection, agree with what was shown.
+    expect(localStorage.getItem('echo.receiver.selected')).toBe('a.example:8073');
+    expect(selectedReceiver()?.host).toBe('a.example:8073');
+  });
+
+  it('writes nothing when there is no receiver to fall back to', () => {
+    expect(selectedReceiver()).toBeNull();
+    expect(localStorage.getItem('echo.receiver.selected')).toBeNull();
+  });
+});

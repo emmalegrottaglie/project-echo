@@ -87,10 +87,27 @@ export function selectReceiver(id: string): void {
   localStorage.setItem(SELECTED_KEY, id);
 }
 
+/**
+ * The receiver a connection should use.
+ *
+ * When the stored selection names nothing in the list — cleared, or left over from a
+ * receiver since forgotten — the first entry stands in, and that choice is written back
+ * immediately. Returning a silent fallback without committing it let the interface show
+ * one receiver while a connection opened against another, which is how a smoke test
+ * ended up on a node in Missouri while the screen said France. Connecting to a
+ * volunteer's receiver nobody chose is exactly what docs/RESEARCH.md §4 forbids.
+ */
 export function selectedReceiver(): Receiver | null {
   const receivers = read();
+  if (!receivers.length) return null;
+
   const id = localStorage.getItem(SELECTED_KEY);
-  return receivers.find((receiver) => receiver.id === id) ?? receivers[0] ?? null;
+  const selected = receivers.find((receiver) => receiver.id === id);
+  if (selected) return selected;
+
+  const fallback = receivers[0]!;
+  localStorage.setItem(SELECTED_KEY, fallback.id);
+  return fallback;
 }
 
 /**
