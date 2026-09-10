@@ -1,0 +1,11 @@
+{
+  "appId": "org.projectecho.monitor",
+  "appName": "Project Echo",
+  "webDir": "dist",
+  "server": {
+    "androidScheme": "http"
+  },
+  "android": {
+    "allowMixedContent": true
+  }
+}

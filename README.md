@@ -19,9 +19,13 @@ the server. Three features need the server and hide themselves without it: the
 in-app receiver directory, saved observations, and the relay.
 
 ```bash
-npm test        # 62 tests over the detector, schedules, alerts, receivers, directory
+npm test        # 67 tests over the detector, schedules, alerts, receivers, directory
 npm run typecheck
 ```
+
+To try it on a phone, `npm run android:apk` writes a debug APK — see
+[docs/ANDROID.md](docs/ANDROID.md), which also covers the three features that hide
+themselves inside it.
 
 ## Interface
 
@@ -138,6 +142,7 @@ and an antenna before it needs code.
 | [docs/RESEARCH.md](docs/RESEARCH.md) | Station facts, sources, and the legal boundary |
 | [docs/PLAN.md](docs/PLAN.md) | Product definition, data model, the three phases |
 | [docs/MOBILE_UI_SPEC.md](docs/MOBILE_UI_SPEC.md) | The phone layout and the fourteen-item motion inventory |
+| [docs/ANDROID.md](docs/ANDROID.md) | Building and installing the test APK, and what does not work inside it |
 
 ## Architecture notes
 
