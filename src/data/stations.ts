@@ -78,16 +78,23 @@ const LIVE: Station[] = [
     language: 'Slavic voice',
     operator: 'Russian military, 69th communications hub',
     tier: 'live',
-    marker: '~1.2 s buzz tone, repeating ~25 times per minute, 24 hours a day',
-    markerPeriodSec: 2.4,
-    lastConfirmed: '2025-11-15',
+    marker: '1.25 s buzz tone with a 1.85 s pause, about 19 times per minute, 24 hours a day',
+    markerPeriodSec: 3.1,
+    lastConfirmed: '2026-09-10',
     lore:
       'The best known of the Russian channel markers. "UVB-76" is an obsolete callsign ' +
       'from the 1970s and 80s and is not what the station transmits today: voice ' +
       'identifiers observed since 2010 run MDZhB, then ZhUOZ from 2019, then ANVF. The ' +
       'transmitter site moved from Povarovo to Naro-Fominsk in 2010. Voice messages ' +
       'interrupt the buzzer irregularly and are read in the Russian phonetic alphabet; ' +
-      'monitors logged a marked increase in them through 2025, peaking in March and April.',
+      'monitors logged a marked increase in them through 2025, peaking in March and April.' +
+      '\n\n' +
+      'The pulse rate is worth reading carefully. Wikipedia summarises this station as ' +
+      '"approximately 25 tones per minute", and the page it cites for that actually ' +
+      'gives a 1.25 s tone with a 1.85 s pause — a 3.1 s period, about 19 per minute. ' +
+      'This installation measured 3.40 s through a receiver in France on 2026-09-10, ' +
+      'which agrees with the detailed figure and not with the summary. The 25-per-minute ' +
+      'number appears to be an error in the summarising rather than a change on the air.',
     frequencies: [
       {
         khz: 4625,
@@ -100,6 +107,7 @@ const LIVE: Station[] = [
     ],
     schedules: [],
     sourceUrls: [
+      'https://www.numbers-stations.com/russia/the-buzzer/',
       'https://en.wikipedia.org/wiki/UVB-76',
       'https://shortwavearchive.com/archive/the-buzzer-uvb-76-august-8-2025',
     ],

@@ -18,7 +18,7 @@ not just wording.
 | 1 | Atención / V02 — "Active" | V02a has been **inactive since February 2019**. Most of its schedules were taken over by HM01 in November 2012. HM01 itself went off the air on 2024-08-23 after the Radio Habana Cuba transmitter failed permanently while switching from 11635 kHz to 10715 kHz, and has only partially returned as of 2026. The Cuban voice station is a historical exhibit, not a live feed. |
 | 2 | V15 — "Active" | V15 broadcast weekly until 2019-06-27, then only four more times (2019-09-19, 2019-11-09, 2020-03-07, 2020-03-12). Nothing heard since. Treat as dormant. |
 | 3 | UVB-76 designator | "UVB-76" is an obsolete callsign from the 1970s–80s and is not what the station transmits today. Voice identifiers observed since 2010: **MDZhB**, then **ZhUOZ** (2019), then **ANVF**. Display the ENIGMA ID (S28) and the current voice ID; keep "UVB-76" only as a search alias. |
-| 4 | UVB-76 buzz "~1.2s repeating" | The tone is roughly 1.2 s long but repeats at **~25 tones per minute** (~2.4 s period). Both numbers are needed; the period is what a detector keys on. |
+| 4 | UVB-76 buzz "~1.2s repeating" | **Superseded — see §7.** The first pass here recorded a ~2.4 s period from Wikipedia's "approximately 25 tones per minute". A live measurement and a closer read of the sources both put it near 3.1 s, about 19 per minute. |
 | 5 | The Pip — "Southern Military District" | Radioscanner attributes The Pip to a **North Caucasus** military district communications centre, callsign *Akacia* (ex-72nd communications centre). The Squeaky Wheel (S32) is the one usually placed in the Southern district. |
 | 6 | Gong Station G03 / Stasi | Priyom attributes G03 "Gongs or Chimes" to the East German **Nationale Volksarmee**, not the Stasi. The Stasi attribution belongs to G08 "Four Note Rising Scale". Both are in the roster with the correct operators. |
 | 7 | V24 — "Active" | Added after the first pass. Priyom's V24 page states it was last heard in **September 2020** and has been inactive since. The category index does not mark it inactive, which is how it survived the first review — a reminder that the index and the station pages disagree, and the station page wins. |
@@ -41,7 +41,7 @@ These transmit a channel marker 24/7. They are what a "live" view can honestly s
 
 | ENIGMA | Name | Frequencies | Marker | Operator |
 |--------|------|-------------|--------|----------|
-| S28 | The Buzzer | 4625 kHz USB | ~1.2 s buzz, ~25/min, 24 h | Russian military, 69th communications hub; site moved Povarovo → Naro-Fominsk in 2010 |
+| S28 | The Buzzer | 4625 kHz USB | 1.25 s buzz, 1.85 s pause, ~19/min, 24 h — measured 3.40 s here, see §7 | Russian military, 69th communications hub; site moved Povarovo → Naro-Fominsk in 2010 |
 | S30 | The Pip | 5448 kHz day / 3756 kHz night | short beep, ~50/min | Russian military, *Akacia*, North Caucasus |
 | S32 | The Squeaky Wheel | Sources disagree: 5473 / 3828 kHz, or 5367 / 3363.5 kHz | squeaking sweep | Russian military, Southern district |
 
@@ -227,6 +227,41 @@ Summarised here; the plan itself is in [PLAN.md](PLAN.md).
    it answers the question the app will otherwise get wrong.
 
 ---
+
+## 7. The Buzzer's pulse rate, measured
+
+On 2026-09-10 the app's own detector measured S28 through a public KiwiSDR at Tremolat,
+France (JN04KU) on 4625 kHz USB: a stable **3.40 s period, about 18 pulses a minute**,
+with an envelope of roughly 1.4 s on and 1.95 s off read independently off the
+waterfall. That disagreed with the 2.4 s this document originally recorded, so the
+sources were re-read.
+
+| Source | Figure | Implied period |
+|---|---|---|
+| [numbers-stations.com](https://www.numbers-stations.com/russia/the-buzzer/) — detailed timing | "the buzzing tone lasts 1.25 seconds, with a 1.85 second pause" | **3.10 s ≈ 19/min** |
+| [Wikipedia](https://en.wikipedia.org/wiki/UVB-76) — summary sentence | "approximately 25 tones per minute" | 2.40 s |
+| Wikipedia — detail sentence | "lasts 1.2 seconds, pausing for 1–1.3 seconds, and repeating 21–34 times per minute" | 2.2–2.5 s, which its own 21–34/min range contradicts |
+| [Priyom.org](https://priyom.org/military-stations/russia/the-buzzer) | states no rate at all | — |
+| This installation, measured | 3.40 s | **3.40 s ≈ 18/min** |
+
+Both Wikipedia sentences carry the same single citation — the numbers-stations.com page
+— and neither matches what that page actually says. Its "21–34 times per minute" range
+also contradicts the "1.2 s + 1–1.3 s" arithmetic in the same sentence. The community
+authority publishes no figure.
+
+So the measurement agrees with the only detailed published timing, to within 10 %, and
+the 25-per-minute figure looks like an error introduced in summarising rather than a
+change on the air. `markerPeriodSec` for S28 is now 3.1 s, sourced to
+numbers-stations.com, and the station's lore records the disagreement.
+
+Two things this leaves open:
+
+- **The residual 10 %.** 3.40 s measured against 3.10 s published is inside the app's
+  25 % tolerance but not inside measurement noise. A path with fading drops individual
+  pulses, which stretches intervals, and this was a single receiver on one evening.
+  Worth re-measuring from a receiver closer to Naro-Fominsk.
+- **S30's rate has the same provenance problem.** The Pip's "~50 beeps per minute" also
+  comes from Wikipedia and has not been measured here. Treat it as unverified.
 
 ## Sources
 
