@@ -82,9 +82,10 @@ Painting a row:
 
 - Build one `ImageData(BINS, 1)` per frame from `getByteFrequencyData`, then
   `putImageData` twice. Two 1-pixel-tall blits, no compositing.
-- Render only the bins covering the SSB passband. At 48 kHz with `fftSize = 4096` the
-  resolution is ~11.7 Hz per bin and the useful 0–3 kHz of an SSB signal is the first
-  ~256 bins; drawing the other 1792 is wasted work and wasted screen.
+- Render only the bins covering the SSB passband. As built this is `fftSize = 2048`
+  against a 12 kHz context — the receiver's own rate, so nothing is resampled — giving
+  ~5.9 Hz per bin, and the useful 0–3 kHz of an SSB signal is the first ~512 of 1024
+  bins; drawing the rest is wasted work and wasted screen.
 - `smoothingTimeConstant = 0` — temporal smoothing in the analyser blurs exactly the
   short marker pulses the app exists to show.
 
@@ -129,7 +130,7 @@ CREATE TABLE station (
   language      TEXT,                   -- from the ENIGMA prefix
   operator      TEXT,
   tier          TEXT NOT NULL,          -- 'live' | 'scheduled' | 'historical'
-  marker        TEXT,                   -- '~1.2s buzz, ~25/min'
+  marker        TEXT,                   -- '1.25 s buzz, 1.85 s pause, ~19/min'
   lore          TEXT                    -- long-form, markdown
 );
 
@@ -190,12 +191,17 @@ Built. Three pieces, all still client-only.
   waterfall, and reports the measured period against the published one.
 
 Method note: the plan originally said cross-correlate the row buffer. The
-implementation times rising edges instead. The markers are on/off tones, so
-thresholding against the observed dynamic range and taking the median interval between
-edges is both simpler and more robust — it uses each sample's real timestamp, whereas
-an autocorrelation over a rAF-driven series reads dropped frames as period error.
-Measured 2.38 s against a 2.40 s synthetic reference, and 25 pulses/min, which is the
-published Buzzer figure. It measures periodicity only; there is no demodulation.
+implementation times rising edges instead. The markers are on/off tones, so taking the
+median interval between edges is both simpler and more robust — it uses each sample's
+real timestamp, whereas an autocorrelation over a rAF-driven series reads dropped frames
+as period error.
+
+*What* gets thresholded took three attempts and only the on-air test found the problems.
+A slow per-bin baseline now estimates the noise floor, the bin that swings most is
+tracked, its excursion is smoothed before thresholding, and every time constant is wall
+time rather than frames. The header comment in `src/detector.ts` records each failure and
+why a green test suite missed it. It measures periodicity only; there is no
+demodulation.
 
 Deliberately not built: persisting detections as `observation` rows. The schema in §3
 has the table, but with no backend it would be per-browser state that looks like a log,
@@ -246,7 +252,7 @@ playlist and segments into `server/stream/`, which the server serves with CORS.
 **Icecast is gone.** This plan previously called for Icecast serving Ogg Opus with an
 HLS ladder beside it for older Safari. Dropping Icecast removes a daemon, a port and a
 codec path, and costs a few seconds of latency on a signal whose content is a buzz
-repeating every 2.4 seconds. Safari needs HLS regardless, so building only HLS means
+repeating every three seconds. Safari needs HLS regardless, so building only HLS means
 one output rather than two, and the segments are static files the server already knows
 how to serve. AAC-LC 32 kbps mono, not Opus: Safari cannot play Opus in MP4 at all.
 

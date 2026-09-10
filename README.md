@@ -19,11 +19,9 @@ the server. Three features need the server and hide themselves without it: the
 in-app receiver directory, saved observations, and the relay.
 
 ```bash
-npm test        # 52 tests over the detector, schedules, alerts, receivers, directory
+npm test        # 62 tests over the detector, schedules, alerts, receivers, directory
 npm run typecheck
 ```
-
-## What it does
 
 ## Interface
 
@@ -77,10 +75,20 @@ receiver.
 
 ### Marker detection
 
-The detector thresholds the analyser's peak bin against the observed dynamic range,
-times the rising edges, and takes the median interval. It reports the measured period
-against the station's published one — 2.38 s measured against a 2.40 s reference in
-testing, or 25 pulses per minute, which is the published Buzzer figure.
+A slow per-bin baseline estimates the noise floor, the bin that swings most is tracked,
+and that bin's smoothed excursion is thresholded with hysteresis. Every time constant is
+wall time, not frames, because the waterfall throttles and drops frames. It reports the
+measured period against the station's published one.
+
+Taking the loudest bin across the whole passband instead — the obvious approach, and the
+first one here — works on a synthetic tone and never locks on a real receiver, where the
+band is loud everywhere and AGC holds the floor up. See the header comment in
+[src/detector.ts](src/detector.ts) for the three separate causes that had to be fixed,
+each of which passed a green test suite.
+
+Measured on air through a KiwiSDR in France: a stable 3.40 s for The Buzzer, which is
+how [docs/RESEARCH.md](docs/RESEARCH.md) §7 came to correct the widely-repeated figure
+of 25 pulses per minute.
 
 It measures periodicity and nothing else. There is no demodulation and no decoding, by
 design rather than by omission.
@@ -88,8 +96,9 @@ design rather than by omission.
 ### Alerts
 
 Per-slot subscriptions, checked from the app shell every 30 seconds, notifying 10
-minutes before a window. They are per-browser and only fire while a tab is open —
-there is no server and no service worker — and the schedule view says so.
+minutes before a window. They are per-browser and only fire while a tab is open: there
+is no service worker, because the app must be served over plain http. The schedule view
+says so rather than letting you assume otherwise.
 
 ## Why it is a marker monitor and not a numbers scanner
 
@@ -119,9 +128,21 @@ The fix is not a proxy in front of someone else's receiver. It is owned hardware
 our own `wss://`, which is Phase 3 in [docs/PLAN.md](docs/PLAN.md) and needs a receiver
 and an antenna before it needs code.
 
+## Documentation
+
+| Document | For |
+|---|---|
+| [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) | How a sample gets from the transmitter to the screen, module ownership, decisions worth not re-litigating |
+| [docs/API.md](docs/API.md) | The server's endpoints, shapes and status codes |
+| [docs/RUNBOOK.md](docs/RUNBOOK.md) | Starting it, verifying a deployment, and diagnosing every failure this project has actually hit |
+| [docs/RESEARCH.md](docs/RESEARCH.md) | Station facts, sources, and the legal boundary |
+| [docs/PLAN.md](docs/PLAN.md) | Product definition, data model, the three phases |
+| [docs/MOBILE_UI_SPEC.md](docs/MOBILE_UI_SPEC.md) | The phone layout and the fourteen-item motion inventory |
+
 ## Architecture notes
 
-Three details are load-bearing and easy to undo by accident.
+Three details are load-bearing and easy to undo by accident. The full picture is in
+[docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
 
 **The waterfall canvas is twice the height of its viewport, and every row is written
 twice.** Writing one row per frame at `y = cursor` on a viewport-height canvas and
@@ -180,9 +201,11 @@ spends that receiver's channels and uplink, so the flag asserts the receiver is 
 or its operator agreed in writing. Pointing this at a volunteer's node without asking
 is the thing [docs/RESEARCH.md](docs/RESEARCH.md) §4 exists to prevent.
 
+Full procedure, verification and rollback: [docs/RUNBOOK.md](docs/RUNBOOK.md).
+
 There is no Icecast. The plan originally wanted Ogg Opus over Icecast with an HLS
 ladder beside it; HLS alone is one output instead of two, needs no daemon, and costs a
-few seconds of latency on a buzz that repeats every 2.4 seconds. AAC-LC rather than
+few seconds of latency on a buzz that repeats every three seconds. AAC-LC rather than
 Opus, because Safari cannot play Opus in MP4.
 
 ## Diagnostics
@@ -195,9 +218,13 @@ npm run diagnostic-wav
 
 Under **Diagnostics** in the live view: a generated 30-second Buzzer-shaped recording,
 served with and without CORS headers from the server's other loopback name, so both are
-genuinely cross-origin. The first should give a waterfall and a detected 2.4 s period;
-the second should report silence. If the second one paints, the silence check has
-regressed.
+genuinely cross-origin. The first should give a waterfall and a detected period; the
+second should report silence. If the second one paints, the silence check has regressed
+and the app can no longer tell a CORS failure from a dead antenna — treat that as a
+release blocker.
+
+The four-step deployment check, and what every failure symptom means, are in
+[docs/RUNBOOK.md](docs/RUNBOOK.md).
 
 ## Not built yet
 
