@@ -12,6 +12,20 @@ wrong fact is a defect. Where a correction has evidence behind it, the evidence 
 
 ### Added
 
+- **A timeline, of what is actually known.** Ten of 141 stations carry a date, and the
+  shape of that is the point: endings are recorded well because a station's death is an
+  event someone notices, beginnings badly because a station starts by being noticed
+  rather than announced. Three bars run off the right edge still transmitting; the rest
+  stop — the Lincolnshire Poacher in 2008, Cherry Ripe in 2009, Atención in 2019, V15
+  and V24 in 2020, HM01 in 2024.
+
+  A station known only by when it stopped gets a mark at that year and **no bar
+  stretching back to a start nobody published**. Six stations have a sourced start and
+  four of those are a decade narrowed by hand, so those bars fade out to the left rather
+  than capping at a year Wikipedia explicitly declines to give. `ActiveFrom` carries the
+  source's own phrasing beside the year for exactly that reason.
+  [RESEARCH.md §9](docs/RESEARCH.md)
+
 - **A designator decoder, which is also a filter.** The archive is 141 rows of E11,
   S06c, XPA2 and M12, which look like inventory codes and are in fact a classification:
   ENIGMA 2000 assign the leading letter by language and mode, so the roster is already

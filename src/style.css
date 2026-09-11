@@ -1533,6 +1533,112 @@ tr.disputed {
   cursor: pointer;
 }
 
+/* --------------------------------------------------------------- timeline ----- */
+
+.echo-timeline {
+  position: relative;
+  margin-bottom: var(--space-4);
+}
+
+.echo-timeline__axis {
+  position: relative;
+  height: 1.2em;
+  margin-left: 5.5rem;
+  border-bottom: var(--hairline-width) solid var(--border);
+  color: var(--dim);
+  font: var(--text-label) / 1 var(--font-mono);
+}
+
+.echo-timeline__decade {
+  position: absolute;
+  transform: translateX(-50%);
+}
+
+.echo-timeline__row {
+  display: flex;
+  gap: var(--space-2);
+  align-items: center;
+  width: 100%;
+  padding: var(--space-1) 0;
+  border: 0;
+  background: none;
+  color: var(--fg);
+  text-align: left;
+  cursor: pointer;
+}
+
+.echo-timeline__row:active {
+  opacity: 0.6;
+}
+
+.echo-timeline__name {
+  width: 5rem;
+  flex: none;
+  overflow: hidden;
+  font: var(--text-label) / var(--leading-tight) var(--font-mono);
+  white-space: nowrap;
+}
+
+.echo-timeline__designator {
+  display: block;
+  color: var(--accent);
+}
+
+.echo-timeline__name span:not(.echo-timeline__designator) {
+  display: block;
+  overflow: hidden;
+  color: var(--dim);
+  text-overflow: ellipsis;
+}
+
+.echo-timeline__track {
+  position: relative;
+  flex: 1;
+  height: 10px;
+  background: var(--panel);
+}
+
+.echo-timeline__bar {
+  position: absolute;
+  top: 2px;
+  height: 6px;
+  background: var(--accent);
+}
+
+/*
+ * A start nobody is sure of. The left edge fades instead of ending, because a hard cap
+ * would assert a year the source explicitly declines to give.
+ */
+.echo-timeline__bar.is-approximate {
+  mask-image: linear-gradient(to right, transparent, #000 14%);
+}
+
+/* Still transmitting: the bar runs off the right rather than stopping at today. */
+.echo-timeline__bar.is-open {
+  mask-image: linear-gradient(to left, transparent, #000 8%);
+}
+
+.echo-timeline__bar.is-approximate.is-open {
+  mask-image: linear-gradient(to right, transparent, #000 14%, #000 92%, transparent);
+}
+
+/* A station known only by when it stopped. */
+.echo-timeline__tick {
+  position: absolute;
+  top: 0;
+  width: 2px;
+  height: 10px;
+  background: var(--dim);
+}
+
+.echo-timeline__label {
+  width: 8.5rem;
+  flex: none;
+  color: var(--dim);
+  font: var(--text-label) / var(--leading-tight) var(--font-sans);
+  text-align: right;
+}
+
 /* --------------------------------------------------------------- families ----- */
 
 /*

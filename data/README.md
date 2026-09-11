@@ -47,6 +47,10 @@ edit fails CI rather than shipping. It checks, among other things:
   station with no sourced position has an empty `sites` array, and that is the correct
   state — see [docs/RESEARCH.md](../docs/RESEARCH.md) §8 for the one coordinate this
   project refuses to use;
+- a station's `activeFrom`, where it has one, carries a four-digit year no later than
+  this one, the source's own phrasing in `note`, and an `approximate` flag for a date
+  narrowed by hand from a decade. Most of the roster has `null`, which is correct — see
+  [docs/RESEARCH.md](../docs/RESEARCH.md) §9;
 - every URL is `http` or `https`. Nothing else is accepted, because these strings are
   interpolated into `href` attributes in the archive view;
 - designators are unique, tiers are one of `live`, `scheduled`, `historical`;

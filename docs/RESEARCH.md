@@ -298,6 +298,45 @@ and the figure comes from Wikidata with no stated basis. A guessed position wear
 provenance stamp is worse than an absent one, so S32 has no site. The Pip has none
 published at all.
 
+## 9. When these stations started, and why so few dates exist
+
+The archive records endings well and beginnings badly, and that asymmetry is a property
+of the sources rather than of the import.
+
+Endings are good because a numbers station's death is an event somebody notices and
+writes down: the Lincolnshire Poacher's last transmission on 2 July 2008, Cherry Ripe in
+December 2009, Atención in February 2019, V15 on 12 March 2020, V24 that September,
+HM01's transmitter failing on 23 August 2024. Those dates are already in this dataset as
+`lastConfirmed`.
+
+Beginnings are bad because a station starts by being noticed, not by being announced,
+and the sources say so plainly. Wikipedia on the Lincolnshire Poacher: "The precise date
+that the Lincolnshire Poacher began broadcasting is not known for certain; however, it is
+believed that the broadcasts started around the early to mid 1970s." On UVB-76: "first
+noticed around the late 1970s".
+
+Six stations have a sourced start:
+
+| Station | Year | Basis |
+|---|---|---|
+| E03 Lincolnshire Poacher | about 1975 | "early to mid 1970s", "at least the mid-1970s" |
+| S28 The Buzzer | about 1977 | "first noticed around the late 1970s" |
+| S30 The Pip | 1986 | Wikipedia infobox, "First air date August 1986" |
+| V02a Atención | 1997 | replaced the original V02 in 1997 |
+| S32 The Squeaky Wheel | 2000 | Wikipedia infobox, "First air date 2000" |
+| HM01 | about 2012 | "appeared around 2012" |
+
+`ActiveFrom.year` exists to place a mark on an axis; `note` carries what the source
+actually said, and `approximate` marks the four where a year was narrowed by hand from a
+decade. The interface shows the note rather than the bare year whenever a date is
+approximate, and the timeline fades a bar's left edge instead of capping it, because a
+hard edge asserts a precision Wikipedia explicitly declines to give.
+
+Chasing the remaining 131 would mean a Priyom page each for an uncertain yield: their
+station pages rarely give a first-heard date, and inventing one from the earliest logged
+transmission would be an artefact of when logging started rather than when the station
+did.
+
 ## Sources
 
 - [UVB-76 — Wikipedia](https://en.wikipedia.org/wiki/UVB-76)

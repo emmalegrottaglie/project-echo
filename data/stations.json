@@ -58,7 +58,14 @@
           "lastConfirmed": "2026-09-11",
           "sourceUrl": "https://en.wikipedia.org/wiki/UVB-76"
         }
-      ]
+      ],
+      "activeFrom": {
+        "year": 1977,
+        "approximate": true,
+        "note": "First noticed around the late 1970s; the transmitter is dated to the Soviet Union from 1982",
+        "lastConfirmed": "2026-09-11",
+        "sourceUrl": "https://en.wikipedia.org/wiki/UVB-76"
+      }
     },
     {
       "enigmaId": "S30",
@@ -97,7 +104,14 @@
         "https://en.wikipedia.org/wiki/The_Pip",
         "https://priyom.org/military-stations/russia/the-pip"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": {
+        "year": 1986,
+        "approximate": false,
+        "note": "First air date August 1986",
+        "lastConfirmed": "2026-09-11",
+        "sourceUrl": "https://en.wikipedia.org/wiki/The_Pip"
+      }
     },
     {
       "enigmaId": "S32",
@@ -151,7 +165,14 @@
         "https://en.wikipedia.org/wiki/The_Squeaky_Wheel",
         "http://www.mysterysignals.signalshed.com/page21.html"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": {
+        "year": 2000,
+        "approximate": false,
+        "note": "First air date 2000",
+        "lastConfirmed": "2026-09-11",
+        "sourceUrl": "https://en.wikipedia.org/wiki/The_Squeaky_Wheel"
+      }
     },
     {
       "enigmaId": "E11",
@@ -951,7 +972,8 @@
         "https://priyom.org/number-stations/english/e11",
         "https://priyom.org/number-stations/english/e11/schedule"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "E03",
@@ -979,7 +1001,14 @@
           "lastConfirmed": "2026-09-11",
           "sourceUrl": "https://en.wikipedia.org/wiki/Lincolnshire_Poacher_(numbers_station)"
         }
-      ]
+      ],
+      "activeFrom": {
+        "year": 1975,
+        "approximate": true,
+        "note": "The precise date is not known; broadcasts are believed to have started in the early to mid 1970s, and ran from at least the mid-1970s",
+        "lastConfirmed": "2026-09-11",
+        "sourceUrl": "https://en.wikipedia.org/wiki/Lincolnshire_Poacher_(numbers_station)"
+      }
     },
     {
       "enigmaId": "E03a",
@@ -998,7 +1027,8 @@
         "https://en.wikipedia.org/wiki/Cherry_Ripe_(numbers_station)",
         "https://www.numbersoddities.nl/E03-profile.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "V02a",
@@ -1020,7 +1050,14 @@
         "https://priyom.org/number-stations/other/v02a",
         "https://www.numbers-stations.com/various/v02a/"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": {
+        "year": 1997,
+        "approximate": false,
+        "note": "V02a replaced the original V02 in 1997",
+        "lastConfirmed": "2026-09-11",
+        "sourceUrl": "https://priyom.org/number-stations/other/v02a"
+      }
     },
     {
       "enigmaId": "HM01",
@@ -1049,7 +1086,14 @@
       "sourceUrls": [
         "https://priyom.org/number-stations/digital/hm01"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": {
+        "year": 2012,
+        "approximate": true,
+        "note": "Appeared around 2012 and absorbed most of the schedules of V02a and SK01",
+        "lastConfirmed": "2026-09-11",
+        "sourceUrl": "https://priyom.org/number-stations/digital/hm01"
+      }
     },
     {
       "enigmaId": "V15",
@@ -1067,7 +1111,8 @@
       "sourceUrls": [
         "https://priyom.org/number-stations/other/v15"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "V24",
@@ -1085,7 +1130,8 @@
       "sourceUrls": [
         "https://priyom.org/number-stations/other/v24"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "G02",
@@ -1103,7 +1149,8 @@
       "sourceUrls": [
         "https://priyom.org/number-stations/german/g02"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "G03",
@@ -1123,7 +1170,8 @@
       "sourceUrls": [
         "https://priyom.org/number-stations/german/g03"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "E06",
@@ -1142,7 +1190,8 @@
         "https://priyom.org/number-stations/english/e06",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "E07",
@@ -1161,7 +1210,8 @@
         "https://priyom.org/number-stations/english/e07",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "E25",
@@ -1205,7 +1255,8 @@
         "https://priyom.org/number-stations/english/e25",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "E01",
@@ -1224,7 +1275,8 @@
         "https://priyom.org/number-stations/english/e01",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "E05",
@@ -1243,7 +1295,8 @@
         "https://priyom.org/number-stations/english/e05",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "E07a",
@@ -1262,7 +1315,8 @@
         "https://priyom.org/number-stations/english/e07a",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "E09",
@@ -1281,7 +1335,8 @@
         "https://priyom.org/number-stations/english/e09",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "E10",
@@ -1300,7 +1355,8 @@
         "https://priyom.org/number-stations/english/e10",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "E12",
@@ -1319,7 +1375,8 @@
         "https://priyom.org/number-stations/english/e12",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "E13",
@@ -1338,7 +1395,8 @@
         "https://priyom.org/number-stations/english/e13",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "E14",
@@ -1357,7 +1415,8 @@
         "https://priyom.org/number-stations/english/e14",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "E15",
@@ -1376,7 +1435,8 @@
         "https://priyom.org/number-stations/english/e15",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "E16",
@@ -1395,7 +1455,8 @@
         "https://priyom.org/number-stations/english/e16",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "E17",
@@ -1414,7 +1475,8 @@
         "https://priyom.org/number-stations/english/e17",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "E17z",
@@ -1433,7 +1495,8 @@
         "https://priyom.org/number-stations/english/e17z",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "E18",
@@ -1452,7 +1515,8 @@
         "https://priyom.org/number-stations/english/e18",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "E21",
@@ -1471,7 +1535,8 @@
         "https://priyom.org/number-stations/english/e21",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "E23",
@@ -1490,7 +1555,8 @@
         "https://priyom.org/number-stations/english/e23",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "E25b",
@@ -1509,7 +1575,8 @@
         "https://priyom.org/number-stations/english/e25b",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "S06",
@@ -1528,7 +1595,8 @@
         "https://priyom.org/number-stations/slavic/s06",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "S06c",
@@ -1547,7 +1615,8 @@
         "https://priyom.org/number-stations/slavic/s06c",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "S11a",
@@ -1727,7 +1796,8 @@
         "https://priyom.org/number-stations/slavic/s11a",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "S25",
@@ -1746,7 +1816,8 @@
         "https://priyom.org/number-stations/slavic/s25",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "S02",
@@ -1765,7 +1836,8 @@
         "https://priyom.org/number-stations/slavic/s02",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "S02a",
@@ -1784,7 +1856,8 @@
         "https://priyom.org/number-stations/slavic/s02a",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "S02c",
@@ -1803,7 +1876,8 @@
         "https://priyom.org/number-stations/slavic/s02c",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "S02d",
@@ -1822,7 +1896,8 @@
         "https://priyom.org/number-stations/slavic/s02d",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "S03",
@@ -1841,7 +1916,8 @@
         "https://priyom.org/number-stations/slavic/s03",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "S04",
@@ -1860,7 +1936,8 @@
         "https://priyom.org/number-stations/slavic/s04",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "S05",
@@ -1879,7 +1956,8 @@
         "https://priyom.org/number-stations/slavic/s05",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "S05a",
@@ -1898,7 +1976,8 @@
         "https://priyom.org/number-stations/slavic/s05a",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "S05b",
@@ -1917,7 +1996,8 @@
         "https://priyom.org/number-stations/slavic/s05b",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "S06a",
@@ -1936,7 +2016,8 @@
         "https://priyom.org/number-stations/slavic/s06a",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "S06s",
@@ -1955,7 +2036,8 @@
         "https://priyom.org/number-stations/slavic/s06s",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "S07",
@@ -1974,7 +2056,8 @@
         "https://priyom.org/number-stations/slavic/s07",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "S08",
@@ -1993,7 +2076,8 @@
         "https://priyom.org/number-stations/slavic/s08",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "S10",
@@ -2012,7 +2096,8 @@
         "https://priyom.org/number-stations/slavic/s10",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "S10a",
@@ -2031,7 +2116,8 @@
         "https://priyom.org/number-stations/slavic/s10a",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "S10b",
@@ -2050,7 +2136,8 @@
         "https://priyom.org/number-stations/slavic/s10b",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "S10d",
@@ -2069,7 +2156,8 @@
         "https://priyom.org/number-stations/slavic/s10d",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "S10e",
@@ -2088,7 +2176,8 @@
         "https://priyom.org/number-stations/slavic/s10e",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "S11",
@@ -2107,7 +2196,8 @@
         "https://priyom.org/number-stations/slavic/s11",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "S17a",
@@ -2126,7 +2216,8 @@
         "https://priyom.org/number-stations/slavic/s17a",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "S17b",
@@ -2145,7 +2236,8 @@
         "https://priyom.org/number-stations/slavic/s17b",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "S17c",
@@ -2164,7 +2256,8 @@
         "https://priyom.org/number-stations/slavic/s17c",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "S21",
@@ -2183,7 +2276,8 @@
         "https://priyom.org/number-stations/slavic/s21",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "S26",
@@ -2202,7 +2296,8 @@
         "https://priyom.org/number-stations/slavic/s26",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "S31",
@@ -2221,7 +2316,8 @@
         "https://priyom.org/number-stations/slavic/s31",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "G01",
@@ -2240,7 +2336,8 @@
         "https://priyom.org/number-stations/german/g01",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "G04",
@@ -2259,7 +2356,8 @@
         "https://priyom.org/number-stations/german/g04",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "G05",
@@ -2278,7 +2376,8 @@
         "https://priyom.org/number-stations/german/g05",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "G06",
@@ -2297,7 +2396,8 @@
         "https://priyom.org/number-stations/german/g06",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "G07",
@@ -2316,7 +2416,8 @@
         "https://priyom.org/number-stations/german/g07",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "G08",
@@ -2335,7 +2436,8 @@
         "https://priyom.org/number-stations/german/g08",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "G09",
@@ -2354,7 +2456,8 @@
         "https://priyom.org/number-stations/german/g09",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "G10",
@@ -2373,7 +2476,8 @@
         "https://priyom.org/number-stations/german/g10",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "G11",
@@ -2392,7 +2496,8 @@
         "https://priyom.org/number-stations/german/g11",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "G12",
@@ -2411,7 +2516,8 @@
         "https://priyom.org/number-stations/german/g12",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "G13",
@@ -2430,7 +2536,8 @@
         "https://priyom.org/number-stations/german/g13",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "G14",
@@ -2449,7 +2556,8 @@
         "https://priyom.org/number-stations/german/g14",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "G15",
@@ -2468,7 +2576,8 @@
         "https://priyom.org/number-stations/german/g15",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "G16",
@@ -2487,7 +2596,8 @@
         "https://priyom.org/number-stations/german/g16",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "G18",
@@ -2506,7 +2616,8 @@
         "https://priyom.org/number-stations/german/g18",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "G20",
@@ -2525,7 +2636,8 @@
         "https://priyom.org/number-stations/german/g20",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "G22",
@@ -2544,7 +2656,8 @@
         "https://priyom.org/number-stations/german/g22",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "V07",
@@ -2684,7 +2797,8 @@
         "https://priyom.org/number-stations/other/v07",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "V13",
@@ -2840,7 +2954,8 @@
         "https://priyom.org/number-stations/other/v13",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "V28",
@@ -2859,7 +2974,8 @@
         "https://priyom.org/number-stations/other/v28",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "V01",
@@ -2878,7 +2994,8 @@
         "https://priyom.org/number-stations/other/v01",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "V02",
@@ -2897,7 +3014,8 @@
         "https://priyom.org/number-stations/other/v02",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "V06",
@@ -2916,7 +3034,8 @@
         "https://priyom.org/number-stations/other/v06",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "V08",
@@ -2935,7 +3054,8 @@
         "https://priyom.org/number-stations/other/v08",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "V10",
@@ -2954,7 +3074,8 @@
         "https://priyom.org/number-stations/other/v10",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "V12",
@@ -2973,7 +3094,8 @@
         "https://priyom.org/number-stations/other/v12",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "V14",
@@ -2992,7 +3114,8 @@
         "https://priyom.org/number-stations/other/v14",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "V19",
@@ -3011,7 +3134,8 @@
         "https://priyom.org/number-stations/other/v19",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "V20",
@@ -3030,7 +3154,8 @@
         "https://priyom.org/number-stations/other/v20",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "V30",
@@ -3049,7 +3174,8 @@
         "https://priyom.org/number-stations/other/v30",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "M01",
@@ -3149,7 +3275,8 @@
         "https://priyom.org/number-stations/morse/m01",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "M01a",
@@ -3168,7 +3295,8 @@
         "https://priyom.org/number-stations/morse/m01a",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "M12",
@@ -3187,7 +3315,8 @@
         "https://priyom.org/number-stations/morse/m12",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "M14",
@@ -3206,7 +3335,8 @@
         "https://priyom.org/number-stations/morse/m14",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "M23",
@@ -3346,7 +3476,8 @@
         "https://priyom.org/number-stations/morse/m23",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "M01b",
@@ -3365,7 +3496,8 @@
         "https://priyom.org/number-stations/morse/m01b",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "M02",
@@ -3384,7 +3516,8 @@
         "https://priyom.org/number-stations/morse/m02",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "M03",
@@ -3403,7 +3536,8 @@
         "https://priyom.org/number-stations/morse/m03",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "M03a",
@@ -3422,7 +3556,8 @@
         "https://priyom.org/number-stations/morse/m03a",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "M03b",
@@ -3441,7 +3576,8 @@
         "https://priyom.org/number-stations/morse/m03b",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "M03c",
@@ -3460,7 +3596,8 @@
         "https://priyom.org/number-stations/morse/m03c",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "M03d",
@@ -3479,7 +3616,8 @@
         "https://priyom.org/number-stations/morse/m03d",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "M03e",
@@ -3498,7 +3636,8 @@
         "https://priyom.org/number-stations/morse/m03e",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "M03f",
@@ -3517,7 +3656,8 @@
         "https://priyom.org/number-stations/morse/m03f",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "M04",
@@ -3536,7 +3676,8 @@
         "https://priyom.org/number-stations/morse/m04",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "M05",
@@ -3555,7 +3696,8 @@
         "https://priyom.org/number-stations/morse/m05",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "M06",
@@ -3574,7 +3716,8 @@
         "https://priyom.org/number-stations/morse/m06",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "M06a",
@@ -3593,7 +3736,8 @@
         "https://priyom.org/number-stations/morse/m06a",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "M07",
@@ -3612,7 +3756,8 @@
         "https://priyom.org/number-stations/morse/m07",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "M08",
@@ -3631,7 +3776,8 @@
         "https://priyom.org/number-stations/morse/m08",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "M08a",
@@ -3650,7 +3796,8 @@
         "https://priyom.org/number-stations/morse/m08a",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "M10",
@@ -3669,7 +3816,8 @@
         "https://priyom.org/number-stations/morse/m10",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "M10c",
@@ -3688,7 +3836,8 @@
         "https://priyom.org/number-stations/morse/m10c",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "M11",
@@ -3707,7 +3856,8 @@
         "https://priyom.org/number-stations/morse/m11",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "M13",
@@ -3726,7 +3876,8 @@
         "https://priyom.org/number-stations/morse/m13",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "M13a",
@@ -3745,7 +3896,8 @@
         "https://priyom.org/number-stations/morse/m13a",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "M13b",
@@ -3764,7 +3916,8 @@
         "https://priyom.org/number-stations/morse/m13b",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "M13c",
@@ -3783,7 +3936,8 @@
         "https://priyom.org/number-stations/morse/m13c",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "M13d",
@@ -3802,7 +3956,8 @@
         "https://priyom.org/number-stations/morse/m13d",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "M13e",
@@ -3821,7 +3976,8 @@
         "https://priyom.org/number-stations/morse/m13e",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "M17",
@@ -3840,7 +3996,8 @@
         "https://priyom.org/number-stations/morse/m17",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "M29",
@@ -3859,7 +4016,8 @@
         "https://priyom.org/number-stations/morse/m29",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "M29a",
@@ -3878,7 +4036,8 @@
         "https://priyom.org/number-stations/morse/m29a",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "M39",
@@ -3897,7 +4056,8 @@
         "https://priyom.org/number-stations/morse/m39",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "M40",
@@ -3916,7 +4076,8 @@
         "https://priyom.org/number-stations/morse/m40",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "M45",
@@ -3935,7 +4096,8 @@
         "https://priyom.org/number-stations/morse/m45",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "M94",
@@ -3954,7 +4116,8 @@
         "https://priyom.org/number-stations/morse/m94",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "M97",
@@ -3973,7 +4136,8 @@
         "https://priyom.org/number-stations/morse/m97",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "F01",
@@ -3992,7 +4156,8 @@
         "https://priyom.org/number-stations/digital/f01",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "F03",
@@ -4011,7 +4176,8 @@
         "https://priyom.org/number-stations/digital/f03",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "F06",
@@ -4030,7 +4196,8 @@
         "https://priyom.org/number-stations/digital/f06",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "F06a",
@@ -4049,7 +4216,8 @@
         "https://priyom.org/number-stations/digital/f06a",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "F07",
@@ -4309,7 +4477,8 @@
         "https://priyom.org/number-stations/digital/f07",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "P03",
@@ -4328,7 +4497,8 @@
         "https://priyom.org/number-stations/digital/p03",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "P07",
@@ -4588,7 +4758,8 @@
         "https://priyom.org/number-stations/digital/p07",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "XPA",
@@ -4848,7 +5019,8 @@
         "https://priyom.org/number-stations/digital/xpa",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "XPA2",
@@ -5648,7 +5820,8 @@
         "https://priyom.org/number-stations/digital/xpa2",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "XPB",
@@ -6628,7 +6801,8 @@
         "https://priyom.org/number-stations/digital/xpb",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "F11",
@@ -6647,7 +6821,8 @@
         "https://priyom.org/number-stations/digital/f11",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "SK01",
@@ -6666,7 +6841,8 @@
         "https://priyom.org/number-stations/digital/sk01",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     },
     {
       "enigmaId": "XP",
@@ -6685,7 +6861,8 @@
         "https://priyom.org/number-stations/digital/xp",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
-      "sites": []
+      "sites": [],
+      "activeFrom": null
     }
   ]
 }

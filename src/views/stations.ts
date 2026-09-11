@@ -2,6 +2,7 @@ import { fetchObservations, type Observation } from '../api';
 import { archiveLinks } from '../archives';
 import { openCredits } from '../credits';
 import { openDecoder } from '../decoder';
+import { openTimeline } from '../timeline';
 import {
   allStations,
   describeDesignator,
@@ -279,6 +280,7 @@ export function stationsView(param = ''): {
             ENIGMA 2000</button>, and used under their licence.
             <button class="echo-linkish" type="button" name="decode">What do the codes
             mean?</button>
+            <button class="echo-linkish" type="button" name="timeline">Timeline</button>
           </p>
           <div class="echo-family-filter" hidden></div>
         </div>
@@ -410,6 +412,7 @@ export function stationsView(param = ''): {
     const target = event.target as HTMLElement;
     if (target.closest('[name="credits"]')) openCredits();
     if (target.closest('[name="decode"]')) openDecoder(applyPrefix);
+    if (target.closest('[name="timeline"]')) openTimeline();
     if (target.closest('[name="clear-family"]')) applyPrefix('');
   });
 

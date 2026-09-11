@@ -17,7 +17,7 @@
  *    because this file also guards the copy fetched over the network.
  */
 
-import type { Frequency, Schedule, Site, Station, Tier } from '../types';
+import type { ActiveFrom, Frequency, Schedule, Site, Station, Tier } from '../types';
 import { isSafeUrl } from '../url';
 
 /**
@@ -144,6 +144,40 @@ function checkSite(value: unknown, where: string, errors: string[]): Site | null
   return errors.length === before ? (value as unknown as Site) : null;
 }
 
+function checkActiveFrom(value: unknown, where: string, errors: string[]): ActiveFrom | null {
+  if (!isRecord(value)) {
+    errors.push(`${where}: expected an object`);
+    return null;
+  }
+  const before = errors.length;
+
+  // Marconi's first transmissions are the earliest anything here could plausibly claim,
+  // and a year in the future is a typo rather than a station.
+  if (
+    typeof value.year !== 'number' ||
+    !Number.isInteger(value.year) ||
+    value.year < 1900 ||
+    value.year > new Date().getUTCFullYear()
+  ) {
+    errors.push(`${where}.year: expected a four-digit year no later than this one`);
+  }
+  if (typeof value.approximate !== 'boolean') {
+    errors.push(`${where}.approximate: expected a boolean`);
+  }
+  // The note is what a reader is shown for an approximate date, so it cannot be blank.
+  if (typeof value.note !== 'string' || value.note === '') {
+    errors.push(`${where}.note: expected the source's own phrasing`);
+  }
+  if (typeof value.lastConfirmed !== 'string' || !ISO_DATE.test(value.lastConfirmed)) {
+    errors.push(`${where}.lastConfirmed: expected an ISO date (YYYY-MM-DD)`);
+  }
+  if (!isSafeUrl(value.sourceUrl)) {
+    errors.push(`${where}.sourceUrl: expected an http or https URL`);
+  }
+
+  return errors.length === before ? (value as unknown as ActiveFrom) : null;
+}
+
 function checkStation(value: unknown, where: string, errors: string[]): Station | null {
   if (!isRecord(value)) {
     errors.push(`${where}: expected an object`);
@@ -203,6 +237,10 @@ function checkStation(value: unknown, where: string, errors: string[]): Station 
     value.schedules.forEach((item, index) =>
       checkSchedule(item, `${id}.schedules[${index}]`, errors),
     );
+  }
+
+  if (value.activeFrom !== null) {
+    checkActiveFrom(value.activeFrom, `${id}.activeFrom`, errors);
   }
 
   if (!Array.isArray(value.sites)) {

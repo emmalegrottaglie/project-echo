@@ -79,6 +79,30 @@ export interface Site {
   sourceUrl: string;
 }
 
+/**
+ * When a station started transmitting, as far as anyone knows.
+ *
+ * The end of a station's life is already recorded — `lastConfirmed` on a historical
+ * station is the date it was last heard — but the beginning is the thinnest thing these
+ * sources carry, and where they do carry it they hedge. Wikipedia says outright that the
+ * precise date the Lincolnshire Poacher began "is not known for certain", and dates the
+ * Buzzer only to "around the late 1970s".
+ *
+ * So `year` exists to place a mark on an axis and `note` carries what the source
+ * actually said. `approximate` is the difference between a figure taken from an infobox
+ * and a decade someone narrowed by hand: the interface shows the note, never the bare
+ * year, whenever this is approximate.
+ */
+export interface ActiveFrom {
+  /** Used for placement only. Never shown alone when `approximate` is true. */
+  year: number;
+  approximate: boolean;
+  /** The source's own phrasing, e.g. 'first noticed around the late 1970s'. */
+  note: string;
+  lastConfirmed: string;
+  sourceUrl: string;
+}
+
 export interface Station {
   enigmaId: string;
   name: string;
@@ -103,6 +127,8 @@ export interface Station {
   schedules: Schedule[];
   /** Known transmitter sites, empty where none is sourced. */
   sites: Site[];
+  /** When it started, where a source says so. Null for most of the roster. */
+  activeFrom: ActiveFrom | null;
   sourceUrls: string[];
 }
 
