@@ -69,6 +69,23 @@ interface Tuning {
 /** How many directory rows a phone gets. The server returns 776 for 4625 kHz. */
 const DIRECTORY_LIMIT = 50;
 
+/**
+ * When to hand a volunteer's receiver back.
+ *
+ * A KiwiSDR has four hardware channels and this app holds one for as long as its socket
+ * is open — there is a keepalive, so the node will not time the connection out by
+ * itself. Someone who connects and then walks away costs the operator exactly what a bot
+ * would, however little they meant to, and an operator asked about precisely this on
+ * Priyom's IRC channel before anyone else had even installed it.
+ *
+ * Two timers, because there are two ways to leave: the tab going to the background, and
+ * the tab staying in front while nobody is there. The backgrounded case is the shorter
+ * of the two — audio the user cannot hear has no claim on someone else's hardware.
+ */
+const IDLE_RELEASE_MS = 10 * 60_000;
+const HIDDEN_RELEASE_MS = 60_000;
+const IDLE_CHECK_MS = 15_000;
+
 export function liveView(): { element: HTMLElement; destroy: () => void } {
   const element = document.createElement('section');
   element.className = 'view view-live';
@@ -92,6 +109,9 @@ export function liveView(): { element: HTMLElement; destroy: () => void } {
   /** Bumped on teardown, so a chain still negotiating knows it was abandoned. */
   let attempt = 0;
   let lastFailure: string | null = null;
+  let lastInteraction = Date.now();
+  let idleTimer: number | null = null;
+  let hiddenTimer: number | null = null;
 
   const detector = new MarkerDetector();
 
@@ -129,8 +149,10 @@ export function liveView(): { element: HTMLElement; destroy: () => void } {
         </div>
       </details>
       <p class="echo-footnote">
-        Live means live while this tab is in front — iOS suspends audio in the
-        background. This app records observations about signals, never their contents.
+        The connection is released after ten minutes without interaction, and a minute
+        after this tab goes to the background. A public receiver has four channels and
+        they are lent to you, not given. This app records observations about signals,
+        never their contents.
       </p>
     </div>
     ${transportBar(false)}
@@ -243,6 +265,9 @@ export function liveView(): { element: HTMLElement; destroy: () => void } {
   const teardownAudio = (): void => {
     if (detectorTimer !== null) window.clearInterval(detectorTimer);
     detectorTimer = null;
+    if (idleTimer !== null) window.clearInterval(idleTimer);
+    idleTimer = null;
+    clearHiddenTimer();
     detector.reset();
     renderDetector('idle', 'listening…');
     waterfall?.destroy();
@@ -257,6 +282,50 @@ export function liveView(): { element: HTMLElement; destroy: () => void } {
   };
 
   /** Resolves true when the transport connected. False means try something else. */
+  /**
+   * Hands the receiver back and says why.
+   *
+   * Not an error and not styled as one: the app did the right thing. The transport
+   * returns to Connect, so getting it back is one tap.
+   */
+  const release = (reason: string): void => {
+    if (phase === 'idle') return;
+    attempt += 1;
+    teardownAudio();
+    renderStatus(reason);
+  };
+
+  const clearHiddenTimer = (): void => {
+    if (hiddenTimer !== null) window.clearTimeout(hiddenTimer);
+    hiddenTimer = null;
+  };
+
+  /**
+   * A backgrounded tab is still holding a channel. iOS suspends the audio anyway, so on
+   * a phone this releases something already inaudible; on a desktop it stops a tab
+   * nobody is looking at from streaming for hours.
+   */
+  const onVisibility = (): void => {
+    if (document.visibilityState === 'visible') {
+      clearHiddenTimer();
+      lastInteraction = Date.now();
+      return;
+    }
+    if (phase === 'idle' || hiddenTimer !== null) return;
+
+    hiddenTimer = window.setTimeout(() => {
+      hiddenTimer = null;
+      release('Disconnected while the tab was in the background, to free the receiver.');
+    }, HIDDEN_RELEASE_MS);
+  };
+
+  document.addEventListener('visibilitychange', onVisibility);
+
+  // Any touch of this view counts as someone being present. Captured, so it still
+  // registers on controls that stop the event.
+  element.addEventListener('pointerdown', () => (lastInteraction = Date.now()), true);
+  element.addEventListener('keydown', () => (lastInteraction = Date.now()), true);
+
   const run = async (next: AudioSource, current: Tuning | null): Promise<boolean> => {
     teardownAudio();
     setPhase('connecting');
@@ -278,6 +347,15 @@ export function liveView(): { element: HTMLElement; destroy: () => void } {
     source = next;
     setPhase('running');
     renderStatus(`Listening — ${next.label}`, 'live');
+
+    lastInteraction = Date.now();
+    idleTimer = window.setInterval(() => {
+      if (Date.now() - lastInteraction < IDLE_RELEASE_MS) return;
+      release(
+        `Disconnected after ${Math.round(IDLE_RELEASE_MS / 60_000)} minutes without ` +
+          'interaction, to free the receiver. Connect to resume.',
+      );
+    }, IDLE_CHECK_MS);
 
     waterfall = new Waterfall(viewport, analyser, visibleBins, (atMs, bins) =>
       detector.feed(atMs, bins),
@@ -767,6 +845,7 @@ export function liveView(): { element: HTMLElement; destroy: () => void } {
   return {
     element,
     destroy: () => {
+      document.removeEventListener('visibilitychange', onVisibility);
       closeSheet();
       teardownAudio();
       unmountPropagation?.();

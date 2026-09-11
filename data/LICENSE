@@ -1,0 +1,51 @@
+# Licence for the station dataset
+
+`stations.json` is **not** covered by the MIT licence in the repository root. That
+licence covers the code. This file covers the data.
+
+## What it is licensed under
+
+Station identity, operator, status, transmission schedules and frequency lists in
+`stations.json` are adapted from [Priyom.org](https://priyom.org/), which publishes its
+material under the **Creative Commons Attribution-NonCommercial-ShareAlike 4.0
+International** licence:
+
+<https://creativecommons.org/licenses/by-nc-sa/4.0/>
+
+`stations.json`, and any build that embeds it, is distributed under that same licence.
+Three obligations follow, and they are obligations rather than courtesies:
+
+- **Attribution.** Priyom.org is credited on every station page in the app, in the help
+  screen, and here. The ENIGMA 2000 control list at <http://www.signalshed.com/> is
+  credited the same way for the designator assignments it originates.
+- **NonCommercial.** This project takes no money — no advertising, no paid tier, no
+  donations. See [docs/PLAN.md](../docs/PLAN.md) §7, where a donation page was
+  considered and dropped.
+- **ShareAlike.** Anyone redistributing this dataset, or a dataset adapted from it, must
+  do so under CC BY-NC-SA 4.0.
+
+## What was changed
+
+The licence requires that adaptations say so. The data here has been:
+
+- reformatted from HTML tables into JSON;
+- restructured so each schedule slot carries twelve monthly frequencies, expanded from
+  the merged month columns Priyom renders with `colspan`;
+- encoded as RFC 5545 `RRULE` strings rather than day-and-time text;
+- filtered — rows Priyom marks as outdated by rendering them in italics are omitted, as
+  are slots with no published frequency in any month;
+- merged with material from the ENIGMA 2000 control list and, for a few stations,
+  Wikipedia and numbers-stations.com, each carrying its own `sourceUrl`.
+
+Nothing was invented. `scripts/import-priyom.mjs` performs the transformation and can be
+re-run to reproduce it.
+
+No message content is reproduced. Priyom publishes logs of received transmissions; the
+importer refuses to read those tables, for the reason in
+[docs/RESEARCH.md](../docs/RESEARCH.md) §5.
+
+## The live markers
+
+The Buzzer, The Pip and The Squeaky Wheel entries carry frequencies sourced from
+Wikipedia and numbers-stations.com rather than from Priyom, each cited in the row's own
+`sourceUrl`. They are hand-written, not imported.

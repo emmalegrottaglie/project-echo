@@ -88,6 +88,14 @@ Saving a receiver only stores its address locally. Your audio connection still g
 straight to that node, under that node's own rules; the app never relays someone else's
 receiver.
 
+**The connection is released after ten minutes without interaction, and one minute after
+the tab goes to the background.** A KiwiSDR has four hardware channels and the app holds
+one for as long as its socket is open — there is a keepalive, so the node will not drop
+an abandoned session by itself. Someone who connects and walks away costs the operator
+exactly what a bot would. An operator raised this on Priyom's IRC channel before anyone
+else had installed the app, which is the correct instinct and the reason the timers
+exist.
+
 ### Marker detection
 
 A slow per-bin baseline estimates the noise floor, the bin that swings most is tracked,
@@ -181,6 +189,19 @@ quiet" and "nothing is arriving". It waits eight seconds, not half a second: the
 version timed out before audio had crossed a mobile network and reported a stall over a
 signal the waterfall was drawing beside it. If audio turns up after the warning, the
 warning clears.
+
+## Licence
+
+The code is MIT. **The station data is not** — it is adapted from
+[Priyom.org](https://priyom.org/), who publish under
+[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/), so
+[data/stations.json](data/stations.json) and any build embedding it carry that licence
+too. Attribution, non-commercial use and share-alike are obligations rather than
+courtesies; [data/LICENSE](data/LICENSE) states them, and what was changed in adapting
+the data, as the licence requires.
+
+The non-commercial clause is why this project takes no money. That decision was made
+before the licence was known and is now also a condition of using the data at all.
 
 ## Data
 

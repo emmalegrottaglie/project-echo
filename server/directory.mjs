@@ -15,6 +15,13 @@
 const SOURCE_URL = 'http://rx.linkfanel.net/kiwisdr_com.js';
 const ATTRIBUTION = 'http://rx.linkfanel.net/';
 
+/**
+ * Sent upstream so this project is identifiable in rx.linkfanel.net's logs rather than
+ * anonymous. Add the repository URL here once it is published — an operator who wants to
+ * know who is fetching should be able to find out without asking.
+ */
+const USER_AGENT = 'project-echo/0.1 (shortwave marker monitor)';
+
 /** The upstream regenerates every few minutes; there is nothing to gain by asking more often. */
 const CACHE_MS = 15 * 60 * 1000;
 
@@ -84,7 +91,11 @@ export function parseDirectory(text) {
 }
 
 async function refresh() {
-  const response = await fetch(SOURCE_URL);
+  // Identifies this project in the operator's logs. rx.linkfanel.net is one person's
+  // server and the polite thing is to be visible in it rather than anonymous.
+  const response = await fetch(SOURCE_URL, {
+    headers: { 'user-agent': USER_AGENT },
+  });
   if (!response.ok) throw new Error(`directory source returned ${response.status}`);
 
   cache = { at: Date.now(), receivers: parseDirectory(await response.text()) };
