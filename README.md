@@ -55,6 +55,7 @@ layout.
 | View | What it shows |
 |------|---------------|
 | **Live** | Receiver list, station and frequency selector, scrolling waterfall, marker detector, propagation map. Only the three continuously-transmitting Russian markers are offered — see below. A frequency that is the wrong half of a day/night pair is marked off-hours against the current UTC time, and offered anyway. |
+| **Live** — also | "Last heard" under the tuned station, from the server's own observation records: the only honest answer to whether silence is the band or the transmitter. |
 | **Schedule** | Next transmission windows in UTC and local time, with countdowns and per-slot alerts. 186 slots across the 10 active stations that publish one. The time is the reliable half; the frequency is shown as a dated report for that window's own month, or as "no September frequency published" when the source has none. |
 | **Archive** | All 141 stations: 3 live markers, 26 scheduled, 112 historical. Filterable, with per-frequency sources and dates, plus searches into the recording archives. |
 

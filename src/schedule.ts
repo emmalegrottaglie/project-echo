@@ -112,6 +112,26 @@ export function countdown(at: Date, now: Date): string {
   return `in ${minutes} m`;
 }
 
+/**
+ * 'a moment ago', '14 m ago', '3 h 20 m ago', '2 d 4 h ago'.
+ *
+ * The mirror of `countdown` for something that already happened. Kept beside it so the
+ * two read the same way round: the schedule counts down to a window, and a hearing
+ * counts up from one.
+ */
+export function elapsed(at: Date, now: Date): string {
+  const seconds = Math.floor((now.getTime() - at.getTime()) / 1000);
+  if (seconds < 60) return 'a moment ago';
+
+  const days = Math.floor(seconds / 86_400);
+  const hours = Math.floor((seconds % 86_400) / 3600);
+  const minutes = Math.floor((seconds % 3600) / 60);
+
+  if (days > 0) return `${days} d ${hours} h ago`;
+  if (hours > 0) return `${hours} h ${minutes} m ago`;
+  return `${minutes} m ago`;
+}
+
 export function formatUtc(at: Date): string {
   const hh = String(at.getUTCHours()).padStart(2, '0');
   const mm = String(at.getUTCMinutes()).padStart(2, '0');

@@ -10,6 +10,22 @@ wrong fact is a defect. Where a correction has evidence behind it, the evidence 
 
 ## 2026-09-11
 
+### Added
+
+- **"Last heard", under the tuned station.** The one question a dead-looking waterfall
+  cannot answer on its own is whether the silence is the band or the station, and this
+  answers it from evidence rather than from a published claim that may be years stale:
+  "Last heard — 14 m ago, 3.41 s period — recorded by this server". Absent entirely when
+  the server holds no record, rather than saying "never", and cleared before each fetch
+  so one station's evidence is never shown under another's name.
+
+  Deliberately not "four of six listeners are hearing it". Counting listeners needs
+  something that distinguishes them, and the only thing that did was the receiver name,
+  which was removed in the same session and for good reason. A recency answer needs no
+  identifier at all and settles the same question. It is worded as the server's record
+  rather than as the truth, because on a personal install that record is the user's own
+  listening history and nobody else's.
+
 ### Fixed — consent
 
 - **A contributed detection no longer names the receiver it was heard through.** The

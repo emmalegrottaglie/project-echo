@@ -3,6 +3,7 @@ import {
   diagnosticNoCorsUrl,
   diagnosticUrl,
   fetchDirectory,
+  fetchObservations,
   isContributing,
   postObservation,
   RELAY_URL,
@@ -28,7 +29,7 @@ import {
   selectedReceiver,
   selectReceiver,
 } from '../receiver';
-import { formatUtc, isOffHours } from '../schedule';
+import { elapsed, formatUtc, isOffHours } from '../schedule';
 import type { Frequency, Receiver, Station } from '../types';
 import {
   button,
@@ -115,6 +116,8 @@ export function liveView(): { element: HTMLElement; destroy: () => void } {
   let lastInteraction = Date.now();
   let idleTimer: number | null = null;
   let hiddenTimer: number | null = null;
+  /** Guards a slow fetch from painting after the station has been changed again. */
+  let lastHeardAttempt = 0;
 
   const detector = new MarkerDetector();
 
@@ -122,6 +125,7 @@ export function liveView(): { element: HTMLElement; destroy: () => void } {
     <div class="echo-scroll">
       <div class="echo-receiver-slot"></div>
       <div class="echo-station-slot"></div>
+      <div class="echo-lastheard" hidden></div>
       <div class="echo-status-slot"></div>
       ${waterfallPanel()}
       <div class="echo-detector-slot"></div>
@@ -185,6 +189,7 @@ export function liveView(): { element: HTMLElement; destroy: () => void } {
   const transport = element.querySelector<HTMLElement>('.echo-transport')!;
   const connectButton = transport.querySelector<HTMLButtonElement>('[name="connect"]')!;
   const syntheticButton = transport.querySelector<HTMLButtonElement>('[name="synthetic"]')!;
+  const lastHeard = element.querySelector<HTMLElement>('.echo-lastheard')!;
   const contribute = element.querySelector<HTMLElement>('.echo-contribute')!;
   const contributeSwitch = contribute.querySelector<HTMLElement>('.echo-contribute__switch')!;
 
@@ -258,6 +263,52 @@ export function liveView(): { element: HTMLElement; destroy: () => void } {
       periodSec: current.station.markerPeriodSec,
       name: 'open-station',
     });
+  };
+
+/**
+   * When this station was last heard, according to the server's own records.
+   *
+   * The one question a dead-looking waterfall cannot answer on its own is whether the
+   * silence is the band or the station, and this answers it from evidence rather than
+   * from a published claim that may be years old.
+   *
+   * Deliberately "last heard" and not "four of six listeners are hearing it". Counting
+   * listeners would need something that distinguishes them, and the only thing that did
+   * was the receiver name, which was removed for good reason. A recency answer needs no
+   * identifier at all and settles the same question.
+   *
+   * Worded as the server's record rather than as the truth, because on a personal
+   * install that record is the user's own listening history and nobody else's.
+   */
+  const renderLastHeard = async (): Promise<void> => {
+    const current = tuning();
+    if (!serverPresent || !current) {
+      lastHeard.hidden = true;
+      return;
+    }
+
+    // Cleared before the fetch, not after it. Leaving the previous station's hearing on
+    // screen while this one loads would attribute one station's evidence to another —
+    // briefly on a local server, and for as long as the request takes on a remote one.
+    const token = ++lastHeardAttempt;
+    lastHeard.hidden = true;
+
+    const observations = await fetchObservations(current.station.enigmaId);
+    if (token !== lastHeardAttempt) return;
+
+    const newest = observations?.[0];
+    if (!newest) {
+      lastHeard.hidden = true;
+      return;
+    }
+
+    const at = new Date(newest.heardAt);
+    const period = newest.periodSec ? `, ${newest.periodSec.toFixed(2)} s period` : '';
+    lastHeard.hidden = false;
+    lastHeard.innerHTML =
+      `<span class="echo-lastheard__label">Last heard</span>` +
+      `<span class="echo-lastheard__value">${esc(elapsed(at, new Date()))}${esc(period)}</span>` +
+      `<span class="echo-lastheard__note">recorded by this server</span>`;
   };
 
   const renderContribute = (): void => {
@@ -690,6 +741,7 @@ export function liveView(): { element: HTMLElement; destroy: () => void } {
       if (!row) return;
       tuningIndex = Number(row.dataset.index);
       renderStation();
+      void renderLastHeard();
       closeSheet();
     });
   }
@@ -892,6 +944,7 @@ export function liveView(): { element: HTMLElement; destroy: () => void } {
     // Nothing is sent anywhere without a server, so offering the choice would be
     // offering a control over something that is not happening.
     contribute.hidden = !present;
+    void renderLastHeard();
     syntheticButton.hidden = false;
     // Re-rendered because the empty-receiver notice offers "Find one for me", which
     // needs the directory and so cannot be drawn before this resolves.

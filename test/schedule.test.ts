@@ -3,6 +3,7 @@ import {
   countdown,
   currentPeriod,
   describeScheduleKhz,
+  elapsed,
   formatUtc,
   isOffHours,
   nextOccurrence,
@@ -241,5 +242,33 @@ describe('describeScheduleKhz', () => {
     expect(describeScheduleKhz(rotating, new Date('2026-03-02T03:15:00Z'))).toBe(
       '12630 kHz reported for March',
     );
+  });
+});
+
+/**
+ * The mirror of `countdown`, for a hearing that already happened. It carries the one
+ * claim the observation archive can honestly make about whether a station is alive.
+ */
+describe('elapsed', () => {
+  const now = new Date('2026-09-11T12:00:00Z');
+  const ago = (seconds: number): string =>
+    elapsed(new Date(now.getTime() - seconds * 1000), now);
+
+  it('does not pretend to sub-minute precision', () => {
+    expect(ago(0)).toBe('a moment ago');
+    expect(ago(59)).toBe('a moment ago');
+  });
+
+  it('counts minutes, then hours, then days', () => {
+    expect(ago(60)).toBe('1 m ago');
+    expect(ago(14 * 60)).toBe('14 m ago');
+    expect(ago(3 * 3600 + 20 * 60)).toBe('3 h 20 m ago');
+    expect(ago(2 * 86_400 + 4 * 3600)).toBe('2 d 4 h ago');
+  });
+
+  it('reads the same way round as the countdown it mirrors', () => {
+    const future = new Date(now.getTime() + 14 * 60_000);
+    expect(countdown(future, now)).toBe('in 14 m');
+    expect(ago(14 * 60)).toBe('14 m ago');
   });
 });

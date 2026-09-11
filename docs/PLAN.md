@@ -315,9 +315,13 @@ absence as a decision, not an omission.
 
 The three parts of this phase are not separate features. They feed each other:
 
-The live scanner produces observations. Observations make the live view trustworthy —
-"four of six listeners are hearing the Buzzer right now" is the difference between a
-quiet band and a dead station, and nothing else available says which. Aggregated
+The live scanner produces observations. Observations make the live view trustworthy:
+knowing when a station was last actually heard is the difference between a quiet band
+and a dead station, and nothing else available says which. **Built**, as "last heard"
+rather than the "four of six listeners" this section first imagined — counting
+listeners would need an identifier distinguishing them, the receiver name that used to
+serve was removed as a third party's business, and a recency answer settles the same
+question without one. Aggregated
 observations become an archive nobody else has, because Priyom logs messages and the
 ENIGMA list logs identity, while nobody logs marker behaviour continuously at scale.
 That archive is the thing this project contributes back, and it is worth building for
