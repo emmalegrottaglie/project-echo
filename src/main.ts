@@ -18,7 +18,21 @@ import { stationsView } from './views/stations';
  * hidden view is exactly the kind of thing that gets a node to block us.
  */
 
-type ViewFactory = () => { element: HTMLElement; destroy: () => void };
+interface View {
+  element: HTMLElement;
+  destroy: () => void;
+  /**
+   * Applies the part of the hash after the view key, for a view that is already
+   * mounted. A view without one is remounted instead.
+   *
+   * This exists so `#archive/S28` can open a station without tearing the archive down
+   * and rebuilding it — which would lose the search text, the tier filter and the
+   * scroll position every time someone opened or closed a station.
+   */
+  route?: (param: string) => void;
+}
+
+type ViewFactory = (param: string) => View;
 
 const VIEWS: Record<string, { label: string; factory: ViewFactory }> = {
   live: { label: 'Live', factory: liveView },
@@ -93,7 +107,8 @@ function mountShell(): void {
     if (button?.dataset.theme) applyTheme(button.dataset.theme);
   });
 
-  let current: { element: HTMLElement; destroy: () => void } | null = null;
+  let current: View | null = null;
+  let currentKey: string | null = null;
 
   /**
    * A view that throws while mounting would otherwise leave an empty `main` with
@@ -115,9 +130,25 @@ function mountShell(): void {
       `</div></div></section>`;
   };
 
+  const markTab = (key: string): void => {
+    for (const tab of app.querySelectorAll<HTMLButtonElement>('.echo-tab')) {
+      if (tab.dataset.view === key) tab.setAttribute('aria-current', 'page');
+      else tab.removeAttribute('aria-current');
+    }
+  };
+
   const navigate = (): void => {
-    const key = location.hash.replace('#', '') || 'live';
-    const view = VIEWS[key] ?? VIEWS['live']!;
+    // `#archive/S28` is the view key and a parameter for it. Anything unrecognised
+    // falls back to the live view rather than showing an empty shell.
+    const [requested = '', param = ''] = location.hash.replace('#', '').split('/');
+    const key = VIEWS[requested] ? requested : 'live';
+    const view = VIEWS[key]!;
+
+    if (key === currentKey && current?.route) {
+      current.route(param);
+      markTab(key);
+      return;
+    }
 
     try {
       current?.destroy();
@@ -126,18 +157,16 @@ function mountShell(): void {
       console.error(`view teardown failed`, error);
     }
     current = null;
+    currentKey = key;
 
     try {
-      current = view.factory();
+      current = view.factory(param);
       main.replaceChildren(current.element);
     } catch (error) {
       renderFailure(key, error);
     }
 
-    for (const tab of app.querySelectorAll<HTMLButtonElement>('.echo-tab')) {
-      if (tab.dataset.view === key) tab.setAttribute('aria-current', 'page');
-      else tab.removeAttribute('aria-current');
-    }
+    markTab(key);
   };
 
   app.querySelector('.echo-tabbar')!.addEventListener('click', (event) => {

@@ -1,8 +1,9 @@
 import { fetchObservations, type Observation } from '../api';
 import { archiveLinks } from '../archives';
-import { allStations, byId, isRosterOnly, prefixMeaning } from '../data/stations';
+import { allStations, isRosterOnly, prefixMeaning } from '../data/stations';
 import { scheduleKhz } from '../schedule';
 import type { Station, Tier } from '../types';
+import { isSafeUrl } from '../url';
 import {
   definitionList,
   esc,
@@ -91,6 +92,38 @@ function observationsHtml(observations: Observation[]): string {
   );
 }
 
+/**
+ * Who this station's identity and status came from, named rather than numbered.
+ *
+ * The archive is built on two volunteer projects, and a row of `[1] [2]` footnote marks
+ * credits neither of them in any way a reader notices. Naming the host on all 141
+ * station pages is the attribution that actually reaches someone; the credits page is
+ * the long version, not the only version.
+ */
+function sourceCredit(station: Station): string {
+  const hosts = [
+    ...new Set(
+      station.sourceUrls
+        .filter(isSafeUrl)
+        .map((url) => new URL(url).hostname.replace(/^www\./, '')),
+    ),
+  ];
+  if (!hosts.length) return '';
+
+  const links = station.sourceUrls
+    .filter(isSafeUrl)
+    .map(
+      (url, index) =>
+        `<a href="${safeUrl(url)}" target="_blank" rel="noreferrer">[${index + 1}]</a>`,
+    )
+    .join(' ');
+
+  return (
+    `<p class="echo-sources">Identity and status from ` +
+    `${hosts.map((host) => esc(host)).join(', ')}. ${links}</p>`
+  );
+}
+
 function detailHtml(station: Station): string {
   const links = archiveLinks(station);
   const now = new Date();
@@ -164,16 +197,16 @@ function detailHtml(station: Station): string {
     definitionList(items) +
     body +
     archive +
-    `<p class="echo-sources">` +
-    station.sourceUrls
-      .map((url, index) => `<a href="${safeUrl(url)}" target="_blank" rel="noreferrer">[${index + 1}]</a>`)
-      .join(' ') +
-    `</p>` +
+    sourceCredit(station) +
     `</div></div></div>`
   );
 }
 
-export function stationsView(): { element: HTMLElement; destroy: () => void } {
+export function stationsView(param = ''): {
+  element: HTMLElement;
+  destroy: () => void;
+  route: (next: string) => void;
+} {
   const element = document.createElement('section');
   element.className = 'view view-stations';
 
@@ -257,7 +290,11 @@ export function stationsView(): { element: HTMLElement; destroy: () => void } {
         }).join('');
   };
 
+  /** The designator whose detail is on screen, so a hash echo does not re-render it. */
+  let openId: string | null = null;
+
   const openDetail = (station: Station): void => {
+    openId = station.enigmaId;
     detailSlot.innerHTML = detailHtml(station);
 
     // Hearings need the Phase 3 server. Without it the section stays absent rather
@@ -282,18 +319,53 @@ export function stationsView(): { element: HTMLElement; destroy: () => void } {
     render();
   });
 
+  // Opening and closing a station go through the hash rather than straight to the DOM,
+  // so a station has an address that can be sent to someone. `route` below is what
+  // actually renders; this only asks for it.
   rows.addEventListener('click', (event) => {
     const button = (event.target as HTMLElement).closest<HTMLButtonElement>('[data-id]');
-    if (!button) return;
-    const station = byId(button.dataset.id ?? '');
-    if (station) openDetail(station);
+    if (button?.dataset.id) location.hash = `archive/${button.dataset.id}`;
   });
 
   detailSlot.addEventListener('click', (event) => {
-    if ((event.target as HTMLElement).closest('[name="back"]')) detailSlot.replaceChildren();
+    if ((event.target as HTMLElement).closest('[name="back"]')) location.hash = 'archive';
   });
 
-  render();
+  /**
+   * Applies `#archive/<designator>`.
+   *
+   * Called on every hash change while this view stays mounted, including the echo of
+   * the change this view just made, so it has to be idempotent — re-rendering an
+   * already-open station would restart its observation fetch on every navigation.
+   */
+  const route = (next: string): void => {
+    if (!next) {
+      openId = null;
+      detailSlot.replaceChildren();
+      return;
+    }
+    if (next.toLowerCase() === openId?.toLowerCase()) return;
 
-  return { element, destroy: () => {} };
+    // Matched without regard to case so a link survives being retyped, but never
+    // normalised: designators are mixed case — V02a, S06c, XPA2 — and upper-casing one
+    // makes it match nothing at all.
+    const station = allStations().find(
+      (candidate) => candidate.enigmaId.toLowerCase() === next.toLowerCase(),
+    );
+    if (station) {
+      openDetail(station);
+      return;
+    }
+
+    // A designator that does not exist — a stale link, or a typo in a shared one. Show
+    // the list rather than an error, and correct the address so Back behaves.
+    openId = null;
+    detailSlot.replaceChildren();
+    location.hash = 'archive';
+  };
+
+  render();
+  route(param);
+
+  return { element, destroy: () => {}, route };
 }
