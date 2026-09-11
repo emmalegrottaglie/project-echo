@@ -17,7 +17,7 @@
  *    because this file also guards the copy fetched over the network.
  */
 
-import type { ActiveFrom, Frequency, Lore, Schedule, Site, Station, Tier } from '../types';
+import type { Frequency, Lore, Schedule, Site, SourcedYear, Station, Tier } from '../types';
 import { isSafeUrl } from '../url';
 
 /**
@@ -170,7 +170,7 @@ function checkSite(value: unknown, where: string, errors: string[]): Site | null
   return errors.length === before ? (value as unknown as Site) : null;
 }
 
-function checkActiveFrom(value: unknown, where: string, errors: string[]): ActiveFrom | null {
+function checkSourcedYear(value: unknown, where: string, errors: string[]): SourcedYear | null {
   if (!isRecord(value)) {
     errors.push(`${where}: expected an object`);
     return null;
@@ -201,7 +201,7 @@ function checkActiveFrom(value: unknown, where: string, errors: string[]): Activ
     errors.push(`${where}.sourceUrl: expected an http or https URL`);
   }
 
-  return errors.length === before ? (value as unknown as ActiveFrom) : null;
+  return errors.length === before ? (value as unknown as SourcedYear) : null;
 }
 
 function checkStation(value: unknown, where: string, errors: string[]): Station | null {
@@ -264,7 +264,19 @@ function checkStation(value: unknown, where: string, errors: string[]): Station 
   }
 
   if (value.activeFrom !== null) {
-    checkActiveFrom(value.activeFrom, `${id}.activeFrom`, errors);
+    checkSourcedYear(value.activeFrom, `${id}.activeFrom`, errors);
+  }
+
+  // Tolerated absent rather than required, so a dataset cached by the build that added
+  // this field stays readable. Everything committed here carries it explicitly.
+  if (value.activeUntil !== null && value.activeUntil !== undefined) {
+    checkSourcedYear(value.activeUntil, `${id}.activeUntil`, errors);
+  }
+
+  const span = value.activeFrom as SourcedYear | null;
+  const until = value.activeUntil as SourcedYear | null | undefined;
+  if (span && until && until.year < span.year) {
+    errors.push(`${id}.activeUntil.year: ${until.year} is before activeFrom ${span.year}`);
   }
 
   if (!Array.isArray(value.sites)) {

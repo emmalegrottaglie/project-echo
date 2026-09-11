@@ -80,20 +80,23 @@ export interface Site {
 }
 
 /**
- * When a station started transmitting, as far as anyone knows.
+ * A year one of the sources states, kept with the words it stated it in.
  *
- * The end of a station's life is already recorded — `lastConfirmed` on a historical
- * station is the date it was last heard — but the beginning is the thinnest thing these
- * sources carry, and where they do carry it they hedge. Wikipedia says outright that the
- * precise date the Lincolnshire Poacher began "is not known for certain", and dates the
- * Buzzer only to "around the late 1970s".
+ * Both ends of a station's life are recorded this way, and both are hedged in the
+ * sources. Wikipedia says outright that the precise date the Lincolnshire Poacher began
+ * "is not known for certain", and dates the Buzzer only to "around the late 1970s";
+ * Priyom's pages say "Ceased in 2001" about one station and "Last heard in 1996" about
+ * the next, which are not the same claim at all.
  *
  * So `year` exists to place a mark on an axis and `note` carries what the source
- * actually said. `approximate` is the difference between a figure taken from an infobox
- * and a decade someone narrowed by hand: the interface shows the note, never the bare
- * year, whenever this is approximate.
+ * actually said. `approximate` marks the gap between the two: a stated fact about the
+ * station, or an observation that only bounds one. A first hearing is approximate
+ * because the station may have been transmitting unheard before it, and a last hearing
+ * is approximate because it may have gone on transmitting unheard after — where a page
+ * says the station ceased, or names the day it started, it is not. The interface shows
+ * the note, never the bare year, whenever this is approximate.
  */
-export interface ActiveFrom {
+export interface SourcedYear {
   /** Used for placement only. Never shown alone when `approximate` is true. */
   year: number;
   approximate: boolean;
@@ -140,7 +143,13 @@ export interface Station {
   /** Known transmitter sites, empty where none is sourced. */
   sites: Site[];
   /** When it started, where a source says so. Null for most of the roster. */
-  activeFrom: ActiveFrom | null;
+  activeFrom: SourcedYear | null;
+  /**
+   * When it stopped, where a source says so. Distinct from `lastConfirmed`, which is an
+   * ISO date this archive can stamp: a page saying "Last reported in late 1999" is a
+   * real claim with no day in it, and forcing one would invent precision.
+   */
+  activeUntil: SourcedYear | null;
   sourceUrls: string[];
 }
 

@@ -97,17 +97,29 @@ describe('extracting a description', () => {
 
 describe('reporting a date rather than writing one', () => {
   it('reports a sentence that says when a station was first heard', () => {
-    expect(dateCandidates('E09 was first heard in February 1995.')).toEqual([
+    expect(dateCandidates('E09 was first heard in February 1995.').starts).toEqual([
       'E09 was first heard in February 1995.',
     ]);
   });
 
-  it('ignores a year with nothing to say about a beginning', () => {
-    expect(dateCandidates('The operator moved to a new frequency plan in 2011.')).toEqual([]);
+  it('reports a sentence that says when a station stopped', () => {
+    expect(dateCandidates('Retired in March 2001.').ends).toEqual(['Retired in March 2001.']);
+  });
+
+  it('reports a sentence carrying both ends under both', () => {
+    const both = dateCandidates('Active from 1996 until 20 June 2007.');
+    expect(both.starts).toHaveLength(1);
+    expect(both.ends).toHaveLength(1);
+  });
+
+  it('ignores a year with nothing to say about either end', () => {
+    const none = dateCandidates('The operator moved to a new frequency plan in 2011.');
+    expect(none.starts).toEqual([]);
+    expect(none.ends).toEqual([]);
   });
 
   it('ignores a beginning with no year in it', () => {
-    expect(dateCandidates('It was first heard some years ago.')).toEqual([]);
+    expect(dateCandidates('It was first heard some years ago.').starts).toEqual([]);
   });
 });
 
@@ -128,6 +140,34 @@ describe('the committed descriptions', () => {
     for (const s of stations) {
       if (s.lore?.quotedFrom) expect(isSafeUrl(s.lore.quotedFrom)).toBe(true);
     }
+  });
+
+  /**
+   * Re-running the import rewrites every quoted description, and a date taken out of one
+   * of those paragraphs would then be attributed to a page that no longer says it. This
+   * is the guard: a claim citing the quoted page has to be findable in the quote.
+   */
+  it('never states the same sentence at both ends of a station', () => {
+    const duplicated = stations
+      .filter((s) => s.activeFrom && s.activeUntil && s.activeFrom.note === s.activeUntil.note)
+      .map((s) => s.enigmaId);
+    expect(duplicated).toEqual([]);
+  });
+
+  it('can still find every date it took from a quotation in that quotation', () => {
+    const orphaned: string[] = [];
+    for (const s of stations) {
+      for (const [field, claim] of [
+        ['activeFrom', s.activeFrom],
+        ['activeUntil', s.activeUntil],
+      ] as const) {
+        if (!claim || !s.lore || claim.sourceUrl !== s.lore.quotedFrom) continue;
+        if (!s.lore.text.toLowerCase().includes(claim.note.toLowerCase())) {
+          orphaned.push(`${s.enigmaId}.${field}`);
+        }
+      }
+    }
+    expect(orphaned).toEqual([]);
   });
 });
 

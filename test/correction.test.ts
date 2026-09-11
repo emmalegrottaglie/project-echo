@@ -19,7 +19,7 @@ function station(overrides: Partial<Station> = {}): Station {
     marker: null,
     markerPeriodSec: 3.1,
     lastConfirmed: '2026-09-10',
-    lore: 'Something',
+    lore: { text: 'Something', quotedFrom: null },
     frequencies: [
       {
         khz: 4625,
@@ -33,6 +33,7 @@ function station(overrides: Partial<Station> = {}): Station {
     schedules: [],
     sites: [],
     activeFrom: null,
+    activeUntil: null,
     sourceUrls: ['https://example.org/'],
     ...overrides,
   };

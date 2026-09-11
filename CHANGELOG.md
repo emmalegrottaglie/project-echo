@@ -12,6 +12,58 @@ wrong fact is a defect. Where a correction has evidence behind it, the evidence 
 
 ### Added
 
+- **An ending for 66 stations, read out of the descriptions just imported.** The
+  description import left a visible hole: seven stations showed "end unrecorded" on the
+  timeline while the quoted paragraph directly above said when they stopped. A second
+  pass over the same text found 63 more endings, and the three famous stations whose
+  descriptions are written here rather than quoted were recorded in the same shape. The
+  timeline went from 16 dated stations to 73.
+
+  `activeUntil` is a new field rather than a use of `lastConfirmed`, because they are
+  different claims. `lastConfirmed` is an ISO date this archive can stamp — evidence the
+  station transmitted that day. "Last reported in late 1999" has no day in it, and
+  forcing one would invent precision that changes what the sentence means. G06 is the
+  case that settles it: Priyom record it retired from regular operation in March 2021 and
+  then heard in test transmissions on 11 November 2024. It now carries both, and the
+  timeline runs its bar to the later, because both are lower bounds on when it was last
+  on the air.
+
+  Fourteen stations also gained a real `lastConfirmed` where a page named a full calendar
+  date for a last hearing, so their status line reads "last confirmed 1997-10-30" instead
+  of "never confirmed".
+
+- **Two more starts**, from sentences the first pass's pattern missed: S10d "Active from
+  1996" and XP "Active from 1993 until 2005". The importer now reports beginnings and
+  endings separately, so the next re-run surfaces both.
+
+### Changed
+
+- **`approximate` now means "this date is not the event", on both ends.** It used to mark
+  a year narrowed by hand from a decade. The endings made the sharper reading necessary:
+  "Ceased in 2001" is a source saying the station stopped, while "Last heard in 1996" is
+  a source saying somebody stopped listening — the transmitter may well have run on. The
+  first draws a hard edge on the timeline, the second fades. Nothing about the starts
+  changed in substance; a first hearing was already approximate for the same reason, and
+  now the field says why.
+
+- **The station page shows both ends in the source's own words.** A `Start` and `End` row
+  carrying the sentence the date came from — "Active since mid 1970s", "until 20 June
+  2007" — rather than a bare year that would flatten a sighting and a cessation into the
+  same thing.
+
+- **`ActiveFrom` is now `SourcedYear`**, since both ends are the same shape, and
+  `schemaVersion` stays 3: `activeUntil` is tolerated absent, so a dataset cached by an
+  older build still validates.
+
+### Fixed
+
+- **`npm run typecheck` now covers `test/`.** It only ever looked at `src`, so three test
+  fixtures had drifted out of the `Station` type without failing anything — one of them
+  since yesterday's `lore` change. They passed because the tests never read the fields
+  they were missing, which is exactly the kind of silence a typecheck exists to break.
+  `allowJs` is on so the tests that import the server and the importers can be checked at
+  all.
+
 - **A description for 125 stations that had none, quoted from Priyom.** Most of the
   roster arrived from ENIGMA 2000's list as identity only: a designator, an operator and
   a status, with the app honestly saying nothing else had been imported. Priyom publish a

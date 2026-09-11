@@ -298,24 +298,32 @@ and the figure comes from Wikidata with no stated basis. A guessed position wear
 provenance stamp is worse than an absent one, so S32 has no site. The Pip has none
 published at all.
 
-## 9. When these stations started, and why so few dates exist
+## 9. When these stations were on the air
 
-The archive records endings well and beginnings badly, and that asymmetry is a property
-of the sources rather than of the import.
+Both ends of a station's life are recorded here, in the same shape and for the same
+reason: a year to place a mark on an axis, and the source's own phrasing kept beside it,
+because the sources hedge and the hedge is part of the fact.
 
-Endings are good because a numbers station's death is an event somebody notices and
-writes down: the Lincolnshire Poacher's last transmission on 2 July 2008, Cherry Ripe in
-December 2009, Atención in February 2019, V15 on 12 March 2020, V24 that September,
-HM01's transmitter failing on 23 August 2024. Those dates are already in this dataset as
-`lastConfirmed`.
+The asymmetry is real but smaller than it first looked. Endings are well recorded because
+a numbers station's death is an event somebody notices and writes down — the Lincolnshire
+Poacher's last transmission on 2 July 2008, Cherry Ripe in December 2009, Atención in
+February 2019, HM01's transmitter failing on 23 August 2024. Beginnings are badly recorded
+because a station starts by being noticed rather than announced, and the sources say so
+plainly. Wikipedia on the Lincolnshire Poacher: "The precise date that the Lincolnshire
+Poacher began broadcasting is not known for certain; however, it is believed that the
+broadcasts started around the early to mid 1970s." On UVB-76: "first noticed around the
+late 1970s".
 
-Beginnings are bad because a station starts by being noticed, not by being announced,
-and the sources say so plainly. Wikipedia on the Lincolnshire Poacher: "The precise date
-that the Lincolnshire Poacher began broadcasting is not known for certain; however, it is
-believed that the broadcasts started around the early to mid 1970s." On UVB-76: "first
-noticed around the late 1970s".
+Eighteen stations carry a start and sixty-six carry an end.
 
-Sixteen stations have a sourced start. Six came from the original research:
+### Reported against derived
+
+This is the test every date here had to pass. A date a source states, however vague, is a
+fact that source is asserting and belongs in the data with its phrasing kept. A date
+worked out from the earliest or latest row of a log table does not, because it records
+when somebody was listening rather than what the station did.
+
+Six starts came from the original research:
 
 | Station | Year | Basis |
 |---|---|---|
@@ -326,40 +334,51 @@ Sixteen stations have a sourced start. Six came from the original research:
 | S32 The Squeaky Wheel | 2000 | Wikipedia infobox, "First air date 2000" |
 | HM01 | about 2012 | "appeared around 2012" |
 
-Ten more arrived with the description import of September 2026 (§10). Every one of them
-is a first hearing rather than a start, and is recorded as approximate for that reason:
+Twelve more came out of the descriptions imported in September 2026 (§10), ten of them
+first hearings — M10 "Active since mid 1970s", E21 "First noted around 1981", E18 "first
+mentioned as being active in September 1989", E15 "first reliably reported in early 1993",
+E09 "first heard in February 1995", V07 "first noted as early as 1995", V08 "First heard
+in early 1995", M03e "Only noted on the turn of 2003 and 2004", V30 "First heard on
+February 21, 2010", V28 "first heard in November 2015" — and two stated outright: S10d
+"Active from 1996" and XP "Active from 1993".
 
-| Station | Year | What Priyom's page says |
-|---|---|---|
-| M10 | about 1975 | "Active since mid 1970s" |
-| E21 | about 1981 | "First noted around 1981" |
-| E18 | about 1989 | "first mentioned as being active in September 1989" |
-| E15 | about 1993 | "first reliably reported in early 1993" |
-| E09 | about 1995 | "first heard in February 1995" |
-| V07 | about 1995 | "first noted as early as 1995" |
-| V08 | about 1995 | "First heard in early 1995" |
-| M03e | about 2003 | "Only noted on the turn of 2003 and 2004" |
-| V30 | about 2010 | "First heard on February 21, 2010" |
-| V28 | about 2015 | "first heard in November 2015" |
+Sentences the importer reported and a reading rejected: facts about a different station
+(M03c's page dating E11b and S11b), and the appearance of a schedule rather than of the
+station (F07, XPB, SK01). The importer writes no date itself, which is what makes that
+reading possible rather than theoretical.
 
-The distinction that decided each of these is **reported against derived**. A date a
-source states, however vague, is a fact that source is asserting and belongs in
-`ActiveFrom` with its own phrasing kept in `note`. A date worked out from the earliest
-row of a log table does not, because it records when logging started rather than when the
-station did. Nine further sentences mentioning a year were reported by the importer and
-rejected on that test: they were endings (E17z and S06s both ceased on 24 February 2022),
-facts about a different station (M03c's page dating E11b and S11b), or the appearance of
-a schedule rather than of the station (F07, XPB, SK01).
+### Approximate means "this is not the event"
 
-V30's "February 21, 2010" is precise to the day and still marked approximate, which looks
-wrong until the claim is read carefully: the day is when somebody first heard it, and that
-only bounds the start. `approximate` answers "is this when the station began", not "how
-precise is this string".
+Not "this string is vague". A first or last hearing bounds a station's life without being
+it: the transmitter may have been running before anybody tuned in, and may have gone on
+running after the last person stopped listening. So:
 
-`ActiveFrom.year` exists to place a mark on an axis; `note` carries what the source
-actually said. The interface shows the note rather than the bare year whenever a date is
-approximate, and the timeline fades a bar's left edge instead of capping it, because a
-hard edge asserts a precision the sources explicitly decline to give.
+- **`approximate: true`** for an observation — "first heard in February 1995", "Last heard
+  in 1996" — and for genuinely vague wording, "Ceased around 1973".
+- **`approximate: false`** where the source says the station itself started or stopped:
+  "Ceased in 2001", "Retired in March 2001", "Active from 1996 until 20 June 2007".
+
+V30's "February 21, 2010" is precise to the day and still approximate, which looks wrong
+until the claim is read carefully — the day is when somebody first heard it. The timeline
+fades that edge and draws a hard one only where a source asserts the event.
+
+### Why `activeUntil` is not `lastConfirmed`
+
+They are different claims and the archive keeps both. `lastConfirmed` is an ISO date this
+archive can stamp: evidence the station was transmitting on that day. `activeUntil` is a
+source saying it stopped, at whatever precision the source gives — "Last reported in late
+1999" has no day in it, and forcing one would invent precision that changes what the
+sentence means.
+
+G06 is why both are needed at once. Priyom record it as "fully retired from regular
+operation in March 2021" and then heard in test transmissions on 11 November 2024. Its
+`activeUntil` is 2021 and its `lastConfirmed` is 2024-11-11, and neither contradicts the
+other. The timeline draws its bar to the later of the two, because both are lower bounds
+on when the station was last on the air.
+
+Fourteen stations gained a `lastConfirmed` from these descriptions, each one a source
+naming a full calendar date for a last hearing — M02 "Last heard on 30 October 1997", M10
+"until 20 June 2007", M01b "Last heard on May 29, 2020".
 
 ## 10. Where the station descriptions come from
 
@@ -384,8 +403,8 @@ than in a reviewer's head:
   check, because the page layout is Priyom's to change.
 - **Paragraphs that point at the page are dropped.** "as heard below", "see the table" —
   true where they were written, meaningless once the words are somewhere else.
-- **No date is ever written.** Sentences that mention a year alongside a beginning are
-  printed for a person to weigh, for the reason set out in §9.
+- **No date is ever written.** Sentences that mention a year alongside a beginning or an
+  ending are printed for a person to weigh, for the reason set out in §9.
 
 125 descriptions landed. Four stations still have none: F03 and P03 have no Priyom page,
 and S10b and V12 have pages carrying an infobox and nothing else.

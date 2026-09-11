@@ -5,13 +5,12 @@ import { esc, gapNotice, openSheet, type Sheet } from './ui';
 /**
  * When each station was on the air, as far as the sources say.
  *
- * The honest shape of this data is lopsided. Ends are well recorded — a historical
- * station's `lastConfirmed` is the date it was last heard, and those dates are the most
- * striking thing in the archive: the Lincolnshire Poacher in 2008, Cherry Ripe in 2009,
- * Atención in 2019, V15 and V24 in 2020, HM01 in 2024, while three Russian markers carry
- * on. Beginnings are the thinnest thing these sources carry, and most of the sixteen
- * that exist are a first hearing rather than a start — which is why nearly all of them
- * are marked approximate.
+ * The honest shape of this data is lopsided. Ends are well recorded — the Lincolnshire
+ * Poacher in 2008, Cherry Ripe in 2009, Atención in 2019, V15 and V24 in 2020, HM01 in
+ * 2024, and sixty more taken from the descriptions Priyom publish, while three Russian
+ * markers carry on. Beginnings are the thinnest thing these sources carry, and most of
+ * the eighteen that exist are a first hearing rather than a start — which is why nearly
+ * all of them are marked approximate.
  *
  * So this is a timeline of what is known rather than a timeline of the roster, and it
  * says which it is. A bar needs both ends. A station with only an ending gets a mark at
@@ -30,6 +29,8 @@ export interface TimelineRow {
   width: number;
   /** The start is a guess at a decade, so its left edge is drawn soft. */
   approximateStart: boolean;
+  /** Nobody said the station stopped, only when it was last heard: soft right edge. */
+  approximateEnd: boolean;
   /** Still transmitting, so the bar runs off the right edge rather than stopping. */
   openEnd: boolean;
   label: string;
@@ -49,16 +50,38 @@ function stillTransmitting(station: Station): boolean {
 }
 
 /**
- * The year a station was last heard.
+ * The last year a station is known to have been on the air.
  *
- * Null has two meanings and the caller has to keep them apart: for a station still
- * transmitting there is no end yet, and for a historical one with no `lastConfirmed`
- * nobody wrote the ending down. The first draws to the edge; the second cannot draw at
- * all without inventing a duration.
+ * Two sources of that, and the later one wins because both are lower bounds: a source
+ * saying the station ceased, and the date this archive last confirmed it transmitting.
+ * G06 is why the rule is stated rather than assumed — Priyom record it as retired from
+ * regular operation in March 2021 and then heard in test transmissions in November 2024,
+ * and a bar stopping in 2021 would contradict a hearing three years later.
+ *
+ * Null has two meanings the caller has to keep apart: for a station still transmitting
+ * there is no end yet, and for a historical one with neither claim nobody wrote the
+ * ending down. The first draws to the edge; the second cannot draw at all without
+ * inventing a duration.
  */
 function endYear(station: Station): number | null {
   if (stillTransmitting(station)) return null;
-  return station.lastConfirmed ? Number(station.lastConfirmed.slice(0, 4)) : null;
+
+  const years = [
+    station.activeUntil?.year,
+    station.lastConfirmed ? Number(station.lastConfirmed.slice(0, 4)) : undefined,
+  ].filter((year): year is number => year !== undefined);
+
+  return years.length ? Math.max(...years) : null;
+}
+
+/**
+ * True unless a source says the station stopped.
+ *
+ * A last hearing bounds the end without being it — the station may have gone on
+ * transmitting with nobody listening — so only an explicit cessation earns a hard edge.
+ */
+function approximateEnd(station: Station): boolean {
+  return station.activeUntil ? station.activeUntil.approximate : true;
 }
 
 /**
@@ -102,6 +125,7 @@ export function timeline(stations: readonly Station[], now: number): Timeline {
         left,
         width: spans ? Math.max(0, right - left) : 0,
         approximateStart: station.activeFrom?.approximate ?? false,
+        approximateEnd: approximateEnd(station),
         openEnd,
         label: describeSpan(station, start, end),
       };
@@ -120,9 +144,16 @@ function describeSpan(station: Station, start: number | null, end: number | null
       : String(start)
     : null;
 
-  if (startText === null) return `last heard ${end}`;
-  if (end !== null) return `${startText} to ${end}`;
-  return stillTransmitting(station) ? `${startText} to still transmitting` : `${startText}, end unrecorded`;
+  // A cessation and a last hearing are different claims, so they get different words.
+  const ceased = station.activeUntil?.approximate === false;
+
+  if (startText === null) return ceased ? `ceased ${end}` : `last heard ${end}`;
+  if (end === null) {
+    return stillTransmitting(station)
+      ? `${startText} to still transmitting`
+      : `${startText}, end unrecorded`;
+  }
+  return `${startText} to ${ceased ? end : `about ${end}`}`;
 }
 
 export function openTimeline(): Sheet {
@@ -155,8 +186,8 @@ export function openTimeline(): Sheet {
           `</span>` +
           `<span class="echo-timeline__track">` +
           (row.width > 0
-            ? `<span class="echo-timeline__bar${row.approximateStart ? ' is-approximate' : ''}` +
-              `${row.openEnd ? ' is-open' : ''}"` +
+            ? `<span class="echo-timeline__bar${row.approximateStart ? ' is-soft-start' : ''}` +
+              `${row.openEnd || row.approximateEnd ? ' is-soft-end' : ''}"` +
               ` style="left:${row.left.toFixed(2)}%;width:${row.width.toFixed(2)}%"></span>`
             : `<span class="echo-timeline__tick" style="left:${row.left.toFixed(2)}%"></span>`) +
           `</span>` +
@@ -168,10 +199,11 @@ export function openTimeline(): Sheet {
     gapNotice(
       `${model.rows.length} of ${model.rows.length + model.undated} stations carry a date`,
       `The rest are in the archive with an operator and a status but nothing to place them ` +
-        `by. Most of the starts that do exist are the date somebody first heard a station ` +
-        `rather than the date it began, so the bar fades out to the left rather than ` +
-        `pretending to a year. A single mark is a station known by one date only — either ` +
-        `the year it was last heard, or a beginning whose ending nobody wrote down.`,
+        `by. A bar spans a station whose beginning and ending are both recorded; a single ` +
+        `mark is one known by a single date. An edge fades where the source gives an ` +
+        `observation rather than an event — "first heard in February 1995" and "Last heard ` +
+        `in 1996" bound a station's life without being it, while "Ceased in 2001" is the ` +
+        `source saying the station stopped, and that edge is drawn hard.`,
     );
 
   sheet.body.addEventListener('click', (event) => {

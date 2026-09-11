@@ -162,24 +162,32 @@ function cutAtSentence(value, limit) {
   return stop > limit / 2 ? window.slice(0, stop + 1) : `${window.trimEnd()}…`;
 }
 
+const YEAR = /\b(?:1[89]\d{2}|20[0-2]\d)\b/;
+
+const STARTS =
+  /\b(?:first|began|start(?:ed)?|since|appeared|originat|introduc|earliest|as early as|dates? back|active from)\b/i;
+
+const ENDS =
+  /\b(?:ceased|ended|terminated|retired|closed|discontinued|shut down|last (?:heard|reported|logged|noted|transmission|active)|until|no longer|not heard|went (?:off|silent)|off the air|inactive since|stopped|demise)\b/i;
+
 /**
- * Sentences that look like they say when the station started.
+ * Sentences that look like they say when a station started, or when it stopped.
  *
- * Reported, never written. A sentence matching this is a lead for a person to read in
- * context, and the difference that matters is whether the source is stating a start date
- * or describing when somebody first logged one — the second is a fact about listeners.
+ * Reported, never written. A sentence matching one of these is a lead for a person to
+ * read in context, and two distinctions decide what happens to it. Whether the source is
+ * stating a date or describing when somebody merely logged one — a first or last hearing
+ * bounds a station's life without being it. And whether the sentence is about this
+ * station at all: the same wording turns up describing a message format, a counterpart
+ * station, or a schedule that appeared, and none of those are the station's own life.
  */
 export function dateCandidates(extract) {
-  if (!extract) return [];
-  return extract
-    .split(/(?<=[.!?])\s+/)
-    .filter(
-      (sentence) =>
-        /\b(?:1[89]\d{2}|20[0-2]\d)\b/.test(sentence) &&
-        /\b(?:first|began|start(?:ed)?|since|appeared|originat|introduc|earliest|as early as|dates? back)\b/i.test(
-          sentence,
-        ),
-    );
+  if (!extract) return { starts: [], ends: [] };
+
+  const sentences = extract.split(/(?<=[.!?])\s+/).filter((sentence) => YEAR.test(sentence));
+  return {
+    starts: sentences.filter((sentence) => STARTS.test(sentence)),
+    ends: sentences.filter((sentence) => ENDS.test(sentence)),
+  };
 }
 
 /* ------------------------------------------------------------------- main ----- */
@@ -203,7 +211,7 @@ async function main() {
     (station) => station.lore === null || station.lore.quotedFrom !== null,
   );
 
-  const report = { imported: 0, noPage: [], noProse: [], dates: [] };
+  const report = { imported: 0, noPage: [], noProse: [], starts: [], ends: [] };
 
   for (const station of wanted) {
     const path = urls.get(station.enigmaId.toLowerCase());
@@ -223,9 +231,9 @@ async function main() {
     if (!station.sourceUrls.includes(sourceUrl)) station.sourceUrls.push(sourceUrl);
     report.imported += 1;
 
-    for (const sentence of dateCandidates(extract)) {
-      report.dates.push(`${station.enigmaId}: ${sentence}`);
-    }
+    const dates = dateCandidates(extract);
+    for (const sentence of dates.starts) report.starts.push(`${station.enigmaId}: ${sentence}`);
+    for (const sentence of dates.ends) report.ends.push(`${station.enigmaId}: ${sentence}`);
   }
 
   writeFileSync('data/stations.json', `${JSON.stringify(data, null, 2)}\n`, 'utf8');
@@ -233,11 +241,14 @@ async function main() {
   console.log(`imported ${report.imported} descriptions`);
   if (report.noPage.length) console.log(`no Priyom page: ${report.noPage.join(' ')}`);
   if (report.noProse.length) console.log(`page carried no description: ${report.noProse.join(' ')}`);
-  if (report.dates.length) {
-    console.log(
-      `\n${report.dates.length} sentences mentioning a year — read these, none were written:`,
-    );
-    for (const line of report.dates) console.log(`  ${line}`);
+  for (const [end, lines] of [
+    ['beginning', report.starts],
+    ['ending', report.ends],
+  ]) {
+    if (!lines.length) continue;
+    console.log(`
+${lines.length} sentences dating a ${end} — read these, none were written:`);
+    for (const line of lines) console.log(`  ${line}`);
   }
 }
 

@@ -358,7 +358,7 @@ an earlier draft of this plan wrongly assumed the dates were already present:
 
 | Needed for | Field | Sourcing |
 |---|---|---|
-| Timeline, On this day | `activeFrom`, `activeTo` | New. Per-station, sourced, and often only known to the year. |
+| Timeline, On this day | `activeFrom`, `activeUntil` | **Built.** Per-station, sourced, and often only known to the year. |
 | Exits — successor | `succeeds` / `succeededBy` | New. Hand-curated; a few dozen pairs at most (V02a to HM01, and so on). |
 | Map | transmitter site name and coordinates | New, partial by nature — many sites are unknown or only attributed to a district. |
 
@@ -425,8 +425,10 @@ Ranked by uniqueness against cost:
    `PREFIX_MEANING` already encodes the taxonomy — E, G and S
    for voice languages, M for Morse, F, P and X for digital. One screen turns 141
    opaque codes into a readable system. The highest payoff per hour in this list.
-4. **Timeline.** **Built**, sparse and honest about it: ten stations carry a date, and
-   only six have a start. See [RESEARCH.md](RESEARCH.md) §9 for why so few.
+4. **Timeline.** **Built**, and no longer sparse: 73 stations carry a date since the
+   descriptions were imported, 18 with a start and 66 with an end. It is still honest
+   about which dates are events and which are only sightings — see
+   [RESEARCH.md](RESEARCH.md) §9.
 5. **On this day.** Cheap once the dates exist, and it is what brings people back.
 6. **Map.** Transmitter sites, partial by construction under the provenance rule — no
    coordinate is guessed, and the map says which sites are unplaced rather than

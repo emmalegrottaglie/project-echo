@@ -25,6 +25,7 @@ function station(overrides: Partial<Station> = {}): Station {
     schedules: [],
     sites: [],
     activeFrom: null,
+    activeUntil: null,
     sourceUrls: ['https://example.org/'],
     ...overrides,
   };
@@ -39,6 +40,9 @@ function from(year: number, approximate = false): Station['activeFrom'] {
     sourceUrl: 'https://example.org/',
   };
 }
+
+/** Same shape at the other end: a source saying the station stopped, and when. */
+const until = from;
 
 describe('a start with no ending', () => {
   /**
@@ -134,13 +138,48 @@ describe('placement', () => {
 describe('how a span is described', () => {
   it('hedges a start the source hedges', () => {
     const model = timeline([station({ activeFrom: from(1975, true), lastConfirmed: '2008-01-01' })], 2026);
-    expect(model.rows[0]?.label).toBe('about 1975 to 2008');
+    expect(model.rows[0]?.label).toBe('about 1975 to about 2008');
     expect(model.rows[0]?.approximateStart).toBe(true);
   });
 
-  it('states a start the source states', () => {
+  /**
+   * A last-confirmed date says the station was on the air then, not that it stopped
+   * then, so the end stays hedged until a source says the station ceased.
+   */
+  it('hedges an end that is only the last time anybody heard it', () => {
     const model = timeline([station({ activeFrom: from(1986), lastConfirmed: '2008-01-01' })], 2026);
+    expect(model.rows[0]?.label).toBe('1986 to about 2008');
+    expect(model.rows[0]?.approximateEnd).toBe(true);
+  });
+
+  it('states an end where the source says the station ceased', () => {
+    const model = timeline(
+      [station({ activeFrom: from(1986), activeUntil: until(2008), lastConfirmed: '2008-01-01' })],
+      2026,
+    );
     expect(model.rows[0]?.label).toBe('1986 to 2008');
+    expect(model.rows[0]?.approximateEnd).toBe(false);
+  });
+
+  it('names the claim for a station known only by its ending', () => {
+    const ceased = timeline([station({ activeUntil: until(2001) })], 2026);
+    expect(ceased.rows[0]?.label).toBe('ceased 2001');
+
+    const lastHeard = timeline([station({ activeUntil: until(1996, true) })], 2026);
+    expect(lastHeard.rows[0]?.label).toBe('last heard 1996');
+  });
+
+  /**
+   * G06 is the real case: Priyom record it retired from regular operation in March 2021
+   * and then heard in test transmissions in November 2024. A bar stopping at the
+   * retirement would contradict a hearing three years after it.
+   */
+  it('runs to the later of a cessation and a confirmed hearing', () => {
+    const model = timeline(
+      [station({ activeFrom: from(2000), activeUntil: until(2021), lastConfirmed: '2024-11-11' })],
+      2026,
+    );
+    expect(model.rows[0]?.label).toBe('2000 to 2024');
   });
 
   it('says a live station is still transmitting rather than giving it an end', () => {

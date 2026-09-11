@@ -31,6 +31,7 @@ function station(overrides: Record<string, unknown> = {}): Record<string, unknow
     schedules: [],
     sites: [],
     activeFrom: null,
+    activeUntil: null,
     sourceUrls: ['https://example.org/'],
     ...overrides,
   };
@@ -194,6 +195,60 @@ describe('validation', () => {
       dataset(station({ enigmaId: 'A1', tier: 'nope' }), station({ enigmaId: 'A2', name: '' })),
     );
     expect(result.ok ? [] : result.errors).toHaveLength(2);
+  });
+});
+
+/**
+ * Both ends of a station's life are the same shape, and the pair has to be coherent: a
+ * station that ended before it started is a transcription error, and the validator is
+ * the only thing that would notice.
+ */
+describe('when a station was on the air', () => {
+  const year = (value: number, approximate = false) => ({
+    year: value,
+    approximate,
+    note: 'the source said so',
+    lastConfirmed: '2026-09-11',
+    sourceUrl: 'https://priyom.org/x',
+  });
+
+  it('accepts a span', () => {
+    const result = validateStationData(
+      dataset(station({ activeFrom: year(1996), activeUntil: year(2007) })),
+    );
+    expect(result.ok ? [] : result.errors).toEqual([]);
+  });
+
+  it('accepts an ending with no beginning, which is most of the roster', () => {
+    expect(validateStationData(dataset(station({ activeUntil: year(1996, true) }))).ok).toBe(true);
+  });
+
+  it('rejects an ending before its beginning', () => {
+    const result = validateStationData(
+      dataset(station({ activeFrom: year(2007), activeUntil: year(1996) })),
+    );
+    expect(result.ok).toBe(false);
+  });
+
+  it('rejects an ending with no source', () => {
+    const result = validateStationData(
+      dataset(station({ activeUntil: { ...year(1996), sourceUrl: 'javascript:alert(1)' } })),
+    );
+    expect(result.ok).toBe(false);
+  });
+
+  it('rejects an ending with no phrasing behind it', () => {
+    const result = validateStationData(
+      dataset(station({ activeUntil: { ...year(1996), note: '' } })),
+    );
+    expect(result.ok).toBe(false);
+  });
+
+  /** A dataset cached before the field existed still loads, on the bundled schema. */
+  it('tolerates the field being absent altogether', () => {
+    const bare = station();
+    delete bare.activeUntil;
+    expect(validateStationData(dataset(bare)).ok).toBe(true);
   });
 });
 

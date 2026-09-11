@@ -68,7 +68,8 @@
         "note": "First noticed around the late 1970s; the transmitter is dated to the Soviet Union from 1982",
         "lastConfirmed": "2026-09-11",
         "sourceUrl": "https://en.wikipedia.org/wiki/UVB-76"
-      }
+      },
+      "activeUntil": null
     },
     {
       "enigmaId": "S30",
@@ -117,7 +118,8 @@
         "note": "First air date August 1986",
         "lastConfirmed": "2026-09-11",
         "sourceUrl": "https://en.wikipedia.org/wiki/The_Pip"
-      }
+      },
+      "activeUntil": null
     },
     {
       "enigmaId": "S32",
@@ -181,7 +183,8 @@
         "note": "First air date 2000",
         "lastConfirmed": "2026-09-11",
         "sourceUrl": "https://en.wikipedia.org/wiki/The_Squeaky_Wheel"
-      }
+      },
+      "activeUntil": null
     },
     {
       "enigmaId": "E11",
@@ -985,7 +988,8 @@
         "https://priyom.org/number-stations/english/e11/schedule"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": null
     },
     {
       "enigmaId": "E03",
@@ -1023,6 +1027,13 @@
         "note": "The precise date is not known; broadcasts are believed to have started in the early to mid 1970s, and ran from at least the mid-1970s",
         "lastConfirmed": "2026-09-11",
         "sourceUrl": "https://en.wikipedia.org/wiki/Lincolnshire_Poacher_(numbers_station)"
+      },
+      "activeUntil": {
+        "year": 2008,
+        "approximate": false,
+        "note": "The final recorded transmission was on 2 July 2008",
+        "lastConfirmed": "2026-09-11",
+        "sourceUrl": "https://en.wikipedia.org/wiki/Lincolnshire_Poacher_(numbers_station)"
       }
     },
     {
@@ -1046,7 +1057,14 @@
         "https://www.numbersoddities.nl/E03-profile.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": {
+        "year": 2009,
+        "approximate": false,
+        "note": "stopped in December 2009",
+        "lastConfirmed": "2026-09-11",
+        "sourceUrl": "https://en.wikipedia.org/wiki/Cherry_Ripe_(numbers_station)"
+      }
     },
     {
       "enigmaId": "V02a",
@@ -1076,6 +1094,13 @@
         "year": 1997,
         "approximate": false,
         "note": "V02a replaced the original V02 in 1997",
+        "lastConfirmed": "2026-09-11",
+        "sourceUrl": "https://priyom.org/number-stations/other/v02a"
+      },
+      "activeUntil": {
+        "year": 2019,
+        "approximate": false,
+        "note": "it went inactive in February 2019 alongside its Morse counterpart M08a",
         "lastConfirmed": "2026-09-11",
         "sourceUrl": "https://priyom.org/number-stations/other/v02a"
       }
@@ -1117,6 +1142,13 @@
         "note": "Appeared around 2012 and absorbed most of the schedules of V02a and SK01",
         "lastConfirmed": "2026-09-11",
         "sourceUrl": "https://priyom.org/number-stations/digital/hm01"
+      },
+      "activeUntil": {
+        "year": 2024,
+        "approximate": false,
+        "note": "On 23 August 2024 the transmitter failed permanently",
+        "lastConfirmed": "2026-09-11",
+        "sourceUrl": "https://priyom.org/number-stations/digital/hm01"
       }
     },
     {
@@ -1139,7 +1171,14 @@
         "https://priyom.org/number-stations/other/v15"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": {
+        "year": 2020,
+        "approximate": false,
+        "note": "Broadcasts ran weekly until 27 June 2019, then only four more times — 19 September and 9 November 2019, and 7 and 12 March 2020",
+        "lastConfirmed": "2026-09-11",
+        "sourceUrl": "https://priyom.org/number-stations/other/v15"
+      }
     },
     {
       "enigmaId": "V24",
@@ -1161,7 +1200,14 @@
         "https://priyom.org/number-stations/other/v24"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": {
+        "year": 2020,
+        "approximate": false,
+        "note": "Last heard in September 2020 and inactive since",
+        "lastConfirmed": "2026-09-11",
+        "sourceUrl": "https://priyom.org/number-stations/other/v24"
+      }
     },
     {
       "enigmaId": "G02",
@@ -1183,7 +1229,8 @@
         "https://priyom.org/number-stations/german/g02"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": null
     },
     {
       "enigmaId": "G03",
@@ -1207,7 +1254,8 @@
         "https://priyom.org/number-stations/german/g03"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": null
     },
     {
       "enigmaId": "E06",
@@ -1230,7 +1278,8 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": null
     },
     {
       "enigmaId": "E07",
@@ -1253,7 +1302,8 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": null
     },
     {
       "enigmaId": "E25",
@@ -1301,7 +1351,8 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": null
     },
     {
       "enigmaId": "E01",
@@ -1324,7 +1375,14 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": {
+        "year": 1999,
+        "approximate": true,
+        "note": "Last reported in late 1999",
+        "lastConfirmed": "2026-09-11",
+        "sourceUrl": "https://priyom.org/number-stations/english/e01"
+      }
     },
     {
       "enigmaId": "E05",
@@ -1347,7 +1405,14 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": {
+        "year": 2003,
+        "approximate": true,
+        "note": "Last reported in October 2003",
+        "lastConfirmed": "2026-09-11",
+        "sourceUrl": "https://priyom.org/number-stations/english/e05"
+      }
     },
     {
       "enigmaId": "E07a",
@@ -1370,7 +1435,14 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": {
+        "year": 2022,
+        "approximate": false,
+        "note": "retired from regular activity when its two known schedules both went inactive together at the end of January 2022",
+        "lastConfirmed": "2026-09-11",
+        "sourceUrl": "https://priyom.org/number-stations/english/e07a"
+      }
     },
     {
       "enigmaId": "E09",
@@ -1399,6 +1471,13 @@
         "note": "first heard in February 1995",
         "lastConfirmed": "2026-09-11",
         "sourceUrl": "https://priyom.org/number-stations/english/e09"
+      },
+      "activeUntil": {
+        "year": 1997,
+        "approximate": true,
+        "note": "Last reported in July 1997",
+        "lastConfirmed": "2026-09-11",
+        "sourceUrl": "https://priyom.org/number-stations/english/e09"
       }
     },
     {
@@ -1422,7 +1501,14 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": {
+        "year": 2011,
+        "approximate": true,
+        "note": "Last reported in March 2011",
+        "lastConfirmed": "2026-09-11",
+        "sourceUrl": "https://priyom.org/number-stations/english/e10"
+      }
     },
     {
       "enigmaId": "E12",
@@ -1445,7 +1531,14 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": {
+        "year": 1997,
+        "approximate": true,
+        "note": "Last reported in November 1997",
+        "lastConfirmed": "2026-09-11",
+        "sourceUrl": "https://priyom.org/number-stations/english/e12"
+      }
     },
     {
       "enigmaId": "E13",
@@ -1468,7 +1561,8 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": null
     },
     {
       "enigmaId": "E14",
@@ -1491,7 +1585,14 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": {
+        "year": 1996,
+        "approximate": true,
+        "note": "Last reported in early 1996",
+        "lastConfirmed": "2026-09-11",
+        "sourceUrl": "https://priyom.org/number-stations/english/e14"
+      }
     },
     {
       "enigmaId": "E15",
@@ -1520,6 +1621,13 @@
         "note": "first reliably reported in early 1993",
         "lastConfirmed": "2026-09-11",
         "sourceUrl": "https://priyom.org/number-stations/english/e15"
+      },
+      "activeUntil": {
+        "year": 2006,
+        "approximate": true,
+        "note": "Last reported in May 2006",
+        "lastConfirmed": "2026-09-11",
+        "sourceUrl": "https://priyom.org/number-stations/english/e15"
       }
     },
     {
@@ -1543,7 +1651,14 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": {
+        "year": 1999,
+        "approximate": true,
+        "note": "Last reported in June 1999",
+        "lastConfirmed": "2026-09-11",
+        "sourceUrl": "https://priyom.org/number-stations/english/e16"
+      }
     },
     {
       "enigmaId": "E17",
@@ -1566,7 +1681,14 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": {
+        "year": 2001,
+        "approximate": false,
+        "note": "Ceased in 2001",
+        "lastConfirmed": "2026-09-11",
+        "sourceUrl": "https://priyom.org/number-stations/english/e17"
+      }
     },
     {
       "enigmaId": "E17z",
@@ -1577,7 +1699,7 @@
       "tier": "historical",
       "marker": null,
       "markerPeriodSec": null,
-      "lastConfirmed": null,
+      "lastConfirmed": "2022-02-24",
       "lore": {
         "text": "E17z is the English language mode of the Ukrainian sz operator. It has brutally ceased operations since the night of February 24, 2022, when the large-scale military invasion of Ukraine by Russia began. E17z exists on only one schedule - 217 - which mirrors the habits of its sister mode S06s.",
         "quotedFrom": "https://priyom.org/number-stations/english/e17z"
@@ -1589,7 +1711,14 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": {
+        "year": 2022,
+        "approximate": false,
+        "note": "ceased operations since the night of February 24, 2022",
+        "lastConfirmed": "2026-09-11",
+        "sourceUrl": "https://priyom.org/number-stations/english/e17z"
+      }
     },
     {
       "enigmaId": "E18",
@@ -1616,6 +1745,13 @@
         "year": 1989,
         "approximate": true,
         "note": "first mentioned as being active in September 1989",
+        "lastConfirmed": "2026-09-11",
+        "sourceUrl": "https://priyom.org/number-stations/english/e18"
+      },
+      "activeUntil": {
+        "year": 2002,
+        "approximate": true,
+        "note": "Last reported in December 2002",
         "lastConfirmed": "2026-09-11",
         "sourceUrl": "https://priyom.org/number-stations/english/e18"
       }
@@ -1647,6 +1783,13 @@
         "note": "First noted around 1981",
         "lastConfirmed": "2026-09-11",
         "sourceUrl": "https://priyom.org/number-stations/english/e21"
+      },
+      "activeUntil": {
+        "year": 1995,
+        "approximate": false,
+        "note": "ceased in March 1995",
+        "lastConfirmed": "2026-09-11",
+        "sourceUrl": "https://priyom.org/number-stations/english/e21"
       }
     },
     {
@@ -1670,7 +1813,14 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": {
+        "year": 2007,
+        "approximate": true,
+        "note": "Last reported in January 2007",
+        "lastConfirmed": "2026-09-11",
+        "sourceUrl": "https://priyom.org/number-stations/english/e23"
+      }
     },
     {
       "enigmaId": "E25b",
@@ -1693,7 +1843,14 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": {
+        "year": 2007,
+        "approximate": false,
+        "note": "Ceased when E25 switched to pre-recorded female voice in 2007",
+        "lastConfirmed": "2026-09-11",
+        "sourceUrl": "https://priyom.org/number-stations/english/e25b"
+      }
     },
     {
       "enigmaId": "S06",
@@ -1716,7 +1873,8 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": null
     },
     {
       "enigmaId": "S06c",
@@ -1739,7 +1897,8 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": null
     },
     {
       "enigmaId": "S11a",
@@ -1923,7 +2082,8 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": null
     },
     {
       "enigmaId": "S25",
@@ -1946,7 +2106,8 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": null
     },
     {
       "enigmaId": "S02",
@@ -1969,7 +2130,14 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": {
+        "year": 1996,
+        "approximate": true,
+        "note": "last heard in 1996",
+        "lastConfirmed": "2026-09-11",
+        "sourceUrl": "https://priyom.org/number-stations/slavic/s02"
+      }
     },
     {
       "enigmaId": "S02a",
@@ -1992,7 +2160,8 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": null
     },
     {
       "enigmaId": "S02c",
@@ -2015,7 +2184,8 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": null
     },
     {
       "enigmaId": "S02d",
@@ -2038,7 +2208,8 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": null
     },
     {
       "enigmaId": "S03",
@@ -2061,7 +2232,8 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": null
     },
     {
       "enigmaId": "S04",
@@ -2084,7 +2256,14 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": {
+        "year": 2006,
+        "approximate": true,
+        "note": "Last heard in 2006",
+        "lastConfirmed": "2026-09-11",
+        "sourceUrl": "https://priyom.org/number-stations/slavic/s04"
+      }
     },
     {
       "enigmaId": "S05",
@@ -2107,7 +2286,8 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": null
     },
     {
       "enigmaId": "S05a",
@@ -2130,7 +2310,8 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": null
     },
     {
       "enigmaId": "S05b",
@@ -2153,7 +2334,14 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": {
+        "year": 1996,
+        "approximate": true,
+        "note": "Last heard in 1996, replaced by S10d",
+        "lastConfirmed": "2026-09-11",
+        "sourceUrl": "https://priyom.org/number-stations/slavic/s05b"
+      }
     },
     {
       "enigmaId": "S06a",
@@ -2176,7 +2364,8 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": null
     },
     {
       "enigmaId": "S06s",
@@ -2187,7 +2376,7 @@
       "tier": "historical",
       "marker": null,
       "markerPeriodSec": null,
-      "lastConfirmed": null,
+      "lastConfirmed": "2022-02-24",
       "lore": {
         "text": "S06s is the Russian language mode of the Ukrainian sz operator. It has brutally ceased all operations since the night of February 24, 2022, when the large-scale military invasion of Ukraine by Russia began. All S06s schedules are weekly and consist of 2 identical transmissions 10 minutes apart. Each transmission uses one of three different frequencies depending on the month - one from November to February, another from May to August, and yet another for the remaining months. The 3-digit ID identifies a particular schedule. Tests are performed prior to each transmission: 10 minutes before the first, and 2 minutes before the second.",
         "quotedFrom": "https://priyom.org/number-stations/slavic/s06s"
@@ -2199,7 +2388,14 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": {
+        "year": 2022,
+        "approximate": false,
+        "note": "ceased all operations since the night of February 24, 2022",
+        "lastConfirmed": "2026-09-11",
+        "sourceUrl": "https://priyom.org/number-stations/slavic/s06s"
+      }
     },
     {
       "enigmaId": "S07",
@@ -2222,7 +2418,14 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": {
+        "year": 2001,
+        "approximate": false,
+        "note": "Retired in March 2001",
+        "lastConfirmed": "2026-09-11",
+        "sourceUrl": "https://priyom.org/number-stations/slavic/s07"
+      }
     },
     {
       "enigmaId": "S08",
@@ -2245,7 +2448,14 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": {
+        "year": 1996,
+        "approximate": true,
+        "note": "Last heard in 1996",
+        "lastConfirmed": "2026-09-11",
+        "sourceUrl": "https://priyom.org/number-stations/slavic/s08"
+      }
     },
     {
       "enigmaId": "S10",
@@ -2268,7 +2478,8 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": null
     },
     {
       "enigmaId": "S10a",
@@ -2291,7 +2502,8 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": null
     },
     {
       "enigmaId": "S10b",
@@ -2311,7 +2523,8 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": null
     },
     {
       "enigmaId": "S10d",
@@ -2322,7 +2535,7 @@
       "tier": "historical",
       "marker": null,
       "markerPeriodSec": null,
-      "lastConfirmed": null,
+      "lastConfirmed": "2007-06-20",
       "lore": {
         "text": "S10d was run by the Czech Military Intelligence (Czech: Vojenské zpravodajství). Active from 1996 until 20 June 2007. Like its predecessors S10 and S10b, S10d often sent more than one message in one transmission to more than one recipient. In that case, in the intro, the ID's and the group counts were included for all the messages, in the same way as the first one. Then the preamble, the message and the outro except \"Konec, konec\" followed for each message. The last message ended the transmission with \"Konec, konec\". From 1996 to 2006, the arbitrary ID was only 555. Then from 2006 until the station's demise random triplets were used, but not 555 anymore.",
         "quotedFrom": "https://priyom.org/number-stations/slavic/s10d"
@@ -2334,7 +2547,20 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": {
+        "year": 1996,
+        "approximate": false,
+        "note": "Active from 1996",
+        "lastConfirmed": "2026-09-11",
+        "sourceUrl": "https://priyom.org/number-stations/slavic/s10d"
+      },
+      "activeUntil": {
+        "year": 2007,
+        "approximate": false,
+        "note": "until 20 June 2007",
+        "lastConfirmed": "2026-09-11",
+        "sourceUrl": "https://priyom.org/number-stations/slavic/s10d"
+      }
     },
     {
       "enigmaId": "S10e",
@@ -2357,7 +2583,14 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": {
+        "year": 2003,
+        "approximate": true,
+        "note": "Last heard in 2003",
+        "lastConfirmed": "2026-09-11",
+        "sourceUrl": "https://priyom.org/number-stations/slavic/s10e"
+      }
     },
     {
       "enigmaId": "S11",
@@ -2380,7 +2613,14 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": {
+        "year": 1994,
+        "approximate": true,
+        "note": "last reported as a regular operation in early 1994",
+        "lastConfirmed": "2026-09-11",
+        "sourceUrl": "https://priyom.org/number-stations/slavic/s11"
+      }
     },
     {
       "enigmaId": "S17a",
@@ -2403,7 +2643,8 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": null
     },
     {
       "enigmaId": "S17b",
@@ -2426,7 +2667,8 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": null
     },
     {
       "enigmaId": "S17c",
@@ -2437,7 +2679,7 @@
       "tier": "historical",
       "marker": null,
       "markerPeriodSec": null,
-      "lastConfirmed": null,
+      "lastConfirmed": "2007-06-19",
       "lore": {
         "text": "S17c was run by the Czech Military Intelligence (Czech: Vojenské zpravodajství). Last heard on 19 June 2007. The general format was the same as S10d, but the recipient ID, the 2-figure number in the preamble and the amount of groups were constant. S17c was sent out daily at 12:50 UTC, and each transmission lasted about 7 minutes. Up until 1 February 2007, it was transmitted on two frequencies simultaneously, and on only one frequency afterwards. Until 2 February 2007, the arbitrary ID was only 555 - then until the station's demise, random triplets were used, but never 555.",
         "quotedFrom": "https://priyom.org/number-stations/slavic/s17c"
@@ -2449,7 +2691,14 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": {
+        "year": 2007,
+        "approximate": true,
+        "note": "Last heard on 19 June 2007",
+        "lastConfirmed": "2026-09-11",
+        "sourceUrl": "https://priyom.org/number-stations/slavic/s17c"
+      }
     },
     {
       "enigmaId": "S21",
@@ -2472,7 +2721,14 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": {
+        "year": 2013,
+        "approximate": true,
+        "note": "Last heard in October 2013",
+        "lastConfirmed": "2026-09-11",
+        "sourceUrl": "https://priyom.org/number-stations/slavic/s21"
+      }
     },
     {
       "enigmaId": "S26",
@@ -2495,7 +2751,8 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": null
     },
     {
       "enigmaId": "S31",
@@ -2518,7 +2775,14 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": {
+        "year": 2000,
+        "approximate": true,
+        "note": "Last heard in 2000 after more than 30 years of operation",
+        "lastConfirmed": "2026-09-11",
+        "sourceUrl": "https://priyom.org/number-stations/slavic/s31"
+      }
     },
     {
       "enigmaId": "G01",
@@ -2541,7 +2805,14 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": {
+        "year": 1975,
+        "approximate": false,
+        "note": "Transmissions ceased in 1975",
+        "lastConfirmed": "2026-09-11",
+        "sourceUrl": "https://priyom.org/number-stations/german/g01"
+      }
     },
     {
       "enigmaId": "G04",
@@ -2564,7 +2835,14 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": {
+        "year": 2005,
+        "approximate": false,
+        "note": "ceased in 2005",
+        "lastConfirmed": "2026-09-11",
+        "sourceUrl": "https://priyom.org/number-stations/german/g04"
+      }
     },
     {
       "enigmaId": "G05",
@@ -2587,7 +2865,8 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": null
     },
     {
       "enigmaId": "G06",
@@ -2598,7 +2877,7 @@
       "tier": "historical",
       "marker": null,
       "markerPeriodSec": null,
-      "lastConfirmed": null,
+      "lastConfirmed": "2024-11-11",
       "lore": {
         "text": "G06 is the German language mode of the Russian 6 operator. Most of its schedules were retired at the end of 2019, before being fully retired from regular operation in March 2021. Similarly to other language modes of this operator retired from regular operation, it was still heard in test transmissions: in December 2021 using ID 352 and 975; then on February 17th and December 14th, 2023, and January 30th, 2024, using ID 352; and on November 11th, 2024, using ID 801.",
         "quotedFrom": "https://priyom.org/number-stations/german/g06"
@@ -2610,7 +2889,14 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": {
+        "year": 2021,
+        "approximate": false,
+        "note": "fully retired from regular operation in March 2021",
+        "lastConfirmed": "2026-09-11",
+        "sourceUrl": "https://priyom.org/number-stations/german/g06"
+      }
     },
     {
       "enigmaId": "G07",
@@ -2633,7 +2919,14 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": {
+        "year": 2001,
+        "approximate": false,
+        "note": "Retired in January 2001",
+        "lastConfirmed": "2026-09-11",
+        "sourceUrl": "https://priyom.org/number-stations/german/g07"
+      }
     },
     {
       "enigmaId": "G08",
@@ -2656,7 +2949,14 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": {
+        "year": 1990,
+        "approximate": true,
+        "note": "Last heard in May 1990, shortly before the German unification",
+        "lastConfirmed": "2026-09-11",
+        "sourceUrl": "https://priyom.org/number-stations/german/g08"
+      }
     },
     {
       "enigmaId": "G09",
@@ -2679,7 +2979,8 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": null
     },
     {
       "enigmaId": "G10",
@@ -2702,7 +3003,8 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": null
     },
     {
       "enigmaId": "G11",
@@ -2725,7 +3027,8 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": null
     },
     {
       "enigmaId": "G12",
@@ -2748,7 +3051,8 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": null
     },
     {
       "enigmaId": "G13",
@@ -2771,7 +3075,8 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": null
     },
     {
       "enigmaId": "G14",
@@ -2794,7 +3099,8 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": null
     },
     {
       "enigmaId": "G15",
@@ -2817,7 +3123,8 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": null
     },
     {
       "enigmaId": "G16",
@@ -2840,7 +3147,14 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": {
+        "year": 1999,
+        "approximate": true,
+        "note": "Last heard in 1999",
+        "lastConfirmed": "2026-09-11",
+        "sourceUrl": "https://priyom.org/number-stations/german/g16"
+      }
     },
     {
       "enigmaId": "G18",
@@ -2863,7 +3177,14 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": {
+        "year": 1973,
+        "approximate": true,
+        "note": "Ceased around 1973",
+        "lastConfirmed": "2026-09-11",
+        "sourceUrl": "https://priyom.org/number-stations/german/g18"
+      }
     },
     {
       "enigmaId": "G20",
@@ -2886,7 +3207,8 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": null
     },
     {
       "enigmaId": "G22",
@@ -2909,7 +3231,14 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": {
+        "year": 2006,
+        "approximate": true,
+        "note": "Last heard in early 2006",
+        "lastConfirmed": "2026-09-11",
+        "sourceUrl": "https://priyom.org/number-stations/german/g22"
+      }
     },
     {
       "enigmaId": "V07",
@@ -3059,7 +3388,8 @@
         "note": "first noted as early as 1995",
         "lastConfirmed": "2026-09-11",
         "sourceUrl": "https://priyom.org/number-stations/other/v07"
-      }
+      },
+      "activeUntil": null
     },
     {
       "enigmaId": "V13",
@@ -3219,7 +3549,8 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": null
     },
     {
       "enigmaId": "V28",
@@ -3248,7 +3579,8 @@
         "note": "first heard in November 2015",
         "lastConfirmed": "2026-09-11",
         "sourceUrl": "https://priyom.org/number-stations/other/v28"
-      }
+      },
+      "activeUntil": null
     },
     {
       "enigmaId": "V01",
@@ -3271,7 +3603,14 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": {
+        "year": 1989,
+        "approximate": true,
+        "note": "Ceased soon after the Romanian revolution in 1989",
+        "lastConfirmed": "2026-09-11",
+        "sourceUrl": "https://priyom.org/number-stations/other/v01"
+      }
     },
     {
       "enigmaId": "V02",
@@ -3294,7 +3633,8 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": null
     },
     {
       "enigmaId": "V06",
@@ -3317,7 +3657,14 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": {
+        "year": 2000,
+        "approximate": false,
+        "note": "retired as a regular operation in 2000",
+        "lastConfirmed": "2026-09-11",
+        "sourceUrl": "https://priyom.org/number-stations/other/v06"
+      }
     },
     {
       "enigmaId": "V08",
@@ -3346,7 +3693,8 @@
         "note": "First heard in early 1995",
         "lastConfirmed": "2026-09-11",
         "sourceUrl": "https://priyom.org/number-stations/other/v08"
-      }
+      },
+      "activeUntil": null
     },
     {
       "enigmaId": "V10",
@@ -3369,7 +3717,14 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": {
+        "year": 1988,
+        "approximate": true,
+        "note": "Last heard in August 1988",
+        "lastConfirmed": "2026-09-11",
+        "sourceUrl": "https://priyom.org/number-stations/other/v10"
+      }
     },
     {
       "enigmaId": "V12",
@@ -3389,7 +3744,8 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": null
     },
     {
       "enigmaId": "V14",
@@ -3412,7 +3768,8 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": null
     },
     {
       "enigmaId": "V19",
@@ -3435,7 +3792,8 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": null
     },
     {
       "enigmaId": "V20",
@@ -3458,7 +3816,14 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": {
+        "year": 1998,
+        "approximate": true,
+        "note": "Last heard in August 1998, shortly before the network was dismantled",
+        "lastConfirmed": "2026-09-11",
+        "sourceUrl": "https://priyom.org/number-stations/other/v20"
+      }
     },
     {
       "enigmaId": "V30",
@@ -3469,7 +3834,7 @@
       "tier": "historical",
       "marker": null,
       "markerPeriodSec": null,
-      "lastConfirmed": null,
+      "lastConfirmed": "2016-05-06",
       "lore": {
         "text": "The language was Vietnamese. Voice counterpart of M97. First heard on February 21, 2010, and last heard on May 6, 2016. Like M97, the whole message was repeated several times before finally shutting down. Transmissions in total lasted around 30 minutes. Messages were sometimes reused for months and even years. V30 had only one schedule, which was very erratic and did not always transmit. It transmitted at 16:00 UTC on 10255. The computer clock used for the transmissions was inaccurate and every day the transmission start shifted a few seconds before the intended time, thus reaching start times as early as 15:54 before the clock was put on time again.",
         "quotedFrom": "https://priyom.org/number-stations/other/v30"
@@ -3485,6 +3850,13 @@
         "year": 2010,
         "approximate": true,
         "note": "First heard on February 21, 2010",
+        "lastConfirmed": "2026-09-11",
+        "sourceUrl": "https://priyom.org/number-stations/other/v30"
+      },
+      "activeUntil": {
+        "year": 2016,
+        "approximate": true,
+        "note": "last heard on May 6, 2016",
         "lastConfirmed": "2026-09-11",
         "sourceUrl": "https://priyom.org/number-stations/other/v30"
       }
@@ -3591,7 +3963,8 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": null
     },
     {
       "enigmaId": "M01a",
@@ -3614,7 +3987,8 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": null
     },
     {
       "enigmaId": "M12",
@@ -3637,7 +4011,8 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": null
     },
     {
       "enigmaId": "M14",
@@ -3660,7 +4035,8 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": null
     },
     {
       "enigmaId": "M23",
@@ -3804,7 +4180,8 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": null
     },
     {
       "enigmaId": "M01b",
@@ -3815,7 +4192,7 @@
       "tier": "historical",
       "marker": null,
       "markerPeriodSec": null,
-      "lastConfirmed": null,
+      "lastConfirmed": "2020-05-29",
       "lore": {
         "text": "M01b was a Russian number station. Last heard on May 29, 2020. All M01b schedules transmitted the same message, with each schedule using a different 3-digit ID. The messages were always between 30 and 50 groups long, and replaced monthly on the 1st of the month. M01b was keyed semi-automatically by an operator using a computer running Microsoft Windows. Windows XP was used as of 2014, later upgraded to Windows 7 by 2019, as indicated by leaked sound effects: M01b with the Windows XP shutdown sound (at 14:05) M01b with the Windows 7 shutdown sound (at 1:29)",
         "quotedFrom": "https://priyom.org/number-stations/morse/m01b"
@@ -3827,7 +4204,14 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": {
+        "year": 2020,
+        "approximate": true,
+        "note": "Last heard on May 29, 2020",
+        "lastConfirmed": "2026-09-11",
+        "sourceUrl": "https://priyom.org/number-stations/morse/m01b"
+      }
     },
     {
       "enigmaId": "M02",
@@ -3838,7 +4222,7 @@
       "tier": "historical",
       "marker": null,
       "markerPeriodSec": null,
-      "lastConfirmed": null,
+      "lastConfirmed": "1997-10-30",
       "lore": {
         "text": "M02 was ran by Austrian Army Intelligence Office (HNA). Morse code counterpart to E12, G12, V12 and V18. Last heard on 30 October 1997. M02 sent many transmissions a day, on frequencies also including those used by its voice counterparts. The speed was 25 WPM, and the standard zero was used - five dashes. Distinct feature of M02 were strong key clicks, noted to be 30 kHz wide. Unlike M02's voice counterparts, M02 started its transmissions with a 3-figure ID. Its message lengths were also not restricted to 15/20/25/30/35 groups. The transmissions were made from Saturday to Thursday, in the time frames of 04:00 - 07:00 and 17:00 - 22:00 UTC, always starting at full hour.",
         "quotedFrom": "https://priyom.org/number-stations/morse/m02"
@@ -3850,7 +4234,14 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": {
+        "year": 1997,
+        "approximate": true,
+        "note": "Last heard on 30 October 1997",
+        "lastConfirmed": "2026-09-11",
+        "sourceUrl": "https://priyom.org/number-stations/morse/m02"
+      }
     },
     {
       "enigmaId": "M03",
@@ -3873,7 +4264,14 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": {
+        "year": 2016,
+        "approximate": false,
+        "note": "Retired in February 2016",
+        "lastConfirmed": "2026-09-11",
+        "sourceUrl": "https://priyom.org/number-stations/morse/m03"
+      }
     },
     {
       "enigmaId": "M03a",
@@ -3896,7 +4294,14 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": {
+        "year": 2000,
+        "approximate": false,
+        "note": "More or less regular transmissions ceased in May 2000",
+        "lastConfirmed": "2026-09-11",
+        "sourceUrl": "https://priyom.org/number-stations/morse/m03a"
+      }
     },
     {
       "enigmaId": "M03b",
@@ -3919,7 +4324,8 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": null
     },
     {
       "enigmaId": "M03c",
@@ -3942,7 +4348,8 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": null
     },
     {
       "enigmaId": "M03d",
@@ -3965,7 +4372,8 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": null
     },
     {
       "enigmaId": "M03e",
@@ -3994,6 +4402,13 @@
         "note": "Only noted on the turn of 2003 and 2004",
         "lastConfirmed": "2026-09-11",
         "sourceUrl": "https://priyom.org/number-stations/morse/m03e"
+      },
+      "activeUntil": {
+        "year": 2004,
+        "approximate": true,
+        "note": "Only noted on the turn of 2003 and 2004, not heard ever since",
+        "lastConfirmed": "2026-09-11",
+        "sourceUrl": "https://priyom.org/number-stations/morse/m03e"
       }
     },
     {
@@ -4017,7 +4432,8 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": null
     },
     {
       "enigmaId": "M04",
@@ -4028,7 +4444,7 @@
       "tier": "historical",
       "marker": null,
       "markerPeriodSec": null,
-      "lastConfirmed": null,
+      "lastConfirmed": "2000-09-14",
       "lore": {
         "text": "M04 was most recently operated by the Polish Office for State Protection (UOP). It was a Morse code counterpart to G02, and later E23. Last heard on 14 September 2000. Full transmissions always took roughly 26 minutes. Prior to April 1998, M04 used the following schedule. The counting of the weeks started on the first Saturday of the month. The U's at the beginning were initially repeated for 10 minutes. In April 1998, it was shortened to 3 minutes. The final M04 transmission was on 14 September 2000, however, blank carriers were transmitted for the length of E23 transmissions on its former schedules until 2002. Recording courtesy of Numbers & Oddities",
         "quotedFrom": "https://priyom.org/number-stations/morse/m04"
@@ -4040,7 +4456,14 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": {
+        "year": 2000,
+        "approximate": true,
+        "note": "Last heard on 14 September 2000",
+        "lastConfirmed": "2026-09-11",
+        "sourceUrl": "https://priyom.org/number-stations/morse/m04"
+      }
     },
     {
       "enigmaId": "M05",
@@ -4063,7 +4486,8 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": null
     },
     {
       "enigmaId": "M06",
@@ -4074,7 +4498,7 @@
       "tier": "historical",
       "marker": null,
       "markerPeriodSec": null,
-      "lastConfirmed": null,
+      "lastConfirmed": "1997-08-02",
       "lore": {
         "text": "M06 was run by the Czech Office for Foreign Relations and Information (ÚZSI) under an ITU-registered callsign OLX. Morse code counterpart to S05b. Last heard on 2 August 1997. The \"VVV DE OLX OLX\" intro bit started 5 minutes before the full hour, and was sent at 15 WPM, while the rest of the transmission was 25 WPM. Zero was sent as \"T\" - a single dash. M06 filled about 50% of the OLX schedule. M06 transmitted on the following schedule:",
         "quotedFrom": "https://priyom.org/number-stations/morse/m06"
@@ -4086,7 +4510,14 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": {
+        "year": 1997,
+        "approximate": true,
+        "note": "Last heard on 2 August 1997",
+        "lastConfirmed": "2026-09-11",
+        "sourceUrl": "https://priyom.org/number-stations/morse/m06"
+      }
     },
     {
       "enigmaId": "M06a",
@@ -4109,7 +4540,8 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": null
     },
     {
       "enigmaId": "M07",
@@ -4120,7 +4552,7 @@
       "tier": "historical",
       "marker": null,
       "markerPeriodSec": null,
-      "lastConfirmed": null,
+      "lastConfirmed": "2001-11-08",
       "lore": {
         "text": "M07 was run by the Czech military intelligence. Last heard on 8 November 2001. M07 transmission began and ended with a sequence of tones resembling Morse characters for one minute. Between them: The preamble and the outro were sent at 15 WPM, whereas the message groups were 20 WPM. Zero was sent as T - a single dash. The format was similar to M10, and also the same frequencies were used, but M07 always carried only one message. M07 could have started at any 10-minute interval within an hour. Sometimes M10 messages were sent on M07 with the same headers. M07's old intro and outro were reported to be rapid dashes, rather than dot/dash sequences.",
         "quotedFrom": "https://priyom.org/number-stations/morse/m07"
@@ -4132,7 +4564,14 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": {
+        "year": 2001,
+        "approximate": true,
+        "note": "Last heard on 8 November 2001",
+        "lastConfirmed": "2026-09-11",
+        "sourceUrl": "https://priyom.org/number-stations/morse/m07"
+      }
     },
     {
       "enigmaId": "M08",
@@ -4155,7 +4594,8 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": null
     },
     {
       "enigmaId": "M08a",
@@ -4178,7 +4618,8 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": null
     },
     {
       "enigmaId": "M10",
@@ -4189,7 +4630,7 @@
       "tier": "historical",
       "marker": null,
       "markerPeriodSec": null,
-      "lastConfirmed": null,
+      "lastConfirmed": "2007-06-20",
       "lore": {
         "text": "M10 was run by the Czech Military Intelligence (Czech: Vojenské zpravodajství). Morse code counterpart to S10d. Active since mid 1970s (multiple formats) until 20 June 2007. M10's intro, preamble and outro were sent at 15 WPM, while the message groups were at 20 WPM. Zero was sent as T - a single dash. M10 often sent more than one message in one transmission to more than one recipient. In that case, in the intro, the ID's and the group counts were included for all the messages, in the same way as the first one. Then the preamble, the message and the outro except \"0 0 0\" followed for each message. The last message ended the transmission with \"0 0 0\".",
         "quotedFrom": "https://priyom.org/number-stations/morse/m10"
@@ -4205,6 +4646,13 @@
         "year": 1975,
         "approximate": true,
         "note": "Active since mid 1970s",
+        "lastConfirmed": "2026-09-11",
+        "sourceUrl": "https://priyom.org/number-stations/morse/m10"
+      },
+      "activeUntil": {
+        "year": 2007,
+        "approximate": false,
+        "note": "until 20 June 2007",
         "lastConfirmed": "2026-09-11",
         "sourceUrl": "https://priyom.org/number-stations/morse/m10"
       }
@@ -4230,7 +4678,8 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": null
     },
     {
       "enigmaId": "M11",
@@ -4241,7 +4690,7 @@
       "tier": "historical",
       "marker": null,
       "markerPeriodSec": null,
-      "lastConfirmed": null,
+      "lastConfirmed": "2007-06-12",
       "lore": {
         "text": "Morse code counterpart to S10e. Last heard on 12 June 2007. Each transmission contained always four messages, addressed to four different recipients - the ID's and the lengths were included in the intro the same way as the first one, and the same message procedure was used for each one, but only the last message ended with \"0 0 0\". M11 could have been heard every 28 days from Monday to Friday at 09:00 UTC on 5019 kHz.",
         "quotedFrom": "https://priyom.org/number-stations/morse/m11"
@@ -4253,7 +4702,14 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": {
+        "year": 2007,
+        "approximate": true,
+        "note": "Last heard on 12 June 2007",
+        "lastConfirmed": "2026-09-11",
+        "sourceUrl": "https://priyom.org/number-stations/morse/m11"
+      }
     },
     {
       "enigmaId": "M13",
@@ -4276,7 +4732,14 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": {
+        "year": 2006,
+        "approximate": true,
+        "note": "Last heard in early 2006",
+        "lastConfirmed": "2026-09-11",
+        "sourceUrl": "https://priyom.org/number-stations/morse/m13"
+      }
     },
     {
       "enigmaId": "M13a",
@@ -4299,7 +4762,8 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": null
     },
     {
       "enigmaId": "M13b",
@@ -4322,7 +4786,8 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": null
     },
     {
       "enigmaId": "M13c",
@@ -4345,7 +4810,8 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": null
     },
     {
       "enigmaId": "M13d",
@@ -4368,7 +4834,8 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": null
     },
     {
       "enigmaId": "M13e",
@@ -4391,7 +4858,8 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": null
     },
     {
       "enigmaId": "M17",
@@ -4414,7 +4882,14 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": {
+        "year": 2000,
+        "approximate": true,
+        "note": "Last heard in March 2000",
+        "lastConfirmed": "2026-09-11",
+        "sourceUrl": "https://priyom.org/number-stations/morse/m17"
+      }
     },
     {
       "enigmaId": "M29",
@@ -4437,7 +4912,14 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": {
+        "year": 2003,
+        "approximate": true,
+        "note": "Last heard in 2003",
+        "lastConfirmed": "2026-09-11",
+        "sourceUrl": "https://priyom.org/number-stations/morse/m29"
+      }
     },
     {
       "enigmaId": "M29a",
@@ -4460,7 +4942,14 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": {
+        "year": 2003,
+        "approximate": true,
+        "note": "Last heard in 2003",
+        "lastConfirmed": "2026-09-11",
+        "sourceUrl": "https://priyom.org/number-stations/morse/m29a"
+      }
     },
     {
       "enigmaId": "M39",
@@ -4483,7 +4972,8 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": null
     },
     {
       "enigmaId": "M40",
@@ -4506,7 +4996,14 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": {
+        "year": 2003,
+        "approximate": false,
+        "note": "Regular transmissions ceased in October 2003",
+        "lastConfirmed": "2026-09-11",
+        "sourceUrl": "https://priyom.org/number-stations/morse/m40"
+      }
     },
     {
       "enigmaId": "M45",
@@ -4529,7 +5026,14 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": {
+        "year": 2013,
+        "approximate": true,
+        "note": "Last heard in October 2013",
+        "lastConfirmed": "2026-09-11",
+        "sourceUrl": "https://priyom.org/number-stations/morse/m45"
+      }
     },
     {
       "enigmaId": "M94",
@@ -4552,7 +5056,14 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": {
+        "year": 2013,
+        "approximate": true,
+        "note": "Last heard in November 2013",
+        "lastConfirmed": "2026-09-11",
+        "sourceUrl": "https://priyom.org/number-stations/morse/m94"
+      }
     },
     {
       "enigmaId": "M97",
@@ -4563,7 +5074,7 @@
       "tier": "historical",
       "marker": null,
       "markerPeriodSec": null,
-      "lastConfirmed": null,
+      "lastConfirmed": "2016-05-06",
       "lore": {
         "text": "M97 was transmitted from Vietnam. Morse code counterpart to V30. Last heard in May 6, 2016. \"SD\" and \"SN\" presumably stand for \"So Dien\" and \"So Nhom\", Vietnamese phrases used by V30's voice counterpart, which are used in the same manner over there. The \"SD\" number was increased each time a new message was sent. The given \"SN\" number was not always correct. In November 2011, M97 was also observed with a 2-message format. The two messages were separated by \"KKKKKKK AAAAAAA\". It has not been seen in such a format ever since. M97 repeated the same message over extended periods of time, just as its voice counterpart. M97 was noted on 10375kHz around 15:00 UTC.",
         "quotedFrom": "https://priyom.org/number-stations/morse/m97"
@@ -4575,7 +5086,14 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": {
+        "year": 2016,
+        "approximate": true,
+        "note": "Last heard in May 6, 2016",
+        "lastConfirmed": "2026-09-11",
+        "sourceUrl": "https://priyom.org/number-stations/morse/m97"
+      }
     },
     {
       "enigmaId": "F01",
@@ -4598,7 +5116,8 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": null
     },
     {
       "enigmaId": "F03",
@@ -4618,7 +5137,8 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": null
     },
     {
       "enigmaId": "F06",
@@ -4641,7 +5161,8 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": null
     },
     {
       "enigmaId": "F06a",
@@ -4664,7 +5185,8 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": null
     },
     {
       "enigmaId": "F07",
@@ -4928,7 +5450,8 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": null
     },
     {
       "enigmaId": "P03",
@@ -4948,7 +5471,8 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": null
     },
     {
       "enigmaId": "P07",
@@ -5212,7 +5736,8 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": null
     },
     {
       "enigmaId": "XPA",
@@ -5476,7 +6001,8 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": null
     },
     {
       "enigmaId": "XPA2",
@@ -6280,7 +6806,8 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": null
     },
     {
       "enigmaId": "XPB",
@@ -7264,7 +7791,8 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": null
     },
     {
       "enigmaId": "F11",
@@ -7287,7 +7815,14 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": {
+        "year": 2018,
+        "approximate": false,
+        "note": "It ceased in December 2018, having been succeeded by F03 and P03",
+        "lastConfirmed": "2026-09-11",
+        "sourceUrl": "https://priyom.org/number-stations/digital/f11"
+      }
     },
     {
       "enigmaId": "SK01",
@@ -7310,7 +7845,8 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": null,
+      "activeUntil": null
     },
     {
       "enigmaId": "XP",
@@ -7333,7 +7869,20 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": {
+        "year": 1993,
+        "approximate": false,
+        "note": "Active from 1993",
+        "lastConfirmed": "2026-09-11",
+        "sourceUrl": "https://priyom.org/number-stations/digital/xp"
+      },
+      "activeUntil": {
+        "year": 2005,
+        "approximate": false,
+        "note": "until 2005",
+        "lastConfirmed": "2026-09-11",
+        "sourceUrl": "https://priyom.org/number-stations/digital/xp"
+      }
     }
   ]
 }

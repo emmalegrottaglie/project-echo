@@ -38,6 +38,10 @@ The licence requires that adaptations say so. The data here has been:
 - merged with material from the ENIGMA 2000 control list and, for a few stations,
   Wikipedia and numbers-stations.com, each carrying its own `sourceUrl`.
 
+Dates were read out of those descriptions rather than invented: where a page says when a
+station started or stopped, the year is recorded with the page's own sentence beside it,
+and `docs/RESEARCH.md` §9 sets out which sentences were taken and which were not.
+
 Station descriptions are **quoted, not adapted**. Each one is a verbatim extract of the
 prose on a Priyom station page, held in `lore.text` with the page in `lore.quotedFrom`,
 and rendered in the app as a quotation with that link and this licence beside it. Two

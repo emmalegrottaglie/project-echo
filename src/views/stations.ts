@@ -214,6 +214,10 @@ function detailHtml(station: Station): string {
     { label: 'Operator', value: station.operator },
     { label: 'Status', value: statusClaim(station) },
   ];
+  // The source's own phrasing rather than the year behind it: "Active since mid 1970s"
+  // and "Last heard in 1996" are different claims that would both render as a bare year.
+  if (station.activeFrom) items.push({ label: 'Start', value: station.activeFrom.note });
+  if (station.activeUntil) items.push({ label: 'End', value: station.activeUntil.note });
   if (station.marker) items.push({ label: 'Marker', value: station.marker });
   if (station.aliases.length) {
     items.push({ label: 'Also known as', value: station.aliases.join(', ') });

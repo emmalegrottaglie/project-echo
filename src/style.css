@@ -1656,19 +1656,20 @@ tr.disputed {
 }
 
 /*
- * A start nobody is sure of. The left edge fades instead of ending, because a hard cap
- * would assert a year the source explicitly declines to give.
+ * A date nobody is sure of. The edge fades instead of ending, because a hard cap would
+ * assert a year the source declines to give — a start hedged to a decade on the left, and
+ * on the right either a station still transmitting or one whose last hearing bounds the
+ * end without being it. A hard edge means a source said the station ceased.
  */
-.echo-timeline__bar.is-approximate {
+.echo-timeline__bar.is-soft-start {
   mask-image: linear-gradient(to right, transparent, #000 14%);
 }
 
-/* Still transmitting: the bar runs off the right rather than stopping at today. */
-.echo-timeline__bar.is-open {
+.echo-timeline__bar.is-soft-end {
   mask-image: linear-gradient(to left, transparent, #000 8%);
 }
 
-.echo-timeline__bar.is-approximate.is-open {
+.echo-timeline__bar.is-soft-start.is-soft-end {
   mask-image: linear-gradient(to right, transparent, #000 14%, #000 92%, transparent);
 }
 

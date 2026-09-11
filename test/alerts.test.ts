@@ -66,6 +66,9 @@ function station(schedules: Schedule[]): Station {
     lore: null,
     frequencies: [],
     schedules,
+    sites: [],
+    activeFrom: null,
+    activeUntil: null,
     sourceUrls: [],
   };
 }
