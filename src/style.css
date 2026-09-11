@@ -1820,6 +1820,18 @@ tr.disputed {
   paint-order: stroke;
 }
 
+/*
+ * The great-circle path. Thin and dimmed: it is context for the two things it joins,
+ * not a third thing competing with them.
+ */
+.echo-worldmap__path {
+  fill: none;
+  stroke: var(--fg);
+  stroke-width: 0.5;
+  stroke-opacity: 0.55;
+  stroke-dasharray: 3 2;
+}
+
 /* Transmitter sites. A cross, not a dot, because a transmitter is not one more
    receiver — and the three statuses are drawn differently because "claimed" and
    "former" are exactly what a single marker would hide. */

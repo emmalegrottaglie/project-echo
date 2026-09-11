@@ -62,6 +62,76 @@ export interface WorldMapOptions {
   sites?: readonly Site[];
 }
 
+const RADIANS = Math.PI / 180;
+
+/**
+ * The great-circle path between two points, as SVG path data.
+ *
+ * A straight line on an equirectangular map is not the route a radio signal takes. The
+ * short way from Moscow to a receiver in Oregon goes over the Arctic, and drawing it
+ * flat would put it across Kazakhstan and the Pacific — a picture of the wrong path, on
+ * a map whose only purpose is showing which path you are listening over.
+ *
+ * Interpolated by spherical linear interpolation and projected point by point, which is
+ * the same arithmetic a navigator uses and is short enough not to want a library.
+ *
+ * Returns one path per segment. A route crossing the antimeridian has to be cut there:
+ * a polyline whose longitude jumps from 179 to -179 would otherwise be drawn as a
+ * horizontal streak straight back across the whole map.
+ */
+export function greatCirclePath(
+  a: readonly [number, number],
+  b: readonly [number, number],
+  segments = 64,
+): string[] {
+  const [lat1, lon1] = [a[0] * RADIANS, a[1] * RADIANS];
+  const [lat2, lon2] = [b[0] * RADIANS, b[1] * RADIANS];
+
+  const delta =
+    2 *
+    Math.asin(
+      Math.sqrt(
+        Math.sin((lat2 - lat1) / 2) ** 2 +
+          Math.cos(lat1) * Math.cos(lat2) * Math.sin((lon2 - lon1) / 2) ** 2,
+      ),
+    );
+
+  // The same point, or as near as makes no difference: there is no path to draw.
+  if (!Number.isFinite(delta) || delta < 1e-9) return [];
+
+  const points: Array<[number, number]> = [];
+  for (let step = 0; step <= segments; step += 1) {
+    const f = step / segments;
+    const scaleA = Math.sin((1 - f) * delta) / Math.sin(delta);
+    const scaleB = Math.sin(f * delta) / Math.sin(delta);
+
+    const x = scaleA * Math.cos(lat1) * Math.cos(lon1) + scaleB * Math.cos(lat2) * Math.cos(lon2);
+    const y = scaleA * Math.cos(lat1) * Math.sin(lon1) + scaleB * Math.cos(lat2) * Math.sin(lon2);
+    const z = scaleA * Math.sin(lat1) + scaleB * Math.sin(lat2);
+
+    points.push([
+      Math.atan2(z, Math.sqrt(x * x + y * y)) / RADIANS,
+      Math.atan2(y, x) / RADIANS,
+    ]);
+  }
+
+  const paths: string[] = [];
+  let run: string[] = [];
+
+  points.forEach(([lat, lon], index) => {
+    const previous = points[index - 1];
+    // A jump of more than half the world is the seam, not a movement.
+    if (previous && Math.abs(lon - previous[1]) > 180) {
+      if (run.length > 1) paths.push(run.join(''));
+      run = [];
+    }
+    run.push(`${run.length === 0 ? 'M' : 'L'}${(lon + 180).toFixed(2)} ${(90 - lat).toFixed(2)}`);
+  });
+  if (run.length > 1) paths.push(run.join(''));
+
+  return paths;
+}
+
 /** A cross rather than a dot: a transmitter is not one more receiver. */
 function siteMark(site: Site): string {
   const x = site.lon + 180;
@@ -104,6 +174,18 @@ export function worldMap(receivers: readonly MapReceiver[], options: WorldMapOpt
     .join('');
 
   const sites = (options.sites ?? []).map(siteMark).join('');
+
+  // Only from the chosen receiver, and only to a site that is not abandoned. Drawing a
+  // path from all 786 would bury the map, and a path to a transmitter that stopped in
+  // 2010 is a route to nothing.
+  const chosen = placed.find((receiver) => receiver.host === options.selectedHost);
+  const paths = chosen
+    ? (options.sites ?? [])
+        .filter((site) => site.status !== 'former')
+        .flatMap((site) => greatCirclePath([site.lat, site.lon], chosen.gps))
+        .map((d) => `<path class="echo-worldmap__path" d="${d}" />`)
+        .join('')
+    : '';
   const unplaced = receivers.length - placed.length;
 
   // Named in the caption because a cross with no explanation is a puzzle, and because
@@ -120,11 +202,14 @@ export function worldMap(receivers: readonly MapReceiver[], options: WorldMapOpt
     ` aria-label="World map of ${placed.length} public receivers">` +
     `<g class="echo-worldmap__land" aria-hidden="true">${land}</g>` +
     `<g class="echo-worldmap__dots">${dots}</g>` +
+    `<g class="echo-worldmap__paths" aria-hidden="true">${paths}</g>` +
     `<g class="echo-worldmap__sites">${sites}</g>` +
     `</svg>` +
     `<figcaption>${placed.length} of ${receivers.length} receivers publish a position` +
     (unplaced > 0 ? `; ${unplaced} are in the list below but not on the map` : '') +
-    `. Dot size is reported SNR.${esc(siteNote)} Coastlines: ${esc(WORLD_ATTRIBUTION)}, ` +
+    `. Dot size is reported SNR.${esc(siteNote)}` +
+    (paths ? ' The arc is the great-circle path your receiver is listening over.' : '') +
+    ` Coastlines: ${esc(WORLD_ATTRIBUTION)}, ` +
     `public domain.` +
     `</figcaption>` +
     `</figure>`

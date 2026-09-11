@@ -84,6 +84,11 @@ also scales where the list cannot: 786 receivers is unusable as rows and perfect
 legible as dots, so the map draws all of them and the list renders the top fifty. Both
 carry the same `data-host`, so one click handler serves either.
 
+Once a receiver is chosen, the map draws the great-circle path between it and each
+working transmitter — interpolated and projected point by point, because a straight line
+on an equirectangular map is not the route a signal takes, and cut at the antimeridian so
+a Pacific path is not drawn as a streak back across the world.
+
 Transmitter sites are drawn on it as crosses, which is the point of having a map at
 all: what decides whether a marker arrives is the ionosphere along the path between the
 transmitter and the receiver, so seeing both is seeing the actual variable. The Buzzer

@@ -12,6 +12,17 @@ wrong fact is a defect. Where a correction has evidence behind it, the evidence 
 
 ### Added
 
+- **The great-circle path, drawn on the receiver map.** A straight line on an
+  equirectangular map is not the route a signal takes: the short way from Moscow to a
+  receiver in Missouri goes over the Arctic, and drawn flat it would cross Kazakhstan and
+  the Atlantic — a picture of the wrong path, on a map whose only purpose is showing
+  which path you are listening over. Interpolated by spherical linear interpolation and
+  projected point by point, cut at the antimeridian so a Pacific route is not drawn as a
+  streak back across the whole world.
+
+  Only from the chosen receiver, and only to a transmitter that has not been abandoned:
+  786 paths would bury the map, and a path to Povarovo is a route to nothing.
+
 - **A timeline, of what is actually known.** Ten of 141 stations carry a date, and the
   shape of that is the point: endings are recorded well because a station's death is an
   event someone notices, beginnings badly because a station starts by being noticed

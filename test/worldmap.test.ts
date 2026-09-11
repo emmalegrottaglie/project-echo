@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { worldMap, type MapReceiver } from '../src/worldmap';
+import { greatCirclePath, worldMap, type MapReceiver } from '../src/worldmap';
 import type { Site } from '../src/types';
 
 /**
@@ -181,5 +181,105 @@ describe('transmitter sites', () => {
   it('escapes a site name', () => {
     const markup = worldMap([], { sites: [site({ name: '<script>alert(1)</script>' })] });
     expect(markup).not.toContain('<script>');
+  });
+});
+
+/**
+ * The great-circle path.
+ *
+ * A straight line on an equirectangular map is not the route a signal takes, and the map
+ * exists to show which path you are listening over. These pin the two things that make
+ * the difference visible: the poleward bulge, and the seam.
+ */
+describe('greatCirclePath', () => {
+  /** Every point on the emitted path, back in viewBox coordinates. */
+  function points(paths: string[]): Array<[number, number]> {
+    return paths.flatMap((d) =>
+      [...d.matchAll(/[ML]([-\d.]+) ([-\d.]+)/g)].map(
+        (m) => [Number(m[1]), Number(m[2])] as [number, number],
+      ),
+    );
+  }
+
+  it('draws nothing between a point and itself', () => {
+    expect(greatCirclePath([55, 37], [55, 37])).toEqual([]);
+  });
+
+  it('follows the equator flat, because there the great circle is the straight line', () => {
+    const [path] = greatCirclePath([0, -40], [0, 40]);
+    const ys = points([path!]).map(([, y]) => y);
+    expect(Math.max(...ys) - Math.min(...ys)).toBeLessThan(0.01);
+  });
+
+  it('runs straight along a meridian', () => {
+    const [path] = greatCirclePath([10, 25], [70, 25]);
+    const xs = points([path!]).map(([x]) => x);
+    expect(Math.max(...xs) - Math.min(...xs)).toBeLessThan(0.01);
+  });
+
+  it('bulges poleward, which is the whole reason for not drawing a line', () => {
+    // Moscow to Seattle: the short way is over the Arctic, well north of either end.
+    const paths = greatCirclePath([55.75, 37.6], [47.6, -122.3]);
+    const ys = points(paths).map(([, y]) => y);
+    const northernmost = 90 - Math.min(...ys);
+
+    expect(northernmost).toBeGreaterThan(55.75);
+    expect(northernmost).toBeGreaterThan(70);
+  });
+
+  it('cuts the path at the antimeridian rather than streaking back across the map', () => {
+    // Tokyo to Los Angeles crosses the Pacific seam.
+    const paths = greatCirclePath([35.7, 139.7], [34.05, -118.24]);
+    expect(paths.length).toBe(2);
+
+    for (const d of paths) {
+      const xs = points([d]).map(([x]) => x);
+      // No single segment may jump the full width of the map.
+      for (let i = 1; i < xs.length; i += 1) {
+        expect(Math.abs(xs[i]! - xs[i - 1]!)).toBeLessThan(180);
+      }
+    }
+  });
+
+  it('starts and ends where it was asked to', () => {
+    const paths = greatCirclePath([56.08, 37.11], [48.85, 2.35]);
+    const all = points(paths);
+    expect(all[0]).toEqual([37.11 + 180, 90 - 56.08]);
+    expect(all[all.length - 1]).toEqual([2.35 + 180, 90 - 48.85]);
+  });
+});
+
+describe('when the map draws a path at all', () => {
+  const site = (status: Site['status'] = 'confirmed'): Site => ({
+    name: 'Kerro Massiv',
+    lat: 60.31,
+    lon: 30.28,
+    status,
+    lastConfirmed: '2026-09-11',
+    sourceUrl: 'https://example.org/',
+  });
+
+  it('draws none until a receiver is chosen', () => {
+    const markup = worldMap([receiver({ host: 'a', gps: [48.85, 2.35] })], { sites: [site()] });
+    expect(markup).not.toContain('<path class="echo-worldmap__path"');
+    expect(markup).not.toContain('great-circle path');
+  });
+
+  it('draws one from the chosen receiver to a working transmitter', () => {
+    const markup = worldMap([receiver({ host: 'a', gps: [48.85, 2.35] })], {
+      selectedHost: 'a',
+      sites: [site()],
+    });
+    expect(markup).toContain('<path class="echo-worldmap__path"');
+    expect(markup).toContain('great-circle path');
+  });
+
+  it('draws none to a transmitter that was abandoned', () => {
+    // Povarovo stopped in 2010. A path to it is a route to nothing.
+    const markup = worldMap([receiver({ host: 'a', gps: [48.85, 2.35] })], {
+      selectedHost: 'a',
+      sites: [site('former')],
+    });
+    expect(markup).not.toContain('<path class="echo-worldmap__path"');
   });
 });
