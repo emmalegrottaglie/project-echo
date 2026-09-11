@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import { parseDirectory } from '../server/directory.mjs';
 
 /**
@@ -94,5 +94,37 @@ describe('parseDirectory', () => {
 
   it('throws on something that is not the expected format', () => {
     expect(() => parseDirectory('<html>gone</html>')).toThrow(/expected format/);
+  });
+});
+
+/**
+ * The upstream is one volunteer's server and it does go down — it was unreachable for
+ * an afternoon while this was written. A stale list beats no list, so a failed refresh
+ * must serve what is already held rather than taking the feature with it.
+ */
+describe('when the upstream is unreachable', () => {
+  it('serves the last good copy and flags it', async () => {
+    const { receivers } = await import('../server/directory.mjs');
+
+    const originalFetch = globalThis.fetch;
+    globalThis.fetch = (async () =>
+      new Response(REAL_SHAPE, { status: 200 })) as unknown as typeof fetch;
+    const fresh = await receivers({});
+    expect(fresh.receivers.length).toBeGreaterThan(0);
+    expect(fresh.stale).toBe(false);
+
+    // Force the next call past the cache window, then break the network.
+    vi.useFakeTimers();
+    vi.setSystemTime(Date.now() + 20 * 60 * 1000);
+    globalThis.fetch = (async () => {
+      throw new Error('fetch failed');
+    }) as unknown as typeof fetch;
+
+    const stale = await receivers({});
+    vi.useRealTimers();
+    globalThis.fetch = originalFetch;
+
+    expect(stale.stale).toBe(true);
+    expect(stale.receivers.length).toBe(fresh.receivers.length);
   });
 });

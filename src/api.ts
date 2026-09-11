@@ -24,6 +24,8 @@ export interface DirectoryReceiver {
 export interface Directory {
   attribution: string;
   fetchedAt: string;
+  /** The upstream could not be reached; this is the last good copy the server held. */
+  stale: boolean;
   total: number;
   receivers: DirectoryReceiver[];
 }

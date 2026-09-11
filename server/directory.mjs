@@ -110,7 +110,22 @@ async function refresh() {
  * channel, since a Kiwi has four and a full one will refuse the connection.
  */
 export async function receivers({ khz, freeOnly } = {}) {
-  if (Date.now() - cache.at > CACHE_MS) await refresh();
+  let stale = false;
+
+  if (Date.now() - cache.at > CACHE_MS) {
+    try {
+      await refresh();
+    } catch (error) {
+      // One volunteer's server, and it goes down: it was unreachable for the whole of
+      // one afternoon while this was being written. Throwing here discarded a perfectly
+      // serviceable list that was already in memory and took the whole feature with it.
+      // A fifteen-minute-old directory is worth far more than an error, so it is served
+      // and flagged; only an empty cache is a real failure.
+      if (!cache.receivers.length) throw error;
+      stale = true;
+      console.warn(`directory refresh failed, serving the cached copy: ${error.message}`);
+    }
+  }
 
   let list = cache.receivers.filter((receiver) => !receiver.offline);
 
@@ -129,6 +144,8 @@ export async function receivers({ khz, freeOnly } = {}) {
   return {
     attribution: ATTRIBUTION,
     fetchedAt: new Date(cache.at).toISOString(),
+    /** True when the upstream could not be reached and this is the last good copy. */
+    stale,
     total: cache.receivers.length,
     receivers: list,
   };

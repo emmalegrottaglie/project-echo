@@ -700,7 +700,11 @@ export function liveView(): { element: HTMLElement; destroy: () => void } {
       const text =
         `Showing ${Math.min(DIRECTORY_LIMIT, sorted.length)} of ${sorted.length} receivers ` +
         `covering ${currentTuning?.frequency.khz ?? '—'} kHz with a free channel. ` +
-        `Source: rx.linkfanel.net, sorted by reported SNR.`;
+        `Source: rx.linkfanel.net, sorted by reported SNR.` +
+        (result.stale
+          ? ` The directory is not answering, so this is the last copy fetched — ` +
+            `channel counts and SNR may have moved since.`
+          : '');
 
       if (note) note.textContent = text;
       else if (header) header.insertAdjacentHTML('beforeend', `<p>${esc(text)}</p>`);
