@@ -46,6 +46,9 @@ const DAY_CODES = {
 
 const report = { slots: 0, frequencies: 0, outdated: 0, skipped: [], stations: {} };
 
+/** Stamped on every slot: when this run read it, not when the operator last moved. */
+const TODAY = new Date().toISOString().slice(0, 10);
+
 /* ------------------------------------------------------------------- html ----- */
 
 function text(fragment) {
@@ -165,6 +168,7 @@ function parseSchedule(table, { id, sourceUrl }) {
     slots.push({
       rrule: `FREQ=WEEKLY;BYDAY=${dayCell.join(',')};BYHOUR=${Number(time[1])};BYMINUTE=${Number(time[2])}`,
       khzByMonth,
+      lastConfirmed: TODAY,
       note: id3 ? `Transmission ID ${id3}.` : null,
       sourceUrl,
     });
@@ -198,6 +202,7 @@ function parseFixedDaily(html, { sourceUrl }) {
       slots.push({
         rrule: `FREQ=DAILY;BYHOUR=${Number(time[1])};BYMINUTE=${Number(time[2])}`,
         khzByMonth: Array.from({ length: 12 }, () => khz),
+        lastConfirmed: TODAY,
         note: 'Daily, on one frequency year round.',
         sourceUrl,
       });
@@ -231,7 +236,7 @@ async function get(url) {
 }
 
 const data = JSON.parse(readFileSync('data/stations.json', 'utf8'));
-const today = new Date().toISOString().slice(0, 10);
+const today = TODAY;
 
 // Slots carry twelve monthly frequencies, which a version 1 reader cannot understand.
 data.schemaVersion = 2;

@@ -34,6 +34,17 @@ export interface Schedule {
    * month it happens to be when the page renders.
    */
   khzByMonth: (number | null)[];
+  /**
+   * ISO date this slot was last taken from the cited source.
+   *
+   * Schedules are not a timetable the operator publishes. They are a record of what
+   * listeners have reported, and the frequencies move faster than the record follows —
+   * an XPA transmission was reported live on 10237 kHz while the table this was read
+   * from had no September frequency for that slot at all. So the date is not decoration:
+   * it is the difference between "this is where it transmits" and "this is where it was
+   * last heard to transmit", and only the second one is true.
+   */
+  lastConfirmed: string;
   note: string | null;
   sourceUrl: string;
 }

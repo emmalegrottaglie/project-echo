@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import {
   countdown,
   currentPeriod,
+  describeScheduleKhz,
   formatUtc,
   isOffHours,
   nextOccurrence,
@@ -20,6 +21,7 @@ function schedule(rrule: string, khz: number | null = null): Schedule {
   return {
     rrule,
     khzByMonth: Array.from({ length: 12 }, () => khz),
+    lastConfirmed: '2026-09-11',
     note: null,
     sourceUrl: 'https://example.test',
   };
@@ -168,6 +170,7 @@ describe('scheduleKhz', () => {
     // E11's 03:15 slot, as published: Jan-Feb 8102, Mar-Apr 12630, May-Aug 16530,
     // Sep-Oct 12630, Nov-Dec 8102.
     khzByMonth: [8102, 8102, 12630, 12630, 16530, 16530, 16530, 16530, 12630, 12630, 8102, 8102],
+    lastConfirmed: '2026-09-11',
     note: null,
     sourceUrl: 'https://example.test',
   });
@@ -187,10 +190,56 @@ describe('scheduleKhz', () => {
     const summerOnly: Schedule = {
       rrule: 'FREQ=WEEKLY;BYDAY=SU;BYHOUR=7;BYMINUTE=0',
       khzByMonth: [null, null, null, null, 14469, 13927, 13978, 13408, null, null, null, null],
+      lastConfirmed: '2026-09-11',
       note: null,
       sourceUrl: 'https://example.test',
     };
     expect(scheduleKhz(summerOnly, new Date('2026-06-07T07:00:00Z'))).toBe(13927);
     expect(scheduleKhz(summerOnly, new Date('2026-01-04T07:00:00Z'))).toBeNull();
+  });
+});
+
+/**
+ * A frequency in this dataset is a dated report, not a timetable entry. XPA was heard
+ * live on 10237 kHz while the imported table held no September frequency for that slot
+ * and 10237 appeared nowhere in the data — so the wording has to keep a reader from
+ * treating a number as authoritative, and has to say plainly when there is no number.
+ */
+describe('describeScheduleKhz', () => {
+  const slot = (khzByMonth: (number | null)[]): Schedule => ({
+    rrule: 'FREQ=WEEKLY;BYDAY=MO;BYHOUR=3;BYMINUTE=15',
+    khzByMonth,
+    lastConfirmed: '2026-09-11',
+    note: null,
+    sourceUrl: 'https://example.test',
+  });
+
+  it('names the month the number belongs to, and never states it as fact', () => {
+    const rotating = slot([8102, 8102, 12630, 12630, 16530, 16530, 16530, 16530, 12630, 12630, 8102, 8102]);
+    expect(describeScheduleKhz(rotating, new Date('2026-01-05T03:15:00Z'))).toBe(
+      '8102 kHz reported for January',
+    );
+    expect(describeScheduleKhz(rotating, new Date('2026-05-04T03:15:00Z'))).toBe(
+      '16530 kHz reported for May',
+    );
+  });
+
+  it('says a month has no published frequency rather than rendering a dash', () => {
+    const summerOnly = slot([null, null, null, null, 14469, 13927, 13978, 13408, null, null, null, null]);
+    expect(describeScheduleKhz(summerOnly, new Date('2026-09-11T07:00:00Z'))).toBe(
+      'no September frequency published',
+    );
+    expect(describeScheduleKhz(summerOnly, new Date('2026-06-07T07:00:00Z'))).toBe(
+      '13927 kHz reported for June',
+    );
+  });
+
+  it('reads the occurrence month, not the current one', () => {
+    // A window three weeks out can be in the next month, and announcing this month's
+    // frequency for it sends a listener to an empty channel.
+    const rotating = slot([8102, 8102, 12630, 12630, 16530, 16530, 16530, 16530, 12630, 12630, 8102, 8102]);
+    expect(describeScheduleKhz(rotating, new Date('2026-03-02T03:15:00Z'))).toBe(
+      '12630 kHz reported for March',
+    );
   });
 });

@@ -39,6 +39,9 @@ edit fails CI rather than shipping. It checks, among other things:
   `lastConfirmed` date — the provenance rule from [docs/PLAN.md](../docs/PLAN.md) §3;
 - every schedule carries exactly twelve `khzByMonth` entries, January first, and at
   least one of them is a frequency. A slot with nothing in any month is not a slot;
+- every schedule carries a `lastConfirmed` date. A schedule frequency is a record of
+  what listeners reported, not a timetable, and without the date the interface cannot
+  tell anyone how old the claim is;
 - every URL is `http` or `https`. Nothing else is accepted, because these strings are
   interpolated into `href` attributes in the archive view;
 - designators are unique, tiers are one of `live`, `scheduled`, `historical`;

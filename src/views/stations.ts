@@ -1,7 +1,7 @@
 import { fetchObservations, type Observation } from '../api';
 import { archiveLinks } from '../archives';
 import { allStations, isRosterOnly, prefixMeaning } from '../data/stations';
-import { scheduleKhz } from '../schedule';
+import { describeScheduleKhz } from '../schedule';
 import type { Station, Tier } from '../types';
 import { isSafeUrl } from '../url';
 import {
@@ -154,7 +154,7 @@ function detailHtml(station: Station): string {
             .map(
               (schedule) =>
                 `<li><code>${esc(schedule.rrule)}</code>` +
-                (scheduleKhz(schedule, now) ? ` — ${scheduleKhz(schedule, now)} kHz this month` : '') +
+                ` — ${esc(describeScheduleKhz(schedule, now))}, read ${esc(schedule.lastConfirmed)}` +
                 (schedule.note ? `<span>${esc(schedule.note)}</span>` : '') +
                 `</li>`,
             )

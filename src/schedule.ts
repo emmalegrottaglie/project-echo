@@ -52,6 +52,33 @@ export function scheduleKhz(schedule: Schedule, at: Date): number | null {
   return schedule.khzByMonth[at.getUTCMonth()] ?? null;
 }
 
+const MONTH_NAMES = [
+  'January', 'February', 'March', 'April', 'May', 'June',
+  'July', 'August', 'September', 'October', 'November', 'December',
+];
+
+/**
+ * How a slot's frequency should be described to someone about to tune to it.
+ *
+ * Never a bare number. These frequencies are not published by the operator — they are a
+ * record of what listeners last reported, and the station moves faster than the record
+ * follows. While this was being written, an XPA transmission was reported live on
+ * 10237 kHz in a slot whose imported table gives no September frequency at all, and
+ * 10237 appears nowhere in the dataset.
+ *
+ * So the frequency is a starting point and the wording says so, and a month the source
+ * publishes nothing for says that rather than rendering an em dash that reads as a
+ * rendering fault. Same discipline the archive already applies to activity status, which
+ * is shown as "last confirmed 2020-09-01" and never as a bare Active badge.
+ */
+export function describeScheduleKhz(schedule: Schedule, at: Date): string {
+  const khz = scheduleKhz(schedule, at);
+  const month = MONTH_NAMES[at.getUTCMonth()] ?? '';
+  return khz === null
+    ? `no ${month} frequency published`
+    : `${khz} kHz reported for ${month}`;
+}
+
 /** Next occurrence of one slot at or after `from`, or null if the rule is exhausted. */
 export function nextOccurrence(schedule: Schedule, from: Date): Date | null {
   return parse(schedule).after(from, true);

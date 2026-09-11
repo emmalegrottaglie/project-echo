@@ -7,8 +7,12 @@ import {
   toggleSubscription,
 } from '../alerts';
 import { allStations } from '../data/stations';
-import { countdown, formatLocal, formatUtc, upcoming,
-  scheduleKhz,
+import {
+  countdown,
+  describeScheduleKhz,
+  formatLocal,
+  formatUtc,
+  upcoming,
 } from '../schedule';
 import { alertSwitch, button, esc, gapNotice } from '../ui';
 
@@ -53,8 +57,10 @@ export function scheduleView(): { element: HTMLElement; destroy: () => void } {
         <p>
           ${withSchedules.length} of ${scheduled.length} active stations publish a schedule.
           The rest are transmitting but list no times, so they cannot be counted down to.
-          Times are as published, in UTC. Frequencies rotate month by month and the one
-          shown is the one published for that window's own month.
+          Times are as published, in UTC, and are the reliable part. <strong>Frequencies
+          are not a timetable</strong> — they are what listeners last reported, they move
+          faster than the record follows, and a slot can be on the air on a frequency
+          nobody has written down yet. Treat one as where to start tuning.
         </p>
         <p class="echo-coverage__permission"></p>
         <div class="echo-permission-action"></div>
@@ -107,7 +113,9 @@ export function scheduleView(): { element: HTMLElement; destroy: () => void } {
           `</div>` +
           `<div class="echo-schedule-row__times">${esc(formatUtc(at))} · ${esc(
             formatLocal(at),
-          )} · ${scheduleKhz(schedule, at) ? `${scheduleKhz(schedule, at)} kHz` : '—'}</div>` +
+          )}</div>` +
+          `<div class="echo-schedule-row__freq">${esc(describeScheduleKhz(schedule, at))}` +
+          `<span class="echo-dim"> · read ${esc(schedule.lastConfirmed)}</span></div>` +
           (schedule.note
             ? `<div class="echo-schedule-row__note">${esc(schedule.note)}</div>`
             : '') +

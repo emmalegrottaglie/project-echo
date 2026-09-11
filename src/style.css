@@ -1086,6 +1086,17 @@ tr.disputed {
   font: var(--text-label) / var(--leading-body) var(--font-mono);
 }
 
+/*
+ * The frequency line, deliberately below the times and in the dim colour: the time is
+ * the trustworthy half of a schedule and the frequency is a dated report that may
+ * already have moved. Typographic weight follows how much each can be relied on.
+ */
+.echo-schedule-row__freq {
+  margin-top: 2px;
+  color: var(--dim);
+  font: var(--text-label) / var(--leading-body) var(--font-mono);
+}
+
 .echo-schedule-row__note {
   margin-top: 2px;
   color: var(--dim);

@@ -98,6 +98,9 @@ function checkSchedule(value: unknown, where: string, errors: string[]): Schedul
   } else if (value.khzByMonth.every((khz) => khz === null)) {
     errors.push(`${where}.khzByMonth: a slot with no frequency in any month is not a slot`);
   }
+  if (typeof value.lastConfirmed !== 'string' || !ISO_DATE.test(value.lastConfirmed)) {
+    errors.push(`${where}.lastConfirmed: expected an ISO date (YYYY-MM-DD)`);
+  }
   if (value.note !== null && typeof value.note !== 'string') {
     errors.push(`${where}.note: expected a string or null`);
   }

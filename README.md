@@ -54,7 +54,7 @@ layout.
 | View | What it shows |
 |------|---------------|
 | **Live** | Receiver list, station and frequency selector, scrolling waterfall, marker detector, propagation map. Only the three continuously-transmitting Russian markers are offered — see below. A frequency that is the wrong half of a day/night pair is marked off-hours against the current UTC time, and offered anyway. |
-| **Schedule** | Next transmission windows in UTC and local time, with countdowns and per-slot alerts. 186 slots across the 10 active stations that publish one, with the frequency for each window's own month. |
+| **Schedule** | Next transmission windows in UTC and local time, with countdowns and per-slot alerts. 186 slots across the 10 active stations that publish one. The time is the reliable half; the frequency is shown as a dated report for that window's own month, or as "no September frequency published" when the source has none. |
 | **Archive** | All 141 stations: 3 live markers, 26 scheduled, 112 historical. Filterable, with per-frequency sources and dates, plus searches into the recording archives. |
 
 Four themes (Phosphor Green, Amber Terminal, Midnight Blue, High Contrast Red),
@@ -218,6 +218,15 @@ then read the diff. Each slot stores twelve frequencies, one per month, because 
 is how these schedules are published: E11's 03:15 slot runs 8102 kHz in January and
 16530 kHz in May, and a single frequency with a note saying it rotates is wrong
 eleven months of the year.
+
+**A schedule frequency is a dated report, not a timetable.** These are not published by
+the operator; they are what listeners last heard, and the station moves faster than the
+record follows. An XPA transmission was reported live on 10237 kHz in a slot whose
+imported table gives no September frequency at all, and 10237 appears nowhere in the
+dataset. So every slot carries the date it was read, the interface says "reported for
+September" rather than stating a number as fact, and a month with nothing published says
+so instead of showing a dash. Re-running the import is the only thing keeping any of it
+near-current.
 
 The roster lives in [data/stations.json](data/stations.json), not in the source. The
 build inlines a copy so the app has all 141 stations offline and with no server, and
