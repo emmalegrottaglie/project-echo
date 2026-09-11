@@ -221,6 +221,10 @@ warning clears.
 
 ## Licence
 
+In the app itself this is a **Credits and licence** page, reached from the archive
+header, from every station's source line and from the help screen — attribution that a
+reader actually meets rather than three files they never open.
+
 The code is MIT. **The station data is not** — it is adapted from
 [Priyom.org](https://priyom.org/), who publish under
 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/), so

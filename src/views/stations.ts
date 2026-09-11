@@ -1,5 +1,6 @@
 import { fetchObservations, type Observation } from '../api';
 import { archiveLinks } from '../archives';
+import { openCredits } from '../credits';
 import { allStations, isRosterOnly, prefixMeaning } from '../data/stations';
 import { describeScheduleKhz } from '../schedule';
 import type { Station, Tier } from '../types';
@@ -123,7 +124,8 @@ function sourceCredit(station: Station): string {
 
   return (
     `<p class="echo-sources">Identity and status from ` +
-    `${hosts.map((host) => esc(host)).join(', ')}. ${links}</p>`
+    `${hosts.map((host) => esc(host)).join(', ')}. ${links} ` +
+    `<button class="echo-linkish" type="button" name="credits">Credits and licence</button></p>`
   );
 }
 
@@ -265,7 +267,9 @@ export function stationsView(param = ''): {
           ], '')}
           <p>
             141 stations — ${counts.join(', ')}. Status is shown as a dated claim,
-            because most published "active" listings are stale.
+            because most published "active" listings are stale. Compiled by
+            <button class="echo-linkish" type="button" name="credits">Priyom.org and
+            ENIGMA 2000</button>, and used under their licence.
           </p>
         </div>
         <div class="echo-rows"></div>
@@ -363,7 +367,16 @@ export function stationsView(param = ''): {
   });
 
   detailSlot.addEventListener('click', (event) => {
-    if ((event.target as HTMLElement).closest('[name="back"]')) location.hash = 'archive';
+    const target = event.target as HTMLElement;
+    if (target.closest('[name="credits"]')) {
+      openCredits();
+      return;
+    }
+    if (target.closest('[name="back"]')) location.hash = 'archive';
+  });
+
+  element.addEventListener('click', (event) => {
+    if ((event.target as HTMLElement).closest('[name="credits"]')) openCredits();
   });
 
   /**

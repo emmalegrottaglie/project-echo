@@ -12,6 +12,19 @@ wrong fact is a defect. Where a correction has evidence behind it, the evidence 
 
 ### Added
 
+- **A credits and licence page.** Attribution had been living in three places a reader
+  would never visit — a per-station footnote, `data/LICENSE`, and a repository README —
+  which satisfies nobody and least of all CC BY-NC-SA, whose attribution clause is a
+  condition rather than a courtesy. There is now a page saying who Priyom.org and
+  ENIGMA 2000 are, what each contributed, what the licence requires, and what this
+  adaptation changed, reachable from the archive header, from every station's source
+  line and from the help screen.
+
+  Neither group publishes a donation link, so the page invents none. What they ask for
+  is reception reports, which it points at instead — Priyom's `#priyom` channel on
+  Libera.Chat. It also credits rx.linkfanel.net, prop.kc2g.com, Natural Earth and
+  JetBrains Mono, and states plainly that this app takes no money of any kind.
+
 - **"Last heard", under the tuned station.** The one question a dead-looking waterfall
   cannot answer on its own is whether the silence is the band or the station, and this
   answers it from evidence rather than from a published claim that may be years stale:

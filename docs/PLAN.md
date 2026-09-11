@@ -438,8 +438,8 @@ moderation load a single maintainer should not take on.
 
 ### 7f. Credit and corrections
 
-**Credit is contextual first.** An acknowledgement page on its own is where credit goes
-to die. Every station already carries its `sourceUrl`, so every station detail states
+**Built.** **Credit is contextual first.** An acknowledgement page on its own is where
+credit goes to die. Every station already carries its `sourceUrl`, so every station detail states
 where its identity and status came from, and the archive header names both projects
 persistently. The deep page — who Priyom and ENIGMA 2000 are, what they have built and
 over how long, and how to support them directly — is reached from those lines. It is
@@ -474,5 +474,5 @@ The correction path can ship as soon as 7b lands.
    everything else.
 4. Observation write path and opt-in (7d), then the "hearing it now" line.
 5. Deep links and in-situ credit (7e.1, 7f).
-6. Credits page (7f).
+6. Credits page (7f). **Built.**
 7. Designator decoder, then timeline (7e.3, 7e.4).

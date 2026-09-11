@@ -1,3 +1,4 @@
+import { openCredits } from './credits';
 import { openSheet, type Sheet } from './ui';
 
 /**
@@ -115,6 +116,13 @@ const CONTENT = `
     claim.
   </p>
 
+  <h4>Where all of this came from</h4>
+  <p>
+    Nearly every fact about a station in here was assembled by two volunteer groups over
+    decades, and is used under their licence.
+    <button class="echo-linkish" type="button" name="credits">Credits and licence</button>
+  </p>
+
   <h4>One thing this app will not do</h4>
   <p>
     It records that a signal was heard, when, and at what rhythm. It never records or
@@ -129,5 +137,11 @@ export function openHelp(): Sheet {
 
   const sheet = openSheet('What is this?', '', undefined);
   sheet.body.innerHTML = `<div class="echo-help">${CONTENT}</div>`;
+  sheet.body.addEventListener('click', (event) => {
+    if ((event.target as HTMLElement).closest('[name="credits"]')) {
+      sheet.close();
+      openCredits();
+    }
+  });
   return sheet;
 }

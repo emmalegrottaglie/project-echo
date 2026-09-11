@@ -1518,6 +1518,21 @@ tr.disputed {
   }
 }
 
+/*
+ * A button that reads as a link. These open a sheet rather than navigating, so the
+ * element has to be a button for the keyboard and for assistive technology, while
+ * looking like the inline reference it is.
+ */
+.echo-linkish {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--accent);
+  font: inherit;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 /* ------------------------------------------------------------ last heard ----- */
 
 /*
