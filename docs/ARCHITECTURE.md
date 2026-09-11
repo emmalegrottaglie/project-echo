@@ -128,9 +128,10 @@ Three rules that hold the seams together:
 **No framework.** The app is three views of mostly static markup over a compiled-in
 fixture. `innerHTML` strings plus a handful of event delegates cover it, and the one
 place performance matters — 141 archive rows alongside a 20 fps canvas — is better
-served by classes in one stylesheet than by per-row inline styles. The design bundle
-ships React components as a *reference*; they are reimplemented here, not shipped. See
-[`Project Echo Design System/HANDOFF.md`](../Project%20Echo%20Design%20System/HANDOFF.md).
+served by classes in one stylesheet than by per-row inline styles. The Claude Design
+bundle that produced the tokens shipped React components as a *reference*; they were
+reimplemented here rather than adopted, and the bundle itself is no longer in the
+repository — [MOBILE_UI_SPEC.md](MOBILE_UI_SPEC.md) is what remains of it.
 
 **No Icecast.** The plan originally called for Ogg Opus over Icecast with an HLS ladder
 beside it. HLS alone is one `ffmpeg` output instead of two, needs no daemon, and the

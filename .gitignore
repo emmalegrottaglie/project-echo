@@ -16,3 +16,8 @@ android/app/src/main/assets/capacitor.config.json
 
 *.local
 .DS_Store
+
+# The Claude Design bundle. Its tokens and fonts live in src/tokens/ and public/fonts/,
+# which are now the source of truth; the bundle itself is a 3.8 MB design reference that
+# nothing builds from and is kept locally rather than in the repository.
+Project Echo Design System/

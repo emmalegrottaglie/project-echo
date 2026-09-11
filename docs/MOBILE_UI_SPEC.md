@@ -4,11 +4,13 @@ Handoff document for Claude Design. It describes the mobile interface and the an
 system for an app that already exists and works: three views, 141 stations, a live
 spectrogram, a marker detector, schedule alerts, and a receiver directory.
 
-**Status: built.** Claude Design returned `Project Echo Design System/` against this
-spec, and the phone layout is implemented — tokens and fonts copied from that bundle,
-its React components reimplemented in `src/ui.ts`, and the desktop layout reflowing
-back at 768 px. Two items in §5.2 and §6 remain unimplemented and are called out in
-README.md: the gestures, and the landscape layout.
+**Status: built.** Claude Design returned a bundle against this spec and the phone
+layout is implemented — its tokens and fonts now live in `src/tokens/` and
+`public/fonts/`, its React components were reimplemented in `src/ui.ts` rather than
+adopted, and the desktop layout reflows back at 768 px. The bundle itself is no longer
+in the repository: nothing built from it, and this document plus those two directories
+are what it left behind. Two items in §5.2 and §6 remain unimplemented and are called
+out in README.md: the gestures, and the landscape layout.
 
 Read [RESEARCH.md](RESEARCH.md) for what the stations actually are and
 [PLAN.md](PLAN.md) for how the app is built. This document does not restate them; it

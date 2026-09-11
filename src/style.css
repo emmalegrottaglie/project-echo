@@ -2,7 +2,7 @@
  * Project Echo — application styles.
  *
  * Tokens come from the design system bundle unchanged; everything below is the phone
- * layout from docs/MOBILE_UI_SPEC.md and "Project Echo Design System"/HANDOFF.md,
+ * layout from docs/MOBILE_UI_SPEC.md,
  * written mobile-first with the desktop layout restored at 768 px.
  *
  * Animation rules, enforced throughout: only transform, opacity and filter animate.

@@ -1,11 +1,12 @@
 /**
  * The design system's components, in this codebase's idiom.
  *
- * "Project Echo Design System" ships them as cosmetic React implementations; its
- * HANDOFF.md is explicit that the JSX is a design reference and the task is to
- * recreate it here, in vanilla TypeScript with `innerHTML` strings — not to introduce
- * a framework. So each component below is either a function returning markup or, where
- * it owns behaviour, a small factory returning an element and a teardown.
+ * The Claude Design bundle shipped them as cosmetic React implementations, and was
+ * explicit that the JSX was a design reference and the task was to recreate it here, in
+ * vanilla TypeScript with `innerHTML` strings — not to introduce a framework. So each
+ * component below is either a function returning markup or, where it owns behaviour, a
+ * small factory returning an element and a teardown. The bundle itself is no longer in
+ * the repository; docs/MOBILE_UI_SPEC.md is the surviving specification.
  *
  * The styling lives in `src/style.css` under `.echo-*` class names rather than inline,
  * which is the one deliberate departure from the reference: inline styles per row

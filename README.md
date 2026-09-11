@@ -35,11 +35,12 @@ motion system from [docs/MOBILE_UI_SPEC.md](docs/MOBILE_UI_SPEC.md). At 768 px a
 it reflows back to the desktop layout — navigation above the content, two-column
 archive, sheets as centred dialogs.
 
-Design tokens and the five self-hosted JetBrains Mono weights come from
-`Project Echo Design System/`, produced by Claude Design against that spec and copied
-in unchanged ([src/tokens/](src/tokens), [public/fonts/](public/fonts)). Its React
-components are a design reference, not shipped code; they are reimplemented in this
-codebase's idiom in [src/ui.ts](src/ui.ts).
+Design tokens and the five self-hosted JetBrains Mono weights live in
+[src/tokens/](src/tokens) and [public/fonts/](public/fonts). They came from a Claude
+Design bundle produced against that spec, whose React components were a design reference
+rather than shipped code — reimplemented in this codebase's idiom in
+[src/ui.ts](src/ui.ts). The bundle is not in the repository; the spec and those two
+directories are what it left behind.
 
 Fourteen animations exist and are listed in the spec. If it is not on that list, it
 does not exist. Only `transform`, `opacity` and `filter` animate — the alert switch's

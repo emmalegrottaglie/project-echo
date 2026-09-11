@@ -47,12 +47,12 @@ relay HLS with CORS. The client must keep working without the server — those t
 features hide themselves when `/api/health` fails.
 
 The interface is the phone layout from [docs/MOBILE_UI_SPEC.md](docs/MOBILE_UI_SPEC.md),
-reflowing to the desktop layout at 768 px. Tokens and fonts in
-[src/tokens/](src/tokens) and [public/fonts/](public/fonts) are copied unchanged from
-`Project Echo Design System/` — edit them there and re-copy rather than diverging.
-Component markup lives in [src/ui.ts](src/ui.ts); that bundle's React components are a
-design reference and are not shipped. Before adding any animation, read the fourteen-item
-inventory in the spec: if it is not listed, it does not exist.
+reflowing to the desktop layout at 768 px. [src/tokens/](src/tokens) and
+[public/fonts/](public/fonts) are the source of truth for tokens and fonts — edit them
+there. They began as copies from a Claude Design bundle which is no longer in the
+repository; the spec is what survives of it, and is authoritative. Component markup lives
+in [src/ui.ts](src/ui.ts). Before adding any animation, read the fourteen-item inventory
+in the spec: if it is not listed, it does not exist.
 
 [README.md](README.md) covers the deployment constraint (the app must be served over
 http to reach `ws://` receivers) and the load-bearing implementation details.
