@@ -4,10 +4,11 @@ Reference for the Phase 3 server in [`server/`](../server). Written for anyone r
 it or building against it; the client in [`src/api.ts`](../src/api.ts) is the only
 consumer today.
 
-The server exists because three things are impossible in the browser alone: reading the
-public receiver directory, which sends no CORS headers; persisting observations; and
+The server exists because four things are impossible in the browser alone: reading the
+public receiver directory, which sends no CORS headers; persisting observations;
 serving the relay's segments with the CORS headers a `MediaElementAudioSourceNode`
-needs. It does those and serves the built client. Nothing else.
+needs; and shipping corrected station data to an installed client without a release.
+It does those and serves the built client. Nothing else.
 
 ```bash
 npm start          # build the client, then serve on 8080
@@ -119,6 +120,46 @@ a failed refresh fails the request.
 
 ---
 
+## `GET /api/stations`
+
+The station roster, served from [`data/stations.json`](../data/stations.json).
+
+This is an update channel, not a dependency. The client inlines a copy of the same file
+at build time, so it has the full roster with no server at all; this endpoint exists so
+a corrected frequency or a station that went off the air reaches an installed build
+without a release.
+
+```bash
+curl -s http://127.0.0.1:8080/api/stations | head -c 120
+```
+
+```json
+{ "schemaVersion": 1, "stations": [ { "enigmaId": "S28", "name": "The Buzzer", ... } ] }
+```
+
+| Header | Value |
+|---|---|
+| `etag` | SHA-256 of the body, truncated to 32 hex characters |
+| `cache-control` | `no-cache` — revalidate every time, which the 304 makes cheap |
+
+Send the tag back to revalidate:
+
+```bash
+curl -s -o /dev/null -w '%{http_code}
+'      -H 'If-None-Match: "99ceb529530f458a8e89dcb03bbe5515"'      http://127.0.0.1:8080/api/stations      # 304
+```
+
+The response is cached against the file's mtime, so editing `data/stations.json` and
+reloading is enough — the server does not need restarting. The tag is content-addressed
+rather than mtime-based, so touching the file without changing it does not invalidate a
+client's copy.
+
+Clients validate what they receive (`src/data/schema.ts`) and keep their bundled copy if
+it fails or carries an unknown `schemaVersion`. Editing rules are in
+[`data/README.md`](../data/README.md).
+
+---
+
 ## `GET /api/observations`
 
 Marker hearings recorded by this installation's detector.
@@ -220,8 +261,8 @@ is reachable.
 
 SQLite at `server/data/echo.sqlite` via `node:sqlite`, so the server has no
 dependencies. Only the `observation` table is created — stations, frequencies and
-schedules are a typed fixture compiled into the client
-([`src/data/stations.ts`](../src/data/stations.ts)), and creating empty tables nothing
-reads would be scaffolding. Schema and rationale in [PLAN.md](PLAN.md) §3.
+schedules live in [`data/stations.json`](../data/stations.json), reviewed in git and
+served as a file, and creating empty tables nothing reads would be scaffolding.
+Schema and rationale in [PLAN.md](PLAN.md) §3.
 
 The file is gitignored. Deleting it loses the hearings and nothing else.

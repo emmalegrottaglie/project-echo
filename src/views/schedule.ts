@@ -6,7 +6,7 @@ import {
   slotKey,
   toggleSubscription,
 } from '../alerts';
-import { STATIONS } from '../data/stations';
+import { allStations } from '../data/stations';
 import { countdown, formatLocal, formatUtc, upcoming } from '../schedule';
 import { alertSwitch, button, esc, gapNotice } from '../ui';
 
@@ -37,7 +37,7 @@ export function scheduleView(): { element: HTMLElement; destroy: () => void } {
   const element = document.createElement('section');
   element.className = 'view view-schedule';
 
-  const scheduled = STATIONS.filter((station) => station.tier === 'scheduled');
+  const scheduled = allStations().filter((station) => station.tier === 'scheduled');
   const withSchedules = scheduled.filter((station) => station.schedules.length > 0);
 
   element.innerHTML = `
@@ -75,7 +75,7 @@ export function scheduleView(): { element: HTMLElement; destroy: () => void } {
 
   const render = (): void => {
     const now = new Date();
-    const windows = upcoming(STATIONS, now);
+    const windows = upcoming(allStations(), now);
 
     if (!windows.length) {
       rows.innerHTML = `<div class="echo-detail__body">${gapNotice(

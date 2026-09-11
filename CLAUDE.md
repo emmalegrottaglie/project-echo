@@ -64,7 +64,9 @@ These come out of the research and are not open for re-derivation on the fly:
 - **No station fact without provenance.** Every frequency and every activity claim
   carries a `source_url` and a `last_confirmed` date. Sources disagree (S32's
   frequencies are published two ways) and the schema records the disagreement rather
-  than picking a winner.
+  than picking a winner. The roster is [data/stations.json](data/stations.json) and
+  this rule is enforced by `src/data/schema.ts` in the test suite, not by the
+  compiler — see [data/README.md](data/README.md) before editing it.
 - **Activity status is data, not a constant.** Most of the famous stations are off the
   air. Do not hardcode "Active".
 - **No message decoding, ever.** The app stores observations about signals — markers,

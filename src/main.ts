@@ -1,6 +1,7 @@
 import './style.css';
 import { checkDue, POLL_MS } from './alerts';
-import { STATIONS } from './data/stations';
+import { available } from './api';
+import { allStations, loadCachedStations, refreshStations } from './data/stations';
 import { helpHasBeenSeen, openHelp } from './help';
 import { listReceivers } from './receiver';
 import { gapNotice } from './ui';
@@ -38,6 +39,10 @@ const THEME_KEY = 'echo.theme';
 function mountShell(): void {
   const app = document.querySelector<HTMLElement>('#app');
   if (!app) throw new Error('#app missing from index.html');
+
+  // Station data before any view reads it. The cache is whatever the last launch
+  // fetched; the refresh below is for the next one, which is why neither blocks here.
+  loadCachedStations();
 
   app.innerHTML = `
     <header class="echo-header">
@@ -149,8 +154,12 @@ function mountShell(): void {
 
   // Alerts belong to the shell, not the schedule view: a reminder is useless if it
   // only fires while the user is looking at the schedule.
-  checkDue(STATIONS);
-  window.setInterval(() => checkDue(STATIONS), POLL_MS);
+  checkDue(allStations());
+  window.setInterval(() => checkDue(allStations()), POLL_MS);
+
+  // Corrections reach an installed app without a release. Nothing waits on this and
+  // nothing reports it: running with no server at all is a supported configuration.
+  void available().then((ok) => (ok ? refreshStations() : false));
 }
 
 mountShell();

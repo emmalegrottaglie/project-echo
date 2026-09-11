@@ -204,17 +204,20 @@ permission; if it did, the fix is to stop, not to negotiate retroactively.
 
 ## Procedure: refreshing station data
 
-The station fixture is a dated snapshot, and its `lastConfirmed` fields rot by design —
-the interface presents status as a dated claim for exactly that reason.
+The roster is a dated snapshot, and its `lastConfirmed` fields rot by design — the
+interface presents status as a dated claim for exactly that reason.
 
 1. Re-read the [ENIGMA 2000 newsletters](http://www.signalshed.com/nletter06.html),
    which publish every two months, and the Priyom category indexes.
-2. Edit [`src/data/stations.ts`](../src/data/stations.ts). Every frequency needs its own
+2. Edit [`data/stations.json`](../data/stations.json). Every frequency needs its own
    `sourceUrl` and `lastConfirmed`; where sources conflict, add both rows and set
-   `disputed` rather than choosing.
+   `disputed` rather than choosing. Full rules in [`data/README.md`](../data/README.md).
 3. Note in [RESEARCH.md](RESEARCH.md) what changed and why, especially anything that
    contradicts a previous entry.
-4. `npm test && npm run build`.
+4. `npm test && npm run build`. The test suite validates the file, so a missing source
+   URL or a duplicate designator fails here rather than shipping.
+5. Deploying the file is enough — `GET /api/stations` reads it from disk and installed
+   clients pick it up at their next launch. No release is needed for a data change.
 
 Do not "tidy" a disagreement away. Two of this project's factual corrections came from
 noticing that sources disagree.

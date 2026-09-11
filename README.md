@@ -19,7 +19,7 @@ the server. Three features need the server and hide themselves without it: the
 in-app receiver directory, saved observations, and the relay.
 
 ```bash
-npm test        # 67 tests over the detector, schedules, alerts, receivers, directory
+npm test        # 81 tests: detector, schedules, alerts, receivers, directory, station data
 npm run typecheck
 ```
 
@@ -143,6 +143,7 @@ and an antenna before it needs code.
 | [docs/PLAN.md](docs/PLAN.md) | Product definition, data model, the three phases |
 | [docs/MOBILE_UI_SPEC.md](docs/MOBILE_UI_SPEC.md) | The phone layout and the fourteen-item motion inventory |
 | [docs/ANDROID.md](docs/ANDROID.md) | Building and installing the test APK, and what does not work inside it |
+| [data/README.md](data/README.md) | Editing the station roster, and how a correction reaches an installed app |
 
 ## Architecture notes
 
@@ -178,6 +179,13 @@ category indexes, cross-checked against the
 source URL and confirmation date, and a `disputed` flag where sources conflict — S32 is
 published as both 5473/3828 kHz and 5367/3363.5 kHz, and the app shows both rather than
 picking one.
+
+The roster lives in [data/stations.json](data/stations.json), not in the source. The
+build inlines a copy so the app has all 141 stations offline and with no server, and
+`GET /api/stations` serves the current file so a correction reaches an installed
+Android build without a release — applied at its next launch. `npm test` validates the
+committed file, which is what keeps the provenance rule enforceable now that the
+compiler no longer sees the literals. Editing rules: [data/README.md](data/README.md).
 
 Propagation is [prop.kc2g.com](https://prop.kc2g.com/)'s MOF/LOF map: IRI-2016
 conditioned on live ionosonde data, regenerated every five minutes.
@@ -238,10 +246,8 @@ The four-step deployment check, and what every failure symptom means, are in
 
 - The relay is written but has never run end to end here: it needs `ffmpeg` and a
   receiver that is ours to relay. Both are open.
-- Station, frequency and schedule data stays a typed fixture in
-  [src/data/stations.ts](src/data/stations.ts); only `observation` is in SQLite. Moving
-  the fixture into the database buys nothing until something writes to it.
-- Schedules imported for E11 only, and partially.
+- Corrections still arrive as pull requests. `GET /api/stations` ships them to
+  installed clients without a release, but there is no in-app way to report one yet.
 - Schedules imported for E11 only, and partially — Priyom lists further slots through
   20:00 UTC. The schedule view states the coverage so a short list reads as an import
   gap, not a quiet band.

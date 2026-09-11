@@ -294,3 +294,174 @@ Two constraints worth writing down:
 - The waterfall colour map should be perceptually uniform (viridis, inferno) rather
   than a hue ramp, so pulse amplitude reads correctly. Keep the theme accent for UI
   chrome and leave the spectrogram to a colormap that does not lie about magnitude.
+
+## 7. Phase 4 — the observation network, the rabbit hole, and funding
+
+Phases 1 to 3 built an instrument. Phase 4 is about what the instrument produces, who
+else it credits, and what pays for the hardware it eventually needs.
+
+### 7a. The loop
+
+The three parts of this phase are not separate features. They feed each other:
+
+The live scanner produces observations. Observations make the live view trustworthy —
+"four of six listeners are hearing the Buzzer right now" is the difference between a
+quiet band and a dead station, and nothing else available says which. Aggregated
+observations become an archive nobody else has, because Priyom logs messages and the
+ENIGMA list logs identity, while nobody logs marker behaviour continuously at scale.
+That archive is what makes a funding ask honest, and the funding buys the owned
+receiver from §5c that lets the live view work without spending a volunteer's channel.
+
+This is why the scanner stays the first tab. It is not competing with the archive for
+prominence; it is the thing that fills it.
+
+### 7b. The fixture has to become data
+
+Built. The roster was 589 lines of typed fixture, which made every correction a code
+change, a rebuild and — since the Android wrapper — a reshipped APK. That is
+survivable for a roster that never moves and fatal for an archive whose whole value is
+currency, with `lastConfirmed` dates that rot silently.
+
+The move is to versioned JSON in the repository, not to a database with an admin UI.
+Git history and pull-request review are what make the provenance rule of §3 an
+enforceable check rather than a promise; an admin form writing to SQLite loses both.
+
+- Station data lives as JSON in the repo, schema-validated in CI. A frequency without
+  a `sourceUrl` and a `lastConfirmed` fails the build.
+- The server serves it with an `ETag`; the client caches it and falls back to the
+  copy bundled at build time, so the offline and server-less paths keep working.
+- Data corrections ship without a release.
+
+Staleness then gets surfaced rather than hidden: a station detail showing "confirmed
+14 months ago" in dim text is honest, and it is also what generates the corrections
+described in 7f.
+
+**This landed before the rabbit-hole work, because the schema is about to grow.**
+
+Three of the seven views in 7e need fields the `Station` type does not have today, and
+an earlier draft of this plan wrongly assumed the dates were already present:
+
+| Needed for | Field | Sourcing |
+|---|---|---|
+| Timeline, On this day | `activeFrom`, `activeTo` | New. Per-station, sourced, and often only known to the year. |
+| Exits — successor | `succeeds` / `succeededBy` | New. Hand-curated; a few dozen pairs at most (V02a to HM01, and so on). |
+| Map | transmitter site name and coordinates | New, partial by nature — many sites are unknown or only attributed to a district. |
+
+`lastConfirmed` is not a start date and must not be drawn as one. Growing a hand-edited
+TypeScript fixture by three more fields across 141 entries is worse work than growing
+reviewed JSON, which is the second reason 7b comes first.
+
+### 7c. Live: raise the success rate
+
+The live view fails quietly on a first run. It needs a reachable KiwiSDR, the right
+frequency and the right hour, and a new user has no way to know they have picked
+wrongly — the observed failure was 3756 kHz at 11:45 UTC, which is The Pip's night
+frequency. Four fixes, all built on parts that already exist:
+
+1. **Time-aware frequency default.** `Frequency.timeOfDay` is already in the schema and
+   already shown in the station row. Default the selector to the correct one for the
+   current UTC hour.
+2. **One-tap "find me a receiver".** `/api/receivers` already ranks by reported SNR for
+   the tuned frequency and filters to nodes with a free channel. Take the top result and
+   connect, instead of requiring the user to browse and choose.
+3. **Fallback chain.** Public nodes die constantly. On a failed connect, try the
+   next-best and say so, rather than ending the session on one 1006.
+4. **"Hearing it now".** From the observation network — the line that tells a user
+   whether the silence is the band or the station.
+
+(4) depends on 7d and is the strongest single argument for building it.
+
+Cheaper than it sounds, because the propagation overlay is already wired: when the
+tuned frequency is above the MOF for the path, say so, rather than painting a dead
+waterfall and leaving the user to guess.
+
+### 7d. The observation network
+
+`observation` exists in the schema from §5b and nothing meaningful writes to it. The
+detector already measures period, consistency, tracked bin and uptime every session.
+
+Phase 4 writes that, opt-in, and reads it back as aggregates. The contribution is
+metadata about a signal and never its content, which is the same boundary §5 of
+[RESEARCH.md](RESEARCH.md) draws for everything else here; user-contributed data does
+not get a weaker rule than imported data.
+
+Ship the write path and the opt-in before building aggregation, and confirm a single
+phone produces usable data over a week. If contributions do not arrive, the aggregate
+views in 7c and 7e have nothing behind them and the funding argument in 7f loses its
+foundation — so this is the assumption to test cheaply and early.
+
+### 7e. The rabbit hole
+
+The archive is where most sessions will spend their time, because hearing a marker
+requires a working node and the right hour while 141 stations of history always load.
+Ranked by uniqueness against cost:
+
+1. **Station deep links.** `main.ts` routes tabs only — `#live`, `#schedule`,
+   `#archive`. There is no `#station/S28`, so no station is shareable and nothing can
+   link into the archive from outside. A prerequisite, not a feature.
+2. **Exits on every detail page.** Three minimum: same designator family, same
+   operator, and successor. The first two are derivable from fields that already exist;
+   the third needs the new field in 7b.
+3. **Designator decoder.** `PREFIX_MEANING` already encodes the taxonomy — E, G and S
+   for voice languages, M for Morse, F, P and X for digital. One screen turns 141
+   opaque codes into a readable system. The highest payoff per hour in this list.
+4. **Timeline.** Cold War to the present on one scroll. Needs the date fields in 7b.
+5. **On this day.** Cheap once the dates exist, and it is what brings people back.
+6. **Map.** Transmitter sites, partial by construction under the provenance rule — no
+   coordinate is guessed, and the map says which sites are unplaced rather than
+   quietly omitting them.
+7. **Spectrogram fingerprint per station.** Generated from contributed observations.
+   Genuinely unique, and depends on 7d.
+
+Two things stay out. Hosting recordings is a rights question rather than a technical
+one, and links into the existing archives already serve it. Comments and forums are a
+moderation load a single maintainer should not take on.
+
+### 7f. Credit, corrections and funding
+
+**Credit is contextual first.** An acknowledgement page on its own is where credit goes
+to die. Every station already carries its `sourceUrl`, so every station detail states
+where its identity and status came from, and the archive header names both projects
+persistently. The deep page — who Priyom and ENIGMA 2000 are, what they have built and
+over how long, and how to support them directly — is reached from those lines. It is
+good rabbit-hole content in its own right, not a legal footer.
+
+**Contact is a correction pipeline, not a mailbox.** A generic form collects spam. The
+useful thing is a "report a correction" action attached to the station being viewed,
+prefilled with the designator and the field, requiring a source URL, landing in a
+review queue and becoming a pull request. A plain address covers everything else. With
+7b in place that closes the loop: staleness surfaced, correction reported, change
+reviewed, data endpoint updated, app current without a release.
+
+**Funding is sequenced on the page.** Priyom and ENIGMA support links come first and
+occupy the top of it, with the plain statement that this project's station data is
+theirs. What this project funds comes second, itemized: a one-off goal for the receiver
+and antenna of §5c, a recurring line for server and domain, and developer time only as
+surplus. The ledger comes third — what arrived and what it bought.
+
+Hardware is the honest ask because it is finite, itemizable, verifiable, and it
+directly removes load from volunteer nodes. "Support development" on its own reads as a
+tip jar and invites exactly the question the credit page exists to answer. No goal
+figure is published until the hardware has actually been costed.
+
+Payment is never collected in the app. The deployment constraint in the README puts the
+client on plain http, so the donate controls link out to an external browser and
+nothing else.
+
+The donate page ships last, after the credits page is real and the observation network
+has data behind it. The correction path can ship as soon as 7b lands.
+
+### 7g. Order, and what gates what
+
+1. Write to Priyom and ENIGMA 2000: what this is, that they are credited per station,
+   and that support routes to them. Everything below stands on their data and a funding
+   ask on top of it makes their answer mandatory rather than polite. One email, and it
+   gates 7f entirely.
+2. Fixture to JSON, with CI validation and the served endpoint (7b). Unblocks the new
+   fields, the corrections path and the deep links.
+3. Live success-rate fixes 1 to 3 (7c). Cheapest visible win, and independent of
+   everything else.
+4. Observation write path and opt-in (7d), then the "hearing it now" line.
+5. Deep links and in-situ credit (7e.1, 7f).
+6. Credits page, then the donate page and ledger (7f).
+7. Designator decoder, then timeline (7e.3, 7e.4).

@@ -1,0 +1,2673 @@
+{
+  "schemaVersion": 1,
+  "stations": [
+    {
+      "enigmaId": "S28",
+      "name": "The Buzzer",
+      "aliases": [
+        "UVB-76",
+        "MDZhB",
+        "ZhUOZ",
+        "ANVF"
+      ],
+      "language": "Slavic voice",
+      "operator": "Russian military, 69th communications hub",
+      "tier": "live",
+      "marker": "1.25 s buzz tone with a 1.85 s pause, about 19 times per minute, 24 hours a day",
+      "markerPeriodSec": 3.1,
+      "lastConfirmed": "2026-09-10",
+      "lore": "The best known of the Russian channel markers. \"UVB-76\" is an obsolete callsign from the 1970s and 80s and is not what the station transmits today: voice identifiers observed since 2010 run MDZhB, then ZhUOZ from 2019, then ANVF. The transmitter site moved from Povarovo to Naro-Fominsk in 2010. Voice messages interrupt the buzzer irregularly and are read in the Russian phonetic alphabet; monitors logged a marked increase in them through 2025, peaking in March and April.\n\nThe pulse rate is worth reading carefully. Wikipedia summarises this station as \"approximately 25 tones per minute\", and the page it cites for that actually gives a 1.25 s tone with a 1.85 s pause — a 3.1 s period, about 19 per minute. This installation measured 3.40 s through a receiver in France on 2026-09-10, which agrees with the detailed figure and not with the summary. The 25-per-minute number appears to be an error in the summarising rather than a change on the air.",
+      "frequencies": [
+        {
+          "khz": 4625,
+          "mode": "USB",
+          "timeOfDay": null,
+          "lastConfirmed": "2025-11-15",
+          "sourceUrl": "https://en.wikipedia.org/wiki/UVB-76",
+          "disputed": false
+        }
+      ],
+      "schedules": [],
+      "sourceUrls": [
+        "https://www.numbers-stations.com/russia/the-buzzer/",
+        "https://en.wikipedia.org/wiki/UVB-76",
+        "https://shortwavearchive.com/archive/the-buzzer-uvb-76-august-8-2025"
+      ]
+    },
+    {
+      "enigmaId": "S30",
+      "name": "The Pip",
+      "aliases": [
+        "8S1Shch",
+        "Akacia"
+      ],
+      "language": "Slavic voice",
+      "operator": "Russian military, North Caucasus communications centre (callsign Akacia)",
+      "tier": "live",
+      "marker": "Short beep, repeating ~50 times per minute",
+      "markerPeriodSec": 1.2,
+      "lastConfirmed": "2025-01-01",
+      "lore": "A companion marker to The Buzzer, running a faster and much shorter pulse. Radioscanner attributes it to a North Caucasus military district communications centre, callsign Akacia, formerly the 72nd communications centre — not the Southern district, which is where The Squeaky Wheel is usually placed. Like the Buzzer it carries occasional Russian voice traffic.",
+      "frequencies": [
+        {
+          "khz": 5448,
+          "mode": "USB",
+          "timeOfDay": "day",
+          "lastConfirmed": "2025-01-01",
+          "sourceUrl": "https://en.wikipedia.org/wiki/The_Pip",
+          "disputed": false
+        },
+        {
+          "khz": 3756,
+          "mode": "USB",
+          "timeOfDay": "night",
+          "lastConfirmed": "2025-01-01",
+          "sourceUrl": "https://en.wikipedia.org/wiki/The_Pip",
+          "disputed": false
+        }
+      ],
+      "schedules": [],
+      "sourceUrls": [
+        "https://en.wikipedia.org/wiki/The_Pip",
+        "https://priyom.org/military-stations/russia/the-pip"
+      ]
+    },
+    {
+      "enigmaId": "S32",
+      "name": "The Squeaky Wheel",
+      "aliases": [
+        "XSW"
+      ],
+      "language": "Slavic voice",
+      "operator": "Russian military, Southern district",
+      "tier": "live",
+      "marker": "Repeating squeaking sweep",
+      "markerPeriodSec": null,
+      "lastConfirmed": "2025-01-01",
+      "lore": "The third Russian marker, and the reason this database stores frequencies as sourced observations rather than constants: two different frequency pairs are published for it and neither source retracts the other. Both are listed below, flagged as disputed. Confirm against the waterfall before trusting either.",
+      "frequencies": [
+        {
+          "khz": 5473,
+          "mode": "USB",
+          "timeOfDay": "day",
+          "lastConfirmed": "2021-12-01",
+          "sourceUrl": "http://mt-milcom.blogspot.com/2021/12/the-world-of-strange-military-stations.html",
+          "disputed": true
+        },
+        {
+          "khz": 3828,
+          "mode": "USB",
+          "timeOfDay": "night",
+          "lastConfirmed": "2021-12-01",
+          "sourceUrl": "http://mt-milcom.blogspot.com/2021/12/the-world-of-strange-military-stations.html",
+          "disputed": true
+        },
+        {
+          "khz": 5367,
+          "mode": "USB",
+          "timeOfDay": "day",
+          "lastConfirmed": "2025-01-01",
+          "sourceUrl": "https://en.wikipedia.org/wiki/The_Squeaky_Wheel",
+          "disputed": true
+        },
+        {
+          "khz": 3363.5,
+          "mode": "USB",
+          "timeOfDay": "night",
+          "lastConfirmed": "2025-01-01",
+          "sourceUrl": "https://en.wikipedia.org/wiki/The_Squeaky_Wheel",
+          "disputed": true
+        }
+      ],
+      "schedules": [],
+      "sourceUrls": [
+        "https://en.wikipedia.org/wiki/The_Squeaky_Wheel",
+        "http://www.mysterysignals.signalshed.com/page21.html"
+      ]
+    },
+    {
+      "enigmaId": "E11",
+      "name": "Oblique",
+      "aliases": [],
+      "language": "English voice",
+      "operator": "Poland",
+      "tier": "scheduled",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": "2026-09-10",
+      "lore": "An English-language station operated from Poland, which took over the role of G02 \"Swedish Rhapsody\". Transmissions open with a three-digit identifier and either carry a message or announce that there is none. Frequencies rotate month by month, so a slot that is silent on the frequency below may simply have moved.",
+      "frequencies": [],
+      "schedules": [
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,WE;BYHOUR=3;BYMINUTE=15",
+          "khz": 8102,
+          "note": "ID 25. Frequency rotates monthly; 8102 kHz is the January listing.",
+          "sourceUrl": "https://priyom.org/number-stations/english/e11/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,TH;BYHOUR=5;BYMINUTE=5",
+          "khz": 12153,
+          "note": "ID 33. Frequency rotates monthly.",
+          "sourceUrl": "https://priyom.org/number-stations/english/e11/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,WE;BYHOUR=6;BYMINUTE=0",
+          "khz": 20286,
+          "note": "ID 94. Frequency rotates monthly.",
+          "sourceUrl": "https://priyom.org/number-stations/english/e11/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=FR,SU;BYHOUR=6;BYMINUTE=0",
+          "khz": 7850,
+          "note": "ID 35. Frequency rotates monthly.",
+          "sourceUrl": "https://priyom.org/number-stations/english/e11/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,TH;BYHOUR=6;BYMINUTE=45",
+          "khz": 12385,
+          "note": "ID 51. Frequency rotates monthly.",
+          "sourceUrl": "https://priyom.org/number-stations/english/e11/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,WE;BYHOUR=6;BYMINUTE=45",
+          "khz": 13911,
+          "note": "ID 41. Frequency rotates monthly.",
+          "sourceUrl": "https://priyom.org/number-stations/english/e11/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,FR;BYHOUR=7;BYMINUTE=0",
+          "khz": 6804,
+          "note": "ID 57. Frequency rotates monthly.",
+          "sourceUrl": "https://priyom.org/number-stations/english/e11/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=SA,SU;BYHOUR=7;BYMINUTE=0",
+          "khz": 5371,
+          "note": "ID 49. Frequency rotates monthly.",
+          "sourceUrl": "https://priyom.org/number-stations/english/e11/schedule"
+        }
+      ],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/english/e11",
+        "https://priyom.org/number-stations/english/e11/schedule"
+      ]
+    },
+    {
+      "enigmaId": "E03",
+      "name": "The Lincolnshire Poacher",
+      "aliases": [],
+      "language": "English voice",
+      "operator": "United Kingdom, attributed to the Secret Intelligence Service",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": "2008-07-02",
+      "lore": "The most famous numbers station ever operated, and the one most listeners mean when they say \"numbers station\". Two bars of the English folk tune \"The Lincolnshire Poacher\" played as an interval signal, repeated twelve times, then a synthesised English female voice read five-figure groups. Transmitted from RAF Akrotiri in Cyprus. The final recorded transmission was on 2 July 2008.",
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://en.wikipedia.org/wiki/Lincolnshire_Poacher_(numbers_station)",
+        "https://www.numbersoddities.nl/E03-profile.pdf"
+      ]
+    },
+    {
+      "enigmaId": "E03a",
+      "name": "Cherry Ripe",
+      "aliases": [],
+      "language": "English voice",
+      "operator": "United Kingdom, attributed to the Secret Intelligence Service",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": "2009-12-01",
+      "lore": "The southern-hemisphere sister of E03, using the folk song \"Cherry Ripe\" as its interval signal. It transmitted for years from the US base on Guam, moved to Humpty Doo in Australia in late September 2009, ran there for only two months, and stopped in December 2009.",
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://en.wikipedia.org/wiki/Cherry_Ripe_(numbers_station)",
+        "https://www.numbersoddities.nl/E03-profile.pdf"
+      ]
+    },
+    {
+      "enigmaId": "V02a",
+      "name": "Atención",
+      "aliases": [
+        "The Cuban Lady",
+        "The Spanish Lady"
+      ],
+      "language": "Other-language voice",
+      "operator": "Cuba, Dirección General de Inteligencia",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": "2019-02-01",
+      "lore": "Opened with \"¡Atención! ¡Atención!\" and a synthesised Spanish female voice reading five-figure groups. V02a replaced the original V02 in 1997. Most of its schedules were taken over by the digital HM01 in November 2012, and it went inactive in February 2019 alongside its Morse counterpart M08a. Widely and wrongly still listed as active.",
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/other/v02a",
+        "https://www.numbers-stations.com/various/v02a/"
+      ]
+    },
+    {
+      "enigmaId": "HM01",
+      "name": "HM01",
+      "aliases": [
+        "De La Chica"
+      ],
+      "language": "Digital (hybrid voice + data)",
+      "operator": "Cuba, Dirección General de Inteligencia",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": "2024-08-23",
+      "lore": "A hybrid station: spoken Spanish groups interleaved with RDFT digital data bursts. It appeared around 2012 and absorbed most of the schedules of V02a and SK01. On 23 August 2024 the transmitter failed permanently shortly after switching from 11635 kHz to 10715 kHz, and with Radio Habana Cuba short of working transmitters the station has stayed off in favour of regular service. Repairs were reported in progress during 2026, so this one may move back to the active tier. Priyom’s index still lists it as active; its own station page does not.",
+      "frequencies": [
+        {
+          "khz": 11635,
+          "mode": "USB",
+          "timeOfDay": null,
+          "lastConfirmed": "2024-08-23",
+          "sourceUrl": "https://priyom.org/number-stations/digital/hm01",
+          "disputed": false
+        }
+      ],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/digital/hm01"
+      ]
+    },
+    {
+      "enigmaId": "V15",
+      "name": "Pyongyang",
+      "aliases": [],
+      "language": "Other-language voice",
+      "operator": "North Korea, Pyongyang Broadcasting Station",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": "2020-03-12",
+      "lore": "Unusual among numbers stations for hiding in plain sight: the groups aired inside normal Pyongyang Broadcasting Station programming, framed as lists of review assignments for distance-learning university students. Broadcasts ran weekly until 27 June 2019, then only four more times — 19 September and 9 November 2019, and 7 and 12 March 2020. Nothing since.",
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/other/v15"
+      ]
+    },
+    {
+      "enigmaId": "V24",
+      "name": "V24",
+      "aliases": [],
+      "language": "Other-language voice",
+      "operator": "South Korea",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": "2020-09-01",
+      "lore": "A Korean-language station: musical introduction, a three or four digit identifier, a message length announcement, then groups of four or five digits read twice, and a closing statement. Last heard in September 2020 and inactive since.",
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/other/v24"
+      ]
+    },
+    {
+      "enigmaId": "G02",
+      "name": "Swedish Rhapsody",
+      "aliases": [],
+      "language": "German voice",
+      "operator": "Poland",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": "A German-language Polish station that opened with a music-box rendition of \"Swedish Rhapsody\" and a child-sounding synthesised voice — the combination that gives it its reputation. Its operational role passed to E11 \"Oblique\". No German language numbers station remains in regular operation.",
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/german/g02"
+      ]
+    },
+    {
+      "enigmaId": "G03",
+      "name": "Gongs or Chimes",
+      "aliases": [
+        "Gong Station"
+      ],
+      "language": "German voice",
+      "operator": "East Germany, Nationale Volksarmee",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": "Used a synthesised chime or gong melody ahead of German numbers. Priyom attributes it to the East German Nationale Volksarmee, not the Stasi — the Stasi attribution attaches to G08 \"Four Note Rising Scale\". The popular Stasi claim for G03 could not be traced to a primary source.",
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/german/g03"
+      ]
+    },
+    {
+      "enigmaId": "E06",
+      "name": "English Man 00000",
+      "aliases": [],
+      "language": "English voice",
+      "operator": "Russia",
+      "tier": "scheduled",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": "2026-09-10",
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/english/e06",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "E07",
+      "name": "English Man 000 000",
+      "aliases": [],
+      "language": "English voice",
+      "operator": "Russia",
+      "tier": "scheduled",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": "2025-04-10",
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/english/e07",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "E25",
+      "name": "Rebeat",
+      "aliases": [],
+      "language": "English voice",
+      "operator": "Egypt",
+      "tier": "scheduled",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": "2026-09-10",
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/english/e25",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "E01",
+      "name": "Ready Ready",
+      "aliases": [],
+      "language": "English voice",
+      "operator": "Unknown",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/english/e01",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "E05",
+      "name": "The Counting Station",
+      "aliases": [],
+      "language": "English voice",
+      "operator": "United States",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/english/e05",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "E07a",
+      "name": "English Man 000 000",
+      "aliases": [],
+      "language": "English voice",
+      "operator": "Russia",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/english/e07a",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "E09",
+      "name": "Magnetic Fields",
+      "aliases": [],
+      "language": "English voice",
+      "operator": "Unknown",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/english/e09",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "E10",
+      "name": "NATO Alphabet",
+      "aliases": [],
+      "language": "English voice",
+      "operator": "Israel",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/english/e10",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "E12",
+      "name": "NNN",
+      "aliases": [],
+      "language": "English voice",
+      "operator": "Austria",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/english/e12",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "E13",
+      "name": "Five Dashes",
+      "aliases": [],
+      "language": "English voice",
+      "operator": "Germany",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/english/e13",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "E14",
+      "name": "Counting 'Control'",
+      "aliases": [],
+      "language": "English voice",
+      "operator": "United States",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/english/e14",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "E15",
+      "name": "Nancy Adam Susan",
+      "aliases": [],
+      "language": "English voice",
+      "operator": "Unknown",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/english/e15",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "E16",
+      "name": "Two Letter",
+      "aliases": [],
+      "language": "English voice",
+      "operator": "Germany",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/english/e16",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "E17",
+      "name": "English Lady 00000",
+      "aliases": [],
+      "language": "English voice",
+      "operator": "Russia",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/english/e17",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "E17z",
+      "name": "English Lady 0 0 0 0 0",
+      "aliases": [],
+      "language": "English voice",
+      "operator": "Ukraine",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/english/e17z",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "E18",
+      "name": "Fife Free",
+      "aliases": [],
+      "language": "English voice",
+      "operator": "Bulgaria",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/english/e18",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "E21",
+      "name": "4F Counting",
+      "aliases": [],
+      "language": "English voice",
+      "operator": "United States",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/english/e21",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "E23",
+      "name": "E23",
+      "aliases": [],
+      "language": "English voice",
+      "operator": "Poland",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/english/e23",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "E25b",
+      "name": "Rebeat",
+      "aliases": [],
+      "language": "English voice",
+      "operator": "Egypt",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/english/e25b",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "S06",
+      "name": "Russian Man 00000",
+      "aliases": [],
+      "language": "Slavic voice",
+      "operator": "Russia",
+      "tier": "scheduled",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": "2026-09-10",
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/slavic/s06",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "S06c",
+      "name": "S06c",
+      "aliases": [],
+      "language": "Slavic voice",
+      "operator": "Russia",
+      "tier": "scheduled",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": "2026-09-10",
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/slavic/s06c",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "S11a",
+      "name": "Cherta",
+      "aliases": [],
+      "language": "Slavic voice",
+      "operator": "Poland",
+      "tier": "scheduled",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": "2026-09-10",
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/slavic/s11a",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "S25",
+      "name": "Russian Man Control",
+      "aliases": [],
+      "language": "Slavic voice",
+      "operator": "Russia",
+      "tier": "scheduled",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": "2026-09-10",
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/slavic/s25",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "S02",
+      "name": "Drums and Trumpets",
+      "aliases": [],
+      "language": "Slavic voice",
+      "operator": "Bulgaria",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/slavic/s02",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "S02a",
+      "name": "S02a",
+      "aliases": [],
+      "language": "Slavic voice",
+      "operator": "Bulgaria",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/slavic/s02a",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "S02c",
+      "name": "S02c",
+      "aliases": [],
+      "language": "Slavic voice",
+      "operator": "Bulgaria",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/slavic/s02c",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "S02d",
+      "name": "S02d",
+      "aliases": [],
+      "language": "Slavic voice",
+      "operator": "Bulgaria",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/slavic/s02d",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "S03",
+      "name": "Okno",
+      "aliases": [],
+      "language": "Slavic voice",
+      "operator": "Czechia",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/slavic/s03",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "S04",
+      "name": "Edna Sednitzer",
+      "aliases": [],
+      "language": "Slavic voice",
+      "operator": "Bulgaria",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/slavic/s04",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "S05",
+      "name": "OLX",
+      "aliases": [],
+      "language": "Slavic voice",
+      "operator": "Czechoslovakia",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/slavic/s05",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "S05a",
+      "name": "S05a",
+      "aliases": [],
+      "language": "Slavic voice",
+      "operator": "Czechoslovakia",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/slavic/s05a",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "S05b",
+      "name": "S05b",
+      "aliases": [],
+      "language": "Slavic voice",
+      "operator": "Czechia",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/slavic/s05b",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "S06a",
+      "name": "Russian Man 00000",
+      "aliases": [],
+      "language": "Slavic voice",
+      "operator": "Soviet Union",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/slavic/s06a",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "S06s",
+      "name": "Russian Lady 0 0 0 0 0",
+      "aliases": [],
+      "language": "Slavic voice",
+      "operator": "Ukraine",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/slavic/s06s",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "S07",
+      "name": "Russian Man 000 000",
+      "aliases": [],
+      "language": "Slavic voice",
+      "operator": "Russia",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/slavic/s07",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "S08",
+      "name": "YT",
+      "aliases": [],
+      "language": "Slavic voice",
+      "operator": "Yugoslavia",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/slavic/s08",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "S10",
+      "name": "Bulgarian Betty",
+      "aliases": [],
+      "language": "Slavic voice",
+      "operator": "Czechoslovakia",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/slavic/s10",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "S10a",
+      "name": "S10a",
+      "aliases": [],
+      "language": "Slavic voice",
+      "operator": "Czechoslovakia",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/slavic/s10a",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "S10b",
+      "name": "S10b",
+      "aliases": [],
+      "language": "Slavic voice",
+      "operator": "Czechoslovakia",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/slavic/s10b",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "S10d",
+      "name": "S10d",
+      "aliases": [],
+      "language": "Slavic voice",
+      "operator": "Czechia",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/slavic/s10d",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "S10e",
+      "name": "S10e",
+      "aliases": [],
+      "language": "Slavic voice",
+      "operator": "Czechia",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/slavic/s10e",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "S11",
+      "name": "Kreska",
+      "aliases": [],
+      "language": "Slavic voice",
+      "operator": "Poland",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/slavic/s11",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "S17a",
+      "name": "Czech Lady Control",
+      "aliases": [],
+      "language": "Slavic voice",
+      "operator": "Czechia",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/slavic/s17a",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "S17b",
+      "name": "S17b",
+      "aliases": [],
+      "language": "Slavic voice",
+      "operator": "Czechia",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/slavic/s17b",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "S17c",
+      "name": "S17c",
+      "aliases": [],
+      "language": "Slavic voice",
+      "operator": "Czechia",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/slavic/s17c",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "S21",
+      "name": "Russian Man 0 0 0",
+      "aliases": [],
+      "language": "Slavic voice",
+      "operator": "Russia",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/slavic/s21",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "S26",
+      "name": "Cyt Cyt",
+      "aliases": [],
+      "language": "Slavic voice",
+      "operator": "Poland",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/slavic/s26",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "S31",
+      "name": "S31",
+      "aliases": [],
+      "language": "Slavic voice",
+      "operator": "Czechia",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/slavic/s31",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "G01",
+      "name": "Tyrolean Music Station",
+      "aliases": [],
+      "language": "German voice",
+      "operator": "France",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/german/g01",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "G04",
+      "name": "Three Note Oddity",
+      "aliases": [],
+      "language": "German voice",
+      "operator": "Hungary",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/german/g04",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "G05",
+      "name": "The Counting Station",
+      "aliases": [],
+      "language": "German voice",
+      "operator": "United States",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/german/g05",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "G06",
+      "name": "German Lady 00000",
+      "aliases": [],
+      "language": "German voice",
+      "operator": "Russia",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/german/g06",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "G07",
+      "name": "German Lady 000 000",
+      "aliases": [],
+      "language": "German voice",
+      "operator": "Russia",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/german/g07",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "G08",
+      "name": "Four Note Rising Scale",
+      "aliases": [],
+      "language": "German voice",
+      "operator": "East Germany, Stasi",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/german/g08",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "G09",
+      "name": "Saxophone Piece",
+      "aliases": [],
+      "language": "German voice",
+      "operator": "Unknown",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/german/g09",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "G10",
+      "name": "Bert Kaempfert",
+      "aliases": [],
+      "language": "German voice",
+      "operator": "Poland",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/german/g10",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "G11",
+      "name": "Strich",
+      "aliases": [],
+      "language": "German voice",
+      "operator": "Poland",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/german/g11",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "G12",
+      "name": "NNN",
+      "aliases": [],
+      "language": "German voice",
+      "operator": "Austria",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/german/g12",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "G13",
+      "name": "Five Dashes",
+      "aliases": [],
+      "language": "German voice",
+      "operator": "Germany",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/german/g13",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "G14",
+      "name": "DFD21/DFC37",
+      "aliases": [],
+      "language": "German voice",
+      "operator": "Germany",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/german/g14",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "G15",
+      "name": "Papa November",
+      "aliases": [],
+      "language": "German voice",
+      "operator": "Germany",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/german/g15",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "G16",
+      "name": "Two Letter",
+      "aliases": [],
+      "language": "German voice",
+      "operator": "Germany",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/german/g16",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "G18",
+      "name": "Eight Note Rising Scale",
+      "aliases": [],
+      "language": "German voice",
+      "operator": "Czechoslovakia",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/german/g18",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "G20",
+      "name": "Spruch",
+      "aliases": [],
+      "language": "German voice",
+      "operator": "Unknown",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/german/g20",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "G22",
+      "name": "Edna Sednitzer",
+      "aliases": [],
+      "language": "German voice",
+      "operator": "Bulgaria",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/german/g22",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "V07",
+      "name": "Spanish Lady 000 000",
+      "aliases": [],
+      "language": "Other-language voice",
+      "operator": "Russia",
+      "tier": "scheduled",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": "2026-09-10",
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/other/v07",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "V13",
+      "name": "New Star Broadcasting Station",
+      "aliases": [],
+      "language": "Other-language voice",
+      "operator": "Taiwan",
+      "tier": "scheduled",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": "2026-09-10",
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/other/v13",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "V28",
+      "name": "The Parrot",
+      "aliases": [],
+      "language": "Other-language voice",
+      "operator": "North Korea",
+      "tier": "scheduled",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": "2026-09-10",
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/other/v28",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "V01",
+      "name": "Ciocârlia / Skylark",
+      "aliases": [],
+      "language": "Other-language voice",
+      "operator": "Romania",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/other/v01",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "V02",
+      "name": "Atención",
+      "aliases": [],
+      "language": "Other-language voice",
+      "operator": "Cuba",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/other/v02",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "V06",
+      "name": "Spanish Lady 00000",
+      "aliases": [],
+      "language": "Other-language voice",
+      "operator": "Russia",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/other/v06",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "V08",
+      "name": "Eastern Music Station",
+      "aliases": [],
+      "language": "Other-language voice",
+      "operator": "Egypt",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/other/v08",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "V10",
+      "name": "V10",
+      "aliases": [],
+      "language": "Other-language voice",
+      "operator": "Unknown",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/other/v10",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "V12",
+      "name": "NNN",
+      "aliases": [],
+      "language": "Other-language voice",
+      "operator": "Austria",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/other/v12",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "V14",
+      "name": "Counting 'Control'",
+      "aliases": [],
+      "language": "Other-language voice",
+      "operator": "United States",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/other/v14",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "V19",
+      "name": "V19",
+      "aliases": [],
+      "language": "Other-language voice",
+      "operator": "Unknown",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/other/v19",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "V20",
+      "name": "The Bored Man",
+      "aliases": [],
+      "language": "Other-language voice",
+      "operator": "Cuba",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/other/v20",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "V30",
+      "name": "The Lighthouse",
+      "aliases": [],
+      "language": "Other-language voice",
+      "operator": "Vietnam",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/other/v30",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "M01",
+      "name": "M01",
+      "aliases": [],
+      "language": "Morse",
+      "operator": "Russia",
+      "tier": "scheduled",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": "2026-09-10",
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/morse/m01",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "M01a",
+      "name": "M01a",
+      "aliases": [],
+      "language": "Morse",
+      "operator": "Russia",
+      "tier": "scheduled",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": "2026-09-10",
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/morse/m01a",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "M12",
+      "name": "M12",
+      "aliases": [],
+      "language": "Morse",
+      "operator": "Russia",
+      "tier": "scheduled",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": "2026-09-10",
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/morse/m12",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "M14",
+      "name": "M14",
+      "aliases": [],
+      "language": "Morse",
+      "operator": "Russia",
+      "tier": "scheduled",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": "2026-09-10",
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/morse/m14",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "M23",
+      "name": "M23",
+      "aliases": [],
+      "language": "Morse",
+      "operator": "France",
+      "tier": "scheduled",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": "2026-09-10",
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/morse/m23",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "M01b",
+      "name": "M01b",
+      "aliases": [],
+      "language": "Morse",
+      "operator": "Russia",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/morse/m01b",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "M02",
+      "name": "M02",
+      "aliases": [],
+      "language": "Morse",
+      "operator": "Austria",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/morse/m02",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "M03",
+      "name": "M03",
+      "aliases": [],
+      "language": "Morse",
+      "operator": "Poland",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/morse/m03",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "M03a",
+      "name": "M03a",
+      "aliases": [],
+      "language": "Morse",
+      "operator": "Poland",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/morse/m03a",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "M03b",
+      "name": "M03b",
+      "aliases": [],
+      "language": "Morse",
+      "operator": "Poland",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/morse/m03b",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "M03c",
+      "name": "M03c",
+      "aliases": [],
+      "language": "Morse",
+      "operator": "Poland",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/morse/m03c",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "M03d",
+      "name": "M03d",
+      "aliases": [],
+      "language": "Morse",
+      "operator": "Poland",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/morse/m03d",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "M03e",
+      "name": "M03e",
+      "aliases": [],
+      "language": "Morse",
+      "operator": "Poland",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/morse/m03e",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "M03f",
+      "name": "M03f",
+      "aliases": [],
+      "language": "Morse",
+      "operator": "Poland",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/morse/m03f",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "M04",
+      "name": "M04",
+      "aliases": [],
+      "language": "Morse",
+      "operator": "Poland",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/morse/m04",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "M05",
+      "name": "M05",
+      "aliases": [],
+      "language": "Morse",
+      "operator": "United Kingdom (unconfirmed)",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/morse/m05",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "M06",
+      "name": "M06",
+      "aliases": [],
+      "language": "Morse",
+      "operator": "Czechia",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/morse/m06",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "M06a",
+      "name": "M06a",
+      "aliases": [],
+      "language": "Morse",
+      "operator": "Czechoslovakia",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/morse/m06a",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "M07",
+      "name": "M07",
+      "aliases": [],
+      "language": "Morse",
+      "operator": "Czechia",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/morse/m07",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "M08",
+      "name": "M08",
+      "aliases": [],
+      "language": "Morse",
+      "operator": "Cuba",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/morse/m08",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "M08a",
+      "name": "M08a",
+      "aliases": [],
+      "language": "Morse",
+      "operator": "Cuba",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": "2019-02-01",
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/morse/m08a",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "M10",
+      "name": "M10",
+      "aliases": [],
+      "language": "Morse",
+      "operator": "Czechia",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/morse/m10",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "M10c",
+      "name": "M10c",
+      "aliases": [],
+      "language": "Morse",
+      "operator": "Czechoslovakia",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/morse/m10c",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "M11",
+      "name": "M11",
+      "aliases": [],
+      "language": "Morse",
+      "operator": "Unknown",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/morse/m11",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "M13",
+      "name": "M13",
+      "aliases": [],
+      "language": "Morse",
+      "operator": "Bulgaria",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/morse/m13",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "M13a",
+      "name": "M13a",
+      "aliases": [],
+      "language": "Morse",
+      "operator": "Bulgaria",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/morse/m13a",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "M13b",
+      "name": "M13b",
+      "aliases": [],
+      "language": "Morse",
+      "operator": "Bulgaria",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/morse/m13b",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "M13c",
+      "name": "M13c",
+      "aliases": [],
+      "language": "Morse",
+      "operator": "Bulgaria",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/morse/m13c",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "M13d",
+      "name": "M13d",
+      "aliases": [],
+      "language": "Morse",
+      "operator": "Bulgaria",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/morse/m13d",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "M13e",
+      "name": "M13e",
+      "aliases": [],
+      "language": "Morse",
+      "operator": "Bulgaria",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/morse/m13e",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "M17",
+      "name": "M17",
+      "aliases": [],
+      "language": "Morse",
+      "operator": "Unknown",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/morse/m17",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "M29",
+      "name": "M29",
+      "aliases": [],
+      "language": "Morse",
+      "operator": "Hungary",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/morse/m29",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "M29a",
+      "name": "M29a",
+      "aliases": [],
+      "language": "Morse",
+      "operator": "Hungary",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/morse/m29a",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "M39",
+      "name": "M39",
+      "aliases": [],
+      "language": "Morse",
+      "operator": "Czechia",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/morse/m39",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "M40",
+      "name": "M40",
+      "aliases": [],
+      "language": "Morse",
+      "operator": "North Korea",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/morse/m40",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "M45",
+      "name": "M45",
+      "aliases": [],
+      "language": "Morse",
+      "operator": "Russia",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/morse/m45",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "M94",
+      "name": "M94",
+      "aliases": [],
+      "language": "Morse",
+      "operator": "South Korea",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/morse/m94",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "M97",
+      "name": "M97",
+      "aliases": [],
+      "language": "Morse",
+      "operator": "Vietnam",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/morse/m97",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "F01",
+      "name": "F01",
+      "aliases": [],
+      "language": "Digital (FSK)",
+      "operator": "Russia",
+      "tier": "scheduled",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": "2026-09-10",
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/digital/f01",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "F03",
+      "name": "F03",
+      "aliases": [],
+      "language": "Digital (FSK)",
+      "operator": "Poland",
+      "tier": "scheduled",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": "2026-09-10",
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/digital/f03",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "F06",
+      "name": "F06",
+      "aliases": [],
+      "language": "Digital (FSK)",
+      "operator": "Russia",
+      "tier": "scheduled",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": "2026-09-10",
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/digital/f06",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "F06a",
+      "name": "F06a",
+      "aliases": [],
+      "language": "Digital (FSK)",
+      "operator": "Russia",
+      "tier": "scheduled",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": "2026-09-10",
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/digital/f06a",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "F07",
+      "name": "F07",
+      "aliases": [],
+      "language": "Digital (FSK)",
+      "operator": "Russia",
+      "tier": "scheduled",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": "2026-09-10",
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/digital/f07",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "P03",
+      "name": "P03",
+      "aliases": [],
+      "language": "Digital (PSK)",
+      "operator": "Poland",
+      "tier": "scheduled",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": "2026-09-10",
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/digital/p03",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "P07",
+      "name": "P07",
+      "aliases": [],
+      "language": "Digital (PSK)",
+      "operator": "Russia",
+      "tier": "scheduled",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": "2026-09-10",
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/digital/p07",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "XPA",
+      "name": "Polytones",
+      "aliases": [],
+      "language": "Digital (other)",
+      "operator": "Russia, SVR",
+      "tier": "scheduled",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": "2026-09-10",
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/digital/xpa",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "XPA2",
+      "name": "Polytones",
+      "aliases": [],
+      "language": "Digital (other)",
+      "operator": "Russia, SVR",
+      "tier": "scheduled",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": "2026-09-10",
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/digital/xpa2",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "XPB",
+      "name": "Polytones",
+      "aliases": [],
+      "language": "Digital (other)",
+      "operator": "Russia, SVR",
+      "tier": "scheduled",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": "2026-09-10",
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/digital/xpb",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "F11",
+      "name": "F11",
+      "aliases": [],
+      "language": "Digital (FSK)",
+      "operator": "Poland",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/digital/f11",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "SK01",
+      "name": "SK01",
+      "aliases": [],
+      "language": "Digital (other)",
+      "operator": "Cuba",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/digital/sk01",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    },
+    {
+      "enigmaId": "XP",
+      "name": "XP",
+      "aliases": [],
+      "language": "Digital (other)",
+      "operator": "Russia",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/digital/xp",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ]
+    }
+  ]
+}

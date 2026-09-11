@@ -1,11 +1,12 @@
 import { fetchObservations, type Observation } from '../api';
 import { archiveLinks } from '../archives';
-import { isRosterOnly, prefixMeaning, STATIONS } from '../data/stations';
+import { allStations, byId, isRosterOnly, prefixMeaning } from '../data/stations';
 import type { Station, Tier } from '../types';
 import {
   definitionList,
   esc,
   gapNotice,
+  safeUrl,
   searchField,
   segmented,
   stationRow,
@@ -50,7 +51,7 @@ function provenanceTable(station: Station): string {
           `<td>${esc(frequency.mode)}</td>` +
           `<td>${frequency.timeOfDay ?? '—'}</td>` +
           `<td>${frequency.lastConfirmed}</td>` +
-          `<td><a href="${frequency.sourceUrl}" target="_blank" rel="noreferrer">source</a>` +
+          `<td><a href="${safeUrl(frequency.sourceUrl)}" target="_blank" rel="noreferrer">source</a>` +
           (frequency.disputed ? ' <span class="echo-flag echo-flag--accent">disputed</span>' : '') +
           `</td></tr>`,
       )
@@ -136,7 +137,7 @@ function detailHtml(station: Station): string {
     links
       .map(
         (link) =>
-          `<li><a href="${link.url}" target="_blank" rel="noreferrer">${esc(link.label)}</a>` +
+          `<li><a href="${safeUrl(link.url)}" target="_blank" rel="noreferrer">${esc(link.label)}</a>` +
           `<span>${esc(link.description)}</span></li>`,
       )
       .join('') +
@@ -163,7 +164,7 @@ function detailHtml(station: Station): string {
     archive +
     `<p class="echo-sources">` +
     station.sourceUrls
-      .map((url, index) => `<a href="${url}" target="_blank" rel="noreferrer">[${index + 1}]</a>`)
+      .map((url, index) => `<a href="${safeUrl(url)}" target="_blank" rel="noreferrer">[${index + 1}]</a>`)
       .join(' ') +
     `</p>` +
     `</div></div></div>`
@@ -176,7 +177,7 @@ export function stationsView(): { element: HTMLElement; destroy: () => void } {
 
   const counts = TIER_ORDER.map(
     (tier) =>
-      `${STATIONS.filter((station) => station.tier === tier).length} ${TIER_LABEL[
+      `${allStations().filter((station) => station.tier === tier).length} ${TIER_LABEL[
         tier
       ].toLowerCase()}${tier === 'live' ? 's' : ''}`,
   );
@@ -213,7 +214,7 @@ export function stationsView(): { element: HTMLElement; destroy: () => void } {
   const render = (): void => {
     const query = search.value.trim().toLowerCase();
 
-    const matches = STATIONS.filter((station) => {
+    const matches = allStations().filter((station) => {
       if (tier && station.tier !== tier) return false;
       if (!query) return true;
       return (
@@ -282,7 +283,7 @@ export function stationsView(): { element: HTMLElement; destroy: () => void } {
   rows.addEventListener('click', (event) => {
     const button = (event.target as HTMLElement).closest<HTMLButtonElement>('[data-id]');
     if (!button) return;
-    const station = STATIONS.find((candidate) => candidate.enigmaId === button.dataset.id);
+    const station = byId(button.dataset.id ?? '');
     if (station) openDetail(station);
   });
 

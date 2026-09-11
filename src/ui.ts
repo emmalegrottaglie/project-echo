@@ -12,6 +12,8 @@
  * across 141 archive rows would defeat the performance budget the same document sets.
  */
 
+import { isSafeUrl } from './url';
+
 /** Escapes text for interpolation into markup. */
 export function esc(value: string): string {
   return value
@@ -22,6 +24,19 @@ export function esc(value: string): string {
 }
 
 export type Tone = 'neutral' | 'live' | 'danger' | 'ok';
+
+/**
+ * A URL fit to interpolate into an `href`.
+ *
+ * Station source URLs now arrive as data rather than as compiled-in literals, and four
+ * places in this app drop them straight into an anchor. `src/data/schema.ts` already
+ * rejects a dataset containing anything but http or https, so this never fires in
+ * normal operation — it is here because a rendering helper that trusts its input is one
+ * refactor away from being the hole.
+ */
+export function safeUrl(value: string): string {
+  return isSafeUrl(value) ? esc(value) : '#';
+}
 
 /* ------------------------------------------------------------------ core ----- */
 
@@ -271,7 +286,7 @@ export function gapNotice(title: string, body: string, links: GapLink[] = []): s
       links
         .map(
           (link) =>
-            `<li><a href="${link.url}" target="_blank" rel="noreferrer">${esc(link.label)}</a>` +
+            `<li><a href="${safeUrl(link.url)}" target="_blank" rel="noreferrer">${esc(link.label)}</a>` +
             (link.description ? `<span>${esc(link.description)}</span>` : '') +
             `</li>`,
         )

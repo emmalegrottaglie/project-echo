@@ -3,6 +3,7 @@ import { createReadStream, statSync } from 'node:fs';
 import { extname, join, normalize, resolve, sep } from 'node:path';
 import { listObservations, recordObservation } from './db.mjs';
 import { receivers } from './directory.mjs';
+import { stationPayload } from './stations.mjs';
 
 /**
  * Phase 3 server.
@@ -166,6 +167,28 @@ async function handle(request, response) {
         return;
       }
       sendJson(response, 201, recordObservation(body));
+      return;
+    }
+
+    if (path === '/api/stations' && request.method === 'GET') {
+      const { body, etag } = stationPayload();
+
+      if (request.headers['if-none-match'] === etag) {
+        response.writeHead(304, { etag, 'access-control-allow-origin': '*' });
+        response.end();
+        return;
+      }
+
+      response.writeHead(200, {
+        'content-type': 'application/json; charset=utf-8',
+        'content-length': body.length,
+        // Revalidate every launch: the whole point of this endpoint is currency, and
+        // the 304 above makes checking cheap.
+        'cache-control': 'no-cache',
+        etag,
+        'access-control-allow-origin': '*',
+      });
+      response.end(body);
       return;
     }
 

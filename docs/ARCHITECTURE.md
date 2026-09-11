@@ -103,7 +103,9 @@ wrong on a real signal are recorded in its header comment; read that before touc
 | Concern | Owner |
 |---|---|
 | Which receiver, and remembering it | [`src/receiver.ts`](../src/receiver.ts) + `localStorage` |
-| Station facts, tiers, provenance | [`src/data/stations.ts`](../src/data/stations.ts) |
+| Station facts, tiers, provenance | [`data/stations.json`](../data/stations.json) |
+| Loading, caching and refreshing that roster | [`src/data/stations.ts`](../src/data/stations.ts) |
+| Validating it, at build time and on arrival | [`src/data/schema.ts`](../src/data/schema.ts) |
 | Recurrence arithmetic, countdown formatting | [`src/schedule.ts`](../src/schedule.ts) |
 | Alert subscriptions and the due check | [`src/alerts.ts`](../src/alerts.ts) |
 | Server calls, degrading when absent | [`src/api.ts`](../src/api.ts) |
@@ -136,8 +138,10 @@ seconds. AAC-LC rather than Opus, because Safari cannot play Opus in MP4.
 
 **SQLite, and only the `observation` table.** A few hundred stations do not justify
 Postgres, and `node:sqlite` is stdlib so the server has no dependencies. Stations,
-frequencies and schedules stay a typed fixture; creating empty tables nothing reads
-would be scaffolding.
+frequencies and schedules are a reviewed JSON file instead of rows: git history is
+what records who changed a fact and on what evidence, and a pull request is where the
+provenance rule is enforced by a person. An admin form writing to a table would lose
+both. See [`data/README.md`](../data/README.md).
 
 **Frequencies are rows with provenance, not constants.** S32's are published two
 different ways by sources that do not retract each other, so the schema stores both with
