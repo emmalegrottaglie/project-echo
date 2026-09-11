@@ -40,9 +40,42 @@ export const PREFIX_MEANING: Record<string, string> = {
   H: 'Digital (hybrid voice + data)',
 };
 
+/** The family letter a designator belongs to. 'HM01' is an H, not an M. */
+export function designatorPrefix(enigmaId: string): string {
+  return enigmaId.slice(0, 2) === 'HM' ? 'H' : enigmaId.slice(0, 1);
+}
+
 export function prefixMeaning(enigmaId: string): string {
-  const head = enigmaId.slice(0, 2) === 'HM' ? 'H' : enigmaId.slice(0, 1);
-  return PREFIX_MEANING[head] ?? 'Unclassified';
+  return PREFIX_MEANING[designatorPrefix(enigmaId)] ?? 'Unclassified';
+}
+
+/**
+ * A designator read out in words: 'E' for English voice, '11' for the station, and a
+ * trailing letter for a variant of it.
+ *
+ * Most of the roster is a letter, a number and an optional variant — E06, E06a, S06c.
+ * Some are not: HM01, XPA2, SK01 and XPB carry a multi-letter prefix where the rest is
+ * not a station number at all. Those are described by their family letter and nothing
+ * more, because inventing a parse for them would explain something that is not there.
+ */
+export function describeDesignator(enigmaId: string): string {
+  // Never lower-cased: the meanings carry proper adjectives and an acronym, and
+  // "F for digital (fsk)" is simply wrong where "F for Digital (FSK)" is not.
+  const meaning = prefixMeaning(enigmaId);
+  const regular = /^([A-Z])(\d+)([a-z]*)$/.exec(enigmaId);
+
+  if (!regular) {
+    return (
+      `${enigmaId} belongs to the ${meaning} family. Its designator does not split ` +
+      `into a plain letter and number the way most do.`
+    );
+  }
+
+  const [, letter, number, variant] = regular;
+  return (
+    `${letter} for ${meaning}, ${number} for the station` +
+    (variant ? `, ${variant} for a variant of it.` : '.')
+  );
 }
 
 /** Where a cached roster lives between launches. */

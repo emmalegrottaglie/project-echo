@@ -1533,6 +1533,76 @@ tr.disputed {
   cursor: pointer;
 }
 
+/* --------------------------------------------------------------- families ----- */
+
+/*
+ * A designator family in the decoder: the letter at its full weight, because the letter
+ * is the thing being explained.
+ */
+.echo-family {
+  display: flex;
+  gap: var(--space-3);
+  align-items: center;
+  width: 100%;
+  padding: var(--space-3) 0;
+  border: 0;
+  border-bottom: var(--hairline-width) solid var(--border);
+  background: none;
+  color: var(--fg);
+  text-align: left;
+  cursor: pointer;
+}
+
+.echo-family:active {
+  opacity: 0.6;
+}
+
+.echo-family__letter {
+  width: 1.6em;
+  color: var(--accent);
+  font: var(--weight-semibold) var(--text-display) / var(--leading-tight) var(--font-mono);
+  text-align: center;
+}
+
+.echo-family__text {
+  flex: 1;
+  min-width: 0;
+}
+
+.echo-family__text strong {
+  display: block;
+  font: var(--weight-medium) var(--text-body) / var(--leading-body) var(--font-sans);
+}
+
+.echo-family__text span {
+  display: block;
+  color: var(--dim);
+  font: var(--text-label) / var(--leading-body) var(--font-sans);
+}
+
+.echo-family__count {
+  color: var(--dim);
+  font: var(--text-body) / var(--leading-data) var(--font-mono);
+}
+
+.echo-family__note {
+  margin-top: var(--space-3);
+  color: var(--dim);
+  font: var(--text-label) / var(--leading-body) var(--font-sans);
+  text-wrap: pretty;
+}
+
+/* The applied family, with the way out. A filter you cannot see is a broken archive. */
+.echo-family-filter {
+  display: flex;
+  gap: var(--space-2);
+  align-items: baseline;
+  justify-content: space-between;
+  padding: var(--space-2) 0;
+  color: var(--dim);
+  font: var(--text-label) / var(--leading-body) var(--font-sans);
+}
+
 /* ------------------------------------------------------------ last heard ----- */
 
 /*

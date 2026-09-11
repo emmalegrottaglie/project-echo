@@ -12,6 +12,21 @@ wrong fact is a defect. Where a correction has evidence behind it, the evidence 
 
 ### Added
 
+- **A designator decoder, which is also a filter.** The archive is 141 rows of E11,
+  S06c, XPA2 and M12, which look like inventory codes and are in fact a classification:
+  ENIGMA 2000 assign the leading letter by language and mode, so the roster is already
+  sorted by what a station sounds like. "What do the codes mean?" in the archive header
+  opens the nine families present in the data — Morse 38, Slavic voice 33, English voice
+  22, and so on down to one hybrid — and picking one filters the archive to it, which is
+  what makes it worth building rather than writing down. It composes with the tier
+  control and says what it has applied, with the way back out.
+
+  Every station page now reads its own designator aloud where it used to print a bare
+  classification: "S for Slavic voice, 06 for the station, c for a variant of it". The
+  designators that do not follow the pattern — HM01, SK01, the XPA polytones — say so
+  instead of being given a parse they do not have. The counts come from the roster
+  rather than a hardcoded legend, so they cannot rot.
+
 - **A credits and licence page.** Attribution had been living in three places a reader
   would never visit — a per-station footnote, `data/LICENSE`, and a repository README —
   which satisfies nobody and least of all CC BY-NC-SA, whose attribution clause is a

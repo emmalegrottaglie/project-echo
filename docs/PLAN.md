@@ -421,7 +421,8 @@ Ranked by uniqueness against cost:
 2. **Exits on every detail page.** Three minimum: same designator family, same
    operator, and successor. The first two are derivable from fields that already exist;
    the third needs the new field in 7b.
-3. **Designator decoder.** `PREFIX_MEANING` already encodes the taxonomy — E, G and S
+3. **Designator decoder.** **Built**, and as a filter rather than only a legend.
+   `PREFIX_MEANING` already encodes the taxonomy — E, G and S
    for voice languages, M for Morse, F, P and X for digital. One screen turns 141
    opaque codes into a readable system. The highest payoff per hour in this list.
 4. **Timeline.** Cold War to the present on one scroll. Needs the date fields in 7b.
@@ -475,4 +476,4 @@ The correction path can ship as soon as 7b lands.
 4. Observation write path and opt-in (7d), then the "hearing it now" line.
 5. Deep links and in-situ credit (7e.1, 7f).
 6. Credits page (7f). **Built.**
-7. Designator decoder, then timeline (7e.3, 7e.4).
+7. Designator decoder **(built)**, then timeline (7e.3, 7e.4).

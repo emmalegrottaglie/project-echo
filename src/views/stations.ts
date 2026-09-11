@@ -1,7 +1,14 @@
 import { fetchObservations, type Observation } from '../api';
 import { archiveLinks } from '../archives';
 import { openCredits } from '../credits';
-import { allStations, isRosterOnly, prefixMeaning } from '../data/stations';
+import { openDecoder } from '../decoder';
+import {
+  allStations,
+  describeDesignator,
+  designatorPrefix,
+  isRosterOnly,
+  PREFIX_MEANING,
+} from '../data/stations';
 import { describeScheduleKhz } from '../schedule';
 import type { Station, Tier } from '../types';
 import { isSafeUrl } from '../url';
@@ -165,7 +172,7 @@ function detailHtml(station: Station): string {
   const now = new Date();
 
   const items = [
-    { label: 'Classification', value: prefixMeaning(station.enigmaId) },
+    { label: 'Classification', value: describeDesignator(station.enigmaId) },
     { label: 'Operator', value: station.operator },
     { label: 'Status', value: statusClaim(station) },
   ];
@@ -270,7 +277,10 @@ export function stationsView(param = ''): {
             because most published "active" listings are stale. Compiled by
             <button class="echo-linkish" type="button" name="credits">Priyom.org and
             ENIGMA 2000</button>, and used under their licence.
+            <button class="echo-linkish" type="button" name="decode">What do the codes
+            mean?</button>
           </p>
+          <div class="echo-family-filter" hidden></div>
         </div>
         <div class="echo-rows"></div>
       </div>
@@ -279,16 +289,20 @@ export function stationsView(param = ''): {
   `;
 
   const search = element.querySelector<HTMLInputElement>('[name="q"]')!;
+  const familyFilter = element.querySelector<HTMLElement>('.echo-family-filter')!;
   const segments = element.querySelector<HTMLElement>('.echo-segmented')!;
   const rows = element.querySelector<HTMLElement>('.echo-rows')!;
   const detailSlot = element.querySelector<HTMLElement>('.echo-detail-slot')!;
 
   let tier: Tier | '' = '';
+  /** Designator family letter, applied on top of the tier and the search. */
+  let prefix = '';
 
   const render = (): void => {
     const query = search.value.trim().toLowerCase();
 
     const matches = allStations().filter((station) => {
+      if (prefix && designatorPrefix(station.enigmaId) !== prefix) return false;
       if (tier && station.tier !== tier) return false;
       if (!query) return true;
       return (
@@ -320,7 +334,7 @@ export function stationsView(param = ''): {
 
     // Tier sections only when unfiltered: with a filter applied the header would
     // repeat what the segmented control already says.
-    rows.innerHTML = tier
+    rows.innerHTML = tier || prefix
       ? matches.map(row).join('')
       : TIER_ORDER.map((group) => {
           const inGroup = matches.filter((station) => station.tier === group);
@@ -343,6 +357,23 @@ export function stationsView(param = ''): {
       const slot = detailSlot.querySelector<HTMLElement>('.echo-observations');
       if (slot) slot.innerHTML = observationsHtml(observations);
     });
+  };
+
+  /** The applied family, with the way out: a filter you cannot see is a broken archive. */
+  const renderFamilyFilter = (): void => {
+    familyFilter.hidden = prefix === '';
+    if (!prefix) return;
+
+    familyFilter.innerHTML =
+      `<span>Showing ${esc(PREFIX_MEANING[prefix] ?? prefix)} — designators beginning ` +
+      `${esc(prefix)}</span>` +
+      `<button class="echo-linkish" type="button" name="clear-family">Show all</button>`;
+  };
+
+  const applyPrefix = (next: string): void => {
+    prefix = next;
+    renderFamilyFilter();
+    render();
   };
 
   search.addEventListener('input', render);
@@ -376,7 +407,10 @@ export function stationsView(param = ''): {
   });
 
   element.addEventListener('click', (event) => {
-    if ((event.target as HTMLElement).closest('[name="credits"]')) openCredits();
+    const target = event.target as HTMLElement;
+    if (target.closest('[name="credits"]')) openCredits();
+    if (target.closest('[name="decode"]')) openDecoder(applyPrefix);
+    if (target.closest('[name="clear-family"]')) applyPrefix('');
   });
 
   /**
