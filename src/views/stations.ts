@@ -71,21 +71,24 @@ function observationsHtml(observations: Observation[]): string {
   if (!observations.length) {
     return `<h4>Heard here</h4>${gapNotice(
       'No hearings yet',
-      "The live view records one when the detector locks onto this station's marker — " +
-        'timing and frequency only, never any content.',
+      "The live view records one when the detector locks onto this station's marker, if " +
+        'you have turned that on — timing and frequency only, never any content and ' +
+        'never which receiver you listened through.',
     )}`;
   }
 
   return (
     `<h4>Heard here</h4><div class="echo-table-scroll"><table>` +
-    `<thead><tr><th>When</th><th>kHz</th><th>Period</th><th>Receiver</th></tr></thead><tbody>` +
+    `<thead><tr><th>When</th><th>kHz</th><th>Period</th><th>Steadiness</th></tr></thead><tbody>` +
     observations
       .map(
         (observation) =>
           `<tr><td>${new Date(observation.heardAt).toLocaleString()}</td>` +
           `<td>${observation.khz ?? '—'}</td>` +
           `<td>${observation.periodSec ? `${observation.periodSec.toFixed(2)} s` : '—'}</td>` +
-          `<td>${esc(observation.receiver ?? '—')}</td></tr>`,
+          `<td>${
+            observation.consistency === null ? '—' : `${Math.round(observation.consistency * 100)}%`
+          }</td></tr>`,
       )
       .join('') +
     `</tbody></table></div>`

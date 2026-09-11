@@ -12,6 +12,15 @@ wrong fact is a defect. Where a correction has evidence behind it, the evidence 
 
 ### Fixed — consent
 
+- **A contributed detection no longer names the receiver it was heard through.** The
+  measurement is the contribution — station, frequency, period, steadiness — and which
+  volunteer's node someone listened through is incidental to it while putting a third
+  party's hardware into a record of what a person listened to. The server keeps the
+  column for rows already written and still accepts one from any other client; this
+  client stops sending it, and the archive's "Heard here" table shows steadiness in its
+  place. One consequence, stated because it is not obvious: the server dedupes on
+  station and time window, so two people hearing the same station in the same ten
+  minutes now collapse into one row.
 - **Detections are no longer sent without asking.** The app had been posting an
   observation to the server every minute from the moment the detector locked — station,
   frequency, measured period, and the name of the receiver it was heard through — with

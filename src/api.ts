@@ -41,10 +41,18 @@ export interface Observation {
   notes: string | null;
 }
 
+/**
+ * What a contributed detection contains.
+ *
+ * No receiver. The measurement is the contribution — that a marker was heard, when, on
+ * what frequency, at what period, how steadily — and which volunteer's node it was heard
+ * through is incidental to that while naming a third party's hardware in a record of
+ * what somebody listened to. The server still has the column for rows written before
+ * this, and still accepts one from any other client; this one does not send it.
+ */
 export interface ObservationInput {
   stationId: string;
   khz?: number;
-  receiver?: string;
   periodSec?: number;
   consistency?: number;
   notes?: string;
@@ -54,8 +62,8 @@ export interface ObservationInput {
  * Whether this browser sends its detections to the server.
  *
  * Off unless someone turns it on. A detection is a measurement rather than a message —
- * station, frequency, period, and the receiver it was heard through — but it is still a
- * record of what a person listened to, and it leaves their machine. The app had been
+ * station, frequency, period, consistency — but it is still a record of what a person
+ * listened to, and it leaves their machine. The app had been
  * posting one a minute from the moment the detector locked, with nothing said and no way
  * to decline, which is the sort of thing this project criticises other software for.
  *

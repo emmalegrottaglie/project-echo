@@ -161,10 +161,11 @@ export function liveView(): { element: HTMLElement; destroy: () => void } {
           <strong>Send detections to the server</strong>
           <span>
             Off unless you turn it on. When it is on, a locked detection is sent at most
-            once a minute: the station, the frequency, the measured period, how steady it
-            was, and the name of the receiver you heard it through. Never any audio and
-            never any message content — this app does not decode, by design. It goes only
-            to the server hosting this page.
+            once a minute: the station, the frequency, the measured period and how steady
+            it was. Not which receiver you listened through — that is someone else's
+            hardware and it is not part of the measurement. Never any audio and never any
+            message content: this app does not decode, by design. It goes only to the
+            server hosting this page.
           </span>
         </div>
         <div class="echo-contribute__switch"></div>
@@ -418,7 +419,6 @@ export function liveView(): { element: HTMLElement; destroy: () => void } {
         void postObservation({
           stationId: current.station.enigmaId,
           khz: current.frequency.khz,
-          receiver: next.label,
           periodSec: detection.periodSec ?? undefined,
           consistency: detection.consistency,
         });

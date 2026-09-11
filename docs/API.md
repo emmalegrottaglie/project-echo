@@ -200,7 +200,12 @@ not a schema preference. Do not add content fields.
 
 ## `POST /api/observations`
 
-The client sends nothing here unless the user has turned on the switch in the live
+The client sends no `receiver`. The measurement is the contribution, and which
+volunteer's node someone listened through names a third party's hardware in a record of
+what a person listened to. The column remains for rows written before that decision and
+the endpoint still accepts one from any other client; this client does not send it.
+
+The client sends nothing here at all unless the user has turned on the switch in the live
 view. It is off by default, the gate lives in `src/api.ts` rather than in the view so
 no caller can forget it, and the endpoint itself is unauthenticated — the consent is a
 property of this client, not of the server.
