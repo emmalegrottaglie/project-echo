@@ -679,7 +679,13 @@ export function liveView(): { element: HTMLElement; destroy: () => void } {
 
     const currentTuning = tuning();
 
-    void fetchDirectory(currentTuning?.frequency.khz).then((result) => {
+    // The land outline is 54 kB of path data and only this sheet draws it, so it is
+    // split out of the initial bundle the same way hls.js is. Fetched alongside the
+    // directory, which takes longer anyway.
+    void Promise.all([
+      fetchDirectory(currentTuning?.frequency.khz),
+      import('../worldmap'),
+    ]).then(([result, { worldMap }]) => {
       if (sheet !== current) return;
 
       if (!result) {
@@ -724,15 +730,22 @@ export function liveView(): { element: HTMLElement; destroy: () => void } {
           .join('');
       };
 
-      current.body.innerHTML = `${searchField('directory-search', 'Search location')}<div class="echo-directory-rows"></div>`;
+      // The map draws every receiver the directory returned; the list below renders the
+      // top fifty. That asymmetry is the point — 776 rows are unusable and 776 dots are
+      // not — and both carry `data-host`, so the one click handler below serves either.
+      current.body.innerHTML =
+        worldMap(sorted, { selectedHost: selectedReceiver()?.host ?? null }) +
+        `${searchField('directory-search', 'Search location')}<div class="echo-directory-rows"></div>`;
       const rows = current.body.querySelector<HTMLElement>('.echo-directory-rows')!;
       const search = current.body.querySelector<HTMLInputElement>('[name="directory-search"]')!;
 
       render('');
       search.addEventListener('input', () => render(search.value));
 
-      rows.addEventListener('click', (event) => {
-        const row = (event.target as HTMLElement).closest<HTMLButtonElement>('[data-host]');
+      current.body.addEventListener('click', (event) => {
+        const row = (event.target as HTMLElement).closest<SVGElement | HTMLButtonElement>(
+          '[data-host]',
+        );
         if (!row) return;
         const chosen = sorted.find((receiver) => receiver.host === row.dataset.host);
         if (!chosen) return;

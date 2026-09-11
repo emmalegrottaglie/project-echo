@@ -1517,3 +1517,55 @@ tr.disputed {
     animation-name: echo-fade;
   }
 }
+
+/* ------------------------------------------------------------- world map ----- */
+
+/*
+ * The receiver map in the directory sheet. Land is a filled outline in the theme's
+ * border colour so it reads as a ground rather than as content, and the receivers are
+ * the only thing drawn in the accent — the map exists to show where they are, not to
+ * be a map.
+ */
+.echo-worldmap {
+  margin: 0 0 var(--space-3);
+}
+
+.echo-worldmap svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: var(--bg);
+  border: var(--hairline-width) solid var(--border);
+  border-radius: var(--radius-control);
+}
+
+.echo-worldmap__land path {
+  fill: var(--border);
+  stroke: none;
+}
+
+.echo-worldmap__dot {
+  fill: var(--accent);
+  fill-opacity: 0.55;
+  cursor: pointer;
+}
+
+.echo-worldmap__dot:hover {
+  fill-opacity: 1;
+}
+
+/* The saved receiver, ringed rather than recoloured: on a crowded continent a second
+   accent colour is indistinguishable from a dense cluster. */
+.echo-worldmap__dot.is-selected {
+  fill-opacity: 1;
+  stroke: var(--fg);
+  stroke-width: 0.8;
+  paint-order: stroke;
+}
+
+.echo-worldmap figcaption {
+  margin-top: var(--space-1);
+  color: var(--dim);
+  font: var(--text-label) / var(--leading-body) var(--font-sans);
+  text-wrap: pretty;
+}

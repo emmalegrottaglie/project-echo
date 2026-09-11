@@ -68,11 +68,28 @@ channel, covering the tuned frequency — saves it and connects. Someone who has
 seen a KiwiSDR has no basis for choosing between 776 of them, and making them choose
 before they have heard anything is where first runs were being lost.
 
-**Browse directory** lists the same receivers to pick from by hand, sorted by reported
-SNR — 776 of 855 for 4625 kHz at the time of writing. Saving one adds it to your own
+**Browse directory** opens a world map of every receiver the directory returned, above
+a list of the same receivers to pick from by hand, sorted by reported SNR — 776 of 855 for 4625 kHz at the time of writing. Saving one adds it to your own
 list; several can be saved, which is genuinely useful because the node that hears
 4625 kHz well is rarely the one that hears 5448 kHz well. Hosts can still be pasted by
 hand, and saved receivers work without the server.
+
+The map is there because the list and the map answer different questions. The list
+answers "which receiver hears this frequency best", which is what the SNR ordering is
+for. The map answers "which receiver gives me a *different path*" — and on shortwave
+that is a real question, because whether a signal arrives depends on the ionosphere
+between the transmitter and the receiver rather than on the receiver's own quality. It
+also scales where the list cannot: 786 receivers is unusable as rows and perfectly
+legible as dots, so the map draws all of them and the list renders the top fifty. Both
+carry the same `data-host`, so one click handler serves either.
+
+It is an inline SVG of Natural Earth's 110m land outline — public domain, generated into
+[src/data/world.ts](src/data/world.ts) by `npm run make-world-path` — projected
+equirectangularly into a `0 0 360 180` viewBox, so plotting a receiver is `lon + 180` and
+`90 - lat`. No map library, no tile server, and no third-party request at runtime: the
+app has to work inside the Android build with no network, OpenStreetMap's tile policy
+discourages exactly this kind of client, and a raster map would look absurd against a
+monospace terminal.
 
 Connect walks the saved receivers, up to three, until one answers: these are volunteer
 nodes and they go offline, fill their four channels, or accept a socket and close it
