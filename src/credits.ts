@@ -29,8 +29,10 @@ const CONTENT = `
     An international group of radio enthusiasts who came together in 2010, when the
     station now in this app's live view started behaving strangely enough to be worth
     following. They log transmissions, publish schedules, and maintain a station page
-    for every designator in the archive. Identity, operator, activity status and every
-    imported schedule here came from them.
+    for every designator in the archive. Identity, operator, activity status, every
+    imported schedule, and the description on 125 of the 141 station pages here came from
+    them — those descriptions are quoted rather than rewritten, and each one links back
+    to the page it came from.
   </p>
   <p>
     They publish no donation link and ask for something more useful: reception reports.
@@ -63,7 +65,10 @@ const CONTENT = `
     The licence also requires an adaptation to say what it changed. The tables were
     reformatted into JSON, the merged month columns expanded into twelve frequencies per
     slot, day-and-time text encoded as RFC 5545 rules, and rows the source marks as
-    outdated left out. Nothing was invented, and the transformation can be re-run.
+    outdated left out. Station descriptions were shortened to an extract and stripped of
+    references to the page they sat on; the message-format diagrams were not imported at
+    all, because this app stores nothing about the content of a transmission. Nothing was
+    invented, and the transformation can be re-run.
   </p>
 
   <h4>Also used</h4>

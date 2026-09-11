@@ -103,6 +103,22 @@ export interface ActiveFrom {
   sourceUrl: string;
 }
 
+/**
+ * A station's background prose, and whose words it is.
+ *
+ * Most of it is quoted rather than written. Priyom publish a description for nearly
+ * every station on the roster, and quoting them with a link is both more honest and more
+ * useful than paraphrasing work we did not do — their data is CC BY-NC-SA 4.0, which
+ * requires exactly this attribution. `quotedFrom` is the page it came from, and `null`
+ * where the paragraph was written for this archive out of the sources in `sourceUrls`.
+ * The UI renders the two differently, because a reader deserves to know which they are
+ * reading.
+ */
+export interface Lore {
+  text: string;
+  quotedFrom: string | null;
+}
+
 export interface Station {
   enigmaId: string;
   name: string;
@@ -117,12 +133,8 @@ export interface Station {
   markerPeriodSec: number | null;
   /** ISO date this station was last confirmed on the air, or null if never confirmed. */
   lastConfirmed: string | null;
-  /**
-   * Long-form background. `null` marks a roster-only entry: the designator, name,
-   * operator and status are sourced, but frequencies, schedules and history have not
-   * been imported yet. The UI says so rather than implying the gap is the station.
-   */
-  lore: string | null;
+  /** Long-form background, or `null` where no source has been read for one yet. */
+  lore: Lore | null;
   frequencies: Frequency[];
   schedules: Schedule[];
   /** Known transmitter sites, empty where none is sourced. */

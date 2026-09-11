@@ -12,6 +12,60 @@ wrong fact is a defect. Where a correction has evidence behind it, the evidence 
 
 ### Added
 
+- **A description for 125 stations that had none, quoted from Priyom.** Most of the
+  roster arrived from ENIGMA 2000's list as identity only: a designator, an operator and
+  a status, with the app honestly saying nothing else had been imported. Priyom publish a
+  paragraph for nearly every one of them, so `scripts/import-lore.mjs` fetches it and
+  quotes it. The archive now has history behind 137 of 141 stations instead of 12.
+
+  Quoted rather than rewritten, and the data says which. Paraphrasing somebody else's
+  research would have read as this archive's own work while being theirs, and their data
+  is CC BY-NC-SA 4.0, which asks for attribution by name. A quoted description renders as
+  a quotation with the page and the licence beside it; the twelve written here render as
+  plain prose. See [docs/RESEARCH.md](docs/RESEARCH.md) §10.
+
+  The importer's refusals are in the script, not in a reviewer's head. A station page
+  lays its message formats out as tables of sample five-figure groups, so every table is
+  stripped before a word is read and any paragraph that still looks like groups is
+  dropped on a second check — the boundary in [docs/RESEARCH.md](docs/RESEARCH.md) §5,
+  enforced twice because the page layout is Priyom's to change. Paragraphs that point at
+  something on the page ("as heard below") are dropped too: true where they were written,
+  a broken quote anywhere else. Both refusals are pinned by tests.
+
+- **Ten more sourced start dates, all of them approximate.** The import printed every
+  sentence that mentioned a year beside a beginning, and ten of them were the station's
+  own first hearing: M10 "Active since mid 1970s", E21 "First noted around 1981", E09
+  "first heard in February 1995", and seven more listed in
+  [docs/RESEARCH.md](docs/RESEARCH.md) §9. The timeline now places sixteen stations
+  rather than six.
+
+  Nine other year-bearing sentences were rejected, and the test that separated them is
+  reported against derived: a date a source states belongs in `activeFrom` with its own
+  phrasing kept; a date worked out from the earliest row of a log table does not, because
+  it records when logging started. The rejected ones were endings, facts about a
+  different station, or the appearance of a schedule rather than of the station. The
+  importer writes no date itself for exactly this reason.
+
+### Changed
+
+- **`lore` is now `{ text, quotedFrom }`, and `schemaVersion` is 3.** A bare string could
+  not say whose words it held, which stopped being an acceptable gap the moment most
+  descriptions came from somewhere else. Older clients keep their bundled copy on an
+  unknown version, so an installed APK is unaffected until it updates.
+
+- **The timeline no longer says a dead station is still transmitting.** Its bars ran to
+  the right-hand edge whenever no end year was recorded, which had been harmless while
+  the only stations with a start were ones whose fate was known. Seven of the ten starts
+  imported today belong to stations that stopped without anybody writing down when, and
+  those bars claimed thirty years of transmission each. A span needs both ends: a station
+  known by one date now gets a single mark and a label saying which date it is.
+
+- **"Not imported" now names the gap that is actually there.** It used to appear whenever
+  a station had no description, and hid the frequency, schedule and site tables with it.
+  With descriptions imported, the missing thing for those 125 stations is operational: no
+  confirmed frequency and no transmission time. The notice says that instead, below the
+  history rather than in place of it.
+
 - **Report a correction, from any station page.** Every fact in the archive carries a
   source and a date, and until now there was no way for a reader who found one wrong to
   say so. The form asks what is wrong, what it should be, and on what evidence — a

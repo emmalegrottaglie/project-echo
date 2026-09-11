@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 2,
+  "schemaVersion": 3,
   "stations": [
     {
       "enigmaId": "S28",
@@ -16,7 +16,10 @@
       "marker": "1.25 s buzz tone with a 1.85 s pause, about 19 times per minute, 24 hours a day",
       "markerPeriodSec": 3.1,
       "lastConfirmed": "2026-09-10",
-      "lore": "The best known of the Russian channel markers. \"UVB-76\" is an obsolete callsign from the 1970s and 80s and is not what the station transmits today: voice identifiers observed since 2010 run MDZhB, then ZhUOZ from 2019, then ANVF. The original site at Povarovo was abandoned in 2010, and where it went is not settled: numbers-stations.com reports one transmitter confirmed near St Petersburg and a second claimed at Naro-Fominsk, where the 69th communications centre sits, while Wikipedia records only the St Petersburg move. All three positions are listed below rather than one being chosen. Voice messages interrupt the buzzer irregularly and are read in the Russian phonetic alphabet; monitors logged a marked increase in them through 2025, peaking in March and April.\n\nThe pulse rate is worth reading carefully. Wikipedia summarises this station as \"approximately 25 tones per minute\", and the page it cites for that actually gives a 1.25 s tone with a 1.85 s pause — a 3.1 s period, about 19 per minute. This installation measured 3.40 s through a receiver in France on 2026-09-10, which agrees with the detailed figure and not with the summary. The 25-per-minute number appears to be an error in the summarising rather than a change on the air.",
+      "lore": {
+        "text": "The best known of the Russian channel markers. \"UVB-76\" is an obsolete callsign from the 1970s and 80s and is not what the station transmits today: voice identifiers observed since 2010 run MDZhB, then ZhUOZ from 2019, then ANVF. The original site at Povarovo was abandoned in 2010, and where it went is not settled: numbers-stations.com reports one transmitter confirmed near St Petersburg and a second claimed at Naro-Fominsk, where the 69th communications centre sits, while Wikipedia records only the St Petersburg move. All three positions are listed below rather than one being chosen. Voice messages interrupt the buzzer irregularly and are read in the Russian phonetic alphabet; monitors logged a marked increase in them through 2025, peaking in March and April.\n\nThe pulse rate is worth reading carefully. Wikipedia summarises this station as \"approximately 25 tones per minute\", and the page it cites for that actually gives a 1.25 s tone with a 1.85 s pause — a 3.1 s period, about 19 per minute. This installation measured 3.40 s through a receiver in France on 2026-09-10, which agrees with the detailed figure and not with the summary. The 25-per-minute number appears to be an error in the summarising rather than a change on the air.",
+        "quotedFrom": null
+      },
       "frequencies": [
         {
           "khz": 4625,
@@ -80,7 +83,10 @@
       "marker": "Short beep, repeating ~50 times per minute",
       "markerPeriodSec": 1.2,
       "lastConfirmed": "2025-01-01",
-      "lore": "A companion marker to The Buzzer, running a faster and much shorter pulse. Radioscanner attributes it to a North Caucasus military district communications centre, callsign Akacia, formerly the 72nd communications centre — not the Southern district, which is where The Squeaky Wheel is usually placed. Like the Buzzer it carries occasional Russian voice traffic.",
+      "lore": {
+        "text": "A companion marker to The Buzzer, running a faster and much shorter pulse. Radioscanner attributes it to a North Caucasus military district communications centre, callsign Akacia, formerly the 72nd communications centre — not the Southern district, which is where The Squeaky Wheel is usually placed. Like the Buzzer it carries occasional Russian voice traffic.",
+        "quotedFrom": null
+      },
       "frequencies": [
         {
           "khz": 5448,
@@ -125,7 +131,10 @@
       "marker": "Repeating squeaking sweep",
       "markerPeriodSec": null,
       "lastConfirmed": "2025-01-01",
-      "lore": "The third Russian marker, and the reason this database stores frequencies as sourced observations rather than constants: two different frequency pairs are published for it and neither source retracts the other. Both are listed below, flagged as disputed. Confirm against the waterfall before trusting either.",
+      "lore": {
+        "text": "The third Russian marker, and the reason this database stores frequencies as sourced observations rather than constants: two different frequency pairs are published for it and neither source retracts the other. Both are listed below, flagged as disputed. Confirm against the waterfall before trusting either.",
+        "quotedFrom": null
+      },
       "frequencies": [
         {
           "khz": 5473,
@@ -184,7 +193,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": "2026-09-11",
-      "lore": "An English-language station operated from Poland, which took over the role of G02 \"Swedish Rhapsody\". Transmissions open with a three-digit identifier and either carry a message or announce that there is none. Frequencies rotate month by month, so a slot that is silent on the frequency below may simply have moved.",
+      "lore": {
+        "text": "An English-language station operated from Poland, which took over the role of G02 \"Swedish Rhapsody\". Transmissions open with a three-digit identifier and either carry a message or announce that there is none. Frequencies rotate month by month, so a slot that is silent on the frequency below may simply have moved.",
+        "quotedFrom": null
+      },
       "frequencies": [],
       "schedules": [
         {
@@ -985,7 +997,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": "2008-07-02",
-      "lore": "The most famous numbers station ever operated, and the one most listeners mean when they say \"numbers station\". Two bars of the English folk tune \"The Lincolnshire Poacher\" played as an interval signal, repeated twelve times, then a synthesised English female voice read five-figure groups. Transmitted from RAF Akrotiri in Cyprus. The final recorded transmission was on 2 July 2008.",
+      "lore": {
+        "text": "The most famous numbers station ever operated, and the one most listeners mean when they say \"numbers station\". Two bars of the English folk tune \"The Lincolnshire Poacher\" played as an interval signal, repeated twelve times, then a synthesised English female voice read five-figure groups. Transmitted from RAF Akrotiri in Cyprus. The final recorded transmission was on 2 July 2008.",
+        "quotedFrom": null
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -1020,7 +1035,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": "2009-12-01",
-      "lore": "The southern-hemisphere sister of E03, using the folk song \"Cherry Ripe\" as its interval signal. It transmitted for years from the US base on Guam, moved to Humpty Doo in Australia in late September 2009, ran there for only two months, and stopped in December 2009.",
+      "lore": {
+        "text": "The southern-hemisphere sister of E03, using the folk song \"Cherry Ripe\" as its interval signal. It transmitted for years from the US base on Guam, moved to Humpty Doo in Australia in late September 2009, ran there for only two months, and stopped in December 2009.",
+        "quotedFrom": null
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -1043,7 +1061,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": "2019-02-01",
-      "lore": "Opened with \"¡Atención! ¡Atención!\" and a synthesised Spanish female voice reading five-figure groups. V02a replaced the original V02 in 1997. Most of its schedules were taken over by the digital HM01 in November 2012, and it went inactive in February 2019 alongside its Morse counterpart M08a. Widely and wrongly still listed as active.",
+      "lore": {
+        "text": "Opened with \"¡Atención! ¡Atención!\" and a synthesised Spanish female voice reading five-figure groups. V02a replaced the original V02 in 1997. Most of its schedules were taken over by the digital HM01 in November 2012, and it went inactive in February 2019 alongside its Morse counterpart M08a. Widely and wrongly still listed as active.",
+        "quotedFrom": null
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -1071,7 +1092,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": "2024-08-23",
-      "lore": "A hybrid station: spoken Spanish groups interleaved with RDFT digital data bursts. It appeared around 2012 and absorbed most of the schedules of V02a and SK01. On 23 August 2024 the transmitter failed permanently shortly after switching from 11635 kHz to 10715 kHz, and with Radio Habana Cuba short of working transmitters the station has stayed off in favour of regular service. Repairs were reported in progress during 2026, so this one may move back to the active tier. Priyom’s index still lists it as active; its own station page does not.",
+      "lore": {
+        "text": "A hybrid station: spoken Spanish groups interleaved with RDFT digital data bursts. It appeared around 2012 and absorbed most of the schedules of V02a and SK01. On 23 August 2024 the transmitter failed permanently shortly after switching from 11635 kHz to 10715 kHz, and with Radio Habana Cuba short of working transmitters the station has stayed off in favour of regular service. Repairs were reported in progress during 2026, so this one may move back to the active tier. Priyom’s index still lists it as active; its own station page does not.",
+        "quotedFrom": null
+      },
       "frequencies": [
         {
           "khz": 11635,
@@ -1105,7 +1129,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": "2020-03-12",
-      "lore": "Unusual among numbers stations for hiding in plain sight: the groups aired inside normal Pyongyang Broadcasting Station programming, framed as lists of review assignments for distance-learning university students. Broadcasts ran weekly until 27 June 2019, then only four more times — 19 September and 9 November 2019, and 7 and 12 March 2020. Nothing since.",
+      "lore": {
+        "text": "Unusual among numbers stations for hiding in plain sight: the groups aired inside normal Pyongyang Broadcasting Station programming, framed as lists of review assignments for distance-learning university students. Broadcasts ran weekly until 27 June 2019, then only four more times — 19 September and 9 November 2019, and 7 and 12 March 2020. Nothing since.",
+        "quotedFrom": null
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -1124,7 +1151,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": "2020-09-01",
-      "lore": "A Korean-language station: musical introduction, a three or four digit identifier, a message length announcement, then groups of four or five digits read twice, and a closing statement. Last heard in September 2020 and inactive since.",
+      "lore": {
+        "text": "A Korean-language station: musical introduction, a three or four digit identifier, a message length announcement, then groups of four or five digits read twice, and a closing statement. Last heard in September 2020 and inactive since.",
+        "quotedFrom": null
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -1143,7 +1173,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": "A German-language Polish station that opened with a music-box rendition of \"Swedish Rhapsody\" and a child-sounding synthesised voice — the combination that gives it its reputation. Its operational role passed to E11 \"Oblique\". No German language numbers station remains in regular operation.",
+      "lore": {
+        "text": "A German-language Polish station that opened with a music-box rendition of \"Swedish Rhapsody\" and a child-sounding synthesised voice — the combination that gives it its reputation. Its operational role passed to E11 \"Oblique\". No German language numbers station remains in regular operation.",
+        "quotedFrom": null
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -1164,7 +1197,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": "Used a synthesised chime or gong melody ahead of German numbers. Priyom attributes it to the East German Nationale Volksarmee, not the Stasi — the Stasi attribution attaches to G08 \"Four Note Rising Scale\". The popular Stasi claim for G03 could not be traced to a primary source.",
+      "lore": {
+        "text": "Used a synthesised chime or gong melody ahead of German numbers. Priyom attributes it to the East German Nationale Volksarmee, not the Stasi — the Stasi attribution attaches to G08 \"Four Note Rising Scale\". The popular Stasi claim for G03 could not be traced to a primary source.",
+        "quotedFrom": null
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -1183,7 +1219,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": "2026-09-10",
-      "lore": null,
+      "lore": {
+        "text": "E06 is the English language mode of the Russian 6 operator. E06 schedules consist of 2 identical transmissions 1 hour apart. The latter transmission is 1-3 MHz lower or higher in frequency. In case traffic was sent, the two transmissions are usually also made the next day, at the same times and frequencies. In case of interference on the planned frequency, E06 may broadcast up to 20 kHz away instead. Ten minutes before each transmission begins, a pre-transmission test is made. For Moscow-based operations, this consists of a long 1200 Hz tone, followed by the ID of the upcoming transmission spoken once. For Chita-based operations, this consists of \"0123456789\" spoken repeatedly.",
+        "quotedFrom": "https://priyom.org/number-stations/english/e06"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -1203,7 +1242,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": "2025-04-10",
-      "lore": null,
+      "lore": {
+        "text": "E07 is the English language mode of the Russian 7 operator. In case of an unexpected interruption during the transmission, the station restarts with the intro, repeated for one minute, followed by the current message continued from some groups before the failure; the preamble is omitted. All E07 schedules are twice weekly and consist of 3 identical transmissions 20 minutes apart. Each successive transmission is 1-2 MHz lower or higher in frequency. The third transmission does not take place in case of a null message. The frequencies are typically changed on a monthly basis.",
+        "quotedFrom": "https://priyom.org/number-stations/english/e07"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -1223,7 +1265,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": "2026-09-10",
-      "lore": null,
+      "lore": {
+        "text": "Status: under investigation, please report any activity. Monitors in the Eastern Mediterranean area are encouraged to search for activity on 6140khz from 0700z-1200z. The preamble may occasionally take form of a 3-digit group, followed by an E25a string. The first 3-digit group denotes a recipient of the full, 4-digit group message. The second 3-digit group denotes a recipient of the E25a message.",
+        "quotedFrom": "https://priyom.org/number-stations/english/e25"
+      },
       "frequencies": [
         {
           "khz": 6140,
@@ -1268,7 +1313,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "E01 was a European number station of unconfirmed origin. Last reported in late 1999. M17 was the more active Morse counterpart of this station. E01 operated in schedules of 3 identical transmissions 20 minutes apart. The messages sent were usually 20 to 30 groups long. The first 2 digits of the 5-digit ID identified a particular schedule, while the last 3 were variable.",
+        "quotedFrom": "https://priyom.org/number-stations/english/e01"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -1288,7 +1336,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "E05 was an American number station. Last reported in October 2003. E05 operated on a very dynamic schedule, always starting on the hour and transmitting on two frequencies in parallel. The same message could be sent for weeks in a row. The 3-digit ID was associated with a particular message, not a schedule. E05 used multiple transmitter sites in various parts of the world. The two confirmed locations were Warrenton, VA, USA and Frankfurt, Germany.",
+        "quotedFrom": "https://priyom.org/number-stations/english/e05"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -1308,7 +1359,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "E07a is a variant of E07 that adds a 5-digit group to the transmission intro. It affects only the traffic format, while the null format is unchanged. It was retired from regular activity when its two known schedules both went inactive together at the end of January 2022. It is not known how multiple messages are handled in this variant. E07a has its own dedicated schedules that operate in the same manner as E07. However, unlike in standard E07 schedules, the repeat transmissions later the same week use different time slots, frequencies, and 3-digit IDs.",
+        "quotedFrom": "https://priyom.org/number-stations/english/e07a"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -1328,7 +1382,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "E09 was a number station believed to have originated from a North African country. Last reported in July 1997. The musical introduction comes from the 1981 album Les Chants Magnétiques by French musician Jean-Michel Jarre. E09 was first heard in February 1995. Two schedules were found - Monday at 18:00 UTC on 6645 kHz (+- 5 kHz), and Saturday at 08:20 UTC on 11290 kHz (+- 5 kHz). The transmission times shifted an hour later for winter. This station was noted for erratic operation, with late transmissions, or even no transmissions at all. E09 sent the same messages for extended periods of time. The first message was transmitted from February to May 1995.",
+        "quotedFrom": "https://priyom.org/number-stations/english/e09"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -1336,7 +1393,13 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": {
+        "year": 1995,
+        "approximate": true,
+        "note": "first heard in February 1995",
+        "lastConfirmed": "2026-09-11",
+        "sourceUrl": "https://priyom.org/number-stations/english/e09"
+      }
     },
     {
       "enigmaId": "E10",
@@ -1348,7 +1411,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "E10 was an Israeli number station. Last reported in March 2011. All letter sequences were spelled using the NATO phonetic alphabet. For much of its life, E10 operated seven \"stations,\" each using a different 3-letter ID (ART, EZI, FTJ, JSR, PCD, ULX, YHF). Each station operated on 30-minute time slots (at H+00 and H+30) and, for much of the day, all seven were active simultaneously. Each of the stations used a different frequency range, implying different target areas. Each 30-minute slot typically carried the same message for a prolonged period of time. During political events in the Middle East (e.g.",
+        "quotedFrom": "https://priyom.org/number-stations/english/e10"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -1368,7 +1434,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "E12 was an Austrian number station. Last reported in November 1997. E12 operated on weekly schedules. However, each schedule sent only one message each month. The only group counts noted were 10, 15, 20, 25, and 30 - all being multiplies of 5. E12 had originally broadcast alongside its German counterpart G12. E12 replaced it completely in June 1994.",
+        "quotedFrom": "https://priyom.org/number-stations/english/e12"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -1388,7 +1457,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "E13 was a German-based number station. Active from March 1991 to early 1993. E13 was very similar to the American station E05, giving rise to theories that it was jointly operated by the American and German intelligence agencies.",
+        "quotedFrom": "https://priyom.org/number-stations/english/e13"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -1408,7 +1480,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "E14 was an American number station. Last reported in early 1996. This station was related to E05 and used the same voice. The \"messages\" were usually 3 or 4 groups long, 7 being the longest noted. Loud background noise was present throughout each broadcast. E14 operated on the following daily schedule as of 1994:",
+        "quotedFrom": "https://priyom.org/number-stations/english/e14"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -1428,7 +1503,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "E15 was a number station believed to have originated from Egypt. Last reported in May 2006. Additionally, all digit sequences were read from right to left, consistent with the Arabic writing order. E15 was first reliably reported in early 1993. During the 1990s, it transmitted mostly daily from 11:00 to 21:00 using the following 3-letter IDs: BEC, FYP, MSA, NAS, OSS, PAR, WSP. Until 1997, the ending sequence \"Adam Robert\" was instead \"Robert Adam.\"",
+        "quotedFrom": "https://priyom.org/number-stations/english/e15"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -1436,7 +1514,13 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": {
+        "year": 1993,
+        "approximate": true,
+        "note": "first reliably reported in early 1993",
+        "lastConfirmed": "2026-09-11",
+        "sourceUrl": "https://priyom.org/number-stations/english/e15"
+      }
     },
     {
       "enigmaId": "E16",
@@ -1448,7 +1532,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "E16 was a (West) German number station. Last reported in June 1999. G16 was the more active German counterpart of this station. The 2-letter IDs were spelled using the NATO phonetic alphabet. E16 operated multiple \"stations,\" each using a different 2-letter ID. Each station had its own group of fixed 3-digit addresses (usually around 5) and multiple scheduled broadcasts per week, always starting at H+00 or H+30.",
+        "quotedFrom": "https://priyom.org/number-stations/english/e16"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -1468,7 +1555,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "E17 was an English language mode of the Russian 6 operator. Ceased in 2001. While E17 was nominally just E06 with a different voice, this variation was broadcast from Cuba towards the Americas, largely without schedule, carrying messages with high group counts.",
+        "quotedFrom": "https://priyom.org/number-stations/english/e17"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -1488,7 +1578,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "E17z is the English language mode of the Ukrainian sz operator. It has brutally ceased operations since the night of February 24, 2022, when the large-scale military invasion of Ukraine by Russia began. E17z exists on only one schedule - 217 - which mirrors the habits of its sister mode S06s.",
+        "quotedFrom": "https://priyom.org/number-stations/english/e17z"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -1508,7 +1601,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "E18 was a Bulgarian number station. Last reported in December 2002. G22, S04, and M13 were the counterparts of this station. The serial number was incremented by one with each new message sent. E18 was first mentioned as being active in September 1989. It was then not reported again until early 1997. Two monthly schedules were observed in 1997, with only one remaining from the following year onwards. Recording courtesy of Numbers & Oddities",
+        "quotedFrom": "https://priyom.org/number-stations/english/e18"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -1516,7 +1612,13 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": {
+        "year": 1989,
+        "approximate": true,
+        "note": "first mentioned as being active in September 1989",
+        "lastConfirmed": "2026-09-11",
+        "sourceUrl": "https://priyom.org/number-stations/english/e18"
+      }
     },
     {
       "enigmaId": "E21",
@@ -1528,7 +1630,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "First noted around 1981, ceased in March 1995. Used the old format of E05, which involved 4-figure groups. Similar transmission format to E05, with longer breaks between the transmission sections and the beeps, which raised discussion whether this station was actually ran by the same owner as E05. This station was also heard in standard E05's 5-figure format, as it can be heard on the following recording: Recordings on this page were obtained via Simon Mason",
+        "quotedFrom": "https://priyom.org/number-stations/english/e21"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -1536,7 +1641,13 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": {
+        "year": 1981,
+        "approximate": true,
+        "note": "First noted around 1981",
+        "lastConfirmed": "2026-09-11",
+        "sourceUrl": "https://priyom.org/number-stations/english/e21"
+      }
     },
     {
       "enigmaId": "E23",
@@ -1548,7 +1659,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "E23 was a Polish number station. Last reported in January 2007. M04 was the Morse counterpart of this station. E23 used the same voice as E05, but was otherwise unrelated. There were no pauses between any of the elements, rendering each broadcast as a continuous string of 5-digit groups. \"Week 1\" initially began on the 1st Saturday of the month, like in G02. In September 2000, this was changed to the 1st Monday of the month. From December 2004 onwards, E23 was often reported as starting earlier than H+57.",
+        "quotedFrom": "https://priyom.org/number-stations/english/e23"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -1568,7 +1682,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "E25b was a variant of E25 that sent messages in Arabic, while still sending the preamble in English. Only known ID's were 835 and 837. Ceased when E25 switched to pre-recorded female voice in 2007. The message structure was slightly different as well: Here, the second group and the last but one are the same. The first two digits of the first group, when inverted, give the serial number, and its last two digits give the amount of 4-figure groups in the message. In the English messages, the repeated group is the third and the last one, and the serial/group count one is the second.",
+        "quotedFrom": "https://priyom.org/number-stations/english/e25b"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -1588,7 +1705,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": "2026-09-10",
-      "lore": null,
+      "lore": {
+        "text": "S06 is the Russian language mode of the Russian 6 operator. S06 schedules consist of 2 identical transmissions 30 or 60 minutes apart. The latter transmission is 1-3 MHz lower or higher in frequency. In case traffic was sent, the two transmissions are usually also made the next day, at the same times and frequencies. In case of interference on the planned frequency, S06 may broadcast up to 2 kHz away instead. Ten minutes before each transmission begins, a pre-transmission test is made. For Moscow-based operations, this consists of a long 1200 Hz tone, followed by the ID of the upcoming transmission spoken once. For Chita-based operations, this consists of \"0123456789\" spoken repeatedly.",
+        "quotedFrom": "https://priyom.org/number-stations/slavic/s06"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -1608,7 +1728,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": "2026-09-10",
-      "lore": null,
+      "lore": {
+        "text": "S06c is a Russian station that uses the same voice generator as S06. S06c repeats a single 5-digit group - which always begins with \"11\" - for 4 minutes. Each broadcast consists of two transmissions spaced ten minutes apart, with the latter being 1-3 MHz lower or higher in frequency. All broadcasts are unscheduled. The exact purpose of S06c is unclear. Judging by the time and frequency usage, the groups between 11001 and 11216 might be the diplomatic network addresses, while the others might be domestic targets.",
+        "quotedFrom": "https://priyom.org/number-stations/slavic/s06c"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -1628,7 +1751,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": "2026-09-11",
-      "lore": null,
+      "lore": {
+        "text": "S11a is the Russian language mode of the Polish 11 operator. All S11a schedules are twice weekly, follow year-round UTC (no daylight saving), and use one of three different frequencies depending on the month - one from November to February, another from May to August, and yet another for the remaining months. The first two digits of the ID identify a particular schedule, in a system shared with the sister mode E11. On each schedule, only null messages are broadcast for the majority of the time. However, traffic is sent at least once every month, on a seemingly random week. The standard group count range is 30 to 40 groups inclusive.",
+        "quotedFrom": "https://priyom.org/number-stations/slavic/s11a"
+      },
       "frequencies": [],
       "schedules": [
         {
@@ -1809,7 +1935,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": "2026-09-10",
-      "lore": null,
+      "lore": {
+        "text": "S25 is a Russian station that uses the same voice generator as S06. Each broadcast consists of 2 identical transmissions 10 minutes apart, with the latter being 1-3 MHz lower or higher in frequency. All broadcasts are currently unscheduled. In September 2004, S25 was revived using the current format. It is now mostly unscheduled and heard at random times. However, between at least 2014 and December 2017, there was a regular schedule using the ID 104.",
+        "quotedFrom": "https://priyom.org/number-stations/slavic/s25"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -1829,7 +1958,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "S02 was operated by Bulgarian intelligence, last heard in 1996. The language was Bulgarian. In 1995, S02 had one schedule - 9th of each month at 19:30 UTC during DST in CET timezone, and at 20:30 UTC otherwise, on 4740 kHz. An hour before the transmission, the first few bars of \"Il Silenzio\" would have been played; this was dubbed \"the Bugle\", or by the ENIGMA designator \"X01\" (initially \"S02b\"). On the variant S02a, however, it would have been played right before the transmission.",
+        "quotedFrom": "https://priyom.org/number-stations/slavic/s02"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -1849,7 +1981,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "The designator S02a refers to S02 with the first few bars of \"Il Silenzio\" played right before the transmission, rather than an hour before. The transmission format was otherwise identical.",
+        "quotedFrom": "https://priyom.org/number-stations/slavic/s02a"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -1869,7 +2004,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "The designator S02c refers to S02, where the \"Nomer\" part is a 3-figure group, rather than 2-figure, and where \"Nomer\" and \"Grupi\" parts are swapped at the beginning.",
+        "quotedFrom": "https://priyom.org/number-stations/slavic/s02c"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -1889,7 +2027,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "The designator S02d refers to S02, where the \"Nomer\" part is a 5-figure group, rather than 2-figure.",
+        "quotedFrom": "https://priyom.org/number-stations/slavic/s02d"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -1909,7 +2050,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "Note: The S03 listing in ENIGMA 2000's Control list is different than Conet Project's \"Okno\" message we describe here. We have no information about the format described there. This station may be related to the Czech S10 operation. The reception test message says: \" Okno, Okno, Okno. Zde Jasan. Zde Jasan. Konec \". This translates to: \"Window, Window, Window. This is Ash tree, this is Ash tree. End\". There are two possible explanations for this S03 activity: 1) Military installation 5847, Horoměřice, SIGINT/IMINT facility run by Czech Military Intelligence, suspected current callsign \"OKNO\" (okno@uvoz.cz). 2) An airforce installation near Hradec Králové that used the callsign \"JASAN\" in 1986.",
+        "quotedFrom": "https://priyom.org/number-stations/slavic/s03"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -1929,7 +2073,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "S04 belonged to one of Bulgarian intelligence agencies. The language was Bulgarian. Last heard in 2006. The serial number was increased each time a new message was sent on a given schedule. Little is known about S04. It was active in the 1980s, but has later fallen into disuse in favor of its Morse code counterpart, M13. It was re-activated in November 1999, with one schedule - second Monday and Tuesday of each month at 21:45 UTC (winter 22:45), with ID 537 for messages 23 groups or shorter, or 342 otherwise. That was the only schedule of re-activated S04, that remained active until its demise in early 2006.",
+        "quotedFrom": "https://priyom.org/number-stations/slavic/s04"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -1949,7 +2096,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "S05 was operated by Czechoslovak State Security (StB) under an ITU-registered callsign \"OLX\" (though officially assigned to ČTK, the press agency) and allocated frequencies. The language was Czech. Replaced in early 1980s by S05a.",
+        "quotedFrom": "https://priyom.org/number-stations/slavic/s05"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -1969,7 +2119,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "S05a was operated by Czechoslovak State Security under an ITU-registered callsign \"OLX\" (though officially assigned to ČTK, the press agency) and allocated frequencies. The language was Czech. Replaced in early 1990s by S05b.",
+        "quotedFrom": "https://priyom.org/number-stations/slavic/s05a"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -1989,7 +2142,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "S05b was operated by Czech Office of Foreign Relations and Information (ÚZSI) under an ITU-registered callsign \"OLX\" (though officially assigned to ČTK, the press agency) and allocated frequencies. The language was Czech. It differs from the previous format S05a with different tuning signal and no null messages whatsoever. Last heard in 1996, replaced by S10d. S05b was transmitted almost 23 hours a day in 30-minute intervals. The Czech Interior Ministry issued QSL cards to anyone interested under the following address: An example OLX QSL card can be found here: front, back.",
+        "quotedFrom": "https://priyom.org/number-stations/slavic/s05b"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -2009,7 +2165,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "S06a was a station with S06 voice, which continuously sent the 5-figure group 55555 or 00000, depending on frequency. Heard daily in mid-1991.",
+        "quotedFrom": "https://priyom.org/number-stations/slavic/s06a"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -2029,7 +2188,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "S06s is the Russian language mode of the Ukrainian sz operator. It has brutally ceased all operations since the night of February 24, 2022, when the large-scale military invasion of Ukraine by Russia began. All S06s schedules are weekly and consist of 2 identical transmissions 10 minutes apart. Each transmission uses one of three different frequencies depending on the month - one from November to February, another from May to August, and yet another for the remaining months. The 3-digit ID identifies a particular schedule. Tests are performed prior to each transmission: 10 minutes before the first, and 2 minutes before the second.",
+        "quotedFrom": "https://priyom.org/number-stations/slavic/s06s"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -2049,7 +2211,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "S07 was the Russian language mode of the Russian 7 operator. Retired in March 2001. That voice was heard again as part of a test transmission session on October 28, 2022.",
+        "quotedFrom": "https://priyom.org/number-stations/slavic/s07"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -2069,7 +2234,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "S08 is believed to have been operated by Yugoslavian intelligence. Last heard in 1996. The language was Serbo-Croat. [Based on Simon Mason's 1991 book Secret Signals ]",
+        "quotedFrom": "https://priyom.org/number-stations/slavic/s08"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -2089,7 +2257,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "S10 was ran by Czechoslovak military intelligence. This designator refers to the original format from mid 1970s to early 1980s. Around mid 1980s replaced by automated format S10b. S10 utilized live voice, both male and female, and a musical intro - a taped performance of \" Song of the Lark \", composed by Pyotr Ilyich Tchaikovsky. S10 often sent more than one message in one transmission to more than one recipient. In that case, in the intro, the ID's were included for all the messages, in the same way as the first one. Then the preamble, the message and the outro except 000 followed for each message. The last message ended the transmission with 000.",
+        "quotedFrom": "https://priyom.org/number-stations/slavic/s10"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -2109,7 +2280,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "S10a was presumably a null message format of S10b. Reportedly rarely heard.",
+        "quotedFrom": "https://priyom.org/number-stations/slavic/s10a"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -2149,7 +2323,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "S10d was run by the Czech Military Intelligence (Czech: Vojenské zpravodajství). Active from 1996 until 20 June 2007. Like its predecessors S10 and S10b, S10d often sent more than one message in one transmission to more than one recipient. In that case, in the intro, the ID's and the group counts were included for all the messages, in the same way as the first one. Then the preamble, the message and the outro except \"Konec, konec\" followed for each message. The last message ended the transmission with \"Konec, konec\". From 1996 to 2006, the arbitrary ID was only 555. Then from 2006 until the station's demise random triplets were used, but not 555 anymore.",
+        "quotedFrom": "https://priyom.org/number-stations/slavic/s10d"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -2169,7 +2346,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "S10e was in Slovak language, but it is uncertain whether it belonged to Slovakia or Czechia. Last heard in 2003. S10e had a schedule every 28 days from Monday to Friday at 13:00 UTC on 10642 kHz. This meant that the dates shifted back every month. Until 2001, it was heard from Tuesday to Thursday only.",
+        "quotedFrom": "https://priyom.org/number-stations/slavic/s10e"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -2189,7 +2369,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "S11 was the Polish language mode of the Polish 11 operator. It was last reported as a regular operation in early 1994 and has since been replaced by the Russian language S11a. The most recent known transmissions of S11 are training broadcasts made in August/September 2002.",
+        "quotedFrom": "https://priyom.org/number-stations/slavic/s11"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -2209,7 +2392,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "S17a was run by the Czech military intelligence. It was a \"control\" variant of S10d that did not convey actual messages. \"313\" was the only ID ever used on S17a.",
+        "quotedFrom": "https://priyom.org/number-stations/slavic/s17a"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -2229,7 +2415,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "S17b was run by the Czech military intelligence. The language was Czech. It was a variant of S10d that always conveyed a single group message.",
+        "quotedFrom": "https://priyom.org/number-stations/slavic/s17b"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -2249,7 +2438,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "S17c was run by the Czech Military Intelligence (Czech: Vojenské zpravodajství). Last heard on 19 June 2007. The general format was the same as S10d, but the recipient ID, the 2-figure number in the preamble and the amount of groups were constant. S17c was sent out daily at 12:50 UTC, and each transmission lasted about 7 minutes. Up until 1 February 2007, it was transmitted on two frequencies simultaneously, and on only one frequency afterwards. Until 2 February 2007, the arbitrary ID was only 555 - then until the station's demise, random triplets were used, but never 555.",
+        "quotedFrom": "https://priyom.org/number-stations/slavic/s17c"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -2269,7 +2461,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "S21 is believed to have transmitted from Russian naval base in Kaliningrad. The language was Russian. It initially utilized a female voice, with the final figures in groups inflected, but starting in October 2010, it used the same voice as S06. Last heard in October 2013. S21 always transmitted 40 minutes after M45, and repeated the same message that M45 transmitted, with a different transmission ID. Mistakes were sometimes made, and M45 transmitted on these frequencies instead of S21. S21 was operated from a computer running Windows XP, as it can be heard by the shutdown sounds here and here.",
+        "quotedFrom": "https://priyom.org/number-stations/slavic/s21"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -2289,7 +2484,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "S26 was operated by one of Polish intelligence agencies. Ceased in late 1970s, replaced by S11. [Based on a letter on Simon Mason's website ]",
+        "quotedFrom": "https://priyom.org/number-stations/slavic/s26"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -2309,7 +2507,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "S31 was not a number station. It was Czech(oslovak) army testing its equipment by sending test counts. Last heard in 2000 after more than 30 years of operation. The frequency 1122 kHz had test counts from 50 to 59 every hour from sunrise to sunset in the minutes 10 to 12, and 40 to 42. No intro was used. The frequency 2136 kHz had test counts from 50 to 59 daily at 18:45 CEST. The transmissions started with nine tones in three sets of three. The test counts were played from a tape. [Based on this page, and Numbers & Oddities #19 ]",
+        "quotedFrom": "https://priyom.org/number-stations/slavic/s31"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -2329,7 +2530,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "G01, also known as the Tyrolean Music Station, was operated by the French external intelligence agency SDECE - Service de Documentation Extérieure et de Contre-Espionnage (External Documentation and Counter-Espionage Service), the predecessor of the DGSE. Transmissions ceased in 1975, in the few following days after the French anti-establishment magazine Interférences published the information that the station was operated by the SDECE from the area of Chartres, in France.",
+        "quotedFrom": "https://priyom.org/number-stations/german/g01"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -2349,7 +2553,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "G04 is generally believed to have been operated by Hungarian intelligence and transmitted from Budapest area, ceased in 2005. No amount of 5-figure groups in the message was given. Up until 2000, transmitted messages were highly non-random, as it can be seen, for example, here. The messages didn't look as much non-random afterwards.",
+        "quotedFrom": "https://priyom.org/number-stations/german/g04"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -2369,7 +2576,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "The voice used standard German military radio pronuncation of \"2\", being rendered as \"zwo\". The variant G05a, however, used the usual \"zwei\" instead. [Cessation date comes from ENIGMA staff description ]",
+        "quotedFrom": "https://priyom.org/number-stations/german/g05"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -2389,7 +2599,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "G06 is the German language mode of the Russian 6 operator. Most of its schedules were retired at the end of 2019, before being fully retired from regular operation in March 2021. Similarly to other language modes of this operator retired from regular operation, it was still heard in test transmissions: in December 2021 using ID 352 and 975; then on February 17th and December 14th, 2023, and January 30th, 2024, using ID 352; and on November 11th, 2024, using ID 801.",
+        "quotedFrom": "https://priyom.org/number-stations/german/g06"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -2409,7 +2622,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "G07 was the German language mode of the Russian 7 operator. Retired in January 2001.",
+        "quotedFrom": "https://priyom.org/number-stations/german/g07"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -2429,7 +2645,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "G08 was operated by East German Ministry for State Security (Stasi). Last heard in May 1990, shortly before the German unification. G08 was transmitted from Zeesen, and remotelly controlled from Wernsdorf. [source] Information was derived from Simon Mason's 1991 book \"Secret Signals\" and Langley Pierce's 1994 book \"Intercepting Numbers Stations\"",
+        "quotedFrom": "https://priyom.org/number-stations/german/g08"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -2449,7 +2668,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "This station was only ever heard once - one day during the Cold War at 19:00. It hasn't turned up ever since. No recordings exist. Information was taken from Simon Mason's 1991 book \"Secret Signals\"",
+        "quotedFrom": "https://priyom.org/number-stations/german/g09"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -2469,7 +2691,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "G10 was operated by one of Polish intelligence agencies. Ceased in late 1970s, replaced by G11. Only known schedule: Saturday at 13:00 UTC on 5815 kHz. Based on a letter on Simon Mason's website",
+        "quotedFrom": "https://priyom.org/number-stations/german/g10"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -2489,7 +2714,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "G11 was the German language mode of the Polish 11 operator. Its most recent revival was during 2007-2014. All G11 schedules were twice weekly, followed year-round UTC (no daylight saving), and used one of three different frequencies depending on the month - one from November to February, another from May to August, and yet another for the remaining months. On each schedule, only null messages were broadcast for the majority of the time. However, traffic was sent at least once every month, on a seemingly random week. The standard group count range was 30 to 38 groups inclusive.",
+        "quotedFrom": "https://priyom.org/number-stations/german/g11"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -2509,7 +2737,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "G12 was operated by Austrian Army Intelligence Office (HNA). This station has used a few different voices, including Austrian German ones. Times and frequencies from around 1991: (derived from Simon Mason's 1991 book Secret Signals )",
+        "quotedFrom": "https://priyom.org/number-stations/german/g12"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -2529,7 +2760,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "E13 and G13 were short-lived number stations that operated at the end of the Cold War. They were used by American and West German intelligence agencies CIA and BND during destabilization operations in East Germany. The transmissions always started at the top of the hour. Note extensive similarity of the format to the CIA number station G05. If the middle digit in the 3-figure ID was even, the transmission contained an actual message, otherwise the groups were meaningless. Based on descriptions from Simon Mason's 1991 book \"Secret Signals\" and Langley Pierce's 1994 book \"Intercepting Numbers Stations\"",
+        "quotedFrom": "https://priyom.org/number-stations/german/g13"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -2549,7 +2783,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "G14 was operated by (West) German Federal Intelligence Service (BND), ceased in early 1990s, operated since late 1950s. The callsigns DFC37 and DFD21, and their frequencies of 3370 and 4010 kHz were both ITU-allocated, making them one of very few legitimately operating number stations. The designator G14 refers to the post-1988 format of the transmissions, which involved an automated voice; refer to the G14a for the old variant. DFC37 and DFD21 were transmitted every day from 15:00 until 22:00 UTC. The messages were first transmitted at the top of the hour in AM mode, and then repeated at half hour in USB mode.",
+        "quotedFrom": "https://priyom.org/number-stations/german/g14"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -2569,7 +2806,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "G15 was a part of BND's extensive number station network. This one always transmitted on four frequencies simultaneously - 2707, 5015, 7404, 11108 kHz - eight times a day, every single day of the year, at 00:00, 00:30, 06:00, 06:30, 12:00, 12:30, 18:00 and 18:30 UTC. The:00 transmissions were the primary sendings done in AM mode, and the:30's - repeats done in USB mode. The G15 designator refers to the newer format of this station, which involves automated voice and is essentially identical to G14 and G16. Refer to G15a for the old format. G15 was generally very stable in operation, with transmissions always starting right on time with very few mistakes made during them.",
+        "quotedFrom": "https://priyom.org/number-stations/german/g15"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -2589,7 +2829,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "G16 was operated by (West) German Federal Intelligence Service (BND). Last heard in 1999. G16 transmitted 24 hours a day in 30-minute intervals, using various 2-letter ID's, all of which were spelled with the NATO Phonetic Alphabet. The times and frequencies used indicated operation all over the world. Each station within the network typically had 3 to 9 recipients. The only exception was \"PN\", which received a separate designator G15 for that reason. G16 operated under the following ID's. Note that the station ID \"AU\" was also shared with E16.",
+        "quotedFrom": "https://priyom.org/number-stations/german/g16"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -2609,7 +2852,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "G18 was presumably operated by Czechoslovak intelligence, guessing by similarities of the format with S10. Ceased around 1973. Only one recording is known to exist, made by Simon Mason, which is included on The Conet Project. The voice used standard German military pronuncation of \"2\" and \"9\", being rendered as \"zwo\" and \"neuen\", respectively. [Based on a letter on Simon Mason's website ]",
+        "quotedFrom": "https://priyom.org/number-stations/german/g18"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -2629,7 +2875,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "The operating agency behind G20 is uncertain. Characteristic element of this station was usage of different pieces of music as the introductions. [Based on Simon Mason's website and Numbers & Oddites #18 ]",
+        "quotedFrom": "https://priyom.org/number-stations/german/g20"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -2649,7 +2898,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "G22 belonged to one of Bulgarian intelligence agencies. Last heard in early 2006. The serial number was increased each time a new message was sent on a given schedule. The voice samples were severely distorted, resulting in difficulty in comprehending the numbers. In addition to that, the following pronunciation was used: Little is known about G22. It was active in the 1980s, but has later fallen into disuse in favor of its Morse code counterpart, M13. It was re-activated in September 1997, with one schedule - third Thursday of each month at 22:00 UTC (November - March: 23:00), within 4-6 MHz range, with ID 186.",
+        "quotedFrom": "https://priyom.org/number-stations/german/g22"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -2669,7 +2921,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": "2026-09-11",
-      "lore": null,
+      "lore": {
+        "text": "V07 is the Spanish language mode of the Russian 7 operator. In case of an unexpected interruption during the transmission, the station restarts with the intro, repeated for one minute, followed by the current message continued from some groups before the failure; the preamble is omitted. The sole V07 schedule consists of 3 identical transmissions 20 minutes apart. Each successive transmission is 1-2 MHz lower or higher in frequency. The third transmission does not take place in case of a null message. The frequencies are typically changed on a monthly basis. V07 was first noted as early as 1995, using a male voice.",
+        "quotedFrom": "https://priyom.org/number-stations/other/v07"
+      },
       "frequencies": [],
       "schedules": [
         {
@@ -2798,7 +3053,13 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": {
+        "year": 1995,
+        "approximate": true,
+        "note": "first noted as early as 1995",
+        "lastConfirmed": "2026-09-11",
+        "sourceUrl": "https://priyom.org/number-stations/other/v07"
+      }
     },
     {
       "enigmaId": "V13",
@@ -2810,7 +3071,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": "2026-09-10",
-      "lore": null,
+      "lore": {
+        "text": "V13, New Star Broadcasting ( 新星廣播電臺 Xinxing Guangbo Diantai) is a Taiwanese number station. V13 broadcasts typically consist of a series of three messages, each one assigned to a different group or \"unit\" of agents. Messages are usually between 30 and 35 paired four digit groups. The following is a rundown of each broadcast: \"這裡是新星廣播電臺，第三臺。在這時間裡沒有電報給您。謝謝您的收聽，祝您健康快樂，再會。\" This is the New Star Broadcasting Station, station 3. At this time, there are no messages for you. Thank you for listening, wishing you health and happiness. See you.\" V13 operates five numbered programs (#1, #2, #3, #4, #5), each targeting a different part of East Asia.",
+        "quotedFrom": "https://priyom.org/number-stations/other/v13"
+      },
       "frequencies": [
         {
           "khz": 7502,
@@ -2967,7 +3231,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": "2026-09-10",
-      "lore": null,
+      "lore": {
+        "text": "V28 \"The Parrot\" is a North Korean station, which was first heard in November 2015. The prevailing hypothesis is that it is a military station, although this is unconfirmed. V28 transmits twice a day, in the local morning and evening, on randomly variable frequencies. The transmissions' contents are spoken by live operators in Korean. V28's transmissions are characterized by rather poor quality. Transmitters are affected by poor frequency stability, drift and distorted audio. Operations are generally subpar too, with approximate transmission times, mid-transmission moves to nearby frequencies, ambient background sounds and operator changes during the transmission.",
+        "quotedFrom": "https://priyom.org/number-stations/other/v28"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -2975,7 +3242,13 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": {
+        "year": 2015,
+        "approximate": true,
+        "note": "first heard in November 2015",
+        "lastConfirmed": "2026-09-11",
+        "sourceUrl": "https://priyom.org/number-stations/other/v28"
+      }
     },
     {
       "enigmaId": "V01",
@@ -2987,7 +3260,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "V01 was operated by Romanian intellignece. Its transmissions were pre-recorded on and played back from tapes. Ceased soon after the Romanian revolution in 1989. Times and frequencies around 1991: (derived from Simon Mason's 1991 book Secret Signals )",
+        "quotedFrom": "https://priyom.org/number-stations/other/v01"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -3007,7 +3283,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "V02 is the former Spanish language flavor of the Cuban DGI. Replaced by V02a in 1997.",
+        "quotedFrom": "https://priyom.org/number-stations/other/v02"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -3027,7 +3306,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "V06 is the Spanish language mode of the Russian 6 operator. It was retired as a regular operation in 2000. Despite not being in regular operation since 2000, the V06 voice appears to be still available to use. On September 8, 2012, a test transmission was made using it. On February 6, 2014, a full V06 transmission was made. In May 2016, the V06 voice was used during training sessions along with another otherwise inactive mode, V23. Another V06 transmission took place on January 29, 2020, using the known drill ID 975. A null message was transmitted on March 24, 2020. In March and April, 2023, several more V06 test transmissions took place.",
+        "quotedFrom": "https://priyom.org/number-stations/other/v06"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -3047,7 +3329,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "The language was arabic. First heard in early 1995. Schedule, transmission times shifted an hour later for winter. Note that the schedules were erratic and could start at other times: V08, like E09, had also very erratic transmissions, with late start, no transmissions at all, or even mixing with other broadcast stations from the Middle East. The transmissions were prerecorded and played from a tape. Transmissions were played at double speed or at half speed on several transmissions. The agency behind V08 is unknown. Following the dissapearence of its sister station E09, V08 started using Magnetic Fields as intro in some transmissions, which led to some confusion in the monitoring community.",
+        "quotedFrom": "https://priyom.org/number-stations/other/v08"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -3055,7 +3340,13 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": {
+        "year": 1995,
+        "approximate": true,
+        "note": "First heard in early 1995",
+        "lastConfirmed": "2026-09-11",
+        "sourceUrl": "https://priyom.org/number-stations/other/v08"
+      }
     },
     {
       "enigmaId": "V10",
@@ -3067,7 +3358,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "The language was Spanish. Last heard in August 1988. The station used a different phonetic alphabet. Each word except Kilo is a Christian name from Central Europe countries.Note that there are two variations of the letter P and no letter Z after all: Anna, Berta, Carlo, Danielle, Emelle, Figaro, Gustav, Hipolit, Ida, Jacob, Kilo, Leopold, Marta, Nicola, Olga, Philip, Pietro, Quasi, Rosa, Softi, Tiodo, Ulrike, Victor, Willi, Xavier, Yvonne. The transmissions took place on full hour or half hour. The only known transmission frequencies were 4069.2 and 4074, both in USB. Five-digit Spanish traffic has been associated with this station, which was presented in a two-group iddler format (V10a).",
+        "quotedFrom": "https://priyom.org/number-stations/other/v10"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -3107,7 +3401,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "V14 was the Spanish control flavour of the E05 family. The format was identical to E14, but it ran on separate schedules.",
+        "quotedFrom": "https://priyom.org/number-stations/other/v14"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -3127,7 +3424,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "The language was Spanish. V19 was heard only once, one day in mid-80s, in Germany. Only one recording exists, which is part of The Conet Project. The range of callsigns from WAA to WZZ (WTR inclusive) were allocated to the USA. However, the station might have had its origins in Spain, due to the smooth, native pronunciation of the operator. Extracted from ENIGMA Newsletter no. 15, July 1998 (read a scanned version here ).",
+        "quotedFrom": "https://priyom.org/number-stations/other/v19"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -3147,7 +3447,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "The language was Spanish. V20 was possibly related to the Cuban spy network La Red Avispa, which was formed by a total of 27 agents. Last heard in August 1998, shortly before the network was dismantled. Some of these agents would also be involved in the case of the Cuban Five later that year. Note that the letter was pronounced by its name and not using a phonetic alphabet. The three figure group was usually pronounced in a 1+2 format (for example, dos noventa ). V20 could be heard on Saturdays between 14:00 and 15:00 UTC on 6868khz (one hour later in winter). Transmissions were sloppy and informal, and slight changes in format were common.",
+        "quotedFrom": "https://priyom.org/number-stations/other/v20"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -3167,7 +3470,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "The language was Vietnamese. Voice counterpart of M97. First heard on February 21, 2010, and last heard on May 6, 2016. Like M97, the whole message was repeated several times before finally shutting down. Transmissions in total lasted around 30 minutes. Messages were sometimes reused for months and even years. V30 had only one schedule, which was very erratic and did not always transmit. It transmitted at 16:00 UTC on 10255. The computer clock used for the transmissions was inaccurate and every day the transmission start shifted a few seconds before the intended time, thus reaching start times as early as 15:54 before the clock was put on time again.",
+        "quotedFrom": "https://priyom.org/number-stations/other/v30"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -3175,7 +3481,13 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": {
+        "year": 2010,
+        "approximate": true,
+        "note": "First heard on February 21, 2010",
+        "lastConfirmed": "2026-09-11",
+        "sourceUrl": "https://priyom.org/number-stations/other/v30"
+      }
     },
     {
       "enigmaId": "M01",
@@ -3187,7 +3499,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": "2026-09-11",
-      "lore": null,
+      "lore": {
+        "text": "M01 can be heard on Tuesdays and Thursdays at 18:00 and 20:00, on Saturdays at 15:00, and on Sundays at 07:00 UTC. All of these use the same ID, which depends on the season of the year - it is \"197\" from November to February, \"025\" from May to August, and \"463\" on all the other months. Each time the message sent is different, and always 30 groups long. Rarely the messages are repeated a few days later. M01 does not adjust its transmission times to DST. The Morse code on M01 is created by an automated machine with manual input from an operator, resulting in irregular pauses between the digits. The zero is sent as \"T\" - a single dash. The speed varies between 15 and 25 WPM.",
+        "quotedFrom": "https://priyom.org/number-stations/morse/m01"
+      },
       "frequencies": [],
       "schedules": [
         {
@@ -3288,7 +3603,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": "2026-09-10",
-      "lore": null,
+      "lore": {
+        "text": "M01a is a random, unscheduled variant of M01, formerly used on the last week of each month on M01 schedules (until 2002). In late 2017, a new unstable schedule was found. M01a has no rigid format, though it is usually a variation of the following:",
+        "quotedFrom": "https://priyom.org/number-stations/morse/m01a"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -3308,7 +3626,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": "2026-09-10",
-      "lore": null,
+      "lore": {
+        "text": "M12 is the Morse code mode of the Russian 7 operator. The intro and the outro are slower than the rest of the transmission. Zero is sent as \"T\" - a single dash. In case of an unexpected interruption during the transmission, the station restarts with the intro, repeated for one minute, followed by the current message continued from some groups before the failure; the preamble is omitted. Most M12 schedules are twice weekly and consists of 3 identical transmissions 20 minutes apart. Each successive transmission is 1-2 MHz lower or higher in frequency. The third transmission does not take place in case of a null message. The frequencies are typically changed on a monthly basis.",
+        "quotedFrom": "https://priyom.org/number-stations/morse/m12"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -3328,7 +3649,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": "2026-09-10",
-      "lore": null,
+      "lore": {
+        "text": "M14 is the Morse code mode of the Russian 6 operator. The transmission may be made at one of several different speeds. Zero is sent as \"T\" - a single dash.",
+        "quotedFrom": "https://priyom.org/number-stations/morse/m14"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -3348,7 +3672,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": "2026-09-11",
-      "lore": null,
+      "lore": {
+        "text": "M23 is a Morse code station of uncertain origin and purpose. Despite being assigned an ENIGMA designator, it is not a typical number station. Direction finding attempts put the transmitter location in France, possibly near Paris. M23 is identifiable primarily from its trademark slow speed and transmission lengths of at least 10 minutes. Most broadcasts consist of only a single 3-digit group repeating, ending abruptly without any further traffic. M23 has no long-lived regular schedules; instead, it appears unexpectedly on several time slots, which are active for several days until they suddenly cease.",
+        "quotedFrom": "https://priyom.org/number-stations/morse/m23"
+      },
       "frequencies": [],
       "schedules": [
         {
@@ -3489,7 +3816,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "M01b was a Russian number station. Last heard on May 29, 2020. All M01b schedules transmitted the same message, with each schedule using a different 3-digit ID. The messages were always between 30 and 50 groups long, and replaced monthly on the 1st of the month. M01b was keyed semi-automatically by an operator using a computer running Microsoft Windows. Windows XP was used as of 2014, later upgraded to Windows 7 by 2019, as indicated by leaked sound effects: M01b with the Windows XP shutdown sound (at 14:05) M01b with the Windows 7 shutdown sound (at 1:29)",
+        "quotedFrom": "https://priyom.org/number-stations/morse/m01b"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -3509,7 +3839,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "M02 was ran by Austrian Army Intelligence Office (HNA). Morse code counterpart to E12, G12, V12 and V18. Last heard on 30 October 1997. M02 sent many transmissions a day, on frequencies also including those used by its voice counterparts. The speed was 25 WPM, and the standard zero was used - five dashes. Distinct feature of M02 were strong key clicks, noted to be 30 kHz wide. Unlike M02's voice counterparts, M02 started its transmissions with a 3-figure ID. Its message lengths were also not restricted to 15/20/25/30/35 groups. The transmissions were made from Saturday to Thursday, in the time frames of 04:00 - 07:00 and 17:00 - 22:00 UTC, always starting at full hour.",
+        "quotedFrom": "https://priyom.org/number-stations/morse/m02"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -3529,7 +3862,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "M03 was the Morse code mode of the Polish 11 operator. Retired in February 2016. Zero was sent as \"T\" - a single dash. On some schedules, null messages were sent slower than the traffic. All M03 schedules were twice weekly, followed year-round UTC (no daylight saving), and used one of three different frequencies depending on the month - one from November to February, another from May to August, and yet another for the remaining months. On each schedule, only null messages were broadcast for the majority of the time. However, traffic was sent at least once every month, on a seemingly random week. The standard group count range was 30 to 38 groups inclusive.",
+        "quotedFrom": "https://priyom.org/number-stations/morse/m03"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -3549,7 +3885,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "M03a was a variant of M03 that would occasionally replace it on its schedules. It was an alternative null message format, that included an additional, middle 3-figure segment in the ID (either \"111\" or \"333\"). More or less regular transmissions ceased in May 2000. Revived once in a test transmission (121/111/00) in April 2004. Years later, in mid-2010, the voice counterpart E11c surfaced.",
+        "quotedFrom": "https://priyom.org/number-stations/morse/m03a"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -3569,7 +3908,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "M03b refers to M03 messages that were repeated annually, on the exact same frequency, time and day, sometimes for multiple years in a row. The messages were always 50 to 59 groups long.",
+        "quotedFrom": "https://priyom.org/number-stations/morse/m03b"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -3589,7 +3931,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "On each schedule, an M03c message would have been sent on one random week of each month. The messages were never shorter than 30 groups, and never longer than 39. M03 messages sent from mid-2008 onwards also have the same group count constraint, but no longer contain \"77777\" groups - however similar groups are still present in its digital counterpart, POL FSK. Voice equivalents, E11b and S11b, appeared in August 2003 and March 2006, respectively.",
+        "quotedFrom": "https://priyom.org/number-stations/morse/m03c"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -3609,7 +3954,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "M03d simply refers to M03 messages that are longer than 60 groups.",
+        "quotedFrom": "https://priyom.org/number-stations/morse/m03d"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -3629,7 +3977,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "M03e referred to M03 messages, where there was the letter \"R\" between each group, and the letters \"RR\" every 10 groups. Only noted on the turn of 2003 and 2004, not heard ever since.",
+        "quotedFrom": "https://priyom.org/number-stations/morse/m03e"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -3637,7 +3988,13 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": {
+        "year": 2003,
+        "approximate": true,
+        "note": "Only noted on the turn of 2003 and 2004",
+        "lastConfirmed": "2026-09-11",
+        "sourceUrl": "https://priyom.org/number-stations/morse/m03e"
+      }
     },
     {
       "enigmaId": "M03f",
@@ -3649,7 +4006,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "M03f referred to M03 messages, which started and ended with a quintuple-digit-group (e.g. \"33333\"), but after the message groups there was the amount of groups in the message padded out with zeroes, repeated twice, which was not included in the amount of groups provided in the preamble. In practice, however, this variant was only noted on one message, with ID \"886/71\", sent throughout late August and early September in 2007.",
+        "quotedFrom": "https://priyom.org/number-stations/morse/m03f"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -3669,7 +4029,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "M04 was most recently operated by the Polish Office for State Protection (UOP). It was a Morse code counterpart to G02, and later E23. Last heard on 14 September 2000. Full transmissions always took roughly 26 minutes. Prior to April 1998, M04 used the following schedule. The counting of the weeks started on the first Saturday of the month. The U's at the beginning were initially repeated for 10 minutes. In April 1998, it was shortened to 3 minutes. The final M04 transmission was on 14 September 2000, however, blank carriers were transmitted for the length of E23 transmissions on its former schedules until 2002. Recording courtesy of Numbers & Oddities",
+        "quotedFrom": "https://priyom.org/number-stations/morse/m04"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -3689,7 +4052,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "M05 was a station that was only heard for two days - on October 5th and 6th, 1993 - possibly linked to the Moscow coup attempt. Very strong signal strengths reported by British monitors suggest the UK as the country of origin. The Morse code pitch was 800 Hz. The speed was described as very slow. Standard five dashes were used for zero. The transmission format was complex; for most of the time, sets of 6-figure groups were sent, followed by \"000000/\". Example sets: The sets would have been repeated for anywhere between 30 minutes and a few hours. Note the sequences of repeated digits in groups. Occasionally either \"K\", \"KK\" or \"KKK\" preceded the sets.",
+        "quotedFrom": "https://priyom.org/number-stations/morse/m05"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -3709,7 +4075,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "M06 was run by the Czech Office for Foreign Relations and Information (ÚZSI) under an ITU-registered callsign OLX. Morse code counterpart to S05b. Last heard on 2 August 1997. The \"VVV DE OLX OLX\" intro bit started 5 minutes before the full hour, and was sent at 15 WPM, while the rest of the transmission was 25 WPM. Zero was sent as \"T\" - a single dash. M06 filled about 50% of the OLX schedule. M06 transmitted on the following schedule:",
+        "quotedFrom": "https://priyom.org/number-stations/morse/m06"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -3729,7 +4098,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "M06a was ran by Czechoslovak State Security (StB) under an ITU-registered callsign OLX. Morse code counterpart to S05a. Replaced by M06. The speed was 25 WPM. Zero was sent as \"T\" - a single dash.",
+        "quotedFrom": "https://priyom.org/number-stations/morse/m06a"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -3749,7 +4121,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "M07 was run by the Czech military intelligence. Last heard on 8 November 2001. M07 transmission began and ended with a sequence of tones resembling Morse characters for one minute. Between them: The preamble and the outro were sent at 15 WPM, whereas the message groups were 20 WPM. Zero was sent as T - a single dash. The format was similar to M10, and also the same frequencies were used, but M07 always carried only one message. M07 could have started at any 10-minute interval within an hour. Sometimes M10 messages were sent on M07 with the same headers. M07's old intro and outro were reported to be rapid dashes, rather than dot/dash sequences.",
+        "quotedFrom": "https://priyom.org/number-stations/morse/m07"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -3769,7 +4144,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "M08 is the former Morse code flavor of the Cuban DGI. Replaced by M08a in 1997. M08 used the following cut number scheme: In the headers, the actual header comprised the first 4 digits, while the last digit was a repeat count - either 1, 2, or 3.",
+        "quotedFrom": "https://priyom.org/number-stations/morse/m08"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -3789,7 +4167,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": "2019-02-01",
-      "lore": null,
+      "lore": {
+        "text": "M08a was the Morse code flavor of the Cuban DGI. Superseded by HM01. M08a used the following cut number scheme: In the headers, the actual header comprised the first 4 digits, while the last digit was either 1 or 2. M08a replaced the previous format M08 in 1997. After November 2012, when HM01 was introduced, M08a was relegated to only three time slots - 14:00, 20:00, and 23:00 UTC. The 20:00 UTC slot sometimes carried V02a instead, on either Tuesday or Thursday at the beginning of the month. The latest confirmed full transmission of M08a took place in February 2019.",
+        "quotedFrom": "https://priyom.org/number-stations/morse/m08a"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -3809,7 +4190,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "M10 was run by the Czech Military Intelligence (Czech: Vojenské zpravodajství). Morse code counterpart to S10d. Active since mid 1970s (multiple formats) until 20 June 2007. M10's intro, preamble and outro were sent at 15 WPM, while the message groups were at 20 WPM. Zero was sent as T - a single dash. M10 often sent more than one message in one transmission to more than one recipient. In that case, in the intro, the ID's and the group counts were included for all the messages, in the same way as the first one. Then the preamble, the message and the outro except \"0 0 0\" followed for each message. The last message ended the transmission with \"0 0 0\".",
+        "quotedFrom": "https://priyom.org/number-stations/morse/m10"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -3817,7 +4201,13 @@
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
       ],
       "sites": [],
-      "activeFrom": null
+      "activeFrom": {
+        "year": 1975,
+        "approximate": true,
+        "note": "Active since mid 1970s",
+        "lastConfirmed": "2026-09-11",
+        "sourceUrl": "https://priyom.org/number-stations/morse/m10"
+      }
     },
     {
       "enigmaId": "M10c",
@@ -3829,7 +4219,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "M10c was an earlier format of M10, with the only difference being the recipient ID's being 5-figure groups, rather than 3-figure. Morse code counterpart to S10b.",
+        "quotedFrom": "https://priyom.org/number-stations/morse/m10c"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -3849,7 +4242,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "Morse code counterpart to S10e. Last heard on 12 June 2007. Each transmission contained always four messages, addressed to four different recipients - the ID's and the lengths were included in the intro the same way as the first one, and the same message procedure was used for each one, but only the last message ended with \"0 0 0\". M11 could have been heard every 28 days from Monday to Friday at 09:00 UTC on 5019 kHz.",
+        "quotedFrom": "https://priyom.org/number-stations/morse/m11"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -3869,7 +4265,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "M13 belonged to one of Bulgarian intelligence agencies. Morse code counterpart to E18, G22, S04. Last heard in early 2006. M13 was significantly more active than its voice counterparts. M13 transmitted every day, and constantly changed times and frequencies. All the transmissions took place in the 00:00-10:00 and 16:00-23:59 time frames. The average message length was 23 groups. The messages were repeated in one of the following patterns:",
+        "quotedFrom": "https://priyom.org/number-stations/morse/m13"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -3889,7 +4288,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "M13a was a variant of M13, where the intro was ID ID ID 000, rather than just the ID.The format was otherwise identical. It was used on one schedule - 2nd and 4th Monday and Tuesday of each month at 21:00 UTC. ID changed monthly.",
+        "quotedFrom": "https://priyom.org/number-stations/morse/m13a"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -3909,7 +4311,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "M13b was a variant of M13 with messages that were up to 70 groups long, longer than the average. However, if a message 23 groups or shorter was to be transmitted, the M13a format was used instead. The format was otherwise identical to M13. M13b had a schedule on 2nd and 4th Saturday and Sunday at 21:00 UTC, or 22:00 UTC during European winter time. ENIGMA Control List, Revision #25, p. 18 [accessed October 7th, 2014]",
+        "quotedFrom": "https://priyom.org/number-stations/morse/m13b"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -3929,7 +4334,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "M13c was an M13 schedule sent in MCW mode, format identical to M13. The said schedule was on 1st and 3rd Wednesday and Thursday at 21:00 UTC, or 22:00 UTC during European winter time. ENIGMA Control List, Revision #25, p. 18 [accessed October 7th, 2014]",
+        "quotedFrom": "https://priyom.org/number-stations/morse/m13c"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -3949,7 +4357,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "M13d was a schedule of M13 with first and last two groups identical. This schedule was active at 02:30 UTC, with frequent extremely long messages. Numbers & Oddities #48 (May 2002) [accessed October 8th, 2014]",
+        "quotedFrom": "https://priyom.org/number-stations/morse/m13d"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -3969,7 +4380,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "M13e was a schedule of M13 with three different transmissions of the same message at 06:00, 16:00 and 18:00 UTC. The schedule was daily. The format was identical to M13. ENIGMA Control List, Revision #25, p. 18 [accessed October 8th, 2014]",
+        "quotedFrom": "https://priyom.org/number-stations/morse/m13e"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -3989,7 +4403,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "M17 was the Morse code counterpart to E01. Last heard in March 2000. M17, similarly to M12, repeated its transmissions 20 and 40 minutes later on higher frequencies. [Based on ENIGMA 2000 Morse Profiles List ]",
+        "quotedFrom": "https://priyom.org/number-stations/morse/m17"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -4009,7 +4426,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "M29 is generally believed to have been operated by Hungarian intelligence and transmitted from Budapest area. Morse code counterpart to G04. Last heard in 2003. \"VDE\" was a bogus callsign, officially allocated to Canada. Note the complex preamble that G04 does not have. The same non-random encryption method as G04 was employed for the messages, see the G04 page for details. [Based on ENIGMA 2000 Morse Profiles List ]",
+        "quotedFrom": "https://priyom.org/number-stations/morse/m29"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -4029,7 +4449,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "M29 is generally believed to have been operated by Hungarian intelligence and transmitted from Budapest area. Morse code counterpart to G04. Last heard in 2003. M29a differs from M29 by the lack of complex message header, making it roughly equivalent to its voice counterpart. The speed was 12 words per minute. One dash was used for zero, rather than five. \"VDE\" was a bogus callsign, officially allocated to Canada. The same non-random encryption method as G04 was employed for the messages, see the G04 page for details. [Based on ENIGMA 2000 Morse Profiles List ]",
+        "quotedFrom": "https://priyom.org/number-stations/morse/m29a"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -4049,7 +4472,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "M39 was run by the Czech military intelligence. It used the same frequencies as M10. However, it didn't transmit conventional 5-figure group messages. M39 had no specific outro, it simply ended following the last series of dashes. [Based on ENIGMA 2000 Morse Profiles List ]",
+        "quotedFrom": "https://priyom.org/number-stations/morse/m39"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -4069,7 +4495,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "M40 was transmitted from North Korea. Very frequent transmissions while it was active. Regular transmissions ceased in October 2003. In 1999, M40 operated on the following schedule. First transmissions were made on the full hour, then repeated 30 minutes later. The frequencies were changed seasonally. All schedules were daily, except where noted. And also \"CQ 747\" at 09:00, 10:00 and 20:00 on 10620kHz, and at 09:30, 10:30 and 20:30 on 12948kHz. \"747\" and \"515\" were the only ID's audible in Europe. In Now, as a Woman, the Japanese version of her memoir, Kim Hyon-hui describes her use of M40 as a North Korean agent.",
+        "quotedFrom": "https://priyom.org/number-stations/morse/m40"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -4089,7 +4518,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "M45 is believed to have been a training station. The same format as M01 was used, but semi-automatically sent at the speed of about 12 words per minute. Last heard in October 2013. M45 was always transmitted 40 minutes before its voice counterpart S21, and sent the same message that S21 would later retransmit in voice, though sometimes M45 was transmitted on S21's schedules by mistake.",
+        "quotedFrom": "https://priyom.org/number-stations/morse/m45"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -4109,7 +4541,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "M94 was the Morse counterpart to V24. Last heard in November 2013. From 2010 onwards, the amount of transmissions was significantly reduced. Many of the schedules were converted into V24 transmissions. At the time it ceased, only four M94 transmissions were made a month, with only one ID, \"935.\"",
+        "quotedFrom": "https://priyom.org/number-stations/morse/m94"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -4129,7 +4564,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "M97 was transmitted from Vietnam. Morse code counterpart to V30. Last heard in May 6, 2016. \"SD\" and \"SN\" presumably stand for \"So Dien\" and \"So Nhom\", Vietnamese phrases used by V30's voice counterpart, which are used in the same manner over there. The \"SD\" number was increased each time a new message was sent. The given \"SN\" number was not always correct. In November 2011, M97 was also observed with a 2-message format. The two messages were separated by \"KKKKKKK AAAAAAA\". It has not been seen in such a format ever since. M97 repeated the same message over extended periods of time, just as its voice counterpart. M97 was noted on 10375kHz around 15:00 UTC.",
+        "quotedFrom": "https://priyom.org/number-stations/morse/m97"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -4149,7 +4587,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": "2026-09-10",
-      "lore": null,
+      "lore": {
+        "text": "F01 is a digital mode of the Russian 6 operator. It utilizes a custom FSK system compatible with ITA2 RTTY. F01 messages consist of 5-digit groups. In null messages, only a single \"00000\" group appears. Actual traffic ends with a group made of a 2-digit serial number + 3-digit group count. The serial number ranges from 01 to 99 inclusive, increments by one with each new message, and wraps around. On certain schedules, the messages begin with 5-group headers using the same link identifiers as messages sent via two-way communications with Russian diplomatic missions, implying that they are their intended targets.",
+        "quotedFrom": "https://priyom.org/number-stations/digital/f01"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -4189,7 +4630,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": "2026-09-10",
-      "lore": null,
+      "lore": {
+        "text": "F06 is a digital mode of the Russian 6 operator. It utilizes a custom FSK system. F06 messages consist of 5-digit groups. They begin with 5-group headers using the same link identifiers as messages sent via two-way communications with Russian diplomatic missions, implying that they are their intended targets. Most messages begin with the group \"11166,\" implying a text message of urgent priority. In null messages, the 5-group header is followed by three \"00000\" groups. Actual traffic ends with a group made of a 2-digit serial number + 3-digit group count. The serial number ranges from 01 to 99 inclusive, increments by one with each new message, and wraps around.",
+        "quotedFrom": "https://priyom.org/number-stations/digital/f06"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -4209,7 +4653,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": "2026-09-10",
-      "lore": null,
+      "lore": {
+        "text": "F06a is a variant of the Russian 6 mode F06. Unlike regular F06, which carries a compressed stream of 5-digit groups, F06a carries a named file. The regular schedules of F06a consist of 3 identical transmissions 15 minutes apart (as opposed to 10 minutes for regular F06) and transmit unidentified binary files. The transmissions are always repeated the following day, at the same times and frequencies. The following file types are known to be transported using F06a. Examples of each type may be found in the logs.",
+        "quotedFrom": "https://priyom.org/number-stations/digital/f06a"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -4229,7 +4676,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": "2026-09-11",
-      "lore": null,
+      "lore": {
+        "text": "F07 is a digital mode of the Russian 7 operator. It features a custom waveform based around main data sections using 5 parallel channels of 16-tone MFSK, and incorporating other FSK synchronization and PSK header and framing elements. F07 is believed to be one waveform of a custom proprietary digital system, also supporting its P07 OFDM-based counterpart, and several other experimental modes. F07 schedules are twice weekly and consist of 6 identical transmissions 10 minutes apart. Transmission frequencies are typically changed on a monthly basis. F07 has been heard on the air as far back as 2013, as part of occasional on-air tests. Its first regular schedule appeared in December 2022.",
+        "quotedFrom": "https://priyom.org/number-stations/digital/f07"
+      },
       "frequencies": [],
       "schedules": [
         {
@@ -4510,7 +4960,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": "2026-09-11",
-      "lore": null,
+      "lore": {
+        "text": "P07 is a digital mode of the Russian 7 operator. It features a custom waveform based around main OFDM data sections, and incorporating FSK synchronization and PSK header and framing elements. P07 is believed to be one waveform of a custom proprietary digital system, also supporting its F07 MFSK-based counterpart, and several other experimental modes. P07 schedules are twice weekly and consist of 6 identical transmissions 10 minutes apart. Transmission frequencies are typically changed on a monthly basis. P07 has been heard on the air as far back as 2008, as part of occasional on-air tests, among others of its counterpart experimental waveforms (one of which sometimes known as DP01).",
+        "quotedFrom": "https://priyom.org/number-stations/digital/p07"
+      },
       "frequencies": [],
       "schedules": [
         {
@@ -4771,7 +5224,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": "2026-09-11",
-      "lore": null,
+      "lore": {
+        "text": "XPA is a digital mode of the Russian 7 operator. It utilizes a custom 17-tone MFSK system. All XPA schedules are twice weekly and consist of 3 identical transmissions 20 minutes apart. Each successive transmission is 1-2 MHz lower or higher in frequency. The frequencies are typically changed on a monthly basis.",
+        "quotedFrom": "https://priyom.org/number-stations/digital/xpa"
+      },
       "frequencies": [],
       "schedules": [
         {
@@ -5032,7 +5488,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": "2026-09-11",
-      "lore": null,
+      "lore": {
+        "text": "XPA2 is a digital mode of the Russian 7 operator. It utilizes a custom 14-tone MFSK system. All XPA2 schedules are twice weekly and consist of 3 identical transmissions 20 minutes apart. Each successive transmission is 1-2 MHz lower or higher in frequency. The frequencies are typically changed on a monthly basis.",
+        "quotedFrom": "https://priyom.org/number-stations/digital/xpa2"
+      },
       "frequencies": [],
       "schedules": [
         {
@@ -5833,7 +6292,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": "2026-09-11",
-      "lore": null,
+      "lore": {
+        "text": "XPB is a digital mode of the Russian 7 operator. It utilizes a custom 16-tone MFSK system. All XPB schedules are twice weekly and consist of 6 identical transmissions 10 minutes apart. Each successive transmission is 1-2 MHz lower or higher in frequency. The frequencies are typically changed on a monthly basis. The first regular schedule of XPB appeared in November 2018, followed by the second in September 2019.",
+        "quotedFrom": "https://priyom.org/number-stations/digital/xpb"
+      },
       "frequencies": [],
       "schedules": [
         {
@@ -6814,7 +7276,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "F11 was a digital flavor of the Polish 11 operator. It ceased in December 2018, having been succeeded by F03 and P03. F11 was attached to many schedules of E11, S11a, and M03, delivering the same traffic 15 minutes before the analog transmissions. The frequency used by F11 was typically no more than 1 MHz away from the analog broadcast. Each F11 transmission was followed by an identical repeat 5 minutes later.",
+        "quotedFrom": "https://priyom.org/number-stations/digital/f11"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -6834,7 +7299,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "SK01 is the former digital flavor of the Cuban DGI. Replaced by HM01 in 2012. SK01 transmitted in one hour schedules, sending a single computer file with an 8-digit name and the.TXT file extension. The file was transmitted every 5 minutes, with only silence in between. The contents were mostly binary-coded decimal. The mode used by SK01 was RDFT (short for Redundant Digital File Transfer), an off-the-shelf open source system initially intended for amateur radio use. The DGI used DIGTRX to transmit and receive it. SK01 appeared in its latest form in late 2007.",
+        "quotedFrom": "https://priyom.org/number-stations/digital/sk01"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [
@@ -6854,7 +7322,10 @@
       "marker": null,
       "markerPeriodSec": null,
       "lastConfirmed": null,
-      "lore": null,
+      "lore": {
+        "text": "XP was one of the digital flavors of the Russian 7 operator. Active from 1993 until 2005, it was replaced by XPA starting in 2003. Each XP schedule consisted of three broadcasts, spaced 20 minutes apart. The hundreds digits of each frequency of the schedule, when concatenated, give the schedule ID. Each schedule was weekly, and normally had a repeat transmission later in the week. The frequencies changed monthly. XP was a 14-tone MFSK system, using two speeds within each transmission - 1 Bd for the intro, and 7.5 Bd for the message.",
+        "quotedFrom": "https://priyom.org/number-stations/digital/xp"
+      },
       "frequencies": [],
       "schedules": [],
       "sourceUrls": [

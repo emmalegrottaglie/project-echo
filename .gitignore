@@ -21,3 +21,6 @@ android/app/src/main/assets/capacitor.config.json
 # which are now the source of truth; the bundle itself is a 3.8 MB design reference that
 # nothing builds from and is kept locally rather than in the repository.
 Project Echo Design System/
+
+# Local agent/editor tooling (dev-server launch config).
+.claude/

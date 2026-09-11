@@ -100,9 +100,16 @@ export function byTier(tier: Tier): Station[] {
   return current.filter((station) => station.tier === tier);
 }
 
-/** True when only identity and status are sourced — no detail imported yet. */
+/**
+ * True when a station has identity and status but nothing operational behind it.
+ *
+ * It used to mean "no lore", which stopped being the same question once Priyom's
+ * descriptions were imported: most of the roster now carries a paragraph of history and
+ * still has no frequency anyone has confirmed. The gap worth telling a reader about is
+ * the operational one, so that is what this asks.
+ */
 export function isRosterOnly(station: Station): boolean {
-  return station.lore === null;
+  return station.frequencies.length === 0 && station.schedules.length === 0;
 }
 
 /**

@@ -18,8 +18,17 @@ column, because that is V07's log of received transmissions and storing message 
 is the legal boundary in [docs/RESEARCH.md](../docs/RESEARCH.md) §5; and it skips rows
 Priyom renders in italics, which its own legend marks as outdated.
 
-Everything else — identity, operator, tier, lore, the live markers' frequencies — is
-hand-written and stays that way.
+Descriptions come from [`scripts/import-lore.mjs`](../scripts/import-lore.mjs), which
+quotes Priyom's own paragraph for each station and records the page in `lore.quotedFrom`.
+It refuses the same boundary from the other direction: it strips every table before
+reading a word, because a station page lays its message formats out as tables of sample
+five-figure groups, and it drops any paragraph that still looks like groups. It writes no
+dates — sentences that mention when a station started are printed for a person to weigh,
+for the reason in [docs/RESEARCH.md](../docs/RESEARCH.md) §9. Re-running it refreshes
+every quoted description and leaves hand-written ones alone.
+
+Everything else — identity, operator, tier, the twelve hand-written descriptions, the
+live markers' frequencies — is hand-written and stays that way.
 
 ## Corrections from readers
 
@@ -93,8 +102,10 @@ was built with — clearing `echo.stations` always returns it to that.
 
 ## Changing the shape
 
-`schemaVersion` is `2`. Version 2 replaced a slot's single `khz` with twelve
-`khzByMonth` entries. Bump it only for a change an older client cannot read; an
+`schemaVersion` is `3`. Version 2 replaced a slot's single `khz` with twelve
+`khzByMonth` entries; version 3 turned `lore` from a bare string into `{ text,
+quotedFrom }`, because most descriptions are now quoted from Priyom and a reader is owed
+the difference between somebody else's paragraph and this archive's own. Bump it only for a change an older client cannot read; an
 unknown version makes clients keep their bundled copy instead of guessing, which is
 what stops a new dataset from breaking an APK someone installed months ago. Adding an
 optional field does not need a bump. Renaming or removing one does.

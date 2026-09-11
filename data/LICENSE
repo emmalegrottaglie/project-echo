@@ -5,8 +5,9 @@ licence covers the code. This file covers the data.
 
 ## What it is licensed under
 
-Station identity, operator, status, transmission schedules and frequency lists in
-`stations.json` are adapted from [Priyom.org](https://priyom.org/), which publishes its
+Station identity, operator, status, transmission schedules, frequency lists and most of
+the station descriptions in `stations.json` are adapted from
+[Priyom.org](https://priyom.org/), which publishes its
 material under the **Creative Commons Attribution-NonCommercial-ShareAlike 4.0
 International** licence:
 
@@ -37,11 +38,19 @@ The licence requires that adaptations say so. The data here has been:
 - merged with material from the ENIGMA 2000 control list and, for a few stations,
   Wikipedia and numbers-stations.com, each carrying its own `sourceUrl`.
 
-Nothing was invented. `scripts/import-priyom.mjs` performs the transformation and can be
-re-run to reproduce it.
+Station descriptions are **quoted, not adapted**. Each one is a verbatim extract of the
+prose on a Priyom station page, held in `lore.text` with the page in `lore.quotedFrom`,
+and rendered in the app as a quotation with that link and this licence beside it. Two
+things were removed: paragraphs that referred to something laid out on the page, which
+say nothing once the words are elsewhere, and everything in a table. Twelve descriptions
+were written for this archive rather than quoted, and carry `lore.quotedFrom: null`.
 
-No message content is reproduced. Priyom publishes logs of received transmissions; the
-importer refuses to read those tables, for the reason in
+Nothing was invented. `scripts/import-priyom.mjs` and `scripts/import-lore.mjs` perform
+the transformation and can be re-run to reproduce it.
+
+No message content is reproduced. Priyom publishes logs of received transmissions and
+lays each station's message formats out as tables of sample five-figure groups; both
+importers refuse to read tables, for the reason in
 [docs/RESEARCH.md](../docs/RESEARCH.md) §5.
 
 ## The live markers

@@ -9,12 +9,16 @@ import { esc, gapNotice, openSheet, type Sheet } from './ui';
  * station's `lastConfirmed` is the date it was last heard, and those dates are the most
  * striking thing in the archive: the Lincolnshire Poacher in 2008, Cherry Ripe in 2009,
  * Atención in 2019, V15 and V24 in 2020, HM01 in 2024, while three Russian markers carry
- * on. Beginnings are the thinnest thing these sources carry, and only six are recorded
- * at all.
+ * on. Beginnings are the thinnest thing these sources carry, and most of the sixteen
+ * that exist are a first hearing rather than a start — which is why nearly all of them
+ * are marked approximate.
  *
  * So this is a timeline of what is known rather than a timeline of the roster, and it
- * says which it is. A bar needs both ends; a station with only an ending gets a mark at
- * that ending and nothing stretching back to an invented start.
+ * says which it is. A bar needs both ends. A station with only an ending gets a mark at
+ * that ending and nothing stretching back to an invented start, and a station with only
+ * a beginning gets a mark at that beginning — several of the starts imported from Priyom
+ * belong to stations that stopped without anybody recording when, and drawing those to
+ * the right-hand edge would say they are still on the air.
  */
 
 export interface TimelineRow {
@@ -22,7 +26,7 @@ export interface TimelineRow {
   name: string;
   /** Percent from the left edge of the axis. */
   left: number;
-  /** Percent of the axis width. Zero for a station known only by its ending. */
+  /** Percent of the axis width. Zero where only one end of the span is known. */
   width: number;
   /** The start is a guess at a decade, so its left edge is drawn soft. */
   approximateStart: boolean;
@@ -39,9 +43,21 @@ export interface Timeline {
   undated: number;
 }
 
-/** The year a station was last heard, or null while it is still transmitting. */
+/** True while the station is on the air, so its span has no right-hand end yet. */
+function stillTransmitting(station: Station): boolean {
+  return station.tier !== 'historical';
+}
+
+/**
+ * The year a station was last heard.
+ *
+ * Null has two meanings and the caller has to keep them apart: for a station still
+ * transmitting there is no end yet, and for a historical one with no `lastConfirmed`
+ * nobody wrote the ending down. The first draws to the edge; the second cannot draw at
+ * all without inventing a duration.
+ */
 function endYear(station: Station): number | null {
-  if (station.tier !== 'historical') return null;
+  if (stillTransmitting(station)) return null;
   return station.lastConfirmed ? Number(station.lastConfirmed.slice(0, 4)) : null;
 }
 
@@ -54,10 +70,11 @@ function endYear(station: Station): number | null {
 export function timeline(stations: readonly Station[], now: number): Timeline {
   const dated = stations.filter((station) => station.activeFrom || endYear(station) !== null);
 
-  const years = dated.flatMap((station) => {
-    const end = endYear(station);
-    return [station.activeFrom?.year, end].filter((year): year is number => year !== null && year !== undefined);
-  });
+  const years = dated.flatMap((station) =>
+    [station.activeFrom?.year, endYear(station)].filter(
+      (year): year is number => year !== null && year !== undefined,
+    ),
+  );
 
   const from = years.length ? Math.min(...years) : now;
   // A little headroom on the right so a bar that runs to now does not touch the edge.
@@ -69,7 +86,12 @@ export function timeline(stations: readonly Station[], now: number): Timeline {
     .map((station): TimelineRow => {
       const start = station.activeFrom?.year ?? null;
       const end = endYear(station);
-      const openEnd = end === null;
+      const openEnd = stillTransmitting(station);
+
+      // Both ends have to be known before a length means anything. A bar from a sourced
+      // start to `to` on a station that went off the air in some unrecorded year would
+      // read as thirty more years of transmission than anybody can attest.
+      const spans = start !== null && (end !== null || openEnd);
 
       const left = place(start ?? end ?? from);
       const right = place(end ?? to);
@@ -78,7 +100,7 @@ export function timeline(stations: readonly Station[], now: number): Timeline {
         id: station.enigmaId,
         name: station.name === station.enigmaId ? '' : station.name,
         left,
-        width: start === null ? 0 : Math.max(0, right - left),
+        width: spans ? Math.max(0, right - left) : 0,
         approximateStart: station.activeFrom?.approximate ?? false,
         openEnd,
         label: describeSpan(station, start, end),
@@ -97,8 +119,10 @@ function describeSpan(station: Station, start: number | null, end: number | null
       ? `about ${start}`
       : String(start)
     : null;
-  const endText = end === null ? 'still transmitting' : String(end);
-  return startText ? `${startText} to ${endText}` : `last heard ${endText}`;
+
+  if (startText === null) return `last heard ${end}`;
+  if (end !== null) return `${startText} to ${end}`;
+  return stillTransmitting(station) ? `${startText} to still transmitting` : `${startText}, end unrecorded`;
 }
 
 export function openTimeline(): Sheet {
@@ -144,9 +168,10 @@ export function openTimeline(): Sheet {
     gapNotice(
       `${model.rows.length} of ${model.rows.length + model.undated} stations carry a date`,
       `The rest are in the archive with an operator and a status but nothing to place them ` +
-        `by. Endings are recorded far better than beginnings here: only six stations have a ` +
-        `sourced start, and where a start is a guess at a decade the bar fades out to the ` +
-        `left rather than pretending to a year.`,
+        `by. Most of the starts that do exist are the date somebody first heard a station ` +
+        `rather than the date it began, so the bar fades out to the left rather than ` +
+        `pretending to a year. A single mark is a station known by one date only — either ` +
+        `the year it was last heard, or a beginning whose ending nobody wrote down.`,
     );
 
   sheet.body.addEventListener('click', (event) => {

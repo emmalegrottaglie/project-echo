@@ -17,7 +17,7 @@
  *    because this file also guards the copy fetched over the network.
  */
 
-import type { ActiveFrom, Frequency, Schedule, Site, Station, Tier } from '../types';
+import type { ActiveFrom, Frequency, Lore, Schedule, Site, Station, Tier } from '../types';
 import { isSafeUrl } from '../url';
 
 /**
@@ -25,7 +25,7 @@ import { isSafeUrl } from '../url';
  * version it does not know keeps its bundled copy rather than guessing — which is what
  * makes it safe for the server to serve new data to an installed APK.
  */
-export const SCHEMA_VERSION = 2;
+export const SCHEMA_VERSION = 3;
 
 export type ValidationResult =
   | { ok: true; stations: Station[] }
@@ -112,6 +112,32 @@ function checkSchedule(value: unknown, where: string, errors: string[]): Schedul
 }
 
 const SITE_STATUS = ['confirmed', 'claimed', 'former'];
+
+/**
+ * Background prose, and the page it was quoted from where it was quoted at all.
+ *
+ * `quotedFrom` is checked as strictly as any other URL in this file: it is rendered as a
+ * link beside the words it attributes, so an unsafe scheme here would be a `javascript:`
+ * link sitting under a quotation mark.
+ */
+function checkLore(value: unknown, where: string, errors: string[]): Lore | null {
+  if (value === null) return null;
+  if (!isRecord(value)) {
+    errors.push(`${where}: expected an object or null`);
+    return null;
+  }
+
+  const before = errors.length;
+
+  if (typeof value.text !== 'string' || value.text.trim() === '') {
+    errors.push(`${where}.text: expected a non-empty string`);
+  }
+  if (value.quotedFrom !== null && !isSafeUrl(String(value.quotedFrom))) {
+    errors.push(`${where}.quotedFrom: expected an http or https URL, or null`);
+  }
+
+  return errors.length === before ? (value as unknown as Lore) : null;
+}
 
 function checkSite(value: unknown, where: string, errors: string[]): Site | null {
   if (!isRecord(value)) {
@@ -209,9 +235,7 @@ function checkStation(value: unknown, where: string, errors: string[]): Station 
   if (value.lastConfirmed !== null && !ISO_DATE.test(String(value.lastConfirmed))) {
     errors.push(`${id}.lastConfirmed: expected an ISO date (YYYY-MM-DD) or null`);
   }
-  if (value.lore !== null && typeof value.lore !== 'string') {
-    errors.push(`${id}.lore: expected a string or null`);
-  }
+  checkLore(value.lore, `${id}.lore`, errors);
 
   checkStrings(value.aliases, `${id}.aliases`, errors);
 

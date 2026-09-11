@@ -15,6 +15,7 @@
     "start": "npm run build && npm run server",
     "diagnostic-wav": "node scripts/make-diagnostic-wav.mjs",
     "import-priyom": "node scripts/import-priyom.mjs",
+    "import-lore": "node scripts/import-lore.mjs",
     "make-world-path": "node scripts/make-world-path.mjs",
     "relay": "node scripts/relay.mjs",
     "android:sync": "npm run build && cap sync android",

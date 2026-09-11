@@ -40,6 +40,33 @@ function from(year: number, approximate = false): Station['activeFrom'] {
   };
 }
 
+describe('a start with no ending', () => {
+  /**
+   * Most of the starts imported from Priyom belong to stations that stopped without
+   * anybody recording when. A bar drawn to the right-hand edge would say they are still
+   * on the air, which is the one thing the archive knows is untrue.
+   */
+  it('draws a mark rather than a bar running to the present', () => {
+    const model = timeline(
+      [station({ tier: 'historical', lastConfirmed: null, activeFrom: from(1981, true) })],
+      2026,
+    );
+    expect(model.rows[0]!.width).toBe(0);
+    expect(model.rows[0]!.openEnd).toBe(false);
+    expect(model.rows[0]!.label).toBe('about 1981, end unrecorded');
+  });
+
+  it('still runs to the edge for a station that is on the air', () => {
+    const model = timeline(
+      [station({ tier: 'live', lastConfirmed: '2026-09-10', activeFrom: from(1977, true) })],
+      2026,
+    );
+    expect(model.rows[0]!.width).toBeGreaterThan(0);
+    expect(model.rows[0]!.openEnd).toBe(true);
+    expect(model.rows[0]!.label).toBe('about 1977 to still transmitting');
+  });
+});
+
 describe('what gets a row', () => {
   it('leaves out a station with no date at either end, and counts it', () => {
     const model = timeline([station({ enigmaId: 'A' }), station({ enigmaId: 'B' })], 2026);

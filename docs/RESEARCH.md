@@ -315,7 +315,7 @@ that the Lincolnshire Poacher began broadcasting is not known for certain; howev
 believed that the broadcasts started around the early to mid 1970s." On UVB-76: "first
 noticed around the late 1970s".
 
-Six stations have a sourced start:
+Sixteen stations have a sourced start. Six came from the original research:
 
 | Station | Year | Basis |
 |---|---|---|
@@ -326,16 +326,69 @@ Six stations have a sourced start:
 | S32 The Squeaky Wheel | 2000 | Wikipedia infobox, "First air date 2000" |
 | HM01 | about 2012 | "appeared around 2012" |
 
-`ActiveFrom.year` exists to place a mark on an axis; `note` carries what the source
-actually said, and `approximate` marks the four where a year was narrowed by hand from a
-decade. The interface shows the note rather than the bare year whenever a date is
-approximate, and the timeline fades a bar's left edge instead of capping it, because a
-hard edge asserts a precision Wikipedia explicitly declines to give.
+Ten more arrived with the description import of September 2026 (§10). Every one of them
+is a first hearing rather than a start, and is recorded as approximate for that reason:
 
-Chasing the remaining 131 would mean a Priyom page each for an uncertain yield: their
-station pages rarely give a first-heard date, and inventing one from the earliest logged
-transmission would be an artefact of when logging started rather than when the station
-did.
+| Station | Year | What Priyom's page says |
+|---|---|---|
+| M10 | about 1975 | "Active since mid 1970s" |
+| E21 | about 1981 | "First noted around 1981" |
+| E18 | about 1989 | "first mentioned as being active in September 1989" |
+| E15 | about 1993 | "first reliably reported in early 1993" |
+| E09 | about 1995 | "first heard in February 1995" |
+| V07 | about 1995 | "first noted as early as 1995" |
+| V08 | about 1995 | "First heard in early 1995" |
+| M03e | about 2003 | "Only noted on the turn of 2003 and 2004" |
+| V30 | about 2010 | "First heard on February 21, 2010" |
+| V28 | about 2015 | "first heard in November 2015" |
+
+The distinction that decided each of these is **reported against derived**. A date a
+source states, however vague, is a fact that source is asserting and belongs in
+`ActiveFrom` with its own phrasing kept in `note`. A date worked out from the earliest
+row of a log table does not, because it records when logging started rather than when the
+station did. Nine further sentences mentioning a year were reported by the importer and
+rejected on that test: they were endings (E17z and S06s both ceased on 24 February 2022),
+facts about a different station (M03c's page dating E11b and S11b), or the appearance of
+a schedule rather than of the station (F07, XPB, SK01).
+
+V30's "February 21, 2010" is precise to the day and still marked approximate, which looks
+wrong until the claim is read carefully: the day is when somebody first heard it, and that
+only bounds the start. `approximate` answers "is this when the station began", not "how
+precise is this string".
+
+`ActiveFrom.year` exists to place a mark on an axis; `note` carries what the source
+actually said. The interface shows the note rather than the bare year whenever a date is
+approximate, and the timeline fades a bar's left edge instead of capping it, because a
+hard edge asserts a precision the sources explicitly decline to give.
+
+## 10. Where the station descriptions come from
+
+Most of the roster arrived from ENIGMA 2000's active-stations list as identity only, and
+for 129 stations the archive had a designator, an operator and a status with no history
+at all. Priyom publish a description for nearly all of them.
+
+Those descriptions are **quoted, not rewritten**. Paraphrasing would have produced
+something that read as this archive's own research while being somebody else's work, and
+their data is CC BY-NC-SA 4.0, which asks for attribution by name. So `Lore` carries
+`quotedFrom`, the app renders a quotation with the page and the licence beside it, and
+`data/LICENSE` holds the terms in full. The twelve descriptions written here — the famous
+stations, synthesised from several sources — carry `quotedFrom: null` and render as plain
+prose, so a reader can tell the two apart.
+
+`scripts/import-lore.mjs` does the fetching, and the refusals are in the script rather
+than in a reviewer's head:
+
+- **Every table is stripped before a word is read.** A station page lays its message
+  formats out as tables of sample five-figure groups. Storing message content is the
+  boundary in §5, and a paragraph that still looks like groups is dropped on a second
+  check, because the page layout is Priyom's to change.
+- **Paragraphs that point at the page are dropped.** "as heard below", "see the table" —
+  true where they were written, meaningless once the words are somewhere else.
+- **No date is ever written.** Sentences that mention a year alongside a beginning are
+  printed for a person to weigh, for the reason set out in §9.
+
+125 descriptions landed. Four stations still have none: F03 and P03 have no Priyom page,
+and S10b and V12 have pages carrying an infobox and nothing else.
 
 ## Sources
 

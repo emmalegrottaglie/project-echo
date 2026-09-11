@@ -33,8 +33,9 @@ import {
  * Two things this view is careful about. Activity status is presented as a dated claim
  * — "last confirmed 2020-09-01" — never as a bare Active badge, because most published
  * listings for these stations are stale and a badge repeats the error confidently. And
- * a roster-only entry says its detail has not been imported rather than rendering
- * empty tables as though the station had no frequencies.
+ * a station with no operational data says so rather than rendering empty tables as
+ * though nobody had ever found it a frequency. Most of the roster is in that state: it
+ * has a history, quoted from Priyom, and nothing confirmed on the air.
  */
 
 const TIER_LABEL: Record<Tier, string> = {
@@ -106,6 +107,15 @@ function observationsHtml(observations: Observation[]): string {
   );
 }
 
+/** A source named by its site rather than by its URL, for an attribution line. */
+function hostLabel(url: string): string {
+  try {
+    return new URL(url).hostname.replace(/^www\./, '');
+  } catch {
+    return url;
+  }
+}
+
 /**
  * Who this station's identity and status came from, named rather than numbered.
  *
@@ -119,7 +129,7 @@ function sourceCredit(station: Station): string {
     ...new Set(
       station.sourceUrls
         .filter(isSafeUrl)
-        .map((url) => new URL(url).hostname.replace(/^www\./, '')),
+        .map(hostLabel),
     ),
   ];
   if (!hosts.length) return '';
@@ -171,6 +181,30 @@ function sitesTable(station: Station): string {
   );
 }
 
+/**
+ * The background paragraph, and whose words it is.
+ *
+ * Most of these are quoted from Priyom rather than written here, so they are rendered as
+ * a quotation with the page attached. Their data is CC BY-NC-SA 4.0 and this is the
+ * attribution that licence asks for, but it is also the honest thing to show: a reader
+ * should be able to tell the archive's own summary from somebody else's paragraph, and
+ * follow the link to whoever did the work.
+ */
+function loreBlock(station: Station): string {
+  const lore = station.lore;
+  if (!lore) return '';
+  if (!lore.quotedFrom) return `<p class="echo-lore">${esc(lore.text)}</p>`;
+
+  return (
+    `<blockquote class="echo-lore echo-lore--quoted" cite="${safeUrl(lore.quotedFrom)}">` +
+    `<p>${esc(lore.text)}</p>` +
+    `<footer>Quoted from ` +
+    `<a href="${safeUrl(lore.quotedFrom)}" target="_blank" rel="noreferrer">` +
+    `${esc(hostLabel(lore.quotedFrom))}</a>, CC BY-NC-SA 4.0</footer>` +
+    `</blockquote>`
+  );
+}
+
 function detailHtml(station: Station): string {
   const links = archiveLinks(station);
   const now = new Date();
@@ -185,31 +219,34 @@ function detailHtml(station: Station): string {
     items.push({ label: 'Also known as', value: station.aliases.join(', ') });
   }
 
-  // No links on the notice: the Recordings and logs section below already lists the
-  // same four, and printing them twice on the same screen reads as a rendering bug.
-  const body = isRosterOnly(station)
-    ? gapNotice(
-        'Not imported',
-        'The designator, name, operator and status are sourced; frequencies, schedules ' +
-          'and history have not been imported yet.',
-      )
-    : `<p class="echo-lore">${esc(station.lore ?? '')}</p>` +
-      (station.frequencies.length ? provenanceTable(station) : '') +
-      sitesTable(station) +
-      (station.schedules.length
-        ? `<h4>Schedule</h4><ul class="echo-gap__links">` +
-          station.schedules
-            .map(
-              (schedule) =>
-                `<li><code>${esc(schedule.rrule)}</code>` +
-                ` — ${esc(describeScheduleKhz(schedule, now))}, read ${esc(schedule.lastConfirmed)}` +
-                (schedule.note ? `<span>${esc(schedule.note)}</span>` : '') +
-                `</li>`,
-            )
-            .join('') +
-          `</ul>`
-        : '') +
-      `<div class="echo-observations"></div>`;
+  const body =
+    loreBlock(station) +
+    (station.frequencies.length ? provenanceTable(station) : '') +
+    sitesTable(station) +
+    (station.schedules.length
+      ? `<h4>Schedule</h4><ul class="echo-gap__links">` +
+        station.schedules
+          .map(
+            (schedule) =>
+              `<li><code>${esc(schedule.rrule)}</code>` +
+              ` — ${esc(describeScheduleKhz(schedule, now))}, read ${esc(schedule.lastConfirmed)}` +
+              (schedule.note ? `<span>${esc(schedule.note)}</span>` : '') +
+              `</li>`,
+          )
+          .join('') +
+        `</ul>`
+      : '') +
+    // No links on the notice: the Recordings and logs section below already lists the
+    // same four, and printing them twice on the same screen reads as a rendering bug.
+    (isRosterOnly(station)
+      ? gapNotice(
+          'No frequency imported',
+          'Nobody has contributed a confirmed frequency or transmission time for this ' +
+            'one yet. The identity, status and history above are sourced; the operational ' +
+            'detail is the gap.',
+        )
+      : '') +
+    `<div class="echo-observations"></div>`;
 
   const archive =
     `<h4>Recordings and logs</h4>` +
