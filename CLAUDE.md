@@ -57,6 +57,24 @@ in the spec: if it is not listed, it does not exist.
 [README.md](README.md) covers the deployment constraint (the app must be served over
 http to reach `ws://` receivers) and the load-bearing implementation details.
 
+## Every change is documented
+
+No change lands undocumented. Three places, and which ones apply depends on the change:
+
+- **[CHANGELOG.md](CHANGELOG.md), always.** Newest first, saying what changed and why it
+  mattered — readable by someone who was not in the room. Data corrections are listed
+  beside code changes, because in an archive a wrong fact is a defect.
+- **The documents the change makes untrue.** A behaviour change that contradicts
+  [README.md](README.md), [docs/](docs), [data/README.md](data/README.md) or this file
+  updates them in the same commit. A document that describes what the code used to do is
+  worse than no document.
+- **[docs/RESEARCH.md](docs/RESEARCH.md) for anything about station facts.** A
+  correction records what was believed, what the sources actually say, and why the new
+  answer wins — §7 and §8 are the pattern.
+
+The commit message carries the reasoning; the changelog carries the record. Neither
+replaces the other, and "the diff explains it" replaces neither.
+
 ## Standing constraints
 
 These come out of the research and are not open for re-derivation on the fly:

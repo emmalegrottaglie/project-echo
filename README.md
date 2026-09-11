@@ -190,6 +190,7 @@ and an antenna before it needs code.
 | [docs/MOBILE_UI_SPEC.md](docs/MOBILE_UI_SPEC.md) | The phone layout and the fourteen-item motion inventory |
 | [docs/ANDROID.md](docs/ANDROID.md) | Building and installing the test APK, and what does not work inside it |
 | [data/README.md](data/README.md) | Editing the station roster, and how a correction reaches an installed app |
+| [CHANGELOG.md](CHANGELOG.md) | Every change to the project, newest first, including corrections to station data |
 
 ## Architecture notes
 
