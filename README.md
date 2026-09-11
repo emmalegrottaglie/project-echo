@@ -266,6 +266,12 @@ September" rather than stating a number as fact, and a month with nothing publis
 so instead of showing a dash. Re-running the import is the only thing keeping any of it
 near-current.
 
+Every station page carries **Report a correction**, which composes a prefilled GitHub
+issue rather than posting anywhere — a source URL is required, and the report includes
+what the archive currently claims so it can be acted on without opening the app. Where
+the fact is Priyom's, the form points at `#priyom` instead, since fixing it upstream
+fixes it for everyone.
+
 The roster lives in [data/stations.json](data/stations.json), not in the source. The
 build inlines a copy so the app has all 141 stations offline and with no server, and
 `GET /api/stations` serves the current file so a correction reaches an installed

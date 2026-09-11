@@ -12,6 +12,24 @@ wrong fact is a defect. Where a correction has evidence behind it, the evidence 
 
 ### Added
 
+- **Report a correction, from any station page.** Every fact in the archive carries a
+  source and a date, and until now there was no way for a reader who found one wrong to
+  say so. The form asks what is wrong, what it should be, and on what evidence — a
+  source is required, for the same reason every frequency has one — then opens a
+  prefilled GitHub issue carrying what the archive currently claims, so the report is
+  actionable by someone reading a notification with the app closed.
+
+  It posts nowhere. A form backed by the server would have worked for almost nobody: the
+  server binds to loopback unless changed, and the static client and the Android build
+  both run without one, so the person most likely to spot a wrong frequency has no
+  server to post to. This needs no endpoint, no table, no rate limiting and no
+  moderation.
+
+  Where the fact came from Priyom — frequencies, schedules, status, operator — the form
+  says so and points at `#priyom`, because fixing it upstream fixes it for everyone
+  rather than only here. Transmitter sites were researched in this repository, so those
+  it keeps.
+
 - **The great-circle path, drawn on the receiver map.** A straight line on an
   equirectangular map is not the route a signal takes: the short way from Moscow to a
   receiver in Missouri goes over the Arctic, and drawn flat it would cross Kazakhstan and

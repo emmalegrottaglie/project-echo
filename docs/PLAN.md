@@ -447,10 +447,13 @@ persistently. The deep page — who Priyom and ENIGMA 2000 are, what they have b
 over how long, and how to support them directly — is reached from those lines. It is
 good rabbit-hole content in its own right, not a legal footer.
 
-**Contact is a correction pipeline, not a mailbox.** A generic form collects spam. The
+**Built.** **Contact is a correction pipeline, not a mailbox.** A generic form collects spam. The
 useful thing is a "report a correction" action attached to the station being viewed,
-prefilled with the designator and the field, requiring a source URL, landing in a
-review queue and becoming a pull request. A plain address covers everything else. With
+prefilled with the designator and the field, requiring a source URL, and becoming an
+issue. It composes a GitHub issue rather than posting to a review queue here: this
+section assumed a server, and the server binds to loopback while the static client and
+the Android build run without one, so a posted form would have reached only the
+maintainer. A plain address covers everything else. With
 7b in place that closes the loop: staleness surfaced, correction reported, change
 reviewed, data endpoint updated, app current without a release.
 

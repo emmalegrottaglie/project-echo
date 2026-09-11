@@ -1,10 +1,12 @@
 import { fetchObservations, type Observation } from '../api';
 import { archiveLinks } from '../archives';
+import { openCorrection } from '../correction';
 import { openCredits } from '../credits';
 import { openDecoder } from '../decoder';
 import { openTimeline } from '../timeline';
 import {
   allStations,
+  byId,
   describeDesignator,
   designatorPrefix,
   isRosterOnly,
@@ -133,7 +135,8 @@ function sourceCredit(station: Station): string {
   return (
     `<p class="echo-sources">Identity and status from ` +
     `${hosts.map((host) => esc(host)).join(', ')}. ${links} ` +
-    `<button class="echo-linkish" type="button" name="credits">Credits and licence</button></p>`
+    `<button class="echo-linkish" type="button" name="credits">Credits and licence</button> ` +
+    `<button class="echo-linkish" type="button" name="correct">Report a correction</button></p>`
   );
 }
 
@@ -403,6 +406,11 @@ export function stationsView(param = ''): {
     const target = event.target as HTMLElement;
     if (target.closest('[name="credits"]')) {
       openCredits();
+      return;
+    }
+    if (target.closest('[name="correct"]')) {
+      const station = openId ? byId(openId) : undefined;
+      if (station) openCorrection(station);
       return;
     }
     if (target.closest('[name="back"]')) location.hash = 'archive';

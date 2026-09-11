@@ -21,6 +21,13 @@ Priyom renders in italics, which its own legend marks as outdated.
 Everything else — identity, operator, tier, lore, the live markers' frequencies — is
 hand-written and stays that way.
 
+## Corrections from readers
+
+Every station page in the app carries **Report a correction**, which opens a prefilled
+issue with the field, what the archive currently records, the proposed value and a
+source. Those arrive as issues labelled `data`; act on one by editing this file and
+committing, so the change carries the same provenance as everything else here.
+
 ## Editing it
 
 Edit the JSON and open a pull request. There is no admin interface and no database
