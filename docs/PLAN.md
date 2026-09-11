@@ -300,10 +300,16 @@ Two constraints worth writing down:
   than a hue ramp, so pulse amplitude reads correctly. Keep the theme accent for UI
   chrome and leave the spectrogram to a colormap that does not lie about magnitude.
 
-## 7. Phase 4 — the observation network, the rabbit hole, and funding
+## 7. Phase 4 — the observation network, the rabbit hole, and credit
 
-Phases 1 to 3 built an instrument. Phase 4 is about what the instrument produces, who
-else it credits, and what pays for the hardware it eventually needs.
+Phases 1 to 3 built an instrument. Phase 4 is about what the instrument produces and
+who else it credits.
+
+**There is no donation page and no funding ask.** An earlier draft of this section
+planned one, sequenced under Priyom's and ENIGMA 2000's own support links, to pay for
+the owned receiver of §5c. That is dropped: the app stays free and open source, and the
+only support links it carries are theirs. Anyone reading this later should take the
+absence as a decision, not an omission.
 
 ### 7a. The loop
 
@@ -314,8 +320,8 @@ The live scanner produces observations. Observations make the live view trustwor
 quiet band and a dead station, and nothing else available says which. Aggregated
 observations become an archive nobody else has, because Priyom logs messages and the
 ENIGMA list logs identity, while nobody logs marker behaviour continuously at scale.
-That archive is what makes a funding ask honest, and the funding buys the owned
-receiver from §5c that lets the live view work without spending a volunteer's channel.
+That archive is the thing this project contributes back, and it is worth building for
+the live view alone — without it, a quiet band and a dead station look identical.
 
 This is why the scanner stays the first tab. It is not competing with the archive for
 prominence; it is the thing that fills it.
@@ -392,8 +398,8 @@ not get a weaker rule than imported data.
 
 Ship the write path and the opt-in before building aggregation, and confirm a single
 phone produces usable data over a week. If contributions do not arrive, the aggregate
-views in 7c and 7e have nothing behind them and the funding argument in 7f loses its
-foundation — so this is the assumption to test cheaply and early.
+views in 7c and 7e have nothing behind them — so this is the assumption to test cheaply
+and early.
 
 ### 7e. The rabbit hole
 
@@ -422,7 +428,7 @@ Two things stay out. Hosting recordings is a rights question rather than a techn
 one, and links into the existing archives already serve it. Comments and forums are a
 moderation load a single maintainer should not take on.
 
-### 7f. Credit, corrections and funding
+### 7f. Credit and corrections
 
 **Credit is contextual first.** An acknowledgement page on its own is where credit goes
 to die. Every station already carries its `sourceUrl`, so every station detail states
@@ -438,35 +444,27 @@ review queue and becoming a pull request. A plain address covers everything else
 7b in place that closes the loop: staleness surfaced, correction reported, change
 reviewed, data endpoint updated, app current without a release.
 
-**Funding is sequenced on the page.** Priyom and ENIGMA support links come first and
-occupy the top of it, with the plain statement that this project's station data is
-theirs. What this project funds comes second, itemized: a one-off goal for the receiver
-and antenna of §5c, a recurring line for server and domain, and developer time only as
-surplus. The ledger comes third — what arrived and what it bought.
+**The only support links are theirs.** The credits page carries Priyom's and ENIGMA
+2000's, with the plain statement that this project's station data is theirs, and none
+of its own. That is the whole of it — there is no second half of the page, no ledger and
+no goal. It also settles the question the credit page exists to answer, permanently: a
+reader who wonders whether this project is profiting from volunteer work can see that
+it is not.
 
-Hardware is the honest ask because it is finite, itemizable, verifiable, and it
-directly removes load from volunteer nodes. "Support development" on its own reads as a
-tip jar and invites exactly the question the credit page exists to answer. No goal
-figure is published until the hardware has actually been costed.
-
-Payment is never collected in the app. The deployment constraint in the README puts the
-client on plain http, so the donate controls link out to an external browser and
-nothing else.
-
-The donate page ships last, after the credits page is real and the observation network
-has data behind it. The correction path can ship as soon as 7b lands.
+The correction path can ship as soon as 7b lands.
 
 ### 7g. Order, and what gates what
 
 1. Write to Priyom and ENIGMA 2000: what this is, that they are credited per station,
-   and that support routes to them. Everything below stands on their data and a funding
-   ask on top of it makes their answer mandatory rather than polite. One email, and it
-   gates 7f entirely.
+   and that support routes to them. Everything below stands on their data, so they
+   should hear it from us rather than find it. Priyom's contact is the `#priyom` IRC
+   channel on Libera; ENIGMA 2000 have a form at signalshed.com. It does not gate the
+   rest, now that no money is involved.
 2. Fixture to JSON, with CI validation and the served endpoint (7b). Unblocks the new
    fields, the corrections path and the deep links.
 3. Live success-rate fixes 1 to 3 (7c). Cheapest visible win, and independent of
    everything else.
 4. Observation write path and opt-in (7d), then the "hearing it now" line.
 5. Deep links and in-situ credit (7e.1, 7f).
-6. Credits page, then the donate page and ledger (7f).
+6. Credits page (7f).
 7. Designator decoder, then timeline (7e.3, 7e.4).
