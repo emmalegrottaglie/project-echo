@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { worldMap, type MapReceiver } from '../src/worldmap';
+import type { Site } from '../src/types';
 
 /**
  * The receiver map.
@@ -121,5 +122,64 @@ describe('untrusted directory strings', () => {
     const markup = worldMap([receiver({ location: '<script>alert(1)</script>' })]);
     expect(markup).not.toContain('<script>');
     expect(markup).toContain('&lt;script&gt;');
+  });
+});
+
+/**
+ * Transmitter sites. These are drawn because the path between transmitter and receiver
+ * is what decides whether anything arrives — and there are several per station because
+ * the sources disagree, which is a fact worth drawing rather than resolving.
+ */
+describe('transmitter sites', () => {
+  const site = (overrides: Partial<Site> = {}): Site => ({
+    name: 'Povarovo',
+    lat: 56.08333,
+    lon: 37.11028,
+    status: 'former',
+    lastConfirmed: '2026-09-11',
+    sourceUrl: 'https://en.wikipedia.org/wiki/UVB-76',
+    ...overrides,
+  });
+
+  it('draws nothing and says nothing when a station has no sourced position', () => {
+    const markup = worldMap([receiver()], { sites: [] });
+    // The group is always present; what must be absent is any mark inside it.
+    expect(markup).not.toContain('echo-worldmap__site--');
+    expect(markup).not.toContain('Crosses are transmitter sites');
+  });
+
+  it('draws one cross per site, marked with its status', () => {
+    const markup = worldMap([receiver()], {
+      sites: [
+        site({ name: 'Kerro Massiv', status: 'confirmed' }),
+        site({ name: 'Naro-Fominsk', status: 'claimed' }),
+        site(),
+      ],
+    });
+    expect((markup.match(/echo-worldmap__site /g) ?? []).length).toBe(3);
+    expect(markup).toContain('echo-worldmap__site--confirmed');
+    expect(markup).toContain('echo-worldmap__site--claimed');
+    expect(markup).toContain('echo-worldmap__site--former');
+  });
+
+  it('names every site and its status in the caption', () => {
+    const markup = worldMap([receiver()], {
+      sites: [site({ name: 'Naro-Fominsk', status: 'claimed' })],
+    });
+    expect(markup).toContain('Naro-Fominsk (claimed)');
+  });
+
+  it('projects a site the same way as a receiver', () => {
+    // Povarovo: 56.08333 N, 37.11028 E.
+    const markup = worldMap([], { sites: [site()] });
+    const [, x, y] = /<path d="M([\d.]+) ([\d.]+)h/.exec(markup) ?? [];
+    // The cross is centred on the site, so the arm starts 2.4 to its left.
+    expect(Number(x) + 2.4).toBeCloseTo(37.11028 + 180, 1);
+    expect(Number(y)).toBeCloseTo(90 - 56.08333, 1);
+  });
+
+  it('escapes a site name', () => {
+    const markup = worldMap([], { sites: [site({ name: '<script>alert(1)</script>' })] });
+    expect(markup).not.toContain('<script>');
   });
 });

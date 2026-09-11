@@ -17,7 +17,7 @@
  *    because this file also guards the copy fetched over the network.
  */
 
-import type { Frequency, Schedule, Station, Tier } from '../types';
+import type { Frequency, Schedule, Site, Station, Tier } from '../types';
 import { isSafeUrl } from '../url';
 
 /**
@@ -111,6 +111,39 @@ function checkSchedule(value: unknown, where: string, errors: string[]): Schedul
   return errors.length === before ? (value as unknown as Schedule) : null;
 }
 
+const SITE_STATUS = ['confirmed', 'claimed', 'former'];
+
+function checkSite(value: unknown, where: string, errors: string[]): Site | null {
+  if (!isRecord(value)) {
+    errors.push(`${where}: expected an object`);
+    return null;
+  }
+  const before = errors.length;
+
+  if (typeof value.name !== 'string' || value.name === '') {
+    errors.push(`${where}.name: expected a non-empty place name`);
+  }
+  if (typeof value.lat !== 'number' || !(value.lat >= -90 && value.lat <= 90)) {
+    errors.push(`${where}.lat: expected degrees between -90 and 90`);
+  }
+  if (typeof value.lon !== 'number' || !(value.lon >= -180 && value.lon <= 180)) {
+    errors.push(`${where}.lon: expected degrees between -180 and 180`);
+  }
+  if (!SITE_STATUS.includes(value.status as string)) {
+    errors.push(`${where}.status: expected one of ${SITE_STATUS.join(', ')}`);
+  }
+  if (typeof value.lastConfirmed !== 'string' || !ISO_DATE.test(value.lastConfirmed)) {
+    errors.push(`${where}.lastConfirmed: expected an ISO date (YYYY-MM-DD)`);
+  }
+  // A position with no source is a guess, and a guess with a provenance stamp on it is
+  // worse than an absent one.
+  if (!isSafeUrl(value.sourceUrl)) {
+    errors.push(`${where}.sourceUrl: expected an http or https URL`);
+  }
+
+  return errors.length === before ? (value as unknown as Site) : null;
+}
+
 function checkStation(value: unknown, where: string, errors: string[]): Station | null {
   if (!isRecord(value)) {
     errors.push(`${where}: expected an object`);
@@ -170,6 +203,12 @@ function checkStation(value: unknown, where: string, errors: string[]): Station 
     value.schedules.forEach((item, index) =>
       checkSchedule(item, `${id}.schedules[${index}]`, errors),
     );
+  }
+
+  if (!Array.isArray(value.sites)) {
+    errors.push(`${id}.sites: expected an array`);
+  } else {
+    value.sites.forEach((item, index) => checkSite(item, `${id}.sites[${index}]`, errors));
   }
 
   return errors.length === before ? (value as unknown as Station) : null;

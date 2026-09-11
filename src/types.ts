@@ -49,6 +49,36 @@ export interface Schedule {
   sourceUrl: string;
 }
 
+/**
+ * A transmitter site.
+ *
+ * Plural on a station, and with a status, because the sources genuinely disagree and the
+ * disagreement is the interesting part. The Buzzer has three between them:
+ * numbers-stations.com reports one site "confirmed" near St Petersburg and a second
+ * "claimed" at Naro-Fominsk where the 69th communications centre sits, and both it and
+ * Wikipedia record the original Povarovo site as abandoned since 2010. Collapsing that
+ * into one pair of coordinates would be inventing a fact none of them states.
+ *
+ * A station with no sourced position has an empty array. Wikidata carries a coordinate
+ * for The Squeaky Wheel that its own article leaves blank, and a guessed position with a
+ * provenance stamp on it is worse than none — so it is not here.
+ */
+export interface Site {
+  /** Place name as the source gives it, e.g. 'Naro-Fominsk, Moscow Oblast'. */
+  name: string;
+  /** Decimal degrees, north and east positive. */
+  lat: number;
+  lon: number;
+  /**
+   * The source's own word for how firmly it places the transmitter here.
+   * `former` is a site the sources agree has been abandoned.
+   */
+  status: 'confirmed' | 'claimed' | 'former';
+  /** ISO date the cited source last supported this. */
+  lastConfirmed: string;
+  sourceUrl: string;
+}
+
 export interface Station {
   enigmaId: string;
   name: string;
@@ -71,6 +101,8 @@ export interface Station {
   lore: string | null;
   frequencies: Frequency[];
   schedules: Schedule[];
+  /** Known transmitter sites, empty where none is sourced. */
+  sites: Site[];
   sourceUrls: string[];
 }
 

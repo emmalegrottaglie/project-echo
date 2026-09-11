@@ -734,7 +734,10 @@ export function liveView(): { element: HTMLElement; destroy: () => void } {
       // top fifty. That asymmetry is the point — 776 rows are unusable and 776 dots are
       // not — and both carry `data-host`, so the one click handler below serves either.
       current.body.innerHTML =
-        worldMap(sorted, { selectedHost: selectedReceiver()?.host ?? null }) +
+        worldMap(sorted, {
+          selectedHost: selectedReceiver()?.host ?? null,
+          sites: currentTuning?.station.sites ?? [],
+        }) +
         `${searchField('directory-search', 'Search location')}<div class="echo-directory-rows"></div>`;
       const rows = current.body.querySelector<HTMLElement>('.echo-directory-rows')!;
       const search = current.body.querySelector<HTMLInputElement>('[name="directory-search"]')!;

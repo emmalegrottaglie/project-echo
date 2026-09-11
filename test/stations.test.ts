@@ -29,6 +29,7 @@ function station(overrides: Record<string, unknown> = {}): Record<string, unknow
     lore: null,
     frequencies: [],
     schedules: [],
+    sites: [],
     sourceUrls: ['https://example.org/'],
     ...overrides,
   };

@@ -124,6 +124,37 @@ function sourceCredit(station: Station): string {
   );
 }
 
+/**
+ * Transmitter sites, with the source's own word for how firmly each is placed.
+ *
+ * Several rows rather than one, for the same reason frequencies are: the sources
+ * disagree and the disagreement is a fact about the station. The Buzzer has a confirmed
+ * site near St Petersburg, a claimed one at Naro-Fominsk and an abandoned one at
+ * Povarovo, and choosing between them would be inventing something none of them says.
+ */
+function sitesTable(station: Station): string {
+  if (!station.sites.length) return '';
+
+  return (
+    `<h4>Transmitter sites</h4><div class="echo-table-scroll"><table>` +
+    `<thead><tr><th>Place</th><th>Position</th><th>Claim</th><th>Confirmed</th><th>Source</th></tr></thead>` +
+    `<tbody>` +
+    station.sites
+      .map(
+        (site) =>
+          `<tr${site.status === 'former' ? ' class="disputed"' : ''}>` +
+          `<td>${esc(site.name)}</td>` +
+          `<td>${site.lat.toFixed(4)}, ${site.lon.toFixed(4)}</td>` +
+          `<td>${site.status}</td>` +
+          `<td>${esc(site.lastConfirmed)}</td>` +
+          `<td><a href="${safeUrl(site.sourceUrl)}" target="_blank" rel="noreferrer">source</a></td>` +
+          `</tr>`,
+      )
+      .join('') +
+    `</tbody></table></div>`
+  );
+}
+
 function detailHtml(station: Station): string {
   const links = archiveLinks(station);
   const now = new Date();
@@ -148,6 +179,7 @@ function detailHtml(station: Station): string {
       )
     : `<p class="echo-lore">${esc(station.lore ?? '')}</p>` +
       (station.frequencies.length ? provenanceTable(station) : '') +
+      sitesTable(station) +
       (station.schedules.length
         ? `<h4>Schedule</h4><ul class="echo-gap__links">` +
           station.schedules

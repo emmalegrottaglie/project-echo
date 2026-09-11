@@ -263,6 +263,41 @@ Two things this leaves open:
 - **S30's rate has the same provenance problem.** The Pip's "~50 beeps per minute" also
   comes from Wikipedia and has not been measured here. Treat it as unverified.
 
+## 8. Where The Buzzer transmits from, and why there are three answers
+
+An earlier draft of this repository stated, as a fact, that "the transmitter site moved
+from Povarovo to Naro-Fominsk in 2010". Adding coordinates made that sentence impossible
+to keep, because the two sources this project already cites do not agree with it or with
+each other.
+
+[numbers-stations.com](https://www.numbers-stations.com/russia/the-buzzer/) says plainly
+that at least two transmitter sites exist. It reports one **confirmed** at
+60°18′40.1″N 30°16′40.5″E, outside St Petersburg, feeding radio relay and phone lines
+from Moscow via the command hub on Palace Square. It reports a second **claimed** at
+Naro-Fominsk, 55°25′35″N 36°42′33″E, where the 69th communications centre — this
+station's operator, per the same sources — has the Western Military District's staff
+headquarters.
+
+[Wikipedia](https://en.wikipedia.org/wiki/UVB-76) records only the first: in September
+2010 the transmitter moved to near the village of Kerro Massiv, 60.3113139 N,
+30.2791833 E. Its figure and numbers-stations.com's agree to about 70 m, which is
+corroboration rather than a second claim.
+
+Both agree the original site at **Povarovo**, 56°5′0″N 37°6′37″E near the village of
+Lozhki, was abandoned in 2010.
+
+So the station has three positions and no source claims a single one. `Station.sites` is
+therefore a list with a `status` of `confirmed`, `claimed` or `former` per entry — the
+sources' own vocabulary — for the same reason S32's frequencies are stored as four
+disputed rows rather than one chosen pair. The lore was corrected to describe the
+disagreement instead of resolving it.
+
+**What is deliberately absent.** Wikipedia's article for The Squeaky Wheel carries a
+page coordinate of 59.7381 N, 30.2703 E, but its own infobox leaves `coordinates` empty
+and the figure comes from Wikidata with no stated basis. A guessed position wearing a
+provenance stamp is worse than an absent one, so S32 has no site. The Pip has none
+published at all.
+
 ## Sources
 
 - [UVB-76 — Wikipedia](https://en.wikipedia.org/wiki/UVB-76)
@@ -293,3 +328,6 @@ Two things this leaves open:
 - [Detecting a CORS-restricted MediaElementAudioSourceNode — W3C issue 2453](https://github.com/WebAudio/web-audio-api/issues/2453)
 - [MUF(3000km) — prop.kc2g.com](https://prop.kc2g.com/)
 - [How do I read this? — prop.kc2g.com](https://prop.kc2g.com/about/)
+- [UVB-76 — Wikipedia](https://en.wikipedia.org/wiki/UVB-76)
+- [The Buzzer — numbers-stations.com](https://www.numbers-stations.com/russia/the-buzzer/)
+- [Natural Earth 110m land (public domain)](https://www.naturalearthdata.com/)

@@ -1563,6 +1563,25 @@ tr.disputed {
   paint-order: stroke;
 }
 
+/* Transmitter sites. A cross, not a dot, because a transmitter is not one more
+   receiver — and the three statuses are drawn differently because "claimed" and
+   "former" are exactly what a single marker would hide. */
+.echo-worldmap__site path {
+  fill: none;
+  stroke: var(--fg);
+  stroke-width: 0.7;
+}
+
+.echo-worldmap__site--claimed path {
+  stroke: var(--dim);
+  stroke-dasharray: 1 1;
+}
+
+.echo-worldmap__site--former path {
+  stroke: var(--dim);
+  opacity: 0.6;
+}
+
 .echo-worldmap figcaption {
   margin-top: var(--space-1);
   color: var(--dim);

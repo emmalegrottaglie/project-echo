@@ -83,6 +83,15 @@ also scales where the list cannot: 786 receivers is unusable as rows and perfect
 legible as dots, so the map draws all of them and the list renders the top fifty. Both
 carry the same `data-host`, so one click handler serves either.
 
+Transmitter sites are drawn on it as crosses, which is the point of having a map at
+all: what decides whether a marker arrives is the ionosphere along the path between the
+transmitter and the receiver, so seeing both is seeing the actual variable. The Buzzer
+has three of them — a confirmed site near St Petersburg, a claimed one at Naro-Fominsk,
+and the Povarovo site abandoned in 2010 — because no source claims a single one, and
+[docs/RESEARCH.md](docs/RESEARCH.md) §8 sets out the disagreement. Stations with no
+sourced position have none, which includes S32, whose only published coordinate has no
+stated basis.
+
 It is an inline SVG of Natural Earth's 110m land outline — public domain, generated into
 [src/data/world.ts](src/data/world.ts) by `npm run make-world-path` — projected
 equirectangularly into a `0 0 360 180` viewBox, so plotting a receiver is `lon + 180` and

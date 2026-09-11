@@ -1,4 +1,5 @@
 import { esc } from './ui';
+import type { Site } from './types';
 import { WORLD_ATTRIBUTION, WORLD_PATHS } from './data/world';
 
 /**
@@ -51,8 +52,28 @@ function radius(snr: number | null): number {
 export interface WorldMapOptions {
   /** Host of the receiver to mark as chosen, drawn last so it is never hidden. */
   selectedHost?: string | null;
-  /** Maidenhead-derived position of the user's saved receiver, if there is one. */
-  here?: [number, number] | null;
+  /**
+   * Transmitter sites for the tuned station, drawn as crosses.
+   *
+   * This is what makes the map worth having rather than decorative: the thing that
+   * decides whether a marker arrives is the ionosphere along the path between the
+   * transmitter and the receiver, so seeing both is seeing the actual variable.
+   */
+  sites?: readonly Site[];
+}
+
+/** A cross rather than a dot: a transmitter is not one more receiver. */
+function siteMark(site: Site): string {
+  const x = site.lon + 180;
+  const y = 90 - site.lat;
+  const arm = 2.4;
+  return (
+    `<g class="echo-worldmap__site echo-worldmap__site--${site.status}">` +
+    `<path d="M${(x - arm).toFixed(1)} ${y.toFixed(1)}h${arm * 2}` +
+    `M${x.toFixed(1)} ${(y - arm).toFixed(1)}v${arm * 2}" />` +
+    `<title>${esc(site.name)} — ${site.status}</title>` +
+    `</g>`
+  );
 }
 
 export function worldMap(receivers: readonly MapReceiver[], options: WorldMapOptions = {}): string {
@@ -82,7 +103,16 @@ export function worldMap(receivers: readonly MapReceiver[], options: WorldMapOpt
     .map((dot) => dot.markup)
     .join('');
 
+  const sites = (options.sites ?? []).map(siteMark).join('');
   const unplaced = receivers.length - placed.length;
+
+  // Named in the caption because a cross with no explanation is a puzzle, and because
+  // "claimed" and "former" are the whole point of drawing more than one.
+  const siteNote = (options.sites ?? []).length
+    ? ` Crosses are transmitter sites: ${(options.sites ?? [])
+        .map((site) => `${site.name} (${site.status})`)
+        .join(', ')}.`
+    : '';
 
   return (
     `<figure class="echo-worldmap">` +
@@ -90,10 +120,12 @@ export function worldMap(receivers: readonly MapReceiver[], options: WorldMapOpt
     ` aria-label="World map of ${placed.length} public receivers">` +
     `<g class="echo-worldmap__land" aria-hidden="true">${land}</g>` +
     `<g class="echo-worldmap__dots">${dots}</g>` +
+    `<g class="echo-worldmap__sites">${sites}</g>` +
     `</svg>` +
     `<figcaption>${placed.length} of ${receivers.length} receivers publish a position` +
     (unplaced > 0 ? `; ${unplaced} are in the list below but not on the map` : '') +
-    `. Dot size is reported SNR. Coastlines: ${esc(WORLD_ATTRIBUTION)}, public domain.` +
+    `. Dot size is reported SNR.${esc(siteNote)} Coastlines: ${esc(WORLD_ATTRIBUTION)}, ` +
+    `public domain.` +
     `</figcaption>` +
     `</figure>`
   );
