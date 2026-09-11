@@ -16,6 +16,7 @@ import { byTier } from '../data/stations';
 import { describe, MarkerDetector, type DetectorState } from '../detector';
 import { mountPropagation, ATTRIBUTION_URL } from '../propagation';
 import {
+  candidateReceivers,
   isValidGrid,
   listReceivers,
   normaliseHost,
@@ -25,7 +26,8 @@ import {
   selectedReceiver,
   selectReceiver,
 } from '../receiver';
-import type { Frequency, Station } from '../types';
+import { formatUtc, isOffHours } from '../schedule';
+import type { Frequency, Receiver, Station } from '../types';
 import {
   button,
   detectorStrip,
@@ -87,6 +89,9 @@ export function liveView(): { element: HTMLElement; destroy: () => void } {
   let detectorTimer: number | null = null;
   let sheet: Sheet | null = null;
   let lastPosted = 0;
+  /** Bumped on teardown, so a chain still negotiating knows it was abandoned. */
+  let attempt = 0;
+  let lastFailure: string | null = null;
 
   const detector = new MarkerDetector();
 
@@ -167,11 +172,17 @@ export function liveView(): { element: HTMLElement; destroy: () => void } {
         })
       : `<div class="echo-detail__body">${gapNotice(
           'No receiver saved',
-          'Pick a public KiwiSDR with propagation to the transmitter. Saving one only ' +
-            'stores its address in this browser; the connection goes straight to that node.',
+          'This app has no antenna of its own: it listens through a public KiwiSDR that ' +
+            'someone volunteers. Saving one only stores its address in this browser, and ' +
+            'the audio connection goes straight to that node.',
         )}<div class="echo-sheet__actions">${button({
-          label: 'Choose a receiver',
+          label: 'Find one for me',
           variant: 'primary',
+          name: 'find-receiver',
+          hidden: !serverPresent,
+        })}${button({
+          label: 'Choose a receiver',
+          variant: serverPresent ? 'secondary' : 'primary',
           name: 'open-receiver',
         })}</div></div>`;
 
@@ -190,15 +201,21 @@ export function liveView(): { element: HTMLElement; destroy: () => void } {
     const current = tuning();
     if (!current) return;
 
+    // A day/night frequency is only half the information without the time. The first
+    // on-phone session picked 3756 kHz — The Pip's night frequency — at 11:45 and heard
+    // nothing, on a screen that said "night" and never said what time it was.
+    const offHours = isOffHours(current.frequency.timeOfDay);
+
     stationSlot.innerHTML = pickerRow({
       label: 'Station',
       value: `${current.station.enigmaId} ${current.station.name}`,
       meta:
         `· ${current.frequency.khz} kHz ${current.frequency.mode}` +
-        (current.frequency.timeOfDay ? ` · ${current.frequency.timeOfDay}` : ''),
+        (current.frequency.timeOfDay ? ` · ${current.frequency.timeOfDay}` : '') +
+        (offHours ? ` · now ${formatUtc(new Date())}` : ''),
+      flagWord: offHours ? 'off-hours' : current.frequency.disputed ? 'disputed' : null,
       live: current.station.tier === 'live',
       periodSec: current.station.markerPeriodSec,
-      flagWord: current.frequency.disputed ? 'disputed' : null,
       name: 'open-station',
     });
   };
@@ -239,7 +256,8 @@ export function liveView(): { element: HTMLElement; destroy: () => void } {
     setPhase('idle');
   };
 
-  const run = async (next: AudioSource, current: Tuning | null): Promise<void> => {
+  /** Resolves true when the transport connected. False means try something else. */
+  const run = async (next: AudioSource, current: Tuning | null): Promise<boolean> => {
     teardownAudio();
     setPhase('connecting');
     syntheticButton.disabled = true;
@@ -252,9 +270,9 @@ export function liveView(): { element: HTMLElement; destroy: () => void } {
     try {
       await next.start(context, analyser);
     } catch (error) {
-      renderStatus(error instanceof Error ? error.message : String(error), 'danger', true);
+      lastFailure = error instanceof Error ? error.message : String(error);
       teardownAudio();
-      return;
+      return false;
     }
 
     source = next;
@@ -310,25 +328,118 @@ export function liveView(): { element: HTMLElement; destroy: () => void } {
       setPhase('stalled');
       renderStatus(`No audio yet. ${next.silenceHint}`, 'danger', true);
     }
+    return true;
   };
 
-  const connect = (): void => {
-    const receiver = selectedReceiver();
+  /**
+   * Connects, falling through the saved receivers until one answers.
+   *
+   * Only a refused connection advances the chain. A receiver that connects and then
+   * sends nothing is left alone: that costs eight seconds to detect and the band being
+   * quiet is a real answer, so moving on automatically would spend other people's
+   * channels to re-ask a question already answered. That case keeps its "Try another".
+   */
+  const connect = async (): Promise<void> => {
     const current = tuning();
-    if (!receiver || !current) {
+    const candidates = candidateReceivers();
+    if (!candidates.length || !current) {
       openReceiverSheet();
       return;
     }
 
-    void run(
-      new KiwiSource({
-        host: receiver.host,
-        khz: current.frequency.khz,
-        mode: current.frequency.mode.toLowerCase() === 'lsb' ? 'lsb' : 'usb',
-        onStatus: (message) => renderStatus(message),
-      }),
-      current,
+    for (const [index, receiver] of candidates.entries()) {
+      // One token per candidate, not per chain: a receiver that closes late must not be
+      // able to write over the status line of the one being tried after it. That is how
+      // a chain that had already given up still ended with "connection closed (1006)"
+      // on screen and no "Try another" offered.
+      const token = ++attempt;
+
+      if (index > 0) {
+        renderStatus(
+          `${lastFailure ?? 'No answer'}. Trying ${receiver.label} ` +
+            `(${index + 1} of ${candidates.length})…`,
+        );
+      }
+
+      const connected = await run(kiwiFor(receiver, current, token), current);
+
+      // The user pressed Stop, or started another attempt, while this was negotiating.
+      if (token !== attempt) return;
+
+      if (connected) {
+        selectReceiver(receiver.id);
+        renderReceiver();
+        if (isOffHours(current.frequency.timeOfDay)) {
+          renderStatus(
+            `Listening — ${receiver.label}. ${current.frequency.khz} kHz is the ` +
+              `${current.frequency.timeOfDay} frequency and it is ${formatUtc(new Date())}.`,
+            'live',
+          );
+        }
+        return;
+      }
+    }
+
+    // Past every candidate, so the last one's dying socket cannot overwrite the verdict
+    // with its own close message — which is how this ended up showing "connection closed
+    // (1006)" and no way to retry.
+    attempt += 1;
+
+    renderStatus(
+      candidates.length === 1
+        ? `${lastFailure ?? 'No answer'}.`
+        : `${lastFailure ?? 'No answer'}. None of the ${candidates.length} saved receivers answered.`,
+      'danger',
+      true,
     );
+  };
+
+  const kiwiFor = (receiver: Receiver, current: Tuning, token: number): KiwiSource =>
+    new KiwiSource({
+      host: receiver.host,
+      khz: current.frequency.khz,
+      mode: current.frequency.mode.toLowerCase() === 'lsb' ? 'lsb' : 'usb',
+      // A socket goes on reporting as it dies, well after the chain has moved past it.
+      onStatus: (message) => {
+        if (token === attempt) renderStatus(message);
+      },
+    });
+
+  /**
+   * Picks the best-reported public receiver for the tuned frequency and connects.
+   *
+   * The directory already filters to nodes with a free channel that publish coverage of
+   * this frequency, and sorts by reported SNR, so the top row is the same one a user
+   * would pick after scrolling. Someone who has never seen a KiwiSDR has no basis for
+   * that choice, and making them make it before hearing anything is where first runs
+   * were being lost.
+   *
+   * It saves the receiver rather than connecting anonymously: the receiver row must name
+   * the node actually being used. A connection to a volunteer's hardware that the
+   * interface does not admit to is the failure docs/RESEARCH.md §4 exists to prevent.
+   */
+  const findReceiver = async (): Promise<void> => {
+    const current = tuning();
+    closeSheet();
+    renderStatus(`Looking for a receiver that covers ${current?.frequency.khz ?? '—'} kHz…`);
+
+    const result = await fetchDirectory(current?.frequency.khz);
+    const best = result ? bySnr(result.receivers)[0] : undefined;
+
+    if (!best) {
+      renderStatus(
+        result
+          ? 'No public receiver currently lists coverage of that frequency with a free channel.'
+          : 'The public directory is proxied by the server, which is not answering.',
+        'danger',
+        true,
+      );
+      return;
+    }
+
+    saveReceiver(toReceiver(best));
+    renderReceiver();
+    void connect();
   };
 
   /* ----------------------------------------------------------------- sheets ---- */
@@ -368,7 +479,8 @@ export function liveView(): { element: HTMLElement; destroy: () => void } {
             'Add one from the public directory, or paste a host from kiwisdr.com/public.',
           )) +
       `<div class="echo-sheet__actions">` +
-      button({ label: 'Browse directory', variant: 'primary', name: 'browse', hidden: !serverPresent }) +
+      button({ label: 'Find one for me', variant: 'primary', name: 'find-receiver', hidden: !serverPresent }) +
+      button({ label: 'Browse directory', name: 'browse', hidden: !serverPresent }) +
       button({ label: 'Paste a host', name: 'manual' }) +
       (selected ? button({ label: 'Forget', variant: 'ghost', name: 'forget' }) : '') +
       `</div>` +
@@ -401,6 +513,7 @@ export function liveView(): { element: HTMLElement; destroy: () => void } {
       }
 
       if (target.closest('[name="manual"]')) form.hidden = !form.hidden;
+      if (target.closest('[name="find-receiver"]')) void findReceiver();
       if (target.closest('[name="browse"]')) openDirectorySheet();
       if (target.closest('[name="forget"]')) {
         const host = selectedReceiver()?.host;
@@ -446,7 +559,9 @@ export function liveView(): { element: HTMLElement; destroy: () => void } {
     const current = openSheet(
       'Station',
       'Only the three continuously-transmitting Russian markers are offered here. ' +
-        'Scheduled stations live on the Schedule tab.',
+        `Scheduled stations live on the Schedule tab. It is ${formatUtc(new Date())}; a ` +
+        'frequency marked off-hours is the other half of a day/night pair, and is ' +
+        'offered anyway.',
       () => {
         sheet = null;
       },
@@ -461,6 +576,7 @@ export function liveView(): { element: HTMLElement; destroy: () => void } {
           `${esc(candidate.station.enigmaId)} ${esc(candidate.station.name)}` +
           `<span>${candidate.frequency.khz} kHz ${esc(candidate.frequency.mode)}` +
           `${candidate.frequency.timeOfDay ? ` ${candidate.frequency.timeOfDay}` : ''}` +
+          `${isOffHours(candidate.frequency.timeOfDay) ? ' · off-hours now' : ''}` +
           `${candidate.frequency.disputed ? ' disputed' : ''}</span></button>`,
       )
       .join('');
@@ -497,10 +613,9 @@ export function liveView(): { element: HTMLElement; destroy: () => void } {
         return;
       }
 
-      // Best first: a free channel and a high reported SNR is the receiver most likely
-      // to actually hear the marker. Only the top 50 render — the upstream list has 776
-      // entries for 4625 kHz and a phone will not thank us for all of them.
-      const sorted = [...result.receivers].sort((a, b) => (b.snr ?? 0) - (a.snr ?? 0));
+      // Only the top 50 render — the upstream list has 776 entries for 4625 kHz and a
+      // phone will not thank us for all of them.
+      const sorted = bySnr(result.receivers);
 
       const note = current.element.querySelector<HTMLElement>('.echo-sheet__header p');
       const header = current.element.querySelector<HTMLElement>('.echo-sheet__header');
@@ -540,20 +655,30 @@ export function liveView(): { element: HTMLElement; destroy: () => void } {
         const chosen = sorted.find((receiver) => receiver.host === row.dataset.host);
         if (!chosen) return;
 
-        saveReceiver({
-          id: chosen.host,
-          label: chosen.location || chosen.name.slice(0, 40) || chosen.host,
-          host: chosen.host,
-          grid: chosen.grid,
-          location: chosen.location,
-          kind: 'kiwisdr',
-          notes: null,
-        });
+        saveReceiver(toReceiver(chosen));
         renderReceiver();
         closeSheet();
         renderStatus(`saved ${chosen.host}`);
       });
     });
+  }
+
+  /** A directory row as a saveable receiver. Shared by the list and by "Find one". */
+  function toReceiver(entry: DirectoryReceiver): Receiver {
+    return {
+      id: entry.host,
+      label: entry.location || entry.name.slice(0, 40) || entry.host,
+      host: entry.host,
+      grid: entry.grid,
+      location: entry.location,
+      kind: 'kiwisdr',
+      notes: null,
+    };
+  }
+
+  /** Best reported SNR first: the node most likely to actually hear the marker. */
+  function bySnr(receivers: readonly DirectoryReceiver[]): DirectoryReceiver[] {
+    return [...receivers].sort((a, b) => (b.snr ?? 0) - (a.snr ?? 0));
   }
 
   function directoryRow(receiver: DirectoryReceiver): string {
@@ -581,6 +706,10 @@ export function liveView(): { element: HTMLElement; destroy: () => void } {
   element.addEventListener('click', (event) => {
     const target = event.target as HTMLElement;
 
+    if (target.closest('[name="find-receiver"]')) {
+      void findReceiver();
+      return;
+    }
     if (target.closest('[name="open-receiver"]') || target.closest('[name="retry"]')) {
       openReceiverSheet();
       return;
@@ -590,8 +719,9 @@ export function liveView(): { element: HTMLElement; destroy: () => void } {
       return;
     }
     if (target.closest('[name="connect"]')) {
-      if (phase === 'idle') connect();
+      if (phase === 'idle') void connect();
       else {
+        attempt += 1;
         teardownAudio();
         renderStatus('Not listening.');
       }
@@ -629,6 +759,9 @@ export function liveView(): { element: HTMLElement; destroy: () => void } {
     serverPresent = present;
     diagnostics.hidden = !present;
     syntheticButton.hidden = false;
+    // Re-rendered because the empty-receiver notice offers "Find one for me", which
+    // needs the directory and so cannot be drawn before this resolves.
+    renderReceiver();
   });
 
   return {

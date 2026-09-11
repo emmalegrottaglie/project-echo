@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { countdown, formatUtc, nextOccurrence, upcoming } from '../src/schedule';
+import { countdown, currentPeriod, formatUtc, isOffHours, nextOccurrence, upcoming } from '../src/schedule';
 import type { Schedule, Station } from '../src/types';
 
 /**
@@ -103,5 +103,43 @@ describe('countdown', () => {
 describe('formatUtc', () => {
   it('labels the weekday and time in UTC, not local', () => {
     expect(formatUtc(new Date('2026-09-14T03:15:00Z'))).toBe('Mon 03:15 UTC');
+  });
+});
+
+/**
+ * Day/night frequency pairs. The Pip publishes 5448 kHz by day and 3756 kHz by night,
+ * and picking the wrong one is a silent failure: the band is simply empty.
+ */
+describe('currentPeriod', () => {
+  const at = (iso: string): Date => new Date(iso);
+
+  it('calls 06:00 to 18:00 UTC day', () => {
+    expect(currentPeriod(at('2026-09-11T06:00:00Z'))).toBe('day');
+    expect(currentPeriod(at('2026-09-11T11:45:00Z'))).toBe('day');
+    expect(currentPeriod(at('2026-09-11T17:59:00Z'))).toBe('day');
+  });
+
+  it('calls the rest night', () => {
+    expect(currentPeriod(at('2026-09-11T18:00:00Z'))).toBe('night');
+    expect(currentPeriod(at('2026-09-11T23:30:00Z'))).toBe('night');
+    expect(currentPeriod(at('2026-09-11T05:59:00Z'))).toBe('night');
+  });
+
+  it('reads UTC, not the machine timezone', () => {
+    // 01:00 UTC is the previous evening in the Americas and mid-morning in Asia. The
+    // published pairs are UTC, so neither local reading may change the answer.
+    expect(currentPeriod(at('2026-09-11T01:00:00Z'))).toBe('night');
+  });
+
+  it('flags the frequency that is not the current half of a pair', () => {
+    const noon = at('2026-09-11T11:45:00Z');
+    expect(isOffHours('night', noon)).toBe(true);
+    expect(isOffHours('day', noon)).toBe(false);
+  });
+
+  it('never flags a frequency that does not move', () => {
+    // The Buzzer's 4625 kHz has no period and is on around the clock.
+    expect(isOffHours(null, at('2026-09-11T11:45:00Z'))).toBe(false);
+    expect(isOffHours(null, at('2026-09-11T23:45:00Z'))).toBe(false);
   });
 });

@@ -36,6 +36,7 @@ const storage = new MemoryStorage();
 vi.stubGlobal('localStorage', storage);
 
 const {
+  candidateReceivers,
   isValidGrid,
   listReceivers,
   normaliseHost,
@@ -233,5 +234,43 @@ describe('storage unavailable', () => {
     } finally {
       vi.stubGlobal('localStorage', storage);
     }
+  });
+});
+
+/**
+ * The fallback chain. One dead volunteer node used to end the session; the smoke test
+ * that found this hit a 1006 close from a receiver in Missouri and stopped there.
+ */
+describe('candidateReceivers', () => {
+  it('is empty when nothing is saved', () => {
+    expect(candidateReceivers()).toEqual([]);
+  });
+
+  it('puts the selected receiver first', () => {
+    saveReceiver(receiver('a.example:8073', 'Alpha'));
+    saveReceiver(receiver('b.example:8073', 'Bravo'));
+    saveReceiver(receiver('c.example:8073', 'Charlie'));
+    selectReceiver('b.example:8073');
+
+    expect(candidateReceivers().map((entry) => entry.host)).toEqual([
+      'b.example:8073',
+      'a.example:8073',
+      'c.example:8073',
+    ]);
+  });
+
+  it('never offers the same receiver twice', () => {
+    saveReceiver(receiver('a.example:8073'));
+    saveReceiver(receiver('b.example:8073'));
+    const hosts = candidateReceivers().map((entry) => entry.host);
+    expect(new Set(hosts).size).toBe(hosts.length);
+  });
+
+  it('caps the walk, because these receivers belong to other people', () => {
+    for (const host of ['a', 'b', 'c', 'd', 'e']) {
+      saveReceiver(receiver(`${host}.example:8073`));
+    }
+    expect(candidateReceivers()).toHaveLength(3);
+    expect(candidateReceivers(2)).toHaveLength(2);
   });
 });

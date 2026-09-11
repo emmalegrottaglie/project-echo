@@ -163,3 +163,21 @@ export function normaliseHost(input: string): string {
 export function isValidGrid(grid: string): boolean {
   return /^[A-R]{2}\d{2}([A-X]{2})?$/i.test(grid.trim());
 }
+
+/**
+ * The order to try receivers in, selected one first.
+ *
+ * Public KiwiSDRs are volunteer hardware: they go offline, fill their four channels, or
+ * accept a socket and close it again. One dead node used to end the session, which is a
+ * poor reason to give up when the user has others saved.
+ *
+ * Capped, because this walks real receivers belonging to real people. Three failed
+ * connections is a diagnosis; twenty is a nuisance to twenty strangers.
+ */
+export function candidateReceivers(limit = 3): Receiver[] {
+  const selected = selectedReceiver();
+  if (!selected) return [];
+
+  const rest = listReceivers().filter((receiver) => receiver.id !== selected.id);
+  return [selected, ...rest].slice(0, limit);
+}

@@ -53,7 +53,7 @@ layout.
 
 | View | What it shows |
 |------|---------------|
-| **Live** | Receiver list, station and frequency selector, scrolling waterfall, marker detector, propagation map. Only the three continuously-transmitting Russian markers are offered — see below. |
+| **Live** | Receiver list, station and frequency selector, scrolling waterfall, marker detector, propagation map. Only the three continuously-transmitting Russian markers are offered — see below. A frequency that is the wrong half of a day/night pair is marked off-hours against the current UTC time, and offered anyway. |
 | **Schedule** | Next transmission windows in UTC and local time, with countdowns and per-slot alerts. |
 | **Archive** | All 141 stations: 3 live markers, 26 scheduled, 112 historical. Filterable, with per-frequency sources and dates, plus searches into the recording archives. |
 
@@ -62,11 +62,22 @@ remembered in `localStorage`.
 
 ### Receivers
 
-**Browse directory** lists the public KiwiSDRs that cover the tuned frequency and have
-a free channel, sorted by reported SNR — 776 of 855 for 4625 kHz at the time of
-writing. Saving one adds it to your own list; several can be saved, which is genuinely
-useful because the node that hears 4625 kHz well is rarely the one that hears 5448 kHz
-well. Hosts can still be pasted by hand, and saved receivers work without the server.
+**Find one for me** takes the top row of that directory — best reported SNR, free
+channel, covering the tuned frequency — saves it and connects. Someone who has never
+seen a KiwiSDR has no basis for choosing between 776 of them, and making them choose
+before they have heard anything is where first runs were being lost.
+
+**Browse directory** lists the same receivers to pick from by hand, sorted by reported
+SNR — 776 of 855 for 4625 kHz at the time of writing. Saving one adds it to your own
+list; several can be saved, which is genuinely useful because the node that hears
+4625 kHz well is rarely the one that hears 5448 kHz well. Hosts can still be pasted by
+hand, and saved receivers work without the server.
+
+Connect walks the saved receivers, up to three, until one answers: these are volunteer
+nodes and they go offline, fill their four channels, or accept a socket and close it
+again. Only a refused connection advances the chain. A receiver that connects and then
+sends nothing is left alone — the band being quiet is a real answer, and re-asking it
+costs someone else's channel.
 
 No hostnames are compiled into the app: the public list changes constantly and a baked
 copy would rot into a menu of dead hosts. The directory is proxied live instead, from

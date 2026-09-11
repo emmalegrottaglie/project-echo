@@ -88,3 +88,34 @@ export function formatLocal(at: Date): string {
     minute: '2-digit',
   });
 }
+
+/** A station's published day or night frequency pair. */
+export type Period = 'day' | 'night';
+
+/**
+ * Which of a station's day/night frequencies is the one in use now.
+ *
+ * Coarse, and deliberately so. The published pairs — The Pip on 5448 kHz by day and
+ * 3756 kHz by night — are the transmitter's own switch, and this app has neither the
+ * transmitter's coordinates nor a sourced switching time, so a precise rule here would
+ * be a station fact with no provenance. 06:00 to 18:00 UTC is an approximation, used
+ * only to annotate a choice the user still makes: nothing is hidden or auto-tuned on
+ * the strength of it, and a frequency outside its period is offered anyway.
+ *
+ * The failure this exists for: 3756 kHz selected at 11:45, which is the night
+ * frequency, on a screen that said "night" without saying what time it was.
+ */
+export function currentPeriod(at: Date = new Date()): Period {
+  const hour = at.getUTCHours();
+  return hour >= 6 && hour < 18 ? 'day' : 'night';
+}
+
+/**
+ * True when a frequency's published period is not the current one.
+ *
+ * A frequency with no period — The Buzzer's 4625 kHz, which never moves — is never
+ * off-hours.
+ */
+export function isOffHours(timeOfDay: Period | null, at: Date = new Date()): boolean {
+  return timeOfDay !== null && timeOfDay !== currentPeriod(at);
+}
