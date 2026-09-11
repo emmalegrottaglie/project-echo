@@ -179,7 +179,23 @@ describe('how a span is described', () => {
       [station({ activeFrom: from(2000), activeUntil: until(2021), lastConfirmed: '2024-11-11' })],
       2026,
     );
-    expect(model.rows[0]?.label).toBe('2000 to 2024');
+    // Hedged, not "to 2024": the later year is a hearing, not the cessation.
+    expect(model.rows[0]?.label).toBe('2000 to about 2024');
+    expect(model.rows[0]?.approximateEnd).toBe(true);
+  });
+
+  /**
+   * And does not then call that later year a cessation. G06 carries no start, so this is
+   * the shape the real record has: saying "ceased 2024" would put the word on the year
+   * its own source describes as a hearing, three years after the cessation it quotes.
+   */
+  it('does not call a hearing a cessation when the hearing is the later year', () => {
+    const model = timeline(
+      [station({ activeUntil: until(2021), lastConfirmed: '2024-11-11' })],
+      2026,
+    );
+    expect(model.rows[0]?.label).toBe('last heard 2024');
+    expect(model.rows[0]?.approximateEnd).toBe(true);
   });
 
   it('says a live station is still transmitting rather than giving it an end', () => {

@@ -74,14 +74,24 @@ function endYear(station: Station): number | null {
   return years.length ? Math.max(...years) : null;
 }
 
+/** The year a source says the station stopped, as against a year somebody heard it. */
+function ceasedYear(station: Station): number | null {
+  return station.activeUntil && !station.activeUntil.approximate ? station.activeUntil.year : null;
+}
+
 /**
- * True unless a source says the station stopped.
+ * True unless the year being drawn is the year a source says the station stopped.
  *
  * A last hearing bounds the end without being it — the station may have gone on
  * transmitting with nobody listening — so only an explicit cessation earns a hard edge.
+ * It has to be the cessation that is actually being drawn, which is not the same as the
+ * station merely having one: G06 ceased regular operation in 2021 and was heard again in
+ * 2024, so its bar ends at 2024, and calling that edge a cessation would put the word
+ * "ceased" on a year its own source describes as a hearing.
  */
 function approximateEnd(station: Station): boolean {
-  return station.activeUntil ? station.activeUntil.approximate : true;
+  const end = endYear(station);
+  return end === null || end !== ceasedYear(station);
 }
 
 /**
@@ -145,7 +155,7 @@ function describeSpan(station: Station, start: number | null, end: number | null
     : null;
 
   // A cessation and a last hearing are different claims, so they get different words.
-  const ceased = station.activeUntil?.approximate === false;
+  const ceased = end !== null && !approximateEnd(station);
 
   if (startText === null) return ceased ? `ceased ${end}` : `last heard ${end}`;
   if (end === null) {

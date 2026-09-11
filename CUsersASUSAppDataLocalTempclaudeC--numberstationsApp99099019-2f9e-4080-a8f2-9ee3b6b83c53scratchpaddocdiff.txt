@@ -1,0 +1,267 @@
+diff --git a/data/LICENSE b/data/LICENSE
+index fe8cba5..5d867fe 100644
+--- a/data/LICENSE
++++ b/data/LICENSE
+@@ -5,8 +5,9 @@ licence covers the code. This file covers the data.
+ 
+ ## What it is licensed under
+ 
+-Station identity, operator, status, transmission schedules and frequency lists in
+-`stations.json` are adapted from [Priyom.org](https://priyom.org/), which publishes its
++Station identity, operator, status, transmission schedules, frequency lists and most of
++the station descriptions in `stations.json` are adapted from
++[Priyom.org](https://priyom.org/), which publishes its
+ material under the **Creative Commons Attribution-NonCommercial-ShareAlike 4.0
+ International** licence:
+ 
+@@ -37,11 +38,23 @@ The licence requires that adaptations say so. The data here has been:
+ - merged with material from the ENIGMA 2000 control list and, for a few stations,
+   Wikipedia and numbers-stations.com, each carrying its own `sourceUrl`.
+ 
+-Nothing was invented. `scripts/import-priyom.mjs` performs the transformation and can be
+-re-run to reproduce it.
++Dates were read out of those descriptions rather than invented: where a page says when a
++station started or stopped, the year is recorded with the page's own sentence beside it,
++and `docs/RESEARCH.md` §9 sets out which sentences were taken and which were not.
+ 
+-No message content is reproduced. Priyom publishes logs of received transmissions; the
+-importer refuses to read those tables, for the reason in
++Station descriptions are **quoted, not adapted**. Each one is a verbatim extract of the
++prose on a Priyom station page, held in `lore.text` with the page in `lore.quotedFrom`,
++and rendered in the app as a quotation with that link and this licence beside it. Two
++things were removed: paragraphs that referred to something laid out on the page, which
++say nothing once the words are elsewhere, and everything in a table. Twelve descriptions
++were written for this archive rather than quoted, and carry `lore.quotedFrom: null`.
++
++Nothing was invented. `scripts/import-priyom.mjs` and `scripts/import-lore.mjs` perform
++the transformation and can be re-run to reproduce it.
++
++No message content is reproduced. Priyom publishes logs of received transmissions and
++lays each station's message formats out as tables of sample five-figure groups; both
++importers refuse to read tables, for the reason in
+ [docs/RESEARCH.md](../docs/RESEARCH.md) §5.
+ 
+ ## The live markers
+diff --git a/data/README.md b/data/README.md
+index 46e456a..551be40 100644
+--- a/data/README.md
++++ b/data/README.md
+@@ -18,8 +18,17 @@ column, because that is V07's log of received transmissions and storing message
+ is the legal boundary in [docs/RESEARCH.md](../docs/RESEARCH.md) §5; and it skips rows
+ Priyom renders in italics, which its own legend marks as outdated.
+ 
+-Everything else — identity, operator, tier, lore, the live markers' frequencies — is
+-hand-written and stays that way.
++Descriptions come from [`scripts/import-lore.mjs`](../scripts/import-lore.mjs), which
++quotes Priyom's own paragraph for each station and records the page in `lore.quotedFrom`.
++It refuses the same boundary from the other direction: it strips every table before
++reading a word, because a station page lays its message formats out as tables of sample
++five-figure groups, and it drops any paragraph that still looks like groups. It writes no
++dates — sentences that mention when a station started are printed for a person to weigh,
++for the reason in [docs/RESEARCH.md](../docs/RESEARCH.md) §9. Re-running it refreshes
++every quoted description and leaves hand-written ones alone.
++
++Everything else — identity, operator, tier, the twelve hand-written descriptions, the
++live markers' frequencies — is hand-written and stays that way.
+ 
+ ## Corrections from readers
+ 
+@@ -54,10 +63,13 @@ edit fails CI rather than shipping. It checks, among other things:
+   station with no sourced position has an empty `sites` array, and that is the correct
+   state — see [docs/RESEARCH.md](../docs/RESEARCH.md) §8 for the one coordinate this
+   project refuses to use;
+-- a station's `activeFrom`, where it has one, carries a four-digit year no later than
+-  this one, the source's own phrasing in `note`, and an `approximate` flag for a date
+-  narrowed by hand from a decade. Most of the roster has `null`, which is correct — see
+-  [docs/RESEARCH.md](../docs/RESEARCH.md) §9;
++- `activeFrom` and `activeUntil`, where a station has them, each carry a four-digit year
++  no later than this one, the source's own phrasing in `note`, and an `approximate` flag
++  marking a date that bounds the station's life rather than being it — a first or last
++  hearing, against a source saying the station started or ceased. An ending before its
++  beginning is rejected. Most of the roster has `null` at one end or both, which is
++  correct — see [docs/RESEARCH.md](../docs/RESEARCH.md) §9, which also says why
++  `activeUntil` is not the same field as `lastConfirmed`;
+ - every URL is `http` or `https`. Nothing else is accepted, because these strings are
+   interpolated into `href` attributes in the archive view;
+ - designators are unique, tiers are one of `live`, `scheduled`, `historical`;
+@@ -93,8 +105,10 @@ was built with — clearing `echo.stations` always returns it to that.
+ 
+ ## Changing the shape
+ 
+-`schemaVersion` is `2`. Version 2 replaced a slot's single `khz` with twelve
+-`khzByMonth` entries. Bump it only for a change an older client cannot read; an
++`schemaVersion` is `3`. Version 2 replaced a slot's single `khz` with twelve
++`khzByMonth` entries; version 3 turned `lore` from a bare string into `{ text,
++quotedFrom }`, because most descriptions are now quoted from Priyom and a reader is owed
++the difference between somebody else's paragraph and this archive's own. Bump it only for a change an older client cannot read; an
+ unknown version makes clients keep their bundled copy instead of guessing, which is
+ what stops a new dataset from breaking an APK someone installed months ago. Adding an
+ optional field does not need a bump. Renaming or removing one does.
+diff --git a/docs/PLAN.md b/docs/PLAN.md
+index a910936..f70b51b 100644
+--- a/docs/PLAN.md
++++ b/docs/PLAN.md
+@@ -358,7 +358,7 @@ an earlier draft of this plan wrongly assumed the dates were already present:
+ 
+ | Needed for | Field | Sourcing |
+ |---|---|---|
+-| Timeline, On this day | `activeFrom`, `activeTo` | New. Per-station, sourced, and often only known to the year. |
++| Timeline, On this day | `activeFrom`, `activeUntil` | **Built.** Per-station, sourced, and often only known to the year. |
+ | Exits — successor | `succeeds` / `succeededBy` | New. Hand-curated; a few dozen pairs at most (V02a to HM01, and so on). |
+ | Map | transmitter site name and coordinates | New, partial by nature — many sites are unknown or only attributed to a district. |
+ 
+@@ -425,8 +425,10 @@ Ranked by uniqueness against cost:
+    `PREFIX_MEANING` already encodes the taxonomy — E, G and S
+    for voice languages, M for Morse, F, P and X for digital. One screen turns 141
+    opaque codes into a readable system. The highest payoff per hour in this list.
+-4. **Timeline.** **Built**, sparse and honest about it: ten stations carry a date, and
+-   only six have a start. See [RESEARCH.md](RESEARCH.md) §9 for why so few.
++4. **Timeline.** **Built**, and no longer sparse: 73 stations carry a date since the
++   descriptions were imported, 18 with a start and 66 with an end. It is still honest
++   about which dates are events and which are only sightings — see
++   [RESEARCH.md](RESEARCH.md) §9.
+ 5. **On this day.** Cheap once the dates exist, and it is what brings people back.
+ 6. **Map.** Transmitter sites, partial by construction under the provenance rule — no
+    coordinate is guessed, and the map says which sites are unplaced rather than
+diff --git a/docs/RESEARCH.md b/docs/RESEARCH.md
+index 61d3d3a..03491dd 100644
+--- a/docs/RESEARCH.md
++++ b/docs/RESEARCH.md
+@@ -298,24 +298,32 @@ and the figure comes from Wikidata with no stated basis. A guessed position wear
+ provenance stamp is worse than an absent one, so S32 has no site. The Pip has none
+ published at all.
+ 
+-## 9. When these stations started, and why so few dates exist
++## 9. When these stations were on the air
+ 
+-The archive records endings well and beginnings badly, and that asymmetry is a property
+-of the sources rather than of the import.
++Both ends of a station's life are recorded here, in the same shape and for the same
++reason: a year to place a mark on an axis, and the source's own phrasing kept beside it,
++because the sources hedge and the hedge is part of the fact.
+ 
+-Endings are good because a numbers station's death is an event somebody notices and
+-writes down: the Lincolnshire Poacher's last transmission on 2 July 2008, Cherry Ripe in
+-December 2009, Atención in February 2019, V15 on 12 March 2020, V24 that September,
+-HM01's transmitter failing on 23 August 2024. Those dates are already in this dataset as
+-`lastConfirmed`.
++The asymmetry is real but smaller than it first looked. Endings are well recorded because
++a numbers station's death is an event somebody notices and writes down — the Lincolnshire
++Poacher's last transmission on 2 July 2008, Cherry Ripe in December 2009, Atención in
++February 2019, HM01's transmitter failing on 23 August 2024. Beginnings are badly recorded
++because a station starts by being noticed rather than announced, and the sources say so
++plainly. Wikipedia on the Lincolnshire Poacher: "The precise date that the Lincolnshire
++Poacher began broadcasting is not known for certain; however, it is believed that the
++broadcasts started around the early to mid 1970s." On UVB-76: "first noticed around the
++late 1970s".
+ 
+-Beginnings are bad because a station starts by being noticed, not by being announced,
+-and the sources say so plainly. Wikipedia on the Lincolnshire Poacher: "The precise date
+-that the Lincolnshire Poacher began broadcasting is not known for certain; however, it is
+-believed that the broadcasts started around the early to mid 1970s." On UVB-76: "first
+-noticed around the late 1970s".
++Eighteen stations carry a start and sixty-six carry an end.
+ 
+-Six stations have a sourced start:
++### Reported against derived
++
++This is the test every date here had to pass. A date a source states, however vague, is a
++fact that source is asserting and belongs in the data with its phrasing kept. A date
++worked out from the earliest or latest row of a log table does not, because it records
++when somebody was listening rather than what the station did.
++
++Six starts came from the original research:
+ 
+ | Station | Year | Basis |
+ |---|---|---|
+@@ -326,16 +334,80 @@ Six stations have a sourced start:
+ | S32 The Squeaky Wheel | 2000 | Wikipedia infobox, "First air date 2000" |
+ | HM01 | about 2012 | "appeared around 2012" |
+ 
+-`ActiveFrom.year` exists to place a mark on an axis; `note` carries what the source
+-actually said, and `approximate` marks the four where a year was narrowed by hand from a
+-decade. The interface shows the note rather than the bare year whenever a date is
+-approximate, and the timeline fades a bar's left edge instead of capping it, because a
+-hard edge asserts a precision Wikipedia explicitly declines to give.
+-
+-Chasing the remaining 131 would mean a Priyom page each for an uncertain yield: their
+-station pages rarely give a first-heard date, and inventing one from the earliest logged
+-transmission would be an artefact of when logging started rather than when the station
+-did.
++Twelve more came out of the descriptions imported in September 2026 (§10), ten of them
++first hearings — M10 "Active since mid 1970s", E21 "First noted around 1981", E18 "first
++mentioned as being active in September 1989", E15 "first reliably reported in early 1993",
++E09 "first heard in February 1995", V07 "first noted as early as 1995", V08 "First heard
++in early 1995", M03e "Only noted on the turn of 2003 and 2004", V30 "First heard on
++February 21, 2010", V28 "first heard in November 2015" — and two stated outright: S10d
++"Active from 1996" and XP "Active from 1993".
++
++Sentences the importer reported and a reading rejected: facts about a different station
++(M03c's page dating E11b and S11b), and the appearance of a schedule rather than of the
++station (F07, XPB, SK01). The importer writes no date itself, which is what makes that
++reading possible rather than theoretical.
++
++### Approximate means "this is not the event"
++
++Not "this string is vague". A first or last hearing bounds a station's life without being
++it: the transmitter may have been running before anybody tuned in, and may have gone on
++running after the last person stopped listening. So:
++
++- **`approximate: true`** for an observation — "first heard in February 1995", "Last heard
++  in 1996" — and for genuinely vague wording, "Ceased around 1973".
++- **`approximate: false`** where the source says the station itself started or stopped:
++  "Ceased in 2001", "Retired in March 2001", "Active from 1996 until 20 June 2007".
++
++V30's "February 21, 2010" is precise to the day and still approximate, which looks wrong
++until the claim is read carefully — the day is when somebody first heard it. The timeline
++fades that edge and draws a hard one only where a source asserts the event.
++
++### Why `activeUntil` is not `lastConfirmed`
++
++They are different claims and the archive keeps both. `lastConfirmed` is an ISO date this
++archive can stamp: evidence the station was transmitting on that day. `activeUntil` is a
++source saying it stopped, at whatever precision the source gives — "Last reported in late
++1999" has no day in it, and forcing one would invent precision that changes what the
++sentence means.
++
++G06 is why both are needed at once. Priyom record it as "fully retired from regular
++operation in March 2021" and then heard in test transmissions on 11 November 2024. Its
++`activeUntil` is 2021 and its `lastConfirmed` is 2024-11-11, and neither contradicts the
++other. The timeline draws its bar to the later of the two, because both are lower bounds
++on when the station was last on the air.
++
++Fourteen stations gained a `lastConfirmed` from these descriptions, each one a source
++naming a full calendar date for a last hearing — M02 "Last heard on 30 October 1997", M10
++"until 20 June 2007", M01b "Last heard on May 29, 2020".
++
++## 10. Where the station descriptions come from
++
++Most of the roster arrived from ENIGMA 2000's active-stations list as identity only, and
++for 129 stations the archive had a designator, an operator and a status with no history
++at all. Priyom publish a description for nearly all of them.
++
++Those descriptions are **quoted, not rewritten**. Paraphrasing would have produced
++something that read as this archive's own research while being somebody else's work, and
++their data is CC BY-NC-SA 4.0, which asks for attribution by name. So `Lore` carries
++`quotedFrom`, the app renders a quotation with the page and the licence beside it, and
++`data/LICENSE` holds the terms in full. The twelve descriptions written here — the famous
++stations, synthesised from several sources — carry `quotedFrom: null` and render as plain
++prose, so a reader can tell the two apart.
++
++`scripts/import-lore.mjs` does the fetching, and the refusals are in the script rather
++than in a reviewer's head:
++
++- **Every table is stripped before a word is read.** A station page lays its message
++  formats out as tables of sample five-figure groups. Storing message content is the
++  boundary in §5, and a paragraph that still looks like groups is dropped on a second
++  check, because the page layout is Priyom's to change.
++- **Paragraphs that point at the page are dropped.** "as heard below", "see the table" —
++  true where they were written, meaningless once the words are somewhere else.
++- **No date is ever written.** Sentences that mention a year alongside a beginning or an
++  ending are printed for a person to weigh, for the reason set out in §9.
++
++125 descriptions landed. Four stations still have none: F03 and P03 have no Priyom page,
++and S10b and V12 have pages carrying an infobox and nothing else.
+ 
+ ## Sources
+ 

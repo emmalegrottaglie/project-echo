@@ -17,7 +17,7 @@ wrong fact is a defect. Where a correction has evidence behind it, the evidence 
   timeline while the quoted paragraph directly above said when they stopped. A second
   pass over the same text found 63 more endings, and the three famous stations whose
   descriptions are written here rather than quoted were recorded in the same shape. The
-  timeline went from 16 dated stations to 73.
+  timeline went from 16 dated stations to 73 of the 141.
 
   `activeUntil` is a new field rather than a use of `lastConfirmed`, because they are
   different claims. `lastConfirmed` is an ISO date this archive can stamp — evidence the
@@ -56,6 +56,16 @@ wrong fact is a defect. Where a correction has evidence behind it, the evidence 
   older build still validates.
 
 ### Fixed
+
+- **The timeline stopped calling a hearing a cessation.** A bar runs to the later of the
+  year a source says a station ceased and the date it was last confirmed on the air,
+  because both are lower bounds. The label and the hard right edge, though, were decided
+  from whether a cessation existed at all rather than from whether the cessation was the
+  year being drawn. G06 therefore read "ceased 2024" — on the year its own quoted
+  paragraph describes as a test transmission, three years after the March 2021 retirement
+  it actually records. It now reads "last heard 2024" with a soft edge, which restores
+  what `src/style.css` already promised: a hard edge means a source said the station
+  stopped.
 
 - **`npm run typecheck` now covers `test/`.** It only ever looked at `src`, so three test
   fixtures had drifted out of the `Station` type without failing anything — one of them

@@ -1,0 +1,6868 @@
+{
+  "schemaVersion": 2,
+  "stations": [
+    {
+      "enigmaId": "S28",
+      "name": "The Buzzer",
+      "aliases": [
+        "UVB-76",
+        "MDZhB",
+        "ZhUOZ",
+        "ANVF"
+      ],
+      "language": "Slavic voice",
+      "operator": "Russian military, 69th communications hub",
+      "tier": "live",
+      "marker": "1.25 s buzz tone with a 1.85 s pause, about 19 times per minute, 24 hours a day",
+      "markerPeriodSec": 3.1,
+      "lastConfirmed": "2026-09-10",
+      "lore": "The best known of the Russian channel markers. \"UVB-76\" is an obsolete callsign from the 1970s and 80s and is not what the station transmits today: voice identifiers observed since 2010 run MDZhB, then ZhUOZ from 2019, then ANVF. The original site at Povarovo was abandoned in 2010, and where it went is not settled: numbers-stations.com reports one transmitter confirmed near St Petersburg and a second claimed at Naro-Fominsk, where the 69th communications centre sits, while Wikipedia records only the St Petersburg move. All three positions are listed below rather than one being chosen. Voice messages interrupt the buzzer irregularly and are read in the Russian phonetic alphabet; monitors logged a marked increase in them through 2025, peaking in March and April.\n\nThe pulse rate is worth reading carefully. Wikipedia summarises this station as \"approximately 25 tones per minute\", and the page it cites for that actually gives a 1.25 s tone with a 1.85 s pause — a 3.1 s period, about 19 per minute. This installation measured 3.40 s through a receiver in France on 2026-09-10, which agrees with the detailed figure and not with the summary. The 25-per-minute number appears to be an error in the summarising rather than a change on the air.",
+      "frequencies": [
+        {
+          "khz": 4625,
+          "mode": "USB",
+          "timeOfDay": null,
+          "lastConfirmed": "2025-11-15",
+          "sourceUrl": "https://en.wikipedia.org/wiki/UVB-76",
+          "disputed": false
+        }
+      ],
+      "schedules": [],
+      "sourceUrls": [
+        "https://www.numbers-stations.com/russia/the-buzzer/",
+        "https://en.wikipedia.org/wiki/UVB-76",
+        "https://shortwavearchive.com/archive/the-buzzer-uvb-76-august-8-2025"
+      ],
+      "sites": [
+        {
+          "name": "Kerro Massiv, near St Petersburg",
+          "lat": 60.3113139,
+          "lon": 30.2791833,
+          "status": "confirmed",
+          "lastConfirmed": "2026-09-11",
+          "sourceUrl": "https://en.wikipedia.org/wiki/UVB-76"
+        },
+        {
+          "name": "Naro-Fominsk, Moscow Oblast",
+          "lat": 55.42639,
+          "lon": 36.70917,
+          "status": "claimed",
+          "lastConfirmed": "2026-09-11",
+          "sourceUrl": "https://www.numbers-stations.com/russia/the-buzzer/"
+        },
+        {
+          "name": "Povarovo, near the village of Lozhki",
+          "lat": 56.08333,
+          "lon": 37.11028,
+          "status": "former",
+          "lastConfirmed": "2026-09-11",
+          "sourceUrl": "https://en.wikipedia.org/wiki/UVB-76"
+        }
+      ],
+      "activeFrom": {
+        "year": 1977,
+        "approximate": true,
+        "note": "First noticed around the late 1970s; the transmitter is dated to the Soviet Union from 1982",
+        "lastConfirmed": "2026-09-11",
+        "sourceUrl": "https://en.wikipedia.org/wiki/UVB-76"
+      }
+    },
+    {
+      "enigmaId": "S30",
+      "name": "The Pip",
+      "aliases": [
+        "8S1Shch",
+        "Akacia"
+      ],
+      "language": "Slavic voice",
+      "operator": "Russian military, North Caucasus communications centre (callsign Akacia)",
+      "tier": "live",
+      "marker": "Short beep, repeating ~50 times per minute",
+      "markerPeriodSec": 1.2,
+      "lastConfirmed": "2025-01-01",
+      "lore": "A companion marker to The Buzzer, running a faster and much shorter pulse. Radioscanner attributes it to a North Caucasus military district communications centre, callsign Akacia, formerly the 72nd communications centre — not the Southern district, which is where The Squeaky Wheel is usually placed. Like the Buzzer it carries occasional Russian voice traffic.",
+      "frequencies": [
+        {
+          "khz": 5448,
+          "mode": "USB",
+          "timeOfDay": "day",
+          "lastConfirmed": "2025-01-01",
+          "sourceUrl": "https://en.wikipedia.org/wiki/The_Pip",
+          "disputed": false
+        },
+        {
+          "khz": 3756,
+          "mode": "USB",
+          "timeOfDay": "night",
+          "lastConfirmed": "2025-01-01",
+          "sourceUrl": "https://en.wikipedia.org/wiki/The_Pip",
+          "disputed": false
+        }
+      ],
+      "schedules": [],
+      "sourceUrls": [
+        "https://en.wikipedia.org/wiki/The_Pip",
+        "https://priyom.org/military-stations/russia/the-pip"
+      ],
+      "sites": [],
+      "activeFrom": {
+        "year": 1986,
+        "approximate": false,
+        "note": "First air date August 1986",
+        "lastConfirmed": "2026-09-11",
+        "sourceUrl": "https://en.wikipedia.org/wiki/The_Pip"
+      }
+    },
+    {
+      "enigmaId": "S32",
+      "name": "The Squeaky Wheel",
+      "aliases": [
+        "XSW"
+      ],
+      "language": "Slavic voice",
+      "operator": "Russian military, Southern district",
+      "tier": "live",
+      "marker": "Repeating squeaking sweep",
+      "markerPeriodSec": null,
+      "lastConfirmed": "2025-01-01",
+      "lore": "The third Russian marker, and the reason this database stores frequencies as sourced observations rather than constants: two different frequency pairs are published for it and neither source retracts the other. Both are listed below, flagged as disputed. Confirm against the waterfall before trusting either.",
+      "frequencies": [
+        {
+          "khz": 5473,
+          "mode": "USB",
+          "timeOfDay": "day",
+          "lastConfirmed": "2021-12-01",
+          "sourceUrl": "http://mt-milcom.blogspot.com/2021/12/the-world-of-strange-military-stations.html",
+          "disputed": true
+        },
+        {
+          "khz": 3828,
+          "mode": "USB",
+          "timeOfDay": "night",
+          "lastConfirmed": "2021-12-01",
+          "sourceUrl": "http://mt-milcom.blogspot.com/2021/12/the-world-of-strange-military-stations.html",
+          "disputed": true
+        },
+        {
+          "khz": 5367,
+          "mode": "USB",
+          "timeOfDay": "day",
+          "lastConfirmed": "2025-01-01",
+          "sourceUrl": "https://en.wikipedia.org/wiki/The_Squeaky_Wheel",
+          "disputed": true
+        },
+        {
+          "khz": 3363.5,
+          "mode": "USB",
+          "timeOfDay": "night",
+          "lastConfirmed": "2025-01-01",
+          "sourceUrl": "https://en.wikipedia.org/wiki/The_Squeaky_Wheel",
+          "disputed": true
+        }
+      ],
+      "schedules": [],
+      "sourceUrls": [
+        "https://en.wikipedia.org/wiki/The_Squeaky_Wheel",
+        "http://www.mysterysignals.signalshed.com/page21.html"
+      ],
+      "sites": [],
+      "activeFrom": {
+        "year": 2000,
+        "approximate": false,
+        "note": "First air date 2000",
+        "lastConfirmed": "2026-09-11",
+        "sourceUrl": "https://en.wikipedia.org/wiki/The_Squeaky_Wheel"
+      }
+    },
+    {
+      "enigmaId": "E11",
+      "name": "Oblique",
+      "aliases": [],
+      "language": "English voice",
+      "operator": "Poland",
+      "tier": "scheduled",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": "2026-09-11",
+      "lore": "An English-language station operated from Poland, which took over the role of G02 \"Swedish Rhapsody\". Transmissions open with a three-digit identifier and either carry a message or announce that there is none. Frequencies rotate month by month, so a slot that is silent on the frequency below may simply have moved.",
+      "frequencies": [],
+      "schedules": [
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,WE;BYHOUR=3;BYMINUTE=15",
+          "khzByMonth": [
+            8102,
+            8102,
+            12630,
+            12630,
+            16530,
+            16530,
+            16530,
+            16530,
+            12630,
+            12630,
+            8102,
+            8102
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": "Transmission ID 25.",
+          "sourceUrl": "https://priyom.org/number-stations/english/e11/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,TH;BYHOUR=5;BYMINUTE=5",
+          "khzByMonth": [
+            12153,
+            12153,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            12153,
+            12153
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": "Transmission ID 33.",
+          "sourceUrl": "https://priyom.org/number-stations/english/e11/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,WE;BYHOUR=6;BYMINUTE=0",
+          "khzByMonth": [
+            20286,
+            20286,
+            23353,
+            23353,
+            21906,
+            21906,
+            21906,
+            21906,
+            25839,
+            25839,
+            20286,
+            20286
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": "Transmission ID 94.",
+          "sourceUrl": "https://priyom.org/number-stations/english/e11/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=FR,SU;BYHOUR=6;BYMINUTE=0",
+          "khzByMonth": [
+            7850,
+            7850,
+            8680,
+            8680,
+            9150,
+            9150,
+            9150,
+            9150,
+            8680,
+            8680,
+            7850,
+            7850
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": "Transmission ID 35.",
+          "sourceUrl": "https://priyom.org/number-stations/english/e11/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,TH;BYHOUR=6;BYMINUTE=45",
+          "khzByMonth": [
+            12385,
+            12385,
+            13470,
+            13470,
+            11092,
+            11092,
+            11092,
+            11092,
+            13470,
+            13470,
+            12385,
+            12385
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": "Transmission ID 51.",
+          "sourceUrl": "https://priyom.org/number-stations/english/e11/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,WE;BYHOUR=6;BYMINUTE=45",
+          "khzByMonth": [
+            13911,
+            13911,
+            9610,
+            9610,
+            10508,
+            10508,
+            10508,
+            10508,
+            null,
+            null,
+            13911,
+            13911
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": "Transmission ID 41.",
+          "sourceUrl": "https://priyom.org/number-stations/english/e11/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,FR;BYHOUR=7;BYMINUTE=0",
+          "khzByMonth": [
+            6804,
+            6804,
+            8180,
+            8180,
+            8680,
+            8680,
+            8680,
+            8680,
+            8180,
+            8180,
+            6804,
+            6804
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": "Transmission ID 57.",
+          "sourceUrl": "https://priyom.org/number-stations/english/e11/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=SA,SU;BYHOUR=7;BYMINUTE=0",
+          "khzByMonth": [
+            5371,
+            5371,
+            9079,
+            9079,
+            7377,
+            7377,
+            7377,
+            7377,
+            9079,
+            9079,
+            5371,
+            5371
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": "Transmission ID 49.",
+          "sourceUrl": "https://priyom.org/number-stations/english/e11/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,WE;BYHOUR=7;BYMINUTE=15",
+          "khzByMonth": [
+            20167,
+            20167,
+            19515,
+            19515,
+            15825,
+            15825,
+            15825,
+            15825,
+            19515,
+            19515,
+            20167,
+            20167
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": "Transmission ID 75.",
+          "sourceUrl": "https://priyom.org/number-stations/english/e11/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,FR;BYHOUR=7;BYMINUTE=15",
+          "khzByMonth": [
+            13911,
+            13911,
+            14666,
+            14666,
+            10508,
+            10508,
+            10508,
+            10508,
+            null,
+            null,
+            13911,
+            13911
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": "Transmission ID 63.",
+          "sourceUrl": "https://priyom.org/number-stations/english/e11/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TH,FR;BYHOUR=7;BYMINUTE=20",
+          "khzByMonth": [
+            8180,
+            8180,
+            8423,
+            8423,
+            7984,
+            7984,
+            7984,
+            7984,
+            9446,
+            9446,
+            8180,
+            8180
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": "Transmission ID 43.",
+          "sourceUrl": "https://priyom.org/number-stations/english/e11/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO;BYHOUR=7;BYMINUTE=45",
+          "khzByMonth": [
+            10213,
+            10213,
+            10213,
+            10213,
+            9610,
+            9610,
+            9610,
+            9610,
+            10213,
+            10213,
+            10213,
+            10213
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": "Transmission ID 26.",
+          "sourceUrl": "https://priyom.org/number-stations/english/e11/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,TH;BYHOUR=7;BYMINUTE=45",
+          "khzByMonth": [
+            23031,
+            23031,
+            26756,
+            26756,
+            20640,
+            20640,
+            20640,
+            20640,
+            22995,
+            22995,
+            23031,
+            23031
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": "Transmission ID 22.",
+          "sourceUrl": "https://priyom.org/number-stations/english/e11/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE;BYHOUR=7;BYMINUTE=45",
+          "khzByMonth": [
+            17378,
+            17378,
+            17410,
+            17410,
+            15720,
+            15720,
+            15720,
+            15720,
+            17410,
+            17410,
+            17378,
+            17378
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": "Transmission ID 34.",
+          "sourceUrl": "https://priyom.org/number-stations/english/e11/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE;BYHOUR=8;BYMINUTE=20",
+          "khzByMonth": [
+            14611,
+            14611,
+            19184,
+            19184,
+            17378,
+            17378,
+            17378,
+            17378,
+            19184,
+            19184,
+            14611,
+            14611
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": "Transmission ID 13.",
+          "sourceUrl": "https://priyom.org/number-stations/english/e11/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,FR;BYHOUR=8;BYMINUTE=30",
+          "khzByMonth": [
+            23353,
+            23353,
+            20170,
+            20170,
+            16335,
+            16335,
+            16335,
+            16335,
+            20170,
+            20170,
+            23353,
+            23353
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": "Transmission ID 18.",
+          "sourceUrl": "https://priyom.org/number-stations/english/e11/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,WE;BYHOUR=8;BYMINUTE=45",
+          "khzByMonth": [
+            12067,
+            12067,
+            12202,
+            12202,
+            12815,
+            12815,
+            12815,
+            12815,
+            12202,
+            12202,
+            12067,
+            12067
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": "Transmission ID 71.",
+          "sourceUrl": "https://priyom.org/number-stations/english/e11/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,TH;BYHOUR=8;BYMINUTE=45",
+          "khzByMonth": [
+            17378,
+            17378,
+            18168,
+            18168,
+            19184,
+            19184,
+            19184,
+            19184,
+            18168,
+            18168,
+            17378,
+            17378
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": "Transmission ID 15.",
+          "sourceUrl": "https://priyom.org/number-stations/english/e11/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,WE;BYHOUR=9;BYMINUTE=0",
+          "khzByMonth": [
+            15915,
+            15915,
+            13117,
+            13117,
+            11116,
+            11116,
+            11116,
+            11116,
+            13117,
+            13117,
+            15915,
+            15915
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": "Transmission ID 53.",
+          "sourceUrl": "https://priyom.org/number-stations/english/e11/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU;BYHOUR=9;BYMINUTE=30",
+          "khzByMonth": [
+            14611,
+            14611,
+            19184,
+            19184,
+            17378,
+            17378,
+            17378,
+            17378,
+            19184,
+            19184,
+            14611,
+            14611
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": "Transmission ID 13.",
+          "sourceUrl": "https://priyom.org/number-stations/english/e11/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE,TH;BYHOUR=9;BYMINUTE=30",
+          "khzByMonth": [
+            7469,
+            7469,
+            6940,
+            6940,
+            6923,
+            6923,
+            6923,
+            6923,
+            6940,
+            6940,
+            7469,
+            7469
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": "Transmission ID 27.",
+          "sourceUrl": "https://priyom.org/number-stations/english/e11/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,FR;BYHOUR=10;BYMINUTE=0",
+          "khzByMonth": [
+            9079,
+            9079,
+            9951,
+            9951,
+            12153,
+            12153,
+            12153,
+            12153,
+            9951,
+            9951,
+            9079,
+            9079
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": "Transmission ID 30.",
+          "sourceUrl": "https://priyom.org/number-stations/english/e11/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=FR;BYHOUR=10;BYMINUTE=20",
+          "khzByMonth": [
+            17378,
+            17378,
+            17410,
+            17410,
+            15720,
+            15720,
+            15720,
+            15720,
+            17410,
+            17410,
+            17378,
+            17378
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": "Transmission ID 34.",
+          "sourceUrl": "https://priyom.org/number-stations/english/e11/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,WE;BYHOUR=10;BYMINUTE=45",
+          "khzByMonth": [
+            14410,
+            14410,
+            12385,
+            12385,
+            10210,
+            10210,
+            10210,
+            10210,
+            12385,
+            12385,
+            14410,
+            14410
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": "Transmission ID 69.",
+          "sourceUrl": "https://priyom.org/number-stations/english/e11/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,WE;BYHOUR=12;BYMINUTE=5",
+          "khzByMonth": [
+            11559,
+            11559,
+            9399,
+            9399,
+            8274,
+            8274,
+            8274,
+            8274,
+            9399,
+            9399,
+            11559,
+            11559
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": "Transmission ID 46.",
+          "sourceUrl": "https://priyom.org/number-stations/english/e11/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,TH;BYHOUR=12;BYMINUTE=30",
+          "khzByMonth": [
+            null,
+            null,
+            12530,
+            12530,
+            null,
+            null,
+            null,
+            null,
+            12530,
+            12530,
+            null,
+            null
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": "Transmission ID 33.",
+          "sourceUrl": "https://priyom.org/number-stations/english/e11/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,TH;BYHOUR=13;BYMINUTE=0",
+          "khzByMonth": [
+            4909,
+            4909,
+            5371,
+            5371,
+            5737,
+            5737,
+            5737,
+            5737,
+            5371,
+            5371,
+            4909,
+            4909
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": "Transmission ID 31.",
+          "sourceUrl": "https://priyom.org/number-stations/english/e11/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,SA;BYHOUR=14;BYMINUTE=30",
+          "khzByMonth": [
+            13363,
+            13363,
+            14972,
+            14972,
+            12984,
+            12984,
+            12984,
+            12984,
+            14972,
+            14972,
+            13363,
+            13363
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": "Transmission ID 91.",
+          "sourceUrl": "https://priyom.org/number-stations/english/e11/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TH;BYHOUR=15;BYMINUTE=30",
+          "khzByMonth": [
+            5409,
+            5409,
+            10330,
+            10330,
+            10356,
+            10356,
+            10356,
+            10356,
+            10330,
+            10330,
+            5409,
+            5409
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": "Transmission ID 26.",
+          "sourceUrl": "https://priyom.org/number-stations/english/e11/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,SU;BYHOUR=16;BYMINUTE=5",
+          "khzByMonth": [
+            5432,
+            5432,
+            5176,
+            5176,
+            5231,
+            5231,
+            5231,
+            5231,
+            5176,
+            5176,
+            5432,
+            5432
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": "Transmission ID 23.",
+          "sourceUrl": "https://priyom.org/number-stations/english/e11/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE,SA;BYHOUR=16;BYMINUTE=10",
+          "khzByMonth": [
+            4505,
+            4505,
+            4181,
+            4181,
+            4783,
+            4783,
+            4783,
+            4783,
+            4181,
+            4181,
+            4505,
+            4505
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": "Transmission ID 39.",
+          "sourceUrl": "https://priyom.org/number-stations/english/e11/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,TH;BYHOUR=16;BYMINUTE=45",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            null,
+            14575,
+            14575,
+            14575,
+            14575,
+            null,
+            null,
+            null,
+            null
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": "Transmission ID 33.",
+          "sourceUrl": "https://priyom.org/number-stations/english/e11/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=SA,SU;BYHOUR=16;BYMINUTE=45",
+          "khzByMonth": [
+            4909,
+            4909,
+            4505,
+            4505,
+            5082,
+            5082,
+            5082,
+            5082,
+            4505,
+            4505,
+            4909,
+            4909
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": "Transmission ID 36.",
+          "sourceUrl": "https://priyom.org/number-stations/english/e11/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE,FR;BYHOUR=17;BYMINUTE=15",
+          "khzByMonth": [
+            5082,
+            5082,
+            6923,
+            6923,
+            7863,
+            7863,
+            7863,
+            7863,
+            6923,
+            6923,
+            5082,
+            5082
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": "Transmission ID 97.",
+          "sourceUrl": "https://priyom.org/number-stations/english/e11/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,SU;BYHOUR=17;BYMINUTE=45",
+          "khzByMonth": [
+            12924,
+            12924,
+            13470,
+            13470,
+            14410,
+            14410,
+            14410,
+            14410,
+            13470,
+            13470,
+            12924,
+            12924
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": "Transmission ID 24.",
+          "sourceUrl": "https://priyom.org/number-stations/english/e11/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=FR,SU;BYHOUR=18;BYMINUTE=15",
+          "khzByMonth": [
+            6849,
+            6849,
+            11116,
+            11116,
+            12229,
+            12229,
+            12229,
+            12229,
+            11116,
+            11116,
+            6849,
+            6849
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": "Transmission ID 92.",
+          "sourceUrl": "https://priyom.org/number-stations/english/e11/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,TH;BYHOUR=19;BYMINUTE=0",
+          "khzByMonth": [
+            6849,
+            6849,
+            7317,
+            7317,
+            7600,
+            7600,
+            7600,
+            7600,
+            7317,
+            7317,
+            6849,
+            6849
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": "Transmission ID 64.",
+          "sourceUrl": "https://priyom.org/number-stations/english/e11/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=FR,SU;BYHOUR=19;BYMINUTE=10",
+          "khzByMonth": [
+            10487,
+            10487,
+            8530,
+            8530,
+            9610,
+            9610,
+            9610,
+            9610,
+            8530,
+            8530,
+            10487,
+            10487
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": "Transmission ID 61.",
+          "sourceUrl": "https://priyom.org/number-stations/english/e11/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TH,SU;BYHOUR=20;BYMINUTE=0",
+          "khzByMonth": [
+            5082,
+            5082,
+            5737,
+            5737,
+            5409,
+            5409,
+            5409,
+            5409,
+            5737,
+            5737,
+            5082,
+            5082
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": "Transmission ID 52.",
+          "sourceUrl": "https://priyom.org/number-stations/english/e11/schedule"
+        }
+      ],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/english/e11",
+        "https://priyom.org/number-stations/english/e11/schedule"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "E03",
+      "name": "The Lincolnshire Poacher",
+      "aliases": [],
+      "language": "English voice",
+      "operator": "United Kingdom, attributed to the Secret Intelligence Service",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": "2008-07-02",
+      "lore": "The most famous numbers station ever operated, and the one most listeners mean when they say \"numbers station\". Two bars of the English folk tune \"The Lincolnshire Poacher\" played as an interval signal, repeated twelve times, then a synthesised English female voice read five-figure groups. Transmitted from RAF Akrotiri in Cyprus. The final recorded transmission was on 2 July 2008.",
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://en.wikipedia.org/wiki/Lincolnshire_Poacher_(numbers_station)",
+        "https://www.numbersoddities.nl/E03-profile.pdf"
+      ],
+      "sites": [
+        {
+          "name": "RAF Akrotiri, Cyprus",
+          "lat": 34.61806,
+          "lon": 32.9425,
+          "status": "former",
+          "lastConfirmed": "2026-09-11",
+          "sourceUrl": "https://en.wikipedia.org/wiki/Lincolnshire_Poacher_(numbers_station)"
+        }
+      ],
+      "activeFrom": {
+        "year": 1975,
+        "approximate": true,
+        "note": "The precise date is not known; broadcasts are believed to have started in the early to mid 1970s, and ran from at least the mid-1970s",
+        "lastConfirmed": "2026-09-11",
+        "sourceUrl": "https://en.wikipedia.org/wiki/Lincolnshire_Poacher_(numbers_station)"
+      }
+    },
+    {
+      "enigmaId": "E03a",
+      "name": "Cherry Ripe",
+      "aliases": [],
+      "language": "English voice",
+      "operator": "United Kingdom, attributed to the Secret Intelligence Service",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": "2009-12-01",
+      "lore": "The southern-hemisphere sister of E03, using the folk song \"Cherry Ripe\" as its interval signal. It transmitted for years from the US base on Guam, moved to Humpty Doo in Australia in late September 2009, ran there for only two months, and stopped in December 2009.",
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://en.wikipedia.org/wiki/Cherry_Ripe_(numbers_station)",
+        "https://www.numbersoddities.nl/E03-profile.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "V02a",
+      "name": "Atención",
+      "aliases": [
+        "The Cuban Lady",
+        "The Spanish Lady"
+      ],
+      "language": "Other-language voice",
+      "operator": "Cuba, Dirección General de Inteligencia",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": "2019-02-01",
+      "lore": "Opened with \"¡Atención! ¡Atención!\" and a synthesised Spanish female voice reading five-figure groups. V02a replaced the original V02 in 1997. Most of its schedules were taken over by the digital HM01 in November 2012, and it went inactive in February 2019 alongside its Morse counterpart M08a. Widely and wrongly still listed as active.",
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/other/v02a",
+        "https://www.numbers-stations.com/various/v02a/"
+      ],
+      "sites": [],
+      "activeFrom": {
+        "year": 1997,
+        "approximate": false,
+        "note": "V02a replaced the original V02 in 1997",
+        "lastConfirmed": "2026-09-11",
+        "sourceUrl": "https://priyom.org/number-stations/other/v02a"
+      }
+    },
+    {
+      "enigmaId": "HM01",
+      "name": "HM01",
+      "aliases": [
+        "De La Chica"
+      ],
+      "language": "Digital (hybrid voice + data)",
+      "operator": "Cuba, Dirección General de Inteligencia",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": "2024-08-23",
+      "lore": "A hybrid station: spoken Spanish groups interleaved with RDFT digital data bursts. It appeared around 2012 and absorbed most of the schedules of V02a and SK01. On 23 August 2024 the transmitter failed permanently shortly after switching from 11635 kHz to 10715 kHz, and with Radio Habana Cuba short of working transmitters the station has stayed off in favour of regular service. Repairs were reported in progress during 2026, so this one may move back to the active tier. Priyom’s index still lists it as active; its own station page does not.",
+      "frequencies": [
+        {
+          "khz": 11635,
+          "mode": "USB",
+          "timeOfDay": null,
+          "lastConfirmed": "2024-08-23",
+          "sourceUrl": "https://priyom.org/number-stations/digital/hm01",
+          "disputed": false
+        }
+      ],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/digital/hm01"
+      ],
+      "sites": [],
+      "activeFrom": {
+        "year": 2012,
+        "approximate": true,
+        "note": "Appeared around 2012 and absorbed most of the schedules of V02a and SK01",
+        "lastConfirmed": "2026-09-11",
+        "sourceUrl": "https://priyom.org/number-stations/digital/hm01"
+      }
+    },
+    {
+      "enigmaId": "V15",
+      "name": "Pyongyang",
+      "aliases": [],
+      "language": "Other-language voice",
+      "operator": "North Korea, Pyongyang Broadcasting Station",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": "2020-03-12",
+      "lore": "Unusual among numbers stations for hiding in plain sight: the groups aired inside normal Pyongyang Broadcasting Station programming, framed as lists of review assignments for distance-learning university students. Broadcasts ran weekly until 27 June 2019, then only four more times — 19 September and 9 November 2019, and 7 and 12 March 2020. Nothing since.",
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/other/v15"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "V24",
+      "name": "V24",
+      "aliases": [],
+      "language": "Other-language voice",
+      "operator": "South Korea",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": "2020-09-01",
+      "lore": "A Korean-language station: musical introduction, a three or four digit identifier, a message length announcement, then groups of four or five digits read twice, and a closing statement. Last heard in September 2020 and inactive since.",
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/other/v24"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "G02",
+      "name": "Swedish Rhapsody",
+      "aliases": [],
+      "language": "German voice",
+      "operator": "Poland",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": "A German-language Polish station that opened with a music-box rendition of \"Swedish Rhapsody\" and a child-sounding synthesised voice — the combination that gives it its reputation. Its operational role passed to E11 \"Oblique\". No German language numbers station remains in regular operation.",
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/german/g02"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "G03",
+      "name": "Gongs or Chimes",
+      "aliases": [
+        "Gong Station"
+      ],
+      "language": "German voice",
+      "operator": "East Germany, Nationale Volksarmee",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": "Used a synthesised chime or gong melody ahead of German numbers. Priyom attributes it to the East German Nationale Volksarmee, not the Stasi — the Stasi attribution attaches to G08 \"Four Note Rising Scale\". The popular Stasi claim for G03 could not be traced to a primary source.",
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/german/g03"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "E06",
+      "name": "English Man 00000",
+      "aliases": [],
+      "language": "English voice",
+      "operator": "Russia",
+      "tier": "scheduled",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": "2026-09-10",
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/english/e06",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "E07",
+      "name": "English Man 000 000",
+      "aliases": [],
+      "language": "English voice",
+      "operator": "Russia",
+      "tier": "scheduled",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": "2025-04-10",
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/english/e07",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "E25",
+      "name": "Rebeat",
+      "aliases": [],
+      "language": "English voice",
+      "operator": "Egypt",
+      "tier": "scheduled",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": "2026-09-10",
+      "lore": null,
+      "frequencies": [
+        {
+          "khz": 6140,
+          "mode": "USB",
+          "timeOfDay": null,
+          "lastConfirmed": "2026-09-11",
+          "sourceUrl": "https://priyom.org/number-stations/english/e25",
+          "disputed": false
+        },
+        {
+          "khz": 9450,
+          "mode": "USB",
+          "timeOfDay": null,
+          "lastConfirmed": "2026-09-11",
+          "sourceUrl": "https://priyom.org/number-stations/english/e25",
+          "disputed": false
+        },
+        {
+          "khz": 18240,
+          "mode": "USB",
+          "timeOfDay": null,
+          "lastConfirmed": "2026-09-11",
+          "sourceUrl": "https://priyom.org/number-stations/english/e25",
+          "disputed": false
+        }
+      ],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/english/e25",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "E01",
+      "name": "Ready Ready",
+      "aliases": [],
+      "language": "English voice",
+      "operator": "Unknown",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/english/e01",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "E05",
+      "name": "The Counting Station",
+      "aliases": [],
+      "language": "English voice",
+      "operator": "United States",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/english/e05",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "E07a",
+      "name": "English Man 000 000",
+      "aliases": [],
+      "language": "English voice",
+      "operator": "Russia",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/english/e07a",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "E09",
+      "name": "Magnetic Fields",
+      "aliases": [],
+      "language": "English voice",
+      "operator": "Unknown",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/english/e09",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "E10",
+      "name": "NATO Alphabet",
+      "aliases": [],
+      "language": "English voice",
+      "operator": "Israel",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/english/e10",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "E12",
+      "name": "NNN",
+      "aliases": [],
+      "language": "English voice",
+      "operator": "Austria",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/english/e12",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "E13",
+      "name": "Five Dashes",
+      "aliases": [],
+      "language": "English voice",
+      "operator": "Germany",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/english/e13",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "E14",
+      "name": "Counting 'Control'",
+      "aliases": [],
+      "language": "English voice",
+      "operator": "United States",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/english/e14",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "E15",
+      "name": "Nancy Adam Susan",
+      "aliases": [],
+      "language": "English voice",
+      "operator": "Unknown",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/english/e15",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "E16",
+      "name": "Two Letter",
+      "aliases": [],
+      "language": "English voice",
+      "operator": "Germany",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/english/e16",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "E17",
+      "name": "English Lady 00000",
+      "aliases": [],
+      "language": "English voice",
+      "operator": "Russia",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/english/e17",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "E17z",
+      "name": "English Lady 0 0 0 0 0",
+      "aliases": [],
+      "language": "English voice",
+      "operator": "Ukraine",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/english/e17z",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "E18",
+      "name": "Fife Free",
+      "aliases": [],
+      "language": "English voice",
+      "operator": "Bulgaria",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/english/e18",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "E21",
+      "name": "4F Counting",
+      "aliases": [],
+      "language": "English voice",
+      "operator": "United States",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/english/e21",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "E23",
+      "name": "E23",
+      "aliases": [],
+      "language": "English voice",
+      "operator": "Poland",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/english/e23",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "E25b",
+      "name": "Rebeat",
+      "aliases": [],
+      "language": "English voice",
+      "operator": "Egypt",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/english/e25b",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "S06",
+      "name": "Russian Man 00000",
+      "aliases": [],
+      "language": "Slavic voice",
+      "operator": "Russia",
+      "tier": "scheduled",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": "2026-09-10",
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/slavic/s06",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "S06c",
+      "name": "S06c",
+      "aliases": [],
+      "language": "Slavic voice",
+      "operator": "Russia",
+      "tier": "scheduled",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": "2026-09-10",
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/slavic/s06c",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "S11a",
+      "name": "Cherta",
+      "aliases": [],
+      "language": "Slavic voice",
+      "operator": "Poland",
+      "tier": "scheduled",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": "2026-09-11",
+      "lore": null,
+      "frequencies": [],
+      "schedules": [
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,TH;BYHOUR=4;BYMINUTE=45",
+          "khzByMonth": [
+            11559,
+            11559,
+            10728,
+            10728,
+            9968,
+            9968,
+            9968,
+            9968,
+            10728,
+            10728,
+            11559,
+            11559
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": "Transmission ID 79.",
+          "sourceUrl": "https://priyom.org/number-stations/slavic/s11a/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,WE;BYHOUR=5;BYMINUTE=10",
+          "khzByMonth": [
+            21906,
+            21906,
+            23004,
+            23004,
+            16357,
+            16357,
+            16357,
+            16357,
+            23004,
+            23004,
+            21906,
+            21906
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": "Transmission ID 65.",
+          "sourceUrl": "https://priyom.org/number-stations/slavic/s11a/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,TH;BYHOUR=7;BYMINUTE=0",
+          "khzByMonth": [
+            9050,
+            9050,
+            8597,
+            8597,
+            9339,
+            9339,
+            9339,
+            9339,
+            8597,
+            8597,
+            90509150,
+            90509150
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": "Transmission ID 47.",
+          "sourceUrl": "https://priyom.org/number-stations/slavic/s11a/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE,FR;BYHOUR=7;BYMINUTE=35",
+          "khzByMonth": [
+            19515,
+            19515,
+            23353,
+            23353,
+            18773,
+            18773,
+            18773,
+            18773,
+            23353,
+            23353,
+            19515,
+            19515
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": "Transmission ID 38.",
+          "sourceUrl": "https://priyom.org/number-stations/slavic/s11a/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=SA,SU;BYHOUR=8;BYMINUTE=30",
+          "khzByMonth": [
+            5371,
+            5371,
+            6433,
+            6433,
+            5149,
+            5149,
+            5149,
+            5149,
+            6433,
+            6433,
+            5371,
+            5371
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": "Transmission ID 37.",
+          "sourceUrl": "https://priyom.org/number-stations/slavic/s11a/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO;BYHOUR=9;BYMINUTE=15",
+          "khzByMonth": [
+            6252,
+            6252,
+            6480,
+            6480,
+            6814,
+            6814,
+            6814,
+            6814,
+            6480,
+            6480,
+            6252,
+            6252
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": "Transmission ID 48.",
+          "sourceUrl": "https://priyom.org/number-stations/slavic/s11a/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,FR;BYHOUR=14;BYMINUTE=0",
+          "khzByMonth": [
+            10448,
+            10448,
+            11420,
+            11420,
+            9448,
+            9448,
+            9448,
+            9448,
+            11420,
+            11420,
+            10448,
+            10448
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": "Transmission ID 42.",
+          "sourceUrl": "https://priyom.org/number-stations/slavic/s11a/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE,SA;BYHOUR=18;BYMINUTE=50",
+          "khzByMonth": [
+            11486,
+            11486,
+            10213,
+            10213,
+            12457,
+            12457,
+            12457,
+            12457,
+            10213,
+            10213,
+            11486,
+            11486
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": "Transmission ID 28.",
+          "sourceUrl": "https://priyom.org/number-stations/slavic/s11a/schedule"
+        }
+      ],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/slavic/s11a",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "S25",
+      "name": "Russian Man Control",
+      "aliases": [],
+      "language": "Slavic voice",
+      "operator": "Russia",
+      "tier": "scheduled",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": "2026-09-10",
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/slavic/s25",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "S02",
+      "name": "Drums and Trumpets",
+      "aliases": [],
+      "language": "Slavic voice",
+      "operator": "Bulgaria",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/slavic/s02",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "S02a",
+      "name": "S02a",
+      "aliases": [],
+      "language": "Slavic voice",
+      "operator": "Bulgaria",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/slavic/s02a",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "S02c",
+      "name": "S02c",
+      "aliases": [],
+      "language": "Slavic voice",
+      "operator": "Bulgaria",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/slavic/s02c",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "S02d",
+      "name": "S02d",
+      "aliases": [],
+      "language": "Slavic voice",
+      "operator": "Bulgaria",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/slavic/s02d",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "S03",
+      "name": "Okno",
+      "aliases": [],
+      "language": "Slavic voice",
+      "operator": "Czechia",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/slavic/s03",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "S04",
+      "name": "Edna Sednitzer",
+      "aliases": [],
+      "language": "Slavic voice",
+      "operator": "Bulgaria",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/slavic/s04",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "S05",
+      "name": "OLX",
+      "aliases": [],
+      "language": "Slavic voice",
+      "operator": "Czechoslovakia",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/slavic/s05",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "S05a",
+      "name": "S05a",
+      "aliases": [],
+      "language": "Slavic voice",
+      "operator": "Czechoslovakia",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/slavic/s05a",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "S05b",
+      "name": "S05b",
+      "aliases": [],
+      "language": "Slavic voice",
+      "operator": "Czechia",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/slavic/s05b",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "S06a",
+      "name": "Russian Man 00000",
+      "aliases": [],
+      "language": "Slavic voice",
+      "operator": "Soviet Union",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/slavic/s06a",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "S06s",
+      "name": "Russian Lady 0 0 0 0 0",
+      "aliases": [],
+      "language": "Slavic voice",
+      "operator": "Ukraine",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/slavic/s06s",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "S07",
+      "name": "Russian Man 000 000",
+      "aliases": [],
+      "language": "Slavic voice",
+      "operator": "Russia",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/slavic/s07",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "S08",
+      "name": "YT",
+      "aliases": [],
+      "language": "Slavic voice",
+      "operator": "Yugoslavia",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/slavic/s08",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "S10",
+      "name": "Bulgarian Betty",
+      "aliases": [],
+      "language": "Slavic voice",
+      "operator": "Czechoslovakia",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/slavic/s10",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "S10a",
+      "name": "S10a",
+      "aliases": [],
+      "language": "Slavic voice",
+      "operator": "Czechoslovakia",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/slavic/s10a",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "S10b",
+      "name": "S10b",
+      "aliases": [],
+      "language": "Slavic voice",
+      "operator": "Czechoslovakia",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/slavic/s10b",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "S10d",
+      "name": "S10d",
+      "aliases": [],
+      "language": "Slavic voice",
+      "operator": "Czechia",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/slavic/s10d",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "S10e",
+      "name": "S10e",
+      "aliases": [],
+      "language": "Slavic voice",
+      "operator": "Czechia",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/slavic/s10e",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "S11",
+      "name": "Kreska",
+      "aliases": [],
+      "language": "Slavic voice",
+      "operator": "Poland",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/slavic/s11",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "S17a",
+      "name": "Czech Lady Control",
+      "aliases": [],
+      "language": "Slavic voice",
+      "operator": "Czechia",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/slavic/s17a",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "S17b",
+      "name": "S17b",
+      "aliases": [],
+      "language": "Slavic voice",
+      "operator": "Czechia",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/slavic/s17b",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "S17c",
+      "name": "S17c",
+      "aliases": [],
+      "language": "Slavic voice",
+      "operator": "Czechia",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/slavic/s17c",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "S21",
+      "name": "Russian Man 0 0 0",
+      "aliases": [],
+      "language": "Slavic voice",
+      "operator": "Russia",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/slavic/s21",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "S26",
+      "name": "Cyt Cyt",
+      "aliases": [],
+      "language": "Slavic voice",
+      "operator": "Poland",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/slavic/s26",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "S31",
+      "name": "S31",
+      "aliases": [],
+      "language": "Slavic voice",
+      "operator": "Czechia",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/slavic/s31",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "G01",
+      "name": "Tyrolean Music Station",
+      "aliases": [],
+      "language": "German voice",
+      "operator": "France",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/german/g01",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "G04",
+      "name": "Three Note Oddity",
+      "aliases": [],
+      "language": "German voice",
+      "operator": "Hungary",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/german/g04",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "G05",
+      "name": "The Counting Station",
+      "aliases": [],
+      "language": "German voice",
+      "operator": "United States",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/german/g05",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "G06",
+      "name": "German Lady 00000",
+      "aliases": [],
+      "language": "German voice",
+      "operator": "Russia",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/german/g06",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "G07",
+      "name": "German Lady 000 000",
+      "aliases": [],
+      "language": "German voice",
+      "operator": "Russia",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/german/g07",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "G08",
+      "name": "Four Note Rising Scale",
+      "aliases": [],
+      "language": "German voice",
+      "operator": "East Germany, Stasi",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/german/g08",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "G09",
+      "name": "Saxophone Piece",
+      "aliases": [],
+      "language": "German voice",
+      "operator": "Unknown",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/german/g09",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "G10",
+      "name": "Bert Kaempfert",
+      "aliases": [],
+      "language": "German voice",
+      "operator": "Poland",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/german/g10",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "G11",
+      "name": "Strich",
+      "aliases": [],
+      "language": "German voice",
+      "operator": "Poland",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/german/g11",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "G12",
+      "name": "NNN",
+      "aliases": [],
+      "language": "German voice",
+      "operator": "Austria",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/german/g12",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "G13",
+      "name": "Five Dashes",
+      "aliases": [],
+      "language": "German voice",
+      "operator": "Germany",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/german/g13",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "G14",
+      "name": "DFD21/DFC37",
+      "aliases": [],
+      "language": "German voice",
+      "operator": "Germany",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/german/g14",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "G15",
+      "name": "Papa November",
+      "aliases": [],
+      "language": "German voice",
+      "operator": "Germany",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/german/g15",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "G16",
+      "name": "Two Letter",
+      "aliases": [],
+      "language": "German voice",
+      "operator": "Germany",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/german/g16",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "G18",
+      "name": "Eight Note Rising Scale",
+      "aliases": [],
+      "language": "German voice",
+      "operator": "Czechoslovakia",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/german/g18",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "G20",
+      "name": "Spruch",
+      "aliases": [],
+      "language": "German voice",
+      "operator": "Unknown",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/german/g20",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "G22",
+      "name": "Edna Sednitzer",
+      "aliases": [],
+      "language": "German voice",
+      "operator": "Bulgaria",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/german/g22",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "V07",
+      "name": "Spanish Lady 000 000",
+      "aliases": [],
+      "language": "Other-language voice",
+      "operator": "Russia",
+      "tier": "scheduled",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": "2026-09-11",
+      "lore": null,
+      "frequencies": [],
+      "schedules": [
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=SU;BYHOUR=2;BYMINUTE=0",
+          "khzByMonth": [
+            17436,
+            18217,
+            19172,
+            17431,
+            null,
+            null,
+            null,
+            null,
+            17431,
+            18217,
+            17431,
+            18249
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/other/v07/sunday"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=SU;BYHOUR=2;BYMINUTE=20",
+          "khzByMonth": [
+            14636,
+            16317,
+            17472,
+            16131,
+            null,
+            null,
+            null,
+            null,
+            16131,
+            16317,
+            16131,
+            15949
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/other/v07/sunday"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=SU;BYHOUR=2;BYMINUTE=40",
+          "khzByMonth": [
+            13436,
+            15817,
+            16272,
+            14431,
+            null,
+            null,
+            null,
+            null,
+            14431,
+            15817,
+            14431,
+            14549
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/other/v07/sunday"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=SU;BYHOUR=7;BYMINUTE=0",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            null,
+            14469,
+            13927,
+            13978,
+            13408,
+            null,
+            null,
+            null,
+            null
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/other/v07/sunday"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=SU;BYHOUR=7;BYMINUTE=20",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            null,
+            13369,
+            13427,
+            13378,
+            12208,
+            null,
+            null,
+            null,
+            null
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/other/v07/sunday"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=SU;BYHOUR=7;BYMINUTE=40",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            null,
+            12169,
+            12127,
+            12178,
+            11508,
+            null,
+            null,
+            null,
+            null
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/other/v07/sunday"
+        }
+      ],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/other/v07",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "V13",
+      "name": "New Star Broadcasting Station",
+      "aliases": [],
+      "language": "Other-language voice",
+      "operator": "Taiwan",
+      "tier": "scheduled",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": "2026-09-10",
+      "lore": null,
+      "frequencies": [
+        {
+          "khz": 7502,
+          "mode": "USB",
+          "timeOfDay": null,
+          "lastConfirmed": "2026-09-11",
+          "sourceUrl": "https://priyom.org/number-stations/other/v13",
+          "disputed": false
+        },
+        {
+          "khz": 7688,
+          "mode": "USB",
+          "timeOfDay": null,
+          "lastConfirmed": "2026-09-11",
+          "sourceUrl": "https://priyom.org/number-stations/other/v13",
+          "disputed": false
+        },
+        {
+          "khz": 8169,
+          "mode": "USB",
+          "timeOfDay": null,
+          "lastConfirmed": "2026-09-11",
+          "sourceUrl": "https://priyom.org/number-stations/other/v13",
+          "disputed": false
+        },
+        {
+          "khz": 8300,
+          "mode": "USB",
+          "timeOfDay": null,
+          "lastConfirmed": "2026-09-11",
+          "sourceUrl": "https://priyom.org/number-stations/other/v13",
+          "disputed": false
+        },
+        {
+          "khz": 9276,
+          "mode": "USB",
+          "timeOfDay": null,
+          "lastConfirmed": "2026-09-11",
+          "sourceUrl": "https://priyom.org/number-stations/other/v13",
+          "disputed": false
+        },
+        {
+          "khz": 11430,
+          "mode": "USB",
+          "timeOfDay": null,
+          "lastConfirmed": "2026-09-11",
+          "sourceUrl": "https://priyom.org/number-stations/other/v13",
+          "disputed": false
+        },
+        {
+          "khz": 13974,
+          "mode": "USB",
+          "timeOfDay": null,
+          "lastConfirmed": "2026-09-11",
+          "sourceUrl": "https://priyom.org/number-stations/other/v13",
+          "disputed": false
+        },
+        {
+          "khz": 14944,
+          "mode": "USB",
+          "timeOfDay": null,
+          "lastConfirmed": "2026-09-11",
+          "sourceUrl": "https://priyom.org/number-stations/other/v13",
+          "disputed": false
+        },
+        {
+          "khz": 15250,
+          "mode": "USB",
+          "timeOfDay": null,
+          "lastConfirmed": "2026-09-11",
+          "sourceUrl": "https://priyom.org/number-stations/other/v13",
+          "disputed": false
+        },
+        {
+          "khz": 15890,
+          "mode": "USB",
+          "timeOfDay": null,
+          "lastConfirmed": "2026-09-11",
+          "sourceUrl": "https://priyom.org/number-stations/other/v13",
+          "disputed": false
+        },
+        {
+          "khz": 16050,
+          "mode": "USB",
+          "timeOfDay": null,
+          "lastConfirmed": "2026-09-11",
+          "sourceUrl": "https://priyom.org/number-stations/other/v13",
+          "disputed": false
+        },
+        {
+          "khz": 17000,
+          "mode": "USB",
+          "timeOfDay": null,
+          "lastConfirmed": "2026-09-11",
+          "sourceUrl": "https://priyom.org/number-stations/other/v13",
+          "disputed": false
+        },
+        {
+          "khz": 18040,
+          "mode": "USB",
+          "timeOfDay": null,
+          "lastConfirmed": "2026-09-11",
+          "sourceUrl": "https://priyom.org/number-stations/other/v13",
+          "disputed": false
+        },
+        {
+          "khz": 19052,
+          "mode": "USB",
+          "timeOfDay": null,
+          "lastConfirmed": "2026-09-11",
+          "sourceUrl": "https://priyom.org/number-stations/other/v13",
+          "disputed": false
+        },
+        {
+          "khz": 20025,
+          "mode": "USB",
+          "timeOfDay": null,
+          "lastConfirmed": "2026-09-11",
+          "sourceUrl": "https://priyom.org/number-stations/other/v13",
+          "disputed": false
+        },
+        {
+          "khz": 20095,
+          "mode": "USB",
+          "timeOfDay": null,
+          "lastConfirmed": "2026-09-11",
+          "sourceUrl": "https://priyom.org/number-stations/other/v13",
+          "disputed": false
+        },
+        {
+          "khz": 21000,
+          "mode": "USB",
+          "timeOfDay": null,
+          "lastConfirmed": "2026-09-11",
+          "sourceUrl": "https://priyom.org/number-stations/other/v13",
+          "disputed": false
+        }
+      ],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/other/v13",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "V28",
+      "name": "The Parrot",
+      "aliases": [],
+      "language": "Other-language voice",
+      "operator": "North Korea",
+      "tier": "scheduled",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": "2026-09-10",
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/other/v28",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "V01",
+      "name": "Ciocârlia / Skylark",
+      "aliases": [],
+      "language": "Other-language voice",
+      "operator": "Romania",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/other/v01",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "V02",
+      "name": "Atención",
+      "aliases": [],
+      "language": "Other-language voice",
+      "operator": "Cuba",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/other/v02",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "V06",
+      "name": "Spanish Lady 00000",
+      "aliases": [],
+      "language": "Other-language voice",
+      "operator": "Russia",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/other/v06",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "V08",
+      "name": "Eastern Music Station",
+      "aliases": [],
+      "language": "Other-language voice",
+      "operator": "Egypt",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/other/v08",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "V10",
+      "name": "V10",
+      "aliases": [],
+      "language": "Other-language voice",
+      "operator": "Unknown",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/other/v10",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "V12",
+      "name": "NNN",
+      "aliases": [],
+      "language": "Other-language voice",
+      "operator": "Austria",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/other/v12",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "V14",
+      "name": "Counting 'Control'",
+      "aliases": [],
+      "language": "Other-language voice",
+      "operator": "United States",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/other/v14",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "V19",
+      "name": "V19",
+      "aliases": [],
+      "language": "Other-language voice",
+      "operator": "Unknown",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/other/v19",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "V20",
+      "name": "The Bored Man",
+      "aliases": [],
+      "language": "Other-language voice",
+      "operator": "Cuba",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/other/v20",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "V30",
+      "name": "The Lighthouse",
+      "aliases": [],
+      "language": "Other-language voice",
+      "operator": "Vietnam",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/other/v30",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "M01",
+      "name": "M01",
+      "aliases": [],
+      "language": "Morse",
+      "operator": "Russia",
+      "tier": "scheduled",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": "2026-09-11",
+      "lore": null,
+      "frequencies": [],
+      "schedules": [
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,TH;BYHOUR=18;BYMINUTE=0",
+          "khzByMonth": [
+            5320,
+            5320,
+            5475,
+            5475,
+            5280,
+            5280,
+            5280,
+            5280,
+            5475,
+            5475,
+            5320,
+            5320
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/morse/m01/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,TH;BYHOUR=20;BYMINUTE=0",
+          "khzByMonth": [
+            4490,
+            4490,
+            5020,
+            5020,
+            4903,
+            4903,
+            4903,
+            4903,
+            5020,
+            5020,
+            4490,
+            4490
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/morse/m01/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=SA;BYHOUR=15;BYMINUTE=0",
+          "khzByMonth": [
+            5810,
+            5810,
+            6260,
+            6260,
+            6435,
+            6435,
+            6435,
+            6435,
+            6260,
+            6260,
+            5810,
+            5810
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/morse/m01/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=SU;BYHOUR=7;BYMINUTE=0",
+          "khzByMonth": [
+            5465,
+            5465,
+            6510,
+            6510,
+            6780,
+            6780,
+            6780,
+            6780,
+            6510,
+            6510,
+            5465,
+            5465
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/morse/m01/schedule"
+        }
+      ],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/morse/m01",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "M01a",
+      "name": "M01a",
+      "aliases": [],
+      "language": "Morse",
+      "operator": "Russia",
+      "tier": "scheduled",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": "2026-09-10",
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/morse/m01a",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "M12",
+      "name": "M12",
+      "aliases": [],
+      "language": "Morse",
+      "operator": "Russia",
+      "tier": "scheduled",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": "2026-09-10",
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/morse/m12",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "M14",
+      "name": "M14",
+      "aliases": [],
+      "language": "Morse",
+      "operator": "Russia",
+      "tier": "scheduled",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": "2026-09-10",
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/morse/m14",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "M23",
+      "name": "M23",
+      "aliases": [],
+      "language": "Morse",
+      "operator": "France",
+      "tier": "scheduled",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": "2026-09-11",
+      "lore": null,
+      "frequencies": [],
+      "schedules": [
+        {
+          "rrule": "FREQ=DAILY;BYHOUR=1;BYMINUTE=57",
+          "khzByMonth": [
+            5345,
+            5345,
+            5345,
+            5345,
+            5345,
+            5345,
+            5345,
+            5345,
+            5345,
+            5345,
+            5345,
+            5345
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": "Daily, on one frequency year round.",
+          "sourceUrl": "https://priyom.org/number-stations/morse/m23/schedule"
+        },
+        {
+          "rrule": "FREQ=DAILY;BYHOUR=5;BYMINUTE=57",
+          "khzByMonth": [
+            10381,
+            10381,
+            10381,
+            10381,
+            10381,
+            10381,
+            10381,
+            10381,
+            10381,
+            10381,
+            10381,
+            10381
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": "Daily, on one frequency year round.",
+          "sourceUrl": "https://priyom.org/number-stations/morse/m23/schedule"
+        },
+        {
+          "rrule": "FREQ=DAILY;BYHOUR=9;BYMINUTE=57",
+          "khzByMonth": [
+            20456,
+            20456,
+            20456,
+            20456,
+            20456,
+            20456,
+            20456,
+            20456,
+            20456,
+            20456,
+            20456,
+            20456
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": "Daily, on one frequency year round.",
+          "sourceUrl": "https://priyom.org/number-stations/morse/m23/schedule"
+        },
+        {
+          "rrule": "FREQ=DAILY;BYHOUR=13;BYMINUTE=57",
+          "khzByMonth": [
+            11530,
+            11530,
+            11530,
+            11530,
+            11530,
+            11530,
+            11530,
+            11530,
+            11530,
+            11530,
+            11530,
+            11530
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": "Daily, on one frequency year round.",
+          "sourceUrl": "https://priyom.org/number-stations/morse/m23/schedule"
+        },
+        {
+          "rrule": "FREQ=DAILY;BYHOUR=17;BYMINUTE=57",
+          "khzByMonth": [
+            6937,
+            6937,
+            6937,
+            6937,
+            6937,
+            6937,
+            6937,
+            6937,
+            6937,
+            6937,
+            6937,
+            6937
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": "Daily, on one frequency year round.",
+          "sourceUrl": "https://priyom.org/number-stations/morse/m23/schedule"
+        },
+        {
+          "rrule": "FREQ=DAILY;BYHOUR=19;BYMINUTE=57",
+          "khzByMonth": [
+            4822,
+            4822,
+            4822,
+            4822,
+            4822,
+            4822,
+            4822,
+            4822,
+            4822,
+            4822,
+            4822,
+            4822
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": "Daily, on one frequency year round.",
+          "sourceUrl": "https://priyom.org/number-stations/morse/m23/schedule"
+        }
+      ],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/morse/m23",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "M01b",
+      "name": "M01b",
+      "aliases": [],
+      "language": "Morse",
+      "operator": "Russia",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/morse/m01b",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "M02",
+      "name": "M02",
+      "aliases": [],
+      "language": "Morse",
+      "operator": "Austria",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/morse/m02",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "M03",
+      "name": "M03",
+      "aliases": [],
+      "language": "Morse",
+      "operator": "Poland",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/morse/m03",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "M03a",
+      "name": "M03a",
+      "aliases": [],
+      "language": "Morse",
+      "operator": "Poland",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/morse/m03a",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "M03b",
+      "name": "M03b",
+      "aliases": [],
+      "language": "Morse",
+      "operator": "Poland",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/morse/m03b",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "M03c",
+      "name": "M03c",
+      "aliases": [],
+      "language": "Morse",
+      "operator": "Poland",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/morse/m03c",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "M03d",
+      "name": "M03d",
+      "aliases": [],
+      "language": "Morse",
+      "operator": "Poland",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/morse/m03d",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "M03e",
+      "name": "M03e",
+      "aliases": [],
+      "language": "Morse",
+      "operator": "Poland",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/morse/m03e",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "M03f",
+      "name": "M03f",
+      "aliases": [],
+      "language": "Morse",
+      "operator": "Poland",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/morse/m03f",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "M04",
+      "name": "M04",
+      "aliases": [],
+      "language": "Morse",
+      "operator": "Poland",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/morse/m04",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "M05",
+      "name": "M05",
+      "aliases": [],
+      "language": "Morse",
+      "operator": "United Kingdom (unconfirmed)",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/morse/m05",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "M06",
+      "name": "M06",
+      "aliases": [],
+      "language": "Morse",
+      "operator": "Czechia",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/morse/m06",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "M06a",
+      "name": "M06a",
+      "aliases": [],
+      "language": "Morse",
+      "operator": "Czechoslovakia",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/morse/m06a",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "M07",
+      "name": "M07",
+      "aliases": [],
+      "language": "Morse",
+      "operator": "Czechia",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/morse/m07",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "M08",
+      "name": "M08",
+      "aliases": [],
+      "language": "Morse",
+      "operator": "Cuba",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/morse/m08",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "M08a",
+      "name": "M08a",
+      "aliases": [],
+      "language": "Morse",
+      "operator": "Cuba",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": "2019-02-01",
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/morse/m08a",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "M10",
+      "name": "M10",
+      "aliases": [],
+      "language": "Morse",
+      "operator": "Czechia",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/morse/m10",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "M10c",
+      "name": "M10c",
+      "aliases": [],
+      "language": "Morse",
+      "operator": "Czechoslovakia",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/morse/m10c",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "M11",
+      "name": "M11",
+      "aliases": [],
+      "language": "Morse",
+      "operator": "Unknown",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/morse/m11",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "M13",
+      "name": "M13",
+      "aliases": [],
+      "language": "Morse",
+      "operator": "Bulgaria",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/morse/m13",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "M13a",
+      "name": "M13a",
+      "aliases": [],
+      "language": "Morse",
+      "operator": "Bulgaria",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/morse/m13a",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "M13b",
+      "name": "M13b",
+      "aliases": [],
+      "language": "Morse",
+      "operator": "Bulgaria",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/morse/m13b",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "M13c",
+      "name": "M13c",
+      "aliases": [],
+      "language": "Morse",
+      "operator": "Bulgaria",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/morse/m13c",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "M13d",
+      "name": "M13d",
+      "aliases": [],
+      "language": "Morse",
+      "operator": "Bulgaria",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/morse/m13d",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "M13e",
+      "name": "M13e",
+      "aliases": [],
+      "language": "Morse",
+      "operator": "Bulgaria",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/morse/m13e",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "M17",
+      "name": "M17",
+      "aliases": [],
+      "language": "Morse",
+      "operator": "Unknown",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/morse/m17",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "M29",
+      "name": "M29",
+      "aliases": [],
+      "language": "Morse",
+      "operator": "Hungary",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/morse/m29",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "M29a",
+      "name": "M29a",
+      "aliases": [],
+      "language": "Morse",
+      "operator": "Hungary",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/morse/m29a",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "M39",
+      "name": "M39",
+      "aliases": [],
+      "language": "Morse",
+      "operator": "Czechia",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/morse/m39",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "M40",
+      "name": "M40",
+      "aliases": [],
+      "language": "Morse",
+      "operator": "North Korea",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/morse/m40",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "M45",
+      "name": "M45",
+      "aliases": [],
+      "language": "Morse",
+      "operator": "Russia",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/morse/m45",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "M94",
+      "name": "M94",
+      "aliases": [],
+      "language": "Morse",
+      "operator": "South Korea",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/morse/m94",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "M97",
+      "name": "M97",
+      "aliases": [],
+      "language": "Morse",
+      "operator": "Vietnam",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/morse/m97",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "F01",
+      "name": "F01",
+      "aliases": [],
+      "language": "Digital (FSK)",
+      "operator": "Russia",
+      "tier": "scheduled",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": "2026-09-10",
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/digital/f01",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "F03",
+      "name": "F03",
+      "aliases": [],
+      "language": "Digital (FSK)",
+      "operator": "Poland",
+      "tier": "scheduled",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": "2026-09-10",
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/digital/f03",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "F06",
+      "name": "F06",
+      "aliases": [],
+      "language": "Digital (FSK)",
+      "operator": "Russia",
+      "tier": "scheduled",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": "2026-09-10",
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/digital/f06",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "F06a",
+      "name": "F06a",
+      "aliases": [],
+      "language": "Digital (FSK)",
+      "operator": "Russia",
+      "tier": "scheduled",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": "2026-09-10",
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/digital/f06a",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "F07",
+      "name": "F07",
+      "aliases": [],
+      "language": "Digital (FSK)",
+      "operator": "Russia",
+      "tier": "scheduled",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": "2026-09-11",
+      "lore": null,
+      "frequencies": [],
+      "schedules": [
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,TH;BYHOUR=20;BYMINUTE=0",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            14541,
+            16329,
+            16336,
+            17436,
+            16263,
+            13985,
+            11147,
+            null,
+            null
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/f07/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,TH;BYHOUR=20;BYMINUTE=10",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            13526,
+            15887,
+            15866,
+            16348,
+            15852,
+            13471,
+            10463,
+            null,
+            null
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/f07/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,TH;BYHOUR=20;BYMINUTE=20",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            12214,
+            14937,
+            14918,
+            15968,
+            14968,
+            12216,
+            10176,
+            null,
+            null
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/f07/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,TH;BYHOUR=20;BYMINUTE=30",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            11476,
+            14458,
+            14483,
+            14852,
+            14417,
+            11589,
+            9248,
+            null,
+            null
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/f07/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,TH;BYHOUR=20;BYMINUTE=40",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            10283,
+            13892,
+            13901,
+            13961,
+            13478,
+            10867,
+            8173,
+            null,
+            null
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/f07/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,TH;BYHOUR=20;BYMINUTE=50",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            9367,
+            12207,
+            13389,
+            13373,
+            12143,
+            10258,
+            7629,
+            null,
+            null
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/f07/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,TH;BYHOUR=21;BYMINUTE=0",
+          "khzByMonth": [
+            7461,
+            8152,
+            10244,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            8182,
+            7526
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/f07/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,TH;BYHOUR=21;BYMINUTE=10",
+          "khzByMonth": [
+            6979,
+            7934,
+            9379,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            7856,
+            7453
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/f07/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,TH;BYHOUR=21;BYMINUTE=20",
+          "khzByMonth": [
+            6783,
+            7694,
+            8161,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            7541,
+            6993
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/f07/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,TH;BYHOUR=21;BYMINUTE=30",
+          "khzByMonth": [
+            5841,
+            7454,
+            7518,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            6992,
+            6773
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/f07/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,TH;BYHOUR=21;BYMINUTE=40",
+          "khzByMonth": [
+            5318,
+            6877,
+            6783,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            6802,
+            5748
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/f07/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,TH;BYHOUR=21;BYMINUTE=50",
+          "khzByMonth": [
+            5081,
+            5437,
+            5864,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            5818,
+            5169
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/f07/schedule"
+        }
+      ],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/digital/f07",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "P03",
+      "name": "P03",
+      "aliases": [],
+      "language": "Digital (PSK)",
+      "operator": "Poland",
+      "tier": "scheduled",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": "2026-09-10",
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/digital/p03",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "P07",
+      "name": "P07",
+      "aliases": [],
+      "language": "Digital (PSK)",
+      "operator": "Russia",
+      "tier": "scheduled",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": "2026-09-11",
+      "lore": null,
+      "frequencies": [],
+      "schedules": [
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE,SU;BYHOUR=14;BYMINUTE=0",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            10446,
+            9067,
+            9224,
+            9368,
+            9214,
+            9311,
+            10396,
+            null,
+            null
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/p07/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE,SU;BYHOUR=14;BYMINUTE=10",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            9379,
+            8137,
+            8124,
+            8185,
+            8187,
+            9071,
+            10159,
+            null,
+            null
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/p07/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE,SU;BYHOUR=14;BYMINUTE=20",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            9109,
+            7704,
+            7589,
+            7704,
+            7534,
+            8189,
+            9044,
+            null,
+            null
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/p07/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE,SU;BYHOUR=14;BYMINUTE=30",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            8166,
+            6828,
+            6854,
+            6872,
+            6782,
+            7894,
+            8154,
+            null,
+            null
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/p07/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE,SU;BYHOUR=14;BYMINUTE=40",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            7718,
+            6794,
+            5829,
+            5861,
+            5899,
+            7488,
+            7534,
+            null,
+            null
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/p07/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE,SU;BYHOUR=14;BYMINUTE=50",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            6969,
+            5774,
+            5284,
+            5386,
+            5184,
+            6783,
+            6856,
+            null,
+            null
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/p07/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE,SU;BYHOUR=15;BYMINUTE=0",
+          "khzByMonth": [
+            7584,
+            10251,
+            10328,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            8136,
+            6986
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/p07/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE,SU;BYHOUR=15;BYMINUTE=10",
+          "khzByMonth": [
+            6926,
+            9333,
+            9388,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            8074,
+            6774
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/p07/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE,SU;BYHOUR=15;BYMINUTE=20",
+          "khzByMonth": [
+            5814,
+            9074,
+            9062,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            7504,
+            5853
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/p07/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE,SU;BYHOUR=15;BYMINUTE=30",
+          "khzByMonth": [
+            5471,
+            8128,
+            8134,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            6821,
+            5336
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/p07/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE,SU;BYHOUR=15;BYMINUTE=40",
+          "khzByMonth": [
+            5094,
+            7691,
+            7886,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            5848,
+            5082
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/p07/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE,SU;BYHOUR=15;BYMINUTE=50",
+          "khzByMonth": [
+            4639,
+            7458,
+            7462,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            5112,
+            4609
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/p07/schedule"
+        }
+      ],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/digital/p07",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "XPA",
+      "name": "Polytones",
+      "aliases": [],
+      "language": "Digital (other)",
+      "operator": "Russia, SVR",
+      "tier": "scheduled",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": "2026-09-11",
+      "lore": null,
+      "frequencies": [],
+      "schedules": [
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,TH;BYHOUR=7;BYMINUTE=10",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            10428,
+            11169,
+            11421,
+            10446,
+            10234,
+            10682,
+            12167,
+            null,
+            null
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,TH;BYHOUR=7;BYMINUTE=30",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            11431,
+            12179,
+            12151,
+            11474,
+            11511,
+            11571,
+            13437,
+            null,
+            null
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,TH;BYHOUR=7;BYMINUTE=50",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            13441,
+            13431,
+            13972,
+            12175,
+            12117,
+            12216,
+            14972,
+            null,
+            null
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,TH;BYHOUR=8;BYMINUTE=10",
+          "khzByMonth": [
+            12157,
+            13397,
+            12132,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            13978,
+            11531
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,TH;BYHOUR=8;BYMINUTE=30",
+          "khzByMonth": [
+            13462,
+            14413,
+            13453,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            14859,
+            12137
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,TH;BYHOUR=8;BYMINUTE=50",
+          "khzByMonth": [
+            14374,
+            15972,
+            14576,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            15871,
+            13932
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE,FR;BYHOUR=12;BYMINUTE=10",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            13368,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE,FR;BYHOUR=12;BYMINUTE=30",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            12168,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE,FR;BYHOUR=12;BYMINUTE=50",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            11168,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE,FR;BYHOUR=13;BYMINUTE=10",
+          "khzByMonth": [
+            14852,
+            14374,
+            14451,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            13875,
+            13465
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE,FR;BYHOUR=13;BYMINUTE=30",
+          "khzByMonth": [
+            13952,
+            13374,
+            13451,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            13375,
+            12165
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE,FR;BYHOUR=13;BYMINUTE=50",
+          "khzByMonth": [
+            11552,
+            11474,
+            12151,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            10875,
+            10265
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa/schedule"
+        }
+      ],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/digital/xpa",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "XPA2",
+      "name": "Polytones",
+      "aliases": [],
+      "language": "Digital (other)",
+      "operator": "Russia, SVR",
+      "tier": "scheduled",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": "2026-09-11",
+      "lore": null,
+      "frequencies": [],
+      "schedules": [
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,WE;BYHOUR=7;BYMINUTE=0",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            11409,
+            12148,
+            12148,
+            12148,
+            12152,
+            12152,
+            13372,
+            null,
+            null
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa2/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,WE;BYHOUR=7;BYMINUTE=20",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            12209,
+            13448,
+            13448,
+            13448,
+            13552,
+            13552,
+            14672,
+            null,
+            null
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa2/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,WE;BYHOUR=7;BYMINUTE=40",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            13409,
+            13948,
+            13948,
+            13948,
+            13952,
+            13952,
+            15872,
+            null,
+            null
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa2/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,WE;BYHOUR=8;BYMINUTE=0",
+          "khzByMonth": [
+            11493,
+            13387,
+            13931,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            11529,
+            11493
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa2/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,WE;BYHOUR=8;BYMINUTE=20",
+          "khzByMonth": [
+            13393,
+            13887,
+            14831,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            13429,
+            13393
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa2/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,WE;BYHOUR=8;BYMINUTE=40",
+          "khzByMonth": [
+            13993,
+            14787,
+            16131,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            13929,
+            13993
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa2/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,WE;BYHOUR=9;BYMINUTE=10",
+          "khzByMonth": [
+            14977,
+            16102,
+            18333,
+            18038,
+            17431,
+            17417,
+            16296,
+            18059,
+            18206,
+            17471,
+            17413,
+            13562
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa2/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,WE;BYHOUR=9;BYMINUTE=30",
+          "khzByMonth": [
+            13971,
+            14951,
+            16345,
+            17474,
+            15841,
+            15812,
+            14981,
+            16093,
+            16329,
+            16149,
+            15852,
+            11583
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa2/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,WE;BYHOUR=9;BYMINUTE=50",
+          "khzByMonth": [
+            13371,
+            13991,
+            14838,
+            16286,
+            13934,
+            14504,
+            13953,
+            14874,
+            15824,
+            14406,
+            13363,
+            10281
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa2/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,SA;BYHOUR=15;BYMINUTE=0",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            15881,
+            15938,
+            14892,
+            13954,
+            13825,
+            14373,
+            13906,
+            null,
+            null
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa2/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,SA;BYHOUR=15;BYMINUTE=20",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            14481,
+            14538,
+            13492,
+            12154,
+            12125,
+            13373,
+            12106,
+            null,
+            null
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa2/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,SA;BYHOUR=15;BYMINUTE=40",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            13381,
+            13438,
+            12192,
+            11454,
+            11025,
+            11573,
+            10906,
+            null,
+            null
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa2/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,SA;BYHOUR=16;BYMINUTE=0",
+          "khzByMonth": [
+            9317,
+            11461,
+            12163,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            8126,
+            6984
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa2/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,SA;BYHOUR=16;BYMINUTE=20",
+          "khzByMonth": [
+            8117,
+            10261,
+            10863,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            6826,
+            5884
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa2/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,SA;BYHOUR=16;BYMINUTE=40",
+          "khzByMonth": [
+            7517,
+            9161,
+            9363,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            5326,
+            4784
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa2/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,TH;BYHOUR=16;BYMINUTE=0",
+          "khzByMonth": [
+            10465,
+            12173,
+            13994,
+            15819,
+            13538,
+            13417,
+            13538,
+            14864,
+            13887,
+            13542,
+            10223,
+            8184
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa2/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,TH;BYHOUR=16;BYMINUTE=20",
+          "khzByMonth": [
+            9165,
+            10373,
+            13494,
+            14919,
+            14438,
+            14817,
+            14438,
+            14364,
+            13387,
+            12142,
+            9223,
+            7684
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa2/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,TH;BYHOUR=16;BYMINUTE=40",
+          "khzByMonth": [
+            8065,
+            9373,
+            12194,
+            13919,
+            14938,
+            15917,
+            14938,
+            13464,
+            11587,
+            11442,
+            8123,
+            6784
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa2/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,FR;BYHOUR=11;BYMINUTE=0",
+          "khzByMonth": [
+            10231,
+            12147,
+            14639,
+            16341,
+            null,
+            null,
+            null,
+            null,
+            null,
+            14537,
+            10653,
+            9265
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa2/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,FR;BYHOUR=11;BYMINUTE=20",
+          "khzByMonth": [
+            9331,
+            10347,
+            13539,
+            14841,
+            null,
+            null,
+            null,
+            null,
+            null,
+            13437,
+            9353,
+            8165
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa2/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,FR;BYHOUR=11;BYMINUTE=40",
+          "khzByMonth": [
+            8131,
+            9247,
+            12139,
+            13941,
+            null,
+            null,
+            null,
+            null,
+            null,
+            10737,
+            8153,
+            7665
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa2/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,SU;BYHOUR=12;BYMINUTE=0",
+          "khzByMonth": [
+            10921,
+            11163,
+            13384,
+            14442,
+            null,
+            null,
+            null,
+            null,
+            13914,
+            14469,
+            14783,
+            10807
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa2/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,SU;BYHOUR=12;BYMINUTE=20",
+          "khzByMonth": [
+            12221,
+            13363,
+            13984,
+            15842,
+            null,
+            null,
+            null,
+            null,
+            15814,
+            16169,
+            13883,
+            12207
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa2/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,SU;BYHOUR=12;BYMINUTE=40",
+          "khzByMonth": [
+            13521,
+            14563,
+            14984,
+            16342,
+            null,
+            null,
+            null,
+            null,
+            16314,
+            17469,
+            12183,
+            13507
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa2/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,SU;BYHOUR=21;BYMINUTE=0",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            null,
+            13376,
+            13427,
+            13394,
+            12159,
+            null,
+            null,
+            null,
+            null
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa2/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,SU;BYHOUR=21;BYMINUTE=20",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            null,
+            11576,
+            12227,
+            12194,
+            11559,
+            null,
+            null,
+            null,
+            null
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa2/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,SU;BYHOUR=21;BYMINUTE=40",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            null,
+            10776,
+            10827,
+            10794,
+            10559,
+            null,
+            null,
+            null,
+            null
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa2/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE,TH;BYHOUR=11;BYMINUTE=0",
+          "khzByMonth": [
+            13384,
+            13967,
+            15861,
+            17426,
+            16147,
+            15982,
+            17435,
+            16264,
+            16117,
+            14672,
+            13393,
+            11579
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa2/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE,TH;BYHOUR=11;BYMINUTE=20",
+          "khzByMonth": [
+            12184,
+            13367,
+            14431,
+            16326,
+            15847,
+            14982,
+            16235,
+            15864,
+            14917,
+            13472,
+            12193,
+            10979
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa2/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE,TH;BYHOUR=11;BYMINUTE=40",
+          "khzByMonth": [
+            10984,
+            11567,
+            13431,
+            14926,
+            14747,
+            13882,
+            14935,
+            14864,
+            13517,
+            12172,
+            11093,
+            10279
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa2/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE,FR;BYHOUR=12;BYMINUTE=0",
+          "khzByMonth": [
+            10726,
+            11575,
+            12139,
+            14377,
+            null,
+            null,
+            null,
+            13919,
+            13484,
+            13452,
+            10968,
+            9389
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa2/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE,FR;BYHOUR=12;BYMINUTE=20",
+          "khzByMonth": [
+            11426,
+            13375,
+            13539,
+            14977,
+            null,
+            null,
+            null,
+            14719,
+            14684,
+            14452,
+            12168,
+            10289
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa2/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE,FR;BYHOUR=12;BYMINUTE=40",
+          "khzByMonth": [
+            12226,
+            13975,
+            14639,
+            15977,
+            null,
+            null,
+            null,
+            16219,
+            15984,
+            15852,
+            13368,
+            11589
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa2/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE,FR;BYHOUR=21;BYMINUTE=0",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            null,
+            12124,
+            13462,
+            12124,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa2/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE,FR;BYHOUR=21;BYMINUTE=20",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            null,
+            11124,
+            12162,
+            11124,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa2/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE,FR;BYHOUR=21;BYMINUTE=40",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            null,
+            10624,
+            11562,
+            10624,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa2/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TH,SA;BYHOUR=9;BYMINUTE=10",
+          "khzByMonth": [
+            14794,
+            16146,
+            16261,
+            15859,
+            14794,
+            13527,
+            13445,
+            14372,
+            15859,
+            17438,
+            15985,
+            13919
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa2/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TH,SA;BYHOUR=9;BYMINUTE=30",
+          "khzByMonth": [
+            13994,
+            15846,
+            15961,
+            14659,
+            13994,
+            12227,
+            12145,
+            13372,
+            14659,
+            16338,
+            14885,
+            11519
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa2/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TH,SA;BYHOUR=9;BYMINUTE=50",
+          "khzByMonth": [
+            12194,
+            14446,
+            14861,
+            13459,
+            12194,
+            11427,
+            11545,
+            12172,
+            13459,
+            15938,
+            13885,
+            10719
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa2/schedule"
+        }
+      ],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/digital/xpa2",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "XPB",
+      "name": "Polytones",
+      "aliases": [],
+      "language": "Digital (other)",
+      "operator": "Russia, SVR",
+      "tier": "scheduled",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": "2026-09-11",
+      "lore": null,
+      "frequencies": [],
+      "schedules": [
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,TU;BYHOUR=6;BYMINUTE=0",
+          "khzByMonth": [
+            19461,
+            19461,
+            18434,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,TU;BYHOUR=6;BYMINUTE=10",
+          "khzByMonth": [
+            19261,
+            19261,
+            18234,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,TU;BYHOUR=6;BYMINUTE=20",
+          "khzByMonth": [
+            18261,
+            18261,
+            17434,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,TU;BYHOUR=6;BYMINUTE=30",
+          "khzByMonth": [
+            16261,
+            16261,
+            16234,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,TU;BYHOUR=6;BYMINUTE=40",
+          "khzByMonth": [
+            15861,
+            15861,
+            15834,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,TU;BYHOUR=6;BYMINUTE=50",
+          "khzByMonth": [
+            14961,
+            14961,
+            14434,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,SA;BYHOUR=11;BYMINUTE=0",
+          "khzByMonth": [
+            14769,
+            15814,
+            18253,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            13894,
+            14483
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,SA;BYHOUR=11;BYMINUTE=10",
+          "khzByMonth": [
+            14369,
+            14814,
+            17453,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            13394,
+            13983
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,SA;BYHOUR=11;BYMINUTE=20",
+          "khzByMonth": [
+            13969,
+            14414,
+            15953,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            12194,
+            13483
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,SA;BYHOUR=11;BYMINUTE=30",
+          "khzByMonth": [
+            13369,
+            13914,
+            14953,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            11494,
+            12183
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,SA;BYHOUR=11;BYMINUTE=40",
+          "khzByMonth": [
+            12169,
+            13414,
+            14353,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            11094,
+            11583
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,SA;BYHOUR=11;BYMINUTE=50",
+          "khzByMonth": [
+            11169,
+            12214,
+            13553,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            10494,
+            10983
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,SA;BYHOUR=12;BYMINUTE=0",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            17474,
+            16329,
+            15876,
+            15876,
+            15876,
+            14462,
+            14462,
+            null,
+            null
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,SA;BYHOUR=12;BYMINUTE=10",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            16274,
+            15929,
+            14876,
+            14876,
+            14876,
+            13962,
+            13962,
+            null,
+            null
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,SA;BYHOUR=12;BYMINUTE=20",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            15974,
+            14829,
+            14376,
+            14376,
+            14376,
+            13462,
+            13462,
+            null,
+            null
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,SA;BYHOUR=12;BYMINUTE=30",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            14974,
+            14429,
+            13976,
+            13976,
+            13976,
+            12162,
+            12162,
+            null,
+            null
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,SA;BYHOUR=12;BYMINUTE=40",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            14374,
+            13929,
+            13376,
+            13376,
+            13376,
+            11562,
+            11562,
+            null,
+            null
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,SA;BYHOUR=12;BYMINUTE=50",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            13874,
+            13529,
+            12176,
+            12176,
+            12176,
+            10962,
+            10962,
+            null,
+            null
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,FR;BYHOUR=13;BYMINUTE=0",
+          "khzByMonth": [
+            20069,
+            20035,
+            20072,
+            20038,
+            20061,
+            20047,
+            20024,
+            20064,
+            20017,
+            20075,
+            20021,
+            20044
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,FR;BYHOUR=13;BYMINUTE=10",
+          "khzByMonth": [
+            19369,
+            19235,
+            19572,
+            19538,
+            19361,
+            19247,
+            19224,
+            19364,
+            19317,
+            19575,
+            19521,
+            19344
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,FR;BYHOUR=13;BYMINUTE=20",
+          "khzByMonth": [
+            18269,
+            18335,
+            18372,
+            18268,
+            18261,
+            18247,
+            18324,
+            18464,
+            18037,
+            18175,
+            18421,
+            18544
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,FR;BYHOUR=13;BYMINUTE=30",
+          "khzByMonth": [
+            17469,
+            17435,
+            17472,
+            17468,
+            17461,
+            17447,
+            17424,
+            17464,
+            17417,
+            17475,
+            17421,
+            17444
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,FR;BYHOUR=13;BYMINUTE=40",
+          "khzByMonth": [
+            16269,
+            16235,
+            16272,
+            16268,
+            16261,
+            16247,
+            16324,
+            16264,
+            16217,
+            16275,
+            16321,
+            16244
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,FR;BYHOUR=13;BYMINUTE=50",
+          "khzByMonth": [
+            15969,
+            15835,
+            14972,
+            15868,
+            14961,
+            14947,
+            15824,
+            15864,
+            15817,
+            14975,
+            15921,
+            14944
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,SU;BYHOUR=19;BYMINUTE=0",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            13547,
+            14852,
+            15863,
+            14644,
+            14918,
+            12139,
+            9323,
+            null,
+            null
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,SU;BYHOUR=19;BYMINUTE=10",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            12147,
+            13952,
+            14963,
+            13444,
+            13918,
+            10939,
+            8123,
+            null,
+            null
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,SU;BYHOUR=19;BYMINUTE=20",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            11547,
+            12152,
+            13963,
+            12144,
+            12218,
+            9339,
+            7723,
+            null,
+            null
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,SU;BYHOUR=19;BYMINUTE=30",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            10447,
+            11152,
+            12163,
+            11044,
+            11118,
+            8139,
+            6923,
+            null,
+            null
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,SU;BYHOUR=19;BYMINUTE=40",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            9347,
+            10352,
+            11163,
+            10344,
+            10218,
+            6939,
+            5823,
+            null,
+            null
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,SU;BYHOUR=19;BYMINUTE=50",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            8147,
+            9252,
+            10463,
+            9244,
+            9118,
+            5839,
+            5123,
+            null,
+            null
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,SU;BYHOUR=20;BYMINUTE=0",
+          "khzByMonth": [
+            7771,
+            8064,
+            9181,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            7876,
+            8058
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,SU;BYHOUR=20;BYMINUTE=10",
+          "khzByMonth": [
+            7471,
+            7964,
+            7881,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            7576,
+            7558
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,SU;BYHOUR=20;BYMINUTE=20",
+          "khzByMonth": [
+            6771,
+            6964,
+            6881,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            6876,
+            5858
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,SU;BYHOUR=20;BYMINUTE=30",
+          "khzByMonth": [
+            5771,
+            5864,
+            5881,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            5876,
+            5158
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,SU;BYHOUR=20;BYMINUTE=40",
+          "khzByMonth": [
+            5171,
+            5364,
+            5181,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            5376,
+            4858
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,SU;BYHOUR=20;BYMINUTE=50",
+          "khzByMonth": [
+            4771,
+            4464,
+            4581,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            4476,
+            4458
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE,SA;BYHOUR=11;BYMINUTE=0",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            13562,
+            13961,
+            13876,
+            13884,
+            13567,
+            13521,
+            16245,
+            null,
+            null
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE,SA;BYHOUR=11;BYMINUTE=10",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            12162,
+            13361,
+            13376,
+            13384,
+            13367,
+            13421,
+            15825,
+            null,
+            null
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE,SA;BYHOUR=11;BYMINUTE=20",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            11562,
+            12161,
+            12176,
+            12184,
+            12167,
+            12221,
+            14925,
+            null,
+            null
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE,SA;BYHOUR=11;BYMINUTE=30",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            11162,
+            11461,
+            11576,
+            11584,
+            11567,
+            11521,
+            13525,
+            null,
+            null
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE,SA;BYHOUR=11;BYMINUTE=40",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            10562,
+            10761,
+            10676,
+            11084,
+            11067,
+            11021,
+            12125,
+            null,
+            null
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE,SA;BYHOUR=11;BYMINUTE=50",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            10262,
+            10161,
+            10276,
+            10584,
+            10567,
+            10521,
+            11425,
+            null,
+            null
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE,SA;BYHOUR=12;BYMINUTE=0",
+          "khzByMonth": [
+            15925,
+            14873,
+            14621,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            16353,
+            14978
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE,SA;BYHOUR=12;BYMINUTE=10",
+          "khzByMonth": [
+            14825,
+            14373,
+            13921,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            15953,
+            13978
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE,SA;BYHOUR=12;BYMINUTE=20",
+          "khzByMonth": [
+            13425,
+            13873,
+            13421,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            14953,
+            13378
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE,SA;BYHOUR=12;BYMINUTE=30",
+          "khzByMonth": [
+            12125,
+            13373,
+            12121,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            13453,
+            12178
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE,SA;BYHOUR=12;BYMINUTE=40",
+          "khzByMonth": [
+            10425,
+            12173,
+            11121,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            12153,
+            11078
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE,SA;BYHOUR=12;BYMINUTE=50",
+          "khzByMonth": [
+            9325,
+            11173,
+            10421,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            11453,
+            10278
+          ],
+          "lastConfirmed": "2026-09-11",
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        }
+      ],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/digital/xpb",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "F11",
+      "name": "F11",
+      "aliases": [],
+      "language": "Digital (FSK)",
+      "operator": "Poland",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/digital/f11",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "SK01",
+      "name": "SK01",
+      "aliases": [],
+      "language": "Digital (other)",
+      "operator": "Cuba",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/digital/sk01",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    },
+    {
+      "enigmaId": "XP",
+      "name": "XP",
+      "aliases": [],
+      "language": "Digital (other)",
+      "operator": "Russia",
+      "tier": "historical",
+      "marker": null,
+      "markerPeriodSec": null,
+      "lastConfirmed": null,
+      "lore": null,
+      "frequencies": [],
+      "schedules": [],
+      "sourceUrls": [
+        "https://priyom.org/number-stations/digital/xp",
+        "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
+      ],
+      "sites": [],
+      "activeFrom": null
+    }
+  ]
+}

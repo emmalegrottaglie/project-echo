@@ -425,9 +425,10 @@ Ranked by uniqueness against cost:
    `PREFIX_MEANING` already encodes the taxonomy — E, G and S
    for voice languages, M for Morse, F, P and X for digital. One screen turns 141
    opaque codes into a readable system. The highest payoff per hour in this list.
-4. **Timeline.** **Built**, and no longer sparse: 73 stations carry a date since the
-   descriptions were imported, 18 with a start and 66 with an end. It is still honest
-   about which dates are events and which are only sightings — see
+4. **Timeline.** **Built**, and no longer sparse: 73 of the 141 stations carry a date
+   since the descriptions were imported. 18 have a sourced start and 66 a sourced end,
+   twelve of them both; the remaining row is M08a, placed by its `lastConfirmed` alone.
+   It is still honest about which dates are events and which are only sightings — see
    [RESEARCH.md](RESEARCH.md) §9.
 5. **On this day.** Cheap once the dates exist, and it is what brings people back.
 6. **Map.** Transmitter sites, partial by construction under the provenance rule — no
