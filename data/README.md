@@ -3,6 +3,24 @@
 `stations.json` is the roster: 141 stations, their identity, status, frequencies and
 schedules. It is the source of truth. Nothing in `src/` holds station facts.
 
+## Where the rows come from
+
+Schedules and the frequency lists that accompany them are imported:
+
+```bash
+npm run import-priyom     # rewrites this file from priyom.org, then read the diff
+```
+
+Never hand-edit a row the importer produces — re-run it and commit the diff, so the
+result stays reproducible. [`scripts/import-priyom.mjs`](../scripts/import-priyom.mjs)
+documents what it refuses to read and why: it will not touch a table with a `Message`
+column, because that is V07's log of received transmissions and storing message content
+is the legal boundary in [docs/RESEARCH.md](../docs/RESEARCH.md) §5; and it skips rows
+Priyom renders in italics, which its own legend marks as outdated.
+
+Everything else — identity, operator, tier, lore, the live markers' frequencies — is
+hand-written and stays that way.
+
 ## Editing it
 
 Edit the JSON and open a pull request. There is no admin interface and no database
@@ -19,6 +37,8 @@ edit fails CI rather than shipping. It checks, among other things:
 
 - every frequency and every schedule carries a `sourceUrl` and the frequency carries a
   `lastConfirmed` date — the provenance rule from [docs/PLAN.md](../docs/PLAN.md) §3;
+- every schedule carries exactly twelve `khzByMonth` entries, January first, and at
+  least one of them is a frequency. A slot with nothing in any month is not a slot;
 - every URL is `http` or `https`. Nothing else is accepted, because these strings are
   interpolated into `href` attributes in the archive view;
 - designators are unique, tiers are one of `live`, `scheduled`, `historical`;
@@ -54,7 +74,8 @@ was built with — clearing `echo.stations` always returns it to that.
 
 ## Changing the shape
 
-`schemaVersion` is `1`. Bump it only for a change an older client cannot read; an
+`schemaVersion` is `2`. Version 2 replaced a slot's single `khz` with twelve
+`khzByMonth` entries. Bump it only for a change an older client cannot read; an
 unknown version makes clients keep their bundled copy instead of guessing, which is
 what stops a new dataset from breaking an APK someone installed months ago. Adding an
 optional field does not need a bump. Renaming or removing one does.

@@ -1,5 +1,13 @@
 import { describe, expect, it } from 'vitest';
-import { countdown, currentPeriod, formatUtc, isOffHours, nextOccurrence, upcoming } from '../src/schedule';
+import {
+  countdown,
+  currentPeriod,
+  formatUtc,
+  isOffHours,
+  nextOccurrence,
+  scheduleKhz,
+  upcoming,
+} from '../src/schedule';
 import type { Schedule, Station } from '../src/types';
 
 /**
@@ -9,7 +17,12 @@ import type { Schedule, Station } from '../src/types';
  */
 
 function schedule(rrule: string, khz: number | null = null): Schedule {
-  return { rrule, khz, note: null, sourceUrl: 'https://example.test' };
+  return {
+    rrule,
+    khzByMonth: Array.from({ length: 12 }, () => khz),
+    note: null,
+    sourceUrl: 'https://example.test',
+  };
 }
 
 function station(id: string, schedules: Schedule[]): Station {
@@ -141,5 +154,43 @@ describe('currentPeriod', () => {
     // The Buzzer's 4625 kHz has no period and is on around the clock.
     expect(isOffHours(null, at('2026-09-11T11:45:00Z'))).toBe(false);
     expect(isOffHours(null, at('2026-09-11T23:45:00Z'))).toBe(false);
+  });
+});
+
+/**
+ * Monthly frequency rotation. These schedules publish a different frequency for each
+ * part of the year, and the frequency that matters for a window three weeks out is the
+ * one for *that* window's month, not for today.
+ */
+describe('scheduleKhz', () => {
+  const rotating = (): Schedule => ({
+    rrule: 'FREQ=WEEKLY;BYDAY=MO;BYHOUR=3;BYMINUTE=15',
+    // E11's 03:15 slot, as published: Jan-Feb 8102, Mar-Apr 12630, May-Aug 16530,
+    // Sep-Oct 12630, Nov-Dec 8102.
+    khzByMonth: [8102, 8102, 12630, 12630, 16530, 16530, 16530, 16530, 12630, 12630, 8102, 8102],
+    note: null,
+    sourceUrl: 'https://example.test',
+  });
+
+  it('reads the month the occurrence falls in', () => {
+    expect(scheduleKhz(rotating(), new Date('2026-01-05T03:15:00Z'))).toBe(8102);
+    expect(scheduleKhz(rotating(), new Date('2026-05-04T03:15:00Z'))).toBe(16530);
+    expect(scheduleKhz(rotating(), new Date('2026-12-07T03:15:00Z'))).toBe(8102);
+  });
+
+  it('reads UTC months, so a window near midnight does not shift a month', () => {
+    // 23:30 on 31 January is already February for anyone east of UTC.
+    expect(scheduleKhz(rotating(), new Date('2026-01-31T23:30:00Z'))).toBe(8102);
+  });
+
+  it('is null for a month the source publishes nothing for', () => {
+    const summerOnly: Schedule = {
+      rrule: 'FREQ=WEEKLY;BYDAY=SU;BYHOUR=7;BYMINUTE=0',
+      khzByMonth: [null, null, null, null, 14469, 13927, 13978, 13408, null, null, null, null],
+      note: null,
+      sourceUrl: 'https://example.test',
+    };
+    expect(scheduleKhz(summerOnly, new Date('2026-06-07T07:00:00Z'))).toBe(13927);
+    expect(scheduleKhz(summerOnly, new Date('2026-01-04T07:00:00Z'))).toBeNull();
   });
 });

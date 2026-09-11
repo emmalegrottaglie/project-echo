@@ -1,6 +1,7 @@
 import { fetchObservations, type Observation } from '../api';
 import { archiveLinks } from '../archives';
 import { allStations, byId, isRosterOnly, prefixMeaning } from '../data/stations';
+import { scheduleKhz } from '../schedule';
 import type { Station, Tier } from '../types';
 import {
   definitionList,
@@ -92,6 +93,7 @@ function observationsHtml(observations: Observation[]): string {
 
 function detailHtml(station: Station): string {
   const links = archiveLinks(station);
+  const now = new Date();
 
   const items = [
     { label: 'Classification', value: prefixMeaning(station.enigmaId) },
@@ -119,7 +121,7 @@ function detailHtml(station: Station): string {
             .map(
               (schedule) =>
                 `<li><code>${esc(schedule.rrule)}</code>` +
-                (schedule.khz ? ` — ${schedule.khz} kHz` : '') +
+                (scheduleKhz(schedule, now) ? ` — ${scheduleKhz(schedule, now)} kHz this month` : '') +
                 (schedule.note ? `<span>${esc(schedule.note)}</span>` : '') +
                 `</li>`,
             )

@@ -14,6 +14,7 @@
     "server": "node server/index.mjs",
     "start": "npm run build && npm run server",
     "diagnostic-wav": "node scripts/make-diagnostic-wav.mjs",
+    "import-priyom": "node scripts/import-priyom.mjs",
     "relay": "node scripts/relay.mjs",
     "android:sync": "npm run build && cap sync android",
     "android:apk": "npm run android:sync && node scripts/android-apk.mjs"

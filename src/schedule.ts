@@ -41,6 +41,17 @@ function parse(schedule: Schedule): RRule {
   });
 }
 
+/**
+ * The frequency a slot runs on in the month `at` falls in.
+ *
+ * `at` is the occurrence's own date, not today's. A window three weeks out can be in
+ * next month, and announcing this month's frequency for it would send a listener to an
+ * empty channel — which is the failure this whole field exists to prevent.
+ */
+export function scheduleKhz(schedule: Schedule, at: Date): number | null {
+  return schedule.khzByMonth[at.getUTCMonth()] ?? null;
+}
+
 /** Next occurrence of one slot at or after `from`, or null if the rule is exhausted. */
 export function nextOccurrence(schedule: Schedule, from: Date): Date | null {
   return parse(schedule).after(from, true);

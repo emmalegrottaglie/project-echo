@@ -19,7 +19,7 @@ the server. Three features need the server and hide themselves without it: the
 in-app receiver directory, saved observations, and the relay.
 
 ```bash
-npm test        # 81 tests: detector, schedules, alerts, receivers, directory, station data
+npm test        # 96 tests: detector, schedules, alerts, receivers, directory, station data
 npm run typecheck
 ```
 
@@ -54,7 +54,7 @@ layout.
 | View | What it shows |
 |------|---------------|
 | **Live** | Receiver list, station and frequency selector, scrolling waterfall, marker detector, propagation map. Only the three continuously-transmitting Russian markers are offered — see below. A frequency that is the wrong half of a day/night pair is marked off-hours against the current UTC time, and offered anyway. |
-| **Schedule** | Next transmission windows in UTC and local time, with countdowns and per-slot alerts. |
+| **Schedule** | Next transmission windows in UTC and local time, with countdowns and per-slot alerts. 186 slots across the 10 active stations that publish one, with the frequency for each window's own month. |
 | **Archive** | All 141 stations: 3 live markers, 26 scheduled, 112 historical. Filterable, with per-frequency sources and dates, plus searches into the recording archives. |
 
 Four themes (Phosphor Green, Amber Terminal, Midnight Blue, High Contrast Red),
@@ -191,6 +191,13 @@ source URL and confirmation date, and a `disputed` flag where sources conflict �
 published as both 5473/3828 kHz and 5367/3363.5 kHz, and the app shows both rather than
 picking one.
 
+Schedules and the frequencies that go with them are imported from Priyom by
+[scripts/import-priyom.mjs](scripts/import-priyom.mjs) — `npm run import-priyom`,
+then read the diff. Each slot stores twelve frequencies, one per month, because that
+is how these schedules are published: E11's 03:15 slot runs 8102 kHz in January and
+16530 kHz in May, and a single frequency with a note saying it rotates is wrong
+eleven months of the year.
+
 The roster lives in [data/stations.json](data/stations.json), not in the source. The
 build inlines a copy so the app has all 141 stations offline and with no server, and
 `GET /api/stations` serves the current file so a correction reaches an installed
@@ -259,6 +266,7 @@ The four-step deployment check, and what every failure symptom means, are in
   receiver that is ours to relay. Both are open.
 - Corrections still arrive as pull requests. `GET /api/stations` ships them to
   installed clients without a release, but there is no in-app way to report one yet.
-- Schedules imported for E11 only, and partially — Priyom lists further slots through
-  20:00 UTC. The schedule view states the coverage so a short list reads as an import
-  gap, not a quiet band.
+- 16 of the 26 active stations publish no schedule and no frequency list on Priyom,
+  so they carry identity and status only. That is a gap in the source rather than in
+  the import, and the schedule view states the coverage so their absence reads as a
+  gap and not as a quiet band.

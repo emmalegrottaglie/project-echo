@@ -7,16 +7,23 @@ import {
   toggleSubscription,
 } from '../alerts';
 import { allStations } from '../data/stations';
-import { countdown, formatLocal, formatUtc, upcoming } from '../schedule';
+import { countdown, formatLocal, formatUtc, upcoming,
+  scheduleKhz,
+} from '../schedule';
 import { alertSwitch, button, esc, gapNotice } from '../ui';
 
 /**
  * Schedule tab: upcoming transmission windows, soonest first, each with an alert.
  *
  * The coverage note states two facts every time — how much of the data is actually
- * imported, and what the notification permission can and cannot do. Only E11's
- * schedule is imported so far, and only partially, so a short list has to read as an
- * import gap rather than as a quiet band.
+ * imported, and what the notification permission can and cannot do. Ten of the
+ * twenty-six active stations publish a schedule Priyom tabulates; the rest publish
+ * none, so a station absent from this list has to read as a gap in the source rather
+ * than as a quiet band.
+ *
+ * Frequencies rotate month by month and each slot stores twelve, so the one shown is
+ * the one for the month that window falls in — which for a window three weeks out is
+ * not necessarily this month's.
  */
 
 const TICK_MS = 30_000;
@@ -44,10 +51,10 @@ export function scheduleView(): { element: HTMLElement; destroy: () => void } {
     <div class="echo-scroll">
       <div class="echo-coverage">
         <p>
-          ${withSchedules.length} of ${scheduled.length} scheduled stations have imported
-          schedules. Times are as published, in UTC. Several operators rotate frequencies
-          month by month, so a slot that is silent on the listed frequency may simply
-          have moved.
+          ${withSchedules.length} of ${scheduled.length} active stations publish a schedule.
+          The rest are transmitting but list no times, so they cannot be counted down to.
+          Times are as published, in UTC. Frequencies rotate month by month and the one
+          shown is the one published for that window's own month.
         </p>
         <p class="echo-coverage__permission"></p>
         <div class="echo-permission-action"></div>
@@ -100,7 +107,7 @@ export function scheduleView(): { element: HTMLElement; destroy: () => void } {
           `</div>` +
           `<div class="echo-schedule-row__times">${esc(formatUtc(at))} · ${esc(
             formatLocal(at),
-          )} · ${schedule.khz ? `${schedule.khz} kHz` : '—'}</div>` +
+          )} · ${scheduleKhz(schedule, at) ? `${scheduleKhz(schedule, at)} kHz` : '—'}</div>` +
           (schedule.note
             ? `<div class="echo-schedule-row__note">${esc(schedule.note)}</div>`
             : '') +

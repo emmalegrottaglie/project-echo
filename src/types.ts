@@ -23,10 +23,17 @@ export interface Frequency {
 export interface Schedule {
   rrule: string;
   /**
-   * Primary frequency for the slot. Several operators rotate frequencies monthly,
-   * in which case `note` records that and the UI must not present this as fixed.
+   * The slot's frequency for each month, January at index 0, `null` where the source
+   * publishes none for that month.
+   *
+   * Twelve entries rather than one because that is how these schedules are actually
+   * published: E11's 03:15 slot runs 8102 kHz in January, 12630 in February and March,
+   * 16530 from March to June. A single frequency with a note saying it rotates is the
+   * shape this started as, and it is wrong eleven months of the year. Read it through
+   * `scheduleKhz`, which picks the entry for the month an occurrence falls in — not the
+   * month it happens to be when the page renders.
    */
-  khz: number | null;
+  khzByMonth: (number | null)[];
   note: string | null;
   sourceUrl: string;
 }

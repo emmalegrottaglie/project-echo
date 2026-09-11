@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "stations": [
     {
       "enigmaId": "S28",
@@ -134,56 +134,749 @@
       "tier": "scheduled",
       "marker": null,
       "markerPeriodSec": null,
-      "lastConfirmed": "2026-09-10",
+      "lastConfirmed": "2026-09-11",
       "lore": "An English-language station operated from Poland, which took over the role of G02 \"Swedish Rhapsody\". Transmissions open with a three-digit identifier and either carry a message or announce that there is none. Frequencies rotate month by month, so a slot that is silent on the frequency below may simply have moved.",
       "frequencies": [],
       "schedules": [
         {
           "rrule": "FREQ=WEEKLY;BYDAY=MO,WE;BYHOUR=3;BYMINUTE=15",
-          "khz": 8102,
-          "note": "ID 25. Frequency rotates monthly; 8102 kHz is the January listing.",
+          "khzByMonth": [
+            8102,
+            8102,
+            12630,
+            12630,
+            16530,
+            16530,
+            16530,
+            16530,
+            12630,
+            12630,
+            8102,
+            8102
+          ],
+          "note": "Transmission ID 25.",
           "sourceUrl": "https://priyom.org/number-stations/english/e11/schedule"
         },
         {
           "rrule": "FREQ=WEEKLY;BYDAY=TU,TH;BYHOUR=5;BYMINUTE=5",
-          "khz": 12153,
-          "note": "ID 33. Frequency rotates monthly.",
+          "khzByMonth": [
+            12153,
+            12153,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            12153,
+            12153
+          ],
+          "note": "Transmission ID 33.",
           "sourceUrl": "https://priyom.org/number-stations/english/e11/schedule"
         },
         {
           "rrule": "FREQ=WEEKLY;BYDAY=MO,WE;BYHOUR=6;BYMINUTE=0",
-          "khz": 20286,
-          "note": "ID 94. Frequency rotates monthly.",
+          "khzByMonth": [
+            20286,
+            20286,
+            23353,
+            23353,
+            21906,
+            21906,
+            21906,
+            21906,
+            25839,
+            25839,
+            20286,
+            20286
+          ],
+          "note": "Transmission ID 94.",
           "sourceUrl": "https://priyom.org/number-stations/english/e11/schedule"
         },
         {
           "rrule": "FREQ=WEEKLY;BYDAY=FR,SU;BYHOUR=6;BYMINUTE=0",
-          "khz": 7850,
-          "note": "ID 35. Frequency rotates monthly.",
+          "khzByMonth": [
+            7850,
+            7850,
+            8680,
+            8680,
+            9150,
+            9150,
+            9150,
+            9150,
+            8680,
+            8680,
+            7850,
+            7850
+          ],
+          "note": "Transmission ID 35.",
           "sourceUrl": "https://priyom.org/number-stations/english/e11/schedule"
         },
         {
           "rrule": "FREQ=WEEKLY;BYDAY=TU,TH;BYHOUR=6;BYMINUTE=45",
-          "khz": 12385,
-          "note": "ID 51. Frequency rotates monthly.",
+          "khzByMonth": [
+            12385,
+            12385,
+            13470,
+            13470,
+            11092,
+            11092,
+            11092,
+            11092,
+            13470,
+            13470,
+            12385,
+            12385
+          ],
+          "note": "Transmission ID 51.",
           "sourceUrl": "https://priyom.org/number-stations/english/e11/schedule"
         },
         {
           "rrule": "FREQ=WEEKLY;BYDAY=MO,WE;BYHOUR=6;BYMINUTE=45",
-          "khz": 13911,
-          "note": "ID 41. Frequency rotates monthly.",
+          "khzByMonth": [
+            13911,
+            13911,
+            9610,
+            9610,
+            10508,
+            10508,
+            10508,
+            10508,
+            null,
+            null,
+            13911,
+            13911
+          ],
+          "note": "Transmission ID 41.",
           "sourceUrl": "https://priyom.org/number-stations/english/e11/schedule"
         },
         {
           "rrule": "FREQ=WEEKLY;BYDAY=TU,FR;BYHOUR=7;BYMINUTE=0",
-          "khz": 6804,
-          "note": "ID 57. Frequency rotates monthly.",
+          "khzByMonth": [
+            6804,
+            6804,
+            8180,
+            8180,
+            8680,
+            8680,
+            8680,
+            8680,
+            8180,
+            8180,
+            6804,
+            6804
+          ],
+          "note": "Transmission ID 57.",
           "sourceUrl": "https://priyom.org/number-stations/english/e11/schedule"
         },
         {
           "rrule": "FREQ=WEEKLY;BYDAY=SA,SU;BYHOUR=7;BYMINUTE=0",
-          "khz": 5371,
-          "note": "ID 49. Frequency rotates monthly.",
+          "khzByMonth": [
+            5371,
+            5371,
+            9079,
+            9079,
+            7377,
+            7377,
+            7377,
+            7377,
+            9079,
+            9079,
+            5371,
+            5371
+          ],
+          "note": "Transmission ID 49.",
+          "sourceUrl": "https://priyom.org/number-stations/english/e11/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,WE;BYHOUR=7;BYMINUTE=15",
+          "khzByMonth": [
+            20167,
+            20167,
+            19515,
+            19515,
+            15825,
+            15825,
+            15825,
+            15825,
+            19515,
+            19515,
+            20167,
+            20167
+          ],
+          "note": "Transmission ID 75.",
+          "sourceUrl": "https://priyom.org/number-stations/english/e11/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,FR;BYHOUR=7;BYMINUTE=15",
+          "khzByMonth": [
+            13911,
+            13911,
+            14666,
+            14666,
+            10508,
+            10508,
+            10508,
+            10508,
+            null,
+            null,
+            13911,
+            13911
+          ],
+          "note": "Transmission ID 63.",
+          "sourceUrl": "https://priyom.org/number-stations/english/e11/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TH,FR;BYHOUR=7;BYMINUTE=20",
+          "khzByMonth": [
+            8180,
+            8180,
+            8423,
+            8423,
+            7984,
+            7984,
+            7984,
+            7984,
+            9446,
+            9446,
+            8180,
+            8180
+          ],
+          "note": "Transmission ID 43.",
+          "sourceUrl": "https://priyom.org/number-stations/english/e11/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO;BYHOUR=7;BYMINUTE=45",
+          "khzByMonth": [
+            10213,
+            10213,
+            10213,
+            10213,
+            9610,
+            9610,
+            9610,
+            9610,
+            10213,
+            10213,
+            10213,
+            10213
+          ],
+          "note": "Transmission ID 26.",
+          "sourceUrl": "https://priyom.org/number-stations/english/e11/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,TH;BYHOUR=7;BYMINUTE=45",
+          "khzByMonth": [
+            23031,
+            23031,
+            26756,
+            26756,
+            20640,
+            20640,
+            20640,
+            20640,
+            22995,
+            22995,
+            23031,
+            23031
+          ],
+          "note": "Transmission ID 22.",
+          "sourceUrl": "https://priyom.org/number-stations/english/e11/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE;BYHOUR=7;BYMINUTE=45",
+          "khzByMonth": [
+            17378,
+            17378,
+            17410,
+            17410,
+            15720,
+            15720,
+            15720,
+            15720,
+            17410,
+            17410,
+            17378,
+            17378
+          ],
+          "note": "Transmission ID 34.",
+          "sourceUrl": "https://priyom.org/number-stations/english/e11/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE;BYHOUR=8;BYMINUTE=20",
+          "khzByMonth": [
+            14611,
+            14611,
+            19184,
+            19184,
+            17378,
+            17378,
+            17378,
+            17378,
+            19184,
+            19184,
+            14611,
+            14611
+          ],
+          "note": "Transmission ID 13.",
+          "sourceUrl": "https://priyom.org/number-stations/english/e11/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,FR;BYHOUR=8;BYMINUTE=30",
+          "khzByMonth": [
+            23353,
+            23353,
+            20170,
+            20170,
+            16335,
+            16335,
+            16335,
+            16335,
+            20170,
+            20170,
+            23353,
+            23353
+          ],
+          "note": "Transmission ID 18.",
+          "sourceUrl": "https://priyom.org/number-stations/english/e11/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,WE;BYHOUR=8;BYMINUTE=45",
+          "khzByMonth": [
+            12067,
+            12067,
+            12202,
+            12202,
+            12815,
+            12815,
+            12815,
+            12815,
+            12202,
+            12202,
+            12067,
+            12067
+          ],
+          "note": "Transmission ID 71.",
+          "sourceUrl": "https://priyom.org/number-stations/english/e11/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,TH;BYHOUR=8;BYMINUTE=45",
+          "khzByMonth": [
+            17378,
+            17378,
+            18168,
+            18168,
+            19184,
+            19184,
+            19184,
+            19184,
+            18168,
+            18168,
+            17378,
+            17378
+          ],
+          "note": "Transmission ID 15.",
+          "sourceUrl": "https://priyom.org/number-stations/english/e11/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,WE;BYHOUR=9;BYMINUTE=0",
+          "khzByMonth": [
+            15915,
+            15915,
+            13117,
+            13117,
+            11116,
+            11116,
+            11116,
+            11116,
+            13117,
+            13117,
+            15915,
+            15915
+          ],
+          "note": "Transmission ID 53.",
+          "sourceUrl": "https://priyom.org/number-stations/english/e11/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU;BYHOUR=9;BYMINUTE=30",
+          "khzByMonth": [
+            14611,
+            14611,
+            19184,
+            19184,
+            17378,
+            17378,
+            17378,
+            17378,
+            19184,
+            19184,
+            14611,
+            14611
+          ],
+          "note": "Transmission ID 13.",
+          "sourceUrl": "https://priyom.org/number-stations/english/e11/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE,TH;BYHOUR=9;BYMINUTE=30",
+          "khzByMonth": [
+            7469,
+            7469,
+            6940,
+            6940,
+            6923,
+            6923,
+            6923,
+            6923,
+            6940,
+            6940,
+            7469,
+            7469
+          ],
+          "note": "Transmission ID 27.",
+          "sourceUrl": "https://priyom.org/number-stations/english/e11/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,FR;BYHOUR=10;BYMINUTE=0",
+          "khzByMonth": [
+            9079,
+            9079,
+            9951,
+            9951,
+            12153,
+            12153,
+            12153,
+            12153,
+            9951,
+            9951,
+            9079,
+            9079
+          ],
+          "note": "Transmission ID 30.",
+          "sourceUrl": "https://priyom.org/number-stations/english/e11/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=FR;BYHOUR=10;BYMINUTE=20",
+          "khzByMonth": [
+            17378,
+            17378,
+            17410,
+            17410,
+            15720,
+            15720,
+            15720,
+            15720,
+            17410,
+            17410,
+            17378,
+            17378
+          ],
+          "note": "Transmission ID 34.",
+          "sourceUrl": "https://priyom.org/number-stations/english/e11/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,WE;BYHOUR=10;BYMINUTE=45",
+          "khzByMonth": [
+            14410,
+            14410,
+            12385,
+            12385,
+            10210,
+            10210,
+            10210,
+            10210,
+            12385,
+            12385,
+            14410,
+            14410
+          ],
+          "note": "Transmission ID 69.",
+          "sourceUrl": "https://priyom.org/number-stations/english/e11/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,WE;BYHOUR=12;BYMINUTE=5",
+          "khzByMonth": [
+            11559,
+            11559,
+            9399,
+            9399,
+            8274,
+            8274,
+            8274,
+            8274,
+            9399,
+            9399,
+            11559,
+            11559
+          ],
+          "note": "Transmission ID 46.",
+          "sourceUrl": "https://priyom.org/number-stations/english/e11/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,TH;BYHOUR=12;BYMINUTE=30",
+          "khzByMonth": [
+            null,
+            null,
+            12530,
+            12530,
+            null,
+            null,
+            null,
+            null,
+            12530,
+            12530,
+            null,
+            null
+          ],
+          "note": "Transmission ID 33.",
+          "sourceUrl": "https://priyom.org/number-stations/english/e11/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,TH;BYHOUR=13;BYMINUTE=0",
+          "khzByMonth": [
+            4909,
+            4909,
+            5371,
+            5371,
+            5737,
+            5737,
+            5737,
+            5737,
+            5371,
+            5371,
+            4909,
+            4909
+          ],
+          "note": "Transmission ID 31.",
+          "sourceUrl": "https://priyom.org/number-stations/english/e11/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,SA;BYHOUR=14;BYMINUTE=30",
+          "khzByMonth": [
+            13363,
+            13363,
+            14972,
+            14972,
+            12984,
+            12984,
+            12984,
+            12984,
+            14972,
+            14972,
+            13363,
+            13363
+          ],
+          "note": "Transmission ID 91.",
+          "sourceUrl": "https://priyom.org/number-stations/english/e11/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TH;BYHOUR=15;BYMINUTE=30",
+          "khzByMonth": [
+            5409,
+            5409,
+            10330,
+            10330,
+            10356,
+            10356,
+            10356,
+            10356,
+            10330,
+            10330,
+            5409,
+            5409
+          ],
+          "note": "Transmission ID 26.",
+          "sourceUrl": "https://priyom.org/number-stations/english/e11/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,SU;BYHOUR=16;BYMINUTE=5",
+          "khzByMonth": [
+            5432,
+            5432,
+            5176,
+            5176,
+            5231,
+            5231,
+            5231,
+            5231,
+            5176,
+            5176,
+            5432,
+            5432
+          ],
+          "note": "Transmission ID 23.",
+          "sourceUrl": "https://priyom.org/number-stations/english/e11/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE,SA;BYHOUR=16;BYMINUTE=10",
+          "khzByMonth": [
+            4505,
+            4505,
+            4181,
+            4181,
+            4783,
+            4783,
+            4783,
+            4783,
+            4181,
+            4181,
+            4505,
+            4505
+          ],
+          "note": "Transmission ID 39.",
+          "sourceUrl": "https://priyom.org/number-stations/english/e11/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,TH;BYHOUR=16;BYMINUTE=45",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            null,
+            14575,
+            14575,
+            14575,
+            14575,
+            null,
+            null,
+            null,
+            null
+          ],
+          "note": "Transmission ID 33.",
+          "sourceUrl": "https://priyom.org/number-stations/english/e11/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=SA,SU;BYHOUR=16;BYMINUTE=45",
+          "khzByMonth": [
+            4909,
+            4909,
+            4505,
+            4505,
+            5082,
+            5082,
+            5082,
+            5082,
+            4505,
+            4505,
+            4909,
+            4909
+          ],
+          "note": "Transmission ID 36.",
+          "sourceUrl": "https://priyom.org/number-stations/english/e11/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE,FR;BYHOUR=17;BYMINUTE=15",
+          "khzByMonth": [
+            5082,
+            5082,
+            6923,
+            6923,
+            7863,
+            7863,
+            7863,
+            7863,
+            6923,
+            6923,
+            5082,
+            5082
+          ],
+          "note": "Transmission ID 97.",
+          "sourceUrl": "https://priyom.org/number-stations/english/e11/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,SU;BYHOUR=17;BYMINUTE=45",
+          "khzByMonth": [
+            12924,
+            12924,
+            13470,
+            13470,
+            14410,
+            14410,
+            14410,
+            14410,
+            13470,
+            13470,
+            12924,
+            12924
+          ],
+          "note": "Transmission ID 24.",
+          "sourceUrl": "https://priyom.org/number-stations/english/e11/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=FR,SU;BYHOUR=18;BYMINUTE=15",
+          "khzByMonth": [
+            6849,
+            6849,
+            11116,
+            11116,
+            12229,
+            12229,
+            12229,
+            12229,
+            11116,
+            11116,
+            6849,
+            6849
+          ],
+          "note": "Transmission ID 92.",
+          "sourceUrl": "https://priyom.org/number-stations/english/e11/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,TH;BYHOUR=19;BYMINUTE=0",
+          "khzByMonth": [
+            6849,
+            6849,
+            7317,
+            7317,
+            7600,
+            7600,
+            7600,
+            7600,
+            7317,
+            7317,
+            6849,
+            6849
+          ],
+          "note": "Transmission ID 64.",
+          "sourceUrl": "https://priyom.org/number-stations/english/e11/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=FR,SU;BYHOUR=19;BYMINUTE=10",
+          "khzByMonth": [
+            10487,
+            10487,
+            8530,
+            8530,
+            9610,
+            9610,
+            9610,
+            9610,
+            8530,
+            8530,
+            10487,
+            10487
+          ],
+          "note": "Transmission ID 61.",
+          "sourceUrl": "https://priyom.org/number-stations/english/e11/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TH,SU;BYHOUR=20;BYMINUTE=0",
+          "khzByMonth": [
+            5082,
+            5082,
+            5737,
+            5737,
+            5409,
+            5409,
+            5409,
+            5409,
+            5737,
+            5737,
+            5082,
+            5082
+          ],
+          "note": "Transmission ID 52.",
           "sourceUrl": "https://priyom.org/number-stations/english/e11/schedule"
         }
       ],
@@ -394,7 +1087,32 @@
       "markerPeriodSec": null,
       "lastConfirmed": "2026-09-10",
       "lore": null,
-      "frequencies": [],
+      "frequencies": [
+        {
+          "khz": 6140,
+          "mode": "USB",
+          "timeOfDay": null,
+          "lastConfirmed": "2026-09-11",
+          "sourceUrl": "https://priyom.org/number-stations/english/e25",
+          "disputed": false
+        },
+        {
+          "khz": 9450,
+          "mode": "USB",
+          "timeOfDay": null,
+          "lastConfirmed": "2026-09-11",
+          "sourceUrl": "https://priyom.org/number-stations/english/e25",
+          "disputed": false
+        },
+        {
+          "khz": 18240,
+          "mode": "USB",
+          "timeOfDay": null,
+          "lastConfirmed": "2026-09-11",
+          "sourceUrl": "https://priyom.org/number-stations/english/e25",
+          "disputed": false
+        }
+      ],
       "schedules": [],
       "sourceUrls": [
         "https://priyom.org/number-stations/english/e25",
@@ -734,10 +1452,163 @@
       "tier": "scheduled",
       "marker": null,
       "markerPeriodSec": null,
-      "lastConfirmed": "2026-09-10",
+      "lastConfirmed": "2026-09-11",
       "lore": null,
       "frequencies": [],
-      "schedules": [],
+      "schedules": [
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,TH;BYHOUR=4;BYMINUTE=45",
+          "khzByMonth": [
+            11559,
+            11559,
+            10728,
+            10728,
+            9968,
+            9968,
+            9968,
+            9968,
+            10728,
+            10728,
+            11559,
+            11559
+          ],
+          "note": "Transmission ID 79.",
+          "sourceUrl": "https://priyom.org/number-stations/slavic/s11a/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,WE;BYHOUR=5;BYMINUTE=10",
+          "khzByMonth": [
+            21906,
+            21906,
+            23004,
+            23004,
+            16357,
+            16357,
+            16357,
+            16357,
+            23004,
+            23004,
+            21906,
+            21906
+          ],
+          "note": "Transmission ID 65.",
+          "sourceUrl": "https://priyom.org/number-stations/slavic/s11a/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,TH;BYHOUR=7;BYMINUTE=0",
+          "khzByMonth": [
+            9050,
+            9050,
+            8597,
+            8597,
+            9339,
+            9339,
+            9339,
+            9339,
+            8597,
+            8597,
+            90509150,
+            90509150
+          ],
+          "note": "Transmission ID 47.",
+          "sourceUrl": "https://priyom.org/number-stations/slavic/s11a/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE,FR;BYHOUR=7;BYMINUTE=35",
+          "khzByMonth": [
+            19515,
+            19515,
+            23353,
+            23353,
+            18773,
+            18773,
+            18773,
+            18773,
+            23353,
+            23353,
+            19515,
+            19515
+          ],
+          "note": "Transmission ID 38.",
+          "sourceUrl": "https://priyom.org/number-stations/slavic/s11a/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=SA,SU;BYHOUR=8;BYMINUTE=30",
+          "khzByMonth": [
+            5371,
+            5371,
+            6433,
+            6433,
+            5149,
+            5149,
+            5149,
+            5149,
+            6433,
+            6433,
+            5371,
+            5371
+          ],
+          "note": "Transmission ID 37.",
+          "sourceUrl": "https://priyom.org/number-stations/slavic/s11a/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO;BYHOUR=9;BYMINUTE=15",
+          "khzByMonth": [
+            6252,
+            6252,
+            6480,
+            6480,
+            6814,
+            6814,
+            6814,
+            6814,
+            6480,
+            6480,
+            6252,
+            6252
+          ],
+          "note": "Transmission ID 48.",
+          "sourceUrl": "https://priyom.org/number-stations/slavic/s11a/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,FR;BYHOUR=14;BYMINUTE=0",
+          "khzByMonth": [
+            10448,
+            10448,
+            11420,
+            11420,
+            9448,
+            9448,
+            9448,
+            9448,
+            11420,
+            11420,
+            10448,
+            10448
+          ],
+          "note": "Transmission ID 42.",
+          "sourceUrl": "https://priyom.org/number-stations/slavic/s11a/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE,SA;BYHOUR=18;BYMINUTE=50",
+          "khzByMonth": [
+            11486,
+            11486,
+            10213,
+            10213,
+            12457,
+            12457,
+            12457,
+            12457,
+            10213,
+            10213,
+            11486,
+            11486
+          ],
+          "note": "Transmission ID 28.",
+          "sourceUrl": "https://priyom.org/number-stations/slavic/s11a/schedule"
+        }
+      ],
       "sourceUrls": [
         "https://priyom.org/number-stations/slavic/s11a",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
@@ -1526,10 +2397,125 @@
       "tier": "scheduled",
       "marker": null,
       "markerPeriodSec": null,
-      "lastConfirmed": "2026-09-10",
+      "lastConfirmed": "2026-09-11",
       "lore": null,
       "frequencies": [],
-      "schedules": [],
+      "schedules": [
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=SU;BYHOUR=2;BYMINUTE=0",
+          "khzByMonth": [
+            17436,
+            18217,
+            19172,
+            17431,
+            null,
+            null,
+            null,
+            null,
+            17431,
+            18217,
+            17431,
+            18249
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/other/v07/sunday"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=SU;BYHOUR=2;BYMINUTE=20",
+          "khzByMonth": [
+            14636,
+            16317,
+            17472,
+            16131,
+            null,
+            null,
+            null,
+            null,
+            16131,
+            16317,
+            16131,
+            15949
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/other/v07/sunday"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=SU;BYHOUR=2;BYMINUTE=40",
+          "khzByMonth": [
+            13436,
+            15817,
+            16272,
+            14431,
+            null,
+            null,
+            null,
+            null,
+            14431,
+            15817,
+            14431,
+            14549
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/other/v07/sunday"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=SU;BYHOUR=7;BYMINUTE=0",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            null,
+            14469,
+            13927,
+            13978,
+            13408,
+            null,
+            null,
+            null,
+            null
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/other/v07/sunday"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=SU;BYHOUR=7;BYMINUTE=20",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            null,
+            13369,
+            13427,
+            13378,
+            12208,
+            null,
+            null,
+            null,
+            null
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/other/v07/sunday"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=SU;BYHOUR=7;BYMINUTE=40",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            null,
+            12169,
+            12127,
+            12178,
+            11508,
+            null,
+            null,
+            null,
+            null
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/other/v07/sunday"
+        }
+      ],
       "sourceUrls": [
         "https://priyom.org/number-stations/other/v07",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
@@ -1546,7 +2532,144 @@
       "markerPeriodSec": null,
       "lastConfirmed": "2026-09-10",
       "lore": null,
-      "frequencies": [],
+      "frequencies": [
+        {
+          "khz": 7502,
+          "mode": "USB",
+          "timeOfDay": null,
+          "lastConfirmed": "2026-09-11",
+          "sourceUrl": "https://priyom.org/number-stations/other/v13",
+          "disputed": false
+        },
+        {
+          "khz": 7688,
+          "mode": "USB",
+          "timeOfDay": null,
+          "lastConfirmed": "2026-09-11",
+          "sourceUrl": "https://priyom.org/number-stations/other/v13",
+          "disputed": false
+        },
+        {
+          "khz": 8169,
+          "mode": "USB",
+          "timeOfDay": null,
+          "lastConfirmed": "2026-09-11",
+          "sourceUrl": "https://priyom.org/number-stations/other/v13",
+          "disputed": false
+        },
+        {
+          "khz": 8300,
+          "mode": "USB",
+          "timeOfDay": null,
+          "lastConfirmed": "2026-09-11",
+          "sourceUrl": "https://priyom.org/number-stations/other/v13",
+          "disputed": false
+        },
+        {
+          "khz": 9276,
+          "mode": "USB",
+          "timeOfDay": null,
+          "lastConfirmed": "2026-09-11",
+          "sourceUrl": "https://priyom.org/number-stations/other/v13",
+          "disputed": false
+        },
+        {
+          "khz": 11430,
+          "mode": "USB",
+          "timeOfDay": null,
+          "lastConfirmed": "2026-09-11",
+          "sourceUrl": "https://priyom.org/number-stations/other/v13",
+          "disputed": false
+        },
+        {
+          "khz": 13974,
+          "mode": "USB",
+          "timeOfDay": null,
+          "lastConfirmed": "2026-09-11",
+          "sourceUrl": "https://priyom.org/number-stations/other/v13",
+          "disputed": false
+        },
+        {
+          "khz": 14944,
+          "mode": "USB",
+          "timeOfDay": null,
+          "lastConfirmed": "2026-09-11",
+          "sourceUrl": "https://priyom.org/number-stations/other/v13",
+          "disputed": false
+        },
+        {
+          "khz": 15250,
+          "mode": "USB",
+          "timeOfDay": null,
+          "lastConfirmed": "2026-09-11",
+          "sourceUrl": "https://priyom.org/number-stations/other/v13",
+          "disputed": false
+        },
+        {
+          "khz": 15890,
+          "mode": "USB",
+          "timeOfDay": null,
+          "lastConfirmed": "2026-09-11",
+          "sourceUrl": "https://priyom.org/number-stations/other/v13",
+          "disputed": false
+        },
+        {
+          "khz": 16050,
+          "mode": "USB",
+          "timeOfDay": null,
+          "lastConfirmed": "2026-09-11",
+          "sourceUrl": "https://priyom.org/number-stations/other/v13",
+          "disputed": false
+        },
+        {
+          "khz": 17000,
+          "mode": "USB",
+          "timeOfDay": null,
+          "lastConfirmed": "2026-09-11",
+          "sourceUrl": "https://priyom.org/number-stations/other/v13",
+          "disputed": false
+        },
+        {
+          "khz": 18040,
+          "mode": "USB",
+          "timeOfDay": null,
+          "lastConfirmed": "2026-09-11",
+          "sourceUrl": "https://priyom.org/number-stations/other/v13",
+          "disputed": false
+        },
+        {
+          "khz": 19052,
+          "mode": "USB",
+          "timeOfDay": null,
+          "lastConfirmed": "2026-09-11",
+          "sourceUrl": "https://priyom.org/number-stations/other/v13",
+          "disputed": false
+        },
+        {
+          "khz": 20025,
+          "mode": "USB",
+          "timeOfDay": null,
+          "lastConfirmed": "2026-09-11",
+          "sourceUrl": "https://priyom.org/number-stations/other/v13",
+          "disputed": false
+        },
+        {
+          "khz": 20095,
+          "mode": "USB",
+          "timeOfDay": null,
+          "lastConfirmed": "2026-09-11",
+          "sourceUrl": "https://priyom.org/number-stations/other/v13",
+          "disputed": false
+        },
+        {
+          "khz": 21000,
+          "mode": "USB",
+          "timeOfDay": null,
+          "lastConfirmed": "2026-09-11",
+          "sourceUrl": "https://priyom.org/number-stations/other/v13",
+          "disputed": false
+        }
+      ],
       "schedules": [],
       "sourceUrls": [
         "https://priyom.org/number-stations/other/v13",
@@ -1760,10 +2883,87 @@
       "tier": "scheduled",
       "marker": null,
       "markerPeriodSec": null,
-      "lastConfirmed": "2026-09-10",
+      "lastConfirmed": "2026-09-11",
       "lore": null,
       "frequencies": [],
-      "schedules": [],
+      "schedules": [
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,TH;BYHOUR=18;BYMINUTE=0",
+          "khzByMonth": [
+            5320,
+            5320,
+            5475,
+            5475,
+            5280,
+            5280,
+            5280,
+            5280,
+            5475,
+            5475,
+            5320,
+            5320
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/morse/m01/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,TH;BYHOUR=20;BYMINUTE=0",
+          "khzByMonth": [
+            4490,
+            4490,
+            5020,
+            5020,
+            4903,
+            4903,
+            4903,
+            4903,
+            5020,
+            5020,
+            4490,
+            4490
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/morse/m01/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=SA;BYHOUR=15;BYMINUTE=0",
+          "khzByMonth": [
+            5810,
+            5810,
+            6260,
+            6260,
+            6435,
+            6435,
+            6435,
+            6435,
+            6260,
+            6260,
+            5810,
+            5810
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/morse/m01/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=SU;BYHOUR=7;BYMINUTE=0",
+          "khzByMonth": [
+            5465,
+            5465,
+            6510,
+            6510,
+            6780,
+            6780,
+            6780,
+            6780,
+            6510,
+            6510,
+            5465,
+            5465
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/morse/m01/schedule"
+        }
+      ],
       "sourceUrls": [
         "https://priyom.org/number-stations/morse/m01",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
@@ -1832,10 +3032,125 @@
       "tier": "scheduled",
       "marker": null,
       "markerPeriodSec": null,
-      "lastConfirmed": "2026-09-10",
+      "lastConfirmed": "2026-09-11",
       "lore": null,
       "frequencies": [],
-      "schedules": [],
+      "schedules": [
+        {
+          "rrule": "FREQ=DAILY;BYHOUR=1;BYMINUTE=57",
+          "khzByMonth": [
+            5345,
+            5345,
+            5345,
+            5345,
+            5345,
+            5345,
+            5345,
+            5345,
+            5345,
+            5345,
+            5345,
+            5345
+          ],
+          "note": "Daily, on one frequency year round.",
+          "sourceUrl": "https://priyom.org/number-stations/morse/m23/schedule"
+        },
+        {
+          "rrule": "FREQ=DAILY;BYHOUR=5;BYMINUTE=57",
+          "khzByMonth": [
+            10381,
+            10381,
+            10381,
+            10381,
+            10381,
+            10381,
+            10381,
+            10381,
+            10381,
+            10381,
+            10381,
+            10381
+          ],
+          "note": "Daily, on one frequency year round.",
+          "sourceUrl": "https://priyom.org/number-stations/morse/m23/schedule"
+        },
+        {
+          "rrule": "FREQ=DAILY;BYHOUR=9;BYMINUTE=57",
+          "khzByMonth": [
+            20456,
+            20456,
+            20456,
+            20456,
+            20456,
+            20456,
+            20456,
+            20456,
+            20456,
+            20456,
+            20456,
+            20456
+          ],
+          "note": "Daily, on one frequency year round.",
+          "sourceUrl": "https://priyom.org/number-stations/morse/m23/schedule"
+        },
+        {
+          "rrule": "FREQ=DAILY;BYHOUR=13;BYMINUTE=57",
+          "khzByMonth": [
+            11530,
+            11530,
+            11530,
+            11530,
+            11530,
+            11530,
+            11530,
+            11530,
+            11530,
+            11530,
+            11530,
+            11530
+          ],
+          "note": "Daily, on one frequency year round.",
+          "sourceUrl": "https://priyom.org/number-stations/morse/m23/schedule"
+        },
+        {
+          "rrule": "FREQ=DAILY;BYHOUR=17;BYMINUTE=57",
+          "khzByMonth": [
+            6937,
+            6937,
+            6937,
+            6937,
+            6937,
+            6937,
+            6937,
+            6937,
+            6937,
+            6937,
+            6937,
+            6937
+          ],
+          "note": "Daily, on one frequency year round.",
+          "sourceUrl": "https://priyom.org/number-stations/morse/m23/schedule"
+        },
+        {
+          "rrule": "FREQ=DAILY;BYHOUR=19;BYMINUTE=57",
+          "khzByMonth": [
+            4822,
+            4822,
+            4822,
+            4822,
+            4822,
+            4822,
+            4822,
+            4822,
+            4822,
+            4822,
+            4822,
+            4822
+          ],
+          "note": "Daily, on one frequency year round.",
+          "sourceUrl": "https://priyom.org/number-stations/morse/m23/schedule"
+        }
+      ],
       "sourceUrls": [
         "https://priyom.org/number-stations/morse/m23",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
@@ -2516,10 +3831,239 @@
       "tier": "scheduled",
       "marker": null,
       "markerPeriodSec": null,
-      "lastConfirmed": "2026-09-10",
+      "lastConfirmed": "2026-09-11",
       "lore": null,
       "frequencies": [],
-      "schedules": [],
+      "schedules": [
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,TH;BYHOUR=20;BYMINUTE=0",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            14541,
+            16329,
+            16336,
+            17436,
+            16263,
+            13985,
+            11147,
+            null,
+            null
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/f07/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,TH;BYHOUR=20;BYMINUTE=10",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            13526,
+            15887,
+            15866,
+            16348,
+            15852,
+            13471,
+            10463,
+            null,
+            null
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/f07/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,TH;BYHOUR=20;BYMINUTE=20",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            12214,
+            14937,
+            14918,
+            15968,
+            14968,
+            12216,
+            10176,
+            null,
+            null
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/f07/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,TH;BYHOUR=20;BYMINUTE=30",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            11476,
+            14458,
+            14483,
+            14852,
+            14417,
+            11589,
+            9248,
+            null,
+            null
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/f07/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,TH;BYHOUR=20;BYMINUTE=40",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            10283,
+            13892,
+            13901,
+            13961,
+            13478,
+            10867,
+            8173,
+            null,
+            null
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/f07/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,TH;BYHOUR=20;BYMINUTE=50",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            9367,
+            12207,
+            13389,
+            13373,
+            12143,
+            10258,
+            7629,
+            null,
+            null
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/f07/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,TH;BYHOUR=21;BYMINUTE=0",
+          "khzByMonth": [
+            7461,
+            8152,
+            10244,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            8182,
+            7526
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/f07/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,TH;BYHOUR=21;BYMINUTE=10",
+          "khzByMonth": [
+            6979,
+            7934,
+            9379,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            7856,
+            7453
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/f07/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,TH;BYHOUR=21;BYMINUTE=20",
+          "khzByMonth": [
+            6783,
+            7694,
+            8161,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            7541,
+            6993
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/f07/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,TH;BYHOUR=21;BYMINUTE=30",
+          "khzByMonth": [
+            5841,
+            7454,
+            7518,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            6992,
+            6773
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/f07/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,TH;BYHOUR=21;BYMINUTE=40",
+          "khzByMonth": [
+            5318,
+            6877,
+            6783,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            6802,
+            5748
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/f07/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,TH;BYHOUR=21;BYMINUTE=50",
+          "khzByMonth": [
+            5081,
+            5437,
+            5864,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            5818,
+            5169
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/f07/schedule"
+        }
+      ],
       "sourceUrls": [
         "https://priyom.org/number-stations/digital/f07",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
@@ -2552,10 +4096,239 @@
       "tier": "scheduled",
       "marker": null,
       "markerPeriodSec": null,
-      "lastConfirmed": "2026-09-10",
+      "lastConfirmed": "2026-09-11",
       "lore": null,
       "frequencies": [],
-      "schedules": [],
+      "schedules": [
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE,SU;BYHOUR=14;BYMINUTE=0",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            10446,
+            9067,
+            9224,
+            9368,
+            9214,
+            9311,
+            10396,
+            null,
+            null
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/p07/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE,SU;BYHOUR=14;BYMINUTE=10",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            9379,
+            8137,
+            8124,
+            8185,
+            8187,
+            9071,
+            10159,
+            null,
+            null
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/p07/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE,SU;BYHOUR=14;BYMINUTE=20",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            9109,
+            7704,
+            7589,
+            7704,
+            7534,
+            8189,
+            9044,
+            null,
+            null
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/p07/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE,SU;BYHOUR=14;BYMINUTE=30",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            8166,
+            6828,
+            6854,
+            6872,
+            6782,
+            7894,
+            8154,
+            null,
+            null
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/p07/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE,SU;BYHOUR=14;BYMINUTE=40",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            7718,
+            6794,
+            5829,
+            5861,
+            5899,
+            7488,
+            7534,
+            null,
+            null
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/p07/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE,SU;BYHOUR=14;BYMINUTE=50",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            6969,
+            5774,
+            5284,
+            5386,
+            5184,
+            6783,
+            6856,
+            null,
+            null
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/p07/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE,SU;BYHOUR=15;BYMINUTE=0",
+          "khzByMonth": [
+            7584,
+            10251,
+            10328,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            8136,
+            6986
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/p07/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE,SU;BYHOUR=15;BYMINUTE=10",
+          "khzByMonth": [
+            6926,
+            9333,
+            9388,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            8074,
+            6774
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/p07/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE,SU;BYHOUR=15;BYMINUTE=20",
+          "khzByMonth": [
+            5814,
+            9074,
+            9062,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            7504,
+            5853
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/p07/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE,SU;BYHOUR=15;BYMINUTE=30",
+          "khzByMonth": [
+            5471,
+            8128,
+            8134,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            6821,
+            5336
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/p07/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE,SU;BYHOUR=15;BYMINUTE=40",
+          "khzByMonth": [
+            5094,
+            7691,
+            7886,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            5848,
+            5082
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/p07/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE,SU;BYHOUR=15;BYMINUTE=50",
+          "khzByMonth": [
+            4639,
+            7458,
+            7462,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            5112,
+            4609
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/p07/schedule"
+        }
+      ],
       "sourceUrls": [
         "https://priyom.org/number-stations/digital/p07",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
@@ -2570,10 +4343,239 @@
       "tier": "scheduled",
       "marker": null,
       "markerPeriodSec": null,
-      "lastConfirmed": "2026-09-10",
+      "lastConfirmed": "2026-09-11",
       "lore": null,
       "frequencies": [],
-      "schedules": [],
+      "schedules": [
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,TH;BYHOUR=7;BYMINUTE=10",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            10428,
+            11169,
+            11421,
+            10446,
+            10234,
+            10682,
+            12167,
+            null,
+            null
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,TH;BYHOUR=7;BYMINUTE=30",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            11431,
+            12179,
+            12151,
+            11474,
+            11511,
+            11571,
+            13437,
+            null,
+            null
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,TH;BYHOUR=7;BYMINUTE=50",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            13441,
+            13431,
+            13972,
+            12175,
+            12117,
+            12216,
+            14972,
+            null,
+            null
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,TH;BYHOUR=8;BYMINUTE=10",
+          "khzByMonth": [
+            12157,
+            13397,
+            12132,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            13978,
+            11531
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,TH;BYHOUR=8;BYMINUTE=30",
+          "khzByMonth": [
+            13462,
+            14413,
+            13453,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            14859,
+            12137
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,TH;BYHOUR=8;BYMINUTE=50",
+          "khzByMonth": [
+            14374,
+            15972,
+            14576,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            15871,
+            13932
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE,FR;BYHOUR=12;BYMINUTE=10",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            13368,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE,FR;BYHOUR=12;BYMINUTE=30",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            12168,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE,FR;BYHOUR=12;BYMINUTE=50",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            11168,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE,FR;BYHOUR=13;BYMINUTE=10",
+          "khzByMonth": [
+            14852,
+            14374,
+            14451,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            13875,
+            13465
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE,FR;BYHOUR=13;BYMINUTE=30",
+          "khzByMonth": [
+            13952,
+            13374,
+            13451,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            13375,
+            12165
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE,FR;BYHOUR=13;BYMINUTE=50",
+          "khzByMonth": [
+            11552,
+            11474,
+            12151,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            10875,
+            10265
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa/schedule"
+        }
+      ],
       "sourceUrls": [
         "https://priyom.org/number-stations/digital/xpa",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
@@ -2588,10 +4590,752 @@
       "tier": "scheduled",
       "marker": null,
       "markerPeriodSec": null,
-      "lastConfirmed": "2026-09-10",
+      "lastConfirmed": "2026-09-11",
       "lore": null,
       "frequencies": [],
-      "schedules": [],
+      "schedules": [
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,WE;BYHOUR=7;BYMINUTE=0",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            11409,
+            12148,
+            12148,
+            12148,
+            12152,
+            12152,
+            13372,
+            null,
+            null
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa2/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,WE;BYHOUR=7;BYMINUTE=20",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            12209,
+            13448,
+            13448,
+            13448,
+            13552,
+            13552,
+            14672,
+            null,
+            null
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa2/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,WE;BYHOUR=7;BYMINUTE=40",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            13409,
+            13948,
+            13948,
+            13948,
+            13952,
+            13952,
+            15872,
+            null,
+            null
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa2/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,WE;BYHOUR=8;BYMINUTE=0",
+          "khzByMonth": [
+            11493,
+            13387,
+            13931,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            11529,
+            11493
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa2/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,WE;BYHOUR=8;BYMINUTE=20",
+          "khzByMonth": [
+            13393,
+            13887,
+            14831,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            13429,
+            13393
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa2/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,WE;BYHOUR=8;BYMINUTE=40",
+          "khzByMonth": [
+            13993,
+            14787,
+            16131,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            13929,
+            13993
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa2/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,WE;BYHOUR=9;BYMINUTE=10",
+          "khzByMonth": [
+            14977,
+            16102,
+            18333,
+            18038,
+            17431,
+            17417,
+            16296,
+            18059,
+            18206,
+            17471,
+            17413,
+            13562
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa2/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,WE;BYHOUR=9;BYMINUTE=30",
+          "khzByMonth": [
+            13971,
+            14951,
+            16345,
+            17474,
+            15841,
+            15812,
+            14981,
+            16093,
+            16329,
+            16149,
+            15852,
+            11583
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa2/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,WE;BYHOUR=9;BYMINUTE=50",
+          "khzByMonth": [
+            13371,
+            13991,
+            14838,
+            16286,
+            13934,
+            14504,
+            13953,
+            14874,
+            15824,
+            14406,
+            13363,
+            10281
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa2/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,SA;BYHOUR=15;BYMINUTE=0",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            15881,
+            15938,
+            14892,
+            13954,
+            13825,
+            14373,
+            13906,
+            null,
+            null
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa2/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,SA;BYHOUR=15;BYMINUTE=20",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            14481,
+            14538,
+            13492,
+            12154,
+            12125,
+            13373,
+            12106,
+            null,
+            null
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa2/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,SA;BYHOUR=15;BYMINUTE=40",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            13381,
+            13438,
+            12192,
+            11454,
+            11025,
+            11573,
+            10906,
+            null,
+            null
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa2/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,SA;BYHOUR=16;BYMINUTE=0",
+          "khzByMonth": [
+            9317,
+            11461,
+            12163,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            8126,
+            6984
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa2/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,SA;BYHOUR=16;BYMINUTE=20",
+          "khzByMonth": [
+            8117,
+            10261,
+            10863,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            6826,
+            5884
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa2/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,SA;BYHOUR=16;BYMINUTE=40",
+          "khzByMonth": [
+            7517,
+            9161,
+            9363,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            5326,
+            4784
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa2/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,TH;BYHOUR=16;BYMINUTE=0",
+          "khzByMonth": [
+            10465,
+            12173,
+            13994,
+            15819,
+            13538,
+            13417,
+            13538,
+            14864,
+            13887,
+            13542,
+            10223,
+            8184
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa2/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,TH;BYHOUR=16;BYMINUTE=20",
+          "khzByMonth": [
+            9165,
+            10373,
+            13494,
+            14919,
+            14438,
+            14817,
+            14438,
+            14364,
+            13387,
+            12142,
+            9223,
+            7684
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa2/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,TH;BYHOUR=16;BYMINUTE=40",
+          "khzByMonth": [
+            8065,
+            9373,
+            12194,
+            13919,
+            14938,
+            15917,
+            14938,
+            13464,
+            11587,
+            11442,
+            8123,
+            6784
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa2/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,FR;BYHOUR=11;BYMINUTE=0",
+          "khzByMonth": [
+            10231,
+            12147,
+            14639,
+            16341,
+            null,
+            null,
+            null,
+            null,
+            null,
+            14537,
+            10653,
+            9265
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa2/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,FR;BYHOUR=11;BYMINUTE=20",
+          "khzByMonth": [
+            9331,
+            10347,
+            13539,
+            14841,
+            null,
+            null,
+            null,
+            null,
+            null,
+            13437,
+            9353,
+            8165
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa2/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,FR;BYHOUR=11;BYMINUTE=40",
+          "khzByMonth": [
+            8131,
+            9247,
+            12139,
+            13941,
+            null,
+            null,
+            null,
+            null,
+            null,
+            10737,
+            8153,
+            7665
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa2/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,SU;BYHOUR=12;BYMINUTE=0",
+          "khzByMonth": [
+            10921,
+            11163,
+            13384,
+            14442,
+            null,
+            null,
+            null,
+            null,
+            13914,
+            14469,
+            14783,
+            10807
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa2/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,SU;BYHOUR=12;BYMINUTE=20",
+          "khzByMonth": [
+            12221,
+            13363,
+            13984,
+            15842,
+            null,
+            null,
+            null,
+            null,
+            15814,
+            16169,
+            13883,
+            12207
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa2/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,SU;BYHOUR=12;BYMINUTE=40",
+          "khzByMonth": [
+            13521,
+            14563,
+            14984,
+            16342,
+            null,
+            null,
+            null,
+            null,
+            16314,
+            17469,
+            12183,
+            13507
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa2/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,SU;BYHOUR=21;BYMINUTE=0",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            null,
+            13376,
+            13427,
+            13394,
+            12159,
+            null,
+            null,
+            null,
+            null
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa2/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,SU;BYHOUR=21;BYMINUTE=20",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            null,
+            11576,
+            12227,
+            12194,
+            11559,
+            null,
+            null,
+            null,
+            null
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa2/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,SU;BYHOUR=21;BYMINUTE=40",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            null,
+            10776,
+            10827,
+            10794,
+            10559,
+            null,
+            null,
+            null,
+            null
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa2/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE,TH;BYHOUR=11;BYMINUTE=0",
+          "khzByMonth": [
+            13384,
+            13967,
+            15861,
+            17426,
+            16147,
+            15982,
+            17435,
+            16264,
+            16117,
+            14672,
+            13393,
+            11579
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa2/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE,TH;BYHOUR=11;BYMINUTE=20",
+          "khzByMonth": [
+            12184,
+            13367,
+            14431,
+            16326,
+            15847,
+            14982,
+            16235,
+            15864,
+            14917,
+            13472,
+            12193,
+            10979
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa2/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE,TH;BYHOUR=11;BYMINUTE=40",
+          "khzByMonth": [
+            10984,
+            11567,
+            13431,
+            14926,
+            14747,
+            13882,
+            14935,
+            14864,
+            13517,
+            12172,
+            11093,
+            10279
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa2/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE,FR;BYHOUR=12;BYMINUTE=0",
+          "khzByMonth": [
+            10726,
+            11575,
+            12139,
+            14377,
+            null,
+            null,
+            null,
+            13919,
+            13484,
+            13452,
+            10968,
+            9389
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa2/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE,FR;BYHOUR=12;BYMINUTE=20",
+          "khzByMonth": [
+            11426,
+            13375,
+            13539,
+            14977,
+            null,
+            null,
+            null,
+            14719,
+            14684,
+            14452,
+            12168,
+            10289
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa2/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE,FR;BYHOUR=12;BYMINUTE=40",
+          "khzByMonth": [
+            12226,
+            13975,
+            14639,
+            15977,
+            null,
+            null,
+            null,
+            16219,
+            15984,
+            15852,
+            13368,
+            11589
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa2/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE,FR;BYHOUR=21;BYMINUTE=0",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            null,
+            12124,
+            13462,
+            12124,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa2/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE,FR;BYHOUR=21;BYMINUTE=20",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            null,
+            11124,
+            12162,
+            11124,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa2/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE,FR;BYHOUR=21;BYMINUTE=40",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            null,
+            10624,
+            11562,
+            10624,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa2/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TH,SA;BYHOUR=9;BYMINUTE=10",
+          "khzByMonth": [
+            14794,
+            16146,
+            16261,
+            15859,
+            14794,
+            13527,
+            13445,
+            14372,
+            15859,
+            17438,
+            15985,
+            13919
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa2/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TH,SA;BYHOUR=9;BYMINUTE=30",
+          "khzByMonth": [
+            13994,
+            15846,
+            15961,
+            14659,
+            13994,
+            12227,
+            12145,
+            13372,
+            14659,
+            16338,
+            14885,
+            11519
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa2/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TH,SA;BYHOUR=9;BYMINUTE=50",
+          "khzByMonth": [
+            12194,
+            14446,
+            14861,
+            13459,
+            12194,
+            11427,
+            11545,
+            12172,
+            13459,
+            15938,
+            13885,
+            10719
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpa2/schedule"
+        }
+      ],
       "sourceUrls": [
         "https://priyom.org/number-stations/digital/xpa2",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"
@@ -2606,10 +5350,923 @@
       "tier": "scheduled",
       "marker": null,
       "markerPeriodSec": null,
-      "lastConfirmed": "2026-09-10",
+      "lastConfirmed": "2026-09-11",
       "lore": null,
       "frequencies": [],
-      "schedules": [],
+      "schedules": [
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,TU;BYHOUR=6;BYMINUTE=0",
+          "khzByMonth": [
+            19461,
+            19461,
+            18434,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,TU;BYHOUR=6;BYMINUTE=10",
+          "khzByMonth": [
+            19261,
+            19261,
+            18234,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,TU;BYHOUR=6;BYMINUTE=20",
+          "khzByMonth": [
+            18261,
+            18261,
+            17434,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,TU;BYHOUR=6;BYMINUTE=30",
+          "khzByMonth": [
+            16261,
+            16261,
+            16234,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,TU;BYHOUR=6;BYMINUTE=40",
+          "khzByMonth": [
+            15861,
+            15861,
+            15834,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,TU;BYHOUR=6;BYMINUTE=50",
+          "khzByMonth": [
+            14961,
+            14961,
+            14434,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,SA;BYHOUR=11;BYMINUTE=0",
+          "khzByMonth": [
+            14769,
+            15814,
+            18253,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            13894,
+            14483
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,SA;BYHOUR=11;BYMINUTE=10",
+          "khzByMonth": [
+            14369,
+            14814,
+            17453,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            13394,
+            13983
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,SA;BYHOUR=11;BYMINUTE=20",
+          "khzByMonth": [
+            13969,
+            14414,
+            15953,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            12194,
+            13483
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,SA;BYHOUR=11;BYMINUTE=30",
+          "khzByMonth": [
+            13369,
+            13914,
+            14953,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            11494,
+            12183
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,SA;BYHOUR=11;BYMINUTE=40",
+          "khzByMonth": [
+            12169,
+            13414,
+            14353,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            11094,
+            11583
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,SA;BYHOUR=11;BYMINUTE=50",
+          "khzByMonth": [
+            11169,
+            12214,
+            13553,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            10494,
+            10983
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,SA;BYHOUR=12;BYMINUTE=0",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            17474,
+            16329,
+            15876,
+            15876,
+            15876,
+            14462,
+            14462,
+            null,
+            null
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,SA;BYHOUR=12;BYMINUTE=10",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            16274,
+            15929,
+            14876,
+            14876,
+            14876,
+            13962,
+            13962,
+            null,
+            null
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,SA;BYHOUR=12;BYMINUTE=20",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            15974,
+            14829,
+            14376,
+            14376,
+            14376,
+            13462,
+            13462,
+            null,
+            null
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,SA;BYHOUR=12;BYMINUTE=30",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            14974,
+            14429,
+            13976,
+            13976,
+            13976,
+            12162,
+            12162,
+            null,
+            null
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,SA;BYHOUR=12;BYMINUTE=40",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            14374,
+            13929,
+            13376,
+            13376,
+            13376,
+            11562,
+            11562,
+            null,
+            null
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=MO,SA;BYHOUR=12;BYMINUTE=50",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            13874,
+            13529,
+            12176,
+            12176,
+            12176,
+            10962,
+            10962,
+            null,
+            null
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,FR;BYHOUR=13;BYMINUTE=0",
+          "khzByMonth": [
+            20069,
+            20035,
+            20072,
+            20038,
+            20061,
+            20047,
+            20024,
+            20064,
+            20017,
+            20075,
+            20021,
+            20044
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,FR;BYHOUR=13;BYMINUTE=10",
+          "khzByMonth": [
+            19369,
+            19235,
+            19572,
+            19538,
+            19361,
+            19247,
+            19224,
+            19364,
+            19317,
+            19575,
+            19521,
+            19344
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,FR;BYHOUR=13;BYMINUTE=20",
+          "khzByMonth": [
+            18269,
+            18335,
+            18372,
+            18268,
+            18261,
+            18247,
+            18324,
+            18464,
+            18037,
+            18175,
+            18421,
+            18544
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,FR;BYHOUR=13;BYMINUTE=30",
+          "khzByMonth": [
+            17469,
+            17435,
+            17472,
+            17468,
+            17461,
+            17447,
+            17424,
+            17464,
+            17417,
+            17475,
+            17421,
+            17444
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,FR;BYHOUR=13;BYMINUTE=40",
+          "khzByMonth": [
+            16269,
+            16235,
+            16272,
+            16268,
+            16261,
+            16247,
+            16324,
+            16264,
+            16217,
+            16275,
+            16321,
+            16244
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,FR;BYHOUR=13;BYMINUTE=50",
+          "khzByMonth": [
+            15969,
+            15835,
+            14972,
+            15868,
+            14961,
+            14947,
+            15824,
+            15864,
+            15817,
+            14975,
+            15921,
+            14944
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,SU;BYHOUR=19;BYMINUTE=0",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            13547,
+            14852,
+            15863,
+            14644,
+            14918,
+            12139,
+            9323,
+            null,
+            null
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,SU;BYHOUR=19;BYMINUTE=10",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            12147,
+            13952,
+            14963,
+            13444,
+            13918,
+            10939,
+            8123,
+            null,
+            null
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,SU;BYHOUR=19;BYMINUTE=20",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            11547,
+            12152,
+            13963,
+            12144,
+            12218,
+            9339,
+            7723,
+            null,
+            null
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,SU;BYHOUR=19;BYMINUTE=30",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            10447,
+            11152,
+            12163,
+            11044,
+            11118,
+            8139,
+            6923,
+            null,
+            null
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,SU;BYHOUR=19;BYMINUTE=40",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            9347,
+            10352,
+            11163,
+            10344,
+            10218,
+            6939,
+            5823,
+            null,
+            null
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,SU;BYHOUR=19;BYMINUTE=50",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            8147,
+            9252,
+            10463,
+            9244,
+            9118,
+            5839,
+            5123,
+            null,
+            null
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,SU;BYHOUR=20;BYMINUTE=0",
+          "khzByMonth": [
+            7771,
+            8064,
+            9181,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            7876,
+            8058
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,SU;BYHOUR=20;BYMINUTE=10",
+          "khzByMonth": [
+            7471,
+            7964,
+            7881,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            7576,
+            7558
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,SU;BYHOUR=20;BYMINUTE=20",
+          "khzByMonth": [
+            6771,
+            6964,
+            6881,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            6876,
+            5858
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,SU;BYHOUR=20;BYMINUTE=30",
+          "khzByMonth": [
+            5771,
+            5864,
+            5881,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            5876,
+            5158
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,SU;BYHOUR=20;BYMINUTE=40",
+          "khzByMonth": [
+            5171,
+            5364,
+            5181,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            5376,
+            4858
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=TU,SU;BYHOUR=20;BYMINUTE=50",
+          "khzByMonth": [
+            4771,
+            4464,
+            4581,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            4476,
+            4458
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE,SA;BYHOUR=11;BYMINUTE=0",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            13562,
+            13961,
+            13876,
+            13884,
+            13567,
+            13521,
+            16245,
+            null,
+            null
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE,SA;BYHOUR=11;BYMINUTE=10",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            12162,
+            13361,
+            13376,
+            13384,
+            13367,
+            13421,
+            15825,
+            null,
+            null
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE,SA;BYHOUR=11;BYMINUTE=20",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            11562,
+            12161,
+            12176,
+            12184,
+            12167,
+            12221,
+            14925,
+            null,
+            null
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE,SA;BYHOUR=11;BYMINUTE=30",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            11162,
+            11461,
+            11576,
+            11584,
+            11567,
+            11521,
+            13525,
+            null,
+            null
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE,SA;BYHOUR=11;BYMINUTE=40",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            10562,
+            10761,
+            10676,
+            11084,
+            11067,
+            11021,
+            12125,
+            null,
+            null
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE,SA;BYHOUR=11;BYMINUTE=50",
+          "khzByMonth": [
+            null,
+            null,
+            null,
+            10262,
+            10161,
+            10276,
+            10584,
+            10567,
+            10521,
+            11425,
+            null,
+            null
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE,SA;BYHOUR=12;BYMINUTE=0",
+          "khzByMonth": [
+            15925,
+            14873,
+            14621,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            16353,
+            14978
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE,SA;BYHOUR=12;BYMINUTE=10",
+          "khzByMonth": [
+            14825,
+            14373,
+            13921,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            15953,
+            13978
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE,SA;BYHOUR=12;BYMINUTE=20",
+          "khzByMonth": [
+            13425,
+            13873,
+            13421,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            14953,
+            13378
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE,SA;BYHOUR=12;BYMINUTE=30",
+          "khzByMonth": [
+            12125,
+            13373,
+            12121,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            13453,
+            12178
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE,SA;BYHOUR=12;BYMINUTE=40",
+          "khzByMonth": [
+            10425,
+            12173,
+            11121,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            12153,
+            11078
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        },
+        {
+          "rrule": "FREQ=WEEKLY;BYDAY=WE,SA;BYHOUR=12;BYMINUTE=50",
+          "khzByMonth": [
+            9325,
+            11173,
+            10421,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            11453,
+            10278
+          ],
+          "note": null,
+          "sourceUrl": "https://priyom.org/number-stations/digital/xpb/schedule"
+        }
+      ],
       "sourceUrls": [
         "https://priyom.org/number-stations/digital/xpb",
         "http://www.signalshed.com/docs/ENIGMA%202000%20Active%20Stations%20List%20V1.3.pdf"

@@ -145,10 +145,10 @@ CREATE TABLE frequency (
 );
 
 CREATE TABLE schedule (
-  station_id  TEXT NOT NULL REFERENCES station(enigma_id),
-  rrule       TEXT NOT NULL,            -- RFC 5545, UTC
-  khz         REAL,
-  source_url  TEXT NOT NULL
+  station_id    TEXT NOT NULL REFERENCES station(enigma_id),
+  rrule         TEXT NOT NULL,          -- RFC 5545, UTC
+  khz_by_month  TEXT NOT NULL,          -- JSON: twelve entries, January first
+  source_url    TEXT NOT NULL
 );
 
 CREATE TABLE observation (               -- what was actually heard, and when
@@ -169,8 +169,13 @@ Schedules as RFC 5545 `RRULE` strings rather than cron: transmission windows are
 expressed as weekday-and-UTC-time patterns with seasonal changes, which is what
 `RRULE` is for.
 
-Seeding: hand-parse the ENIGMA v1.3 list once into a fixture. Priyom schedules refresh
-on a daily cached fetch per station, with attribution shown in the UI.
+A slot carries twelve frequencies rather than one because that is how the schedules are
+published — E11's 03:15 slot runs 8102 kHz in January and 16530 kHz in May — and a
+single frequency with a note saying it rotates is wrong eleven months of the year.
+
+Seeding: hand-parse the ENIGMA v1.3 list once into a fixture. Priyom schedules are
+imported by [`scripts/import-priyom.mjs`](../scripts/import-priyom.mjs), reviewed as a
+diff, with attribution shown in the UI.
 
 ## 4. Phase 2 — schedule alerting and archive
 

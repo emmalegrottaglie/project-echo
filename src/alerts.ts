@@ -1,4 +1,4 @@
-import { nextOccurrence } from './schedule';
+import { nextOccurrence, scheduleKhz } from './schedule';
 import type { Schedule, Station } from './types';
 
 /**
@@ -121,7 +121,7 @@ export function checkDue(stations: Station[], now = new Date()): number {
       new Notification(`${station.enigmaId} ${station.name}`, {
         body:
           `Window opens in ${minutes} min` +
-          (schedule.khz ? ` on ${schedule.khz} kHz` : '') +
+          (scheduleKhz(schedule, at) ? ` on ${scheduleKhz(schedule, at)} kHz` : '') +
           (schedule.note ? `. ${schedule.note}` : ''),
         tag: stamp,
       });

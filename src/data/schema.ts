@@ -25,7 +25,7 @@ import { isSafeUrl } from '../url';
  * version it does not know keeps its bundled copy rather than guessing — which is what
  * makes it safe for the server to serve new data to an installed APK.
  */
-export const SCHEMA_VERSION = 1;
+export const SCHEMA_VERSION = 2;
 
 export type ValidationResult =
   | { ok: true; stations: Station[] }
@@ -87,8 +87,16 @@ function checkSchedule(value: unknown, where: string, errors: string[]): Schedul
   if (typeof value.rrule !== 'string' || value.rrule === '') {
     errors.push(`${where}.rrule: expected a non-empty RRULE string`);
   }
-  if (value.khz !== null && (typeof value.khz !== 'number' || !Number.isFinite(value.khz))) {
-    errors.push(`${where}.khz: expected a number or null`);
+  if (!Array.isArray(value.khzByMonth) || value.khzByMonth.length !== 12) {
+    errors.push(`${where}.khzByMonth: expected twelve entries, January first`);
+  } else if (
+    value.khzByMonth.some(
+      (khz) => khz !== null && (typeof khz !== 'number' || !Number.isFinite(khz) || khz <= 0),
+    )
+  ) {
+    errors.push(`${where}.khzByMonth: entries must be a positive number or null`);
+  } else if (value.khzByMonth.every((khz) => khz === null)) {
+    errors.push(`${where}.khzByMonth: a slot with no frequency in any month is not a slot`);
   }
   if (value.note !== null && typeof value.note !== 'string') {
     errors.push(`${where}.note: expected a string or null`);

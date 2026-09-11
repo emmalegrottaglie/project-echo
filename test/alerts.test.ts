@@ -45,7 +45,7 @@ function slotSoon(now: Date): Schedule {
   const days = ['SU', 'MO', 'TU', 'WE', 'TH', 'FR', 'SA'];
   return {
     rrule: `FREQ=WEEKLY;BYDAY=${days[soon.getUTCDay()]};BYHOUR=${soon.getUTCHours()};BYMINUTE=${soon.getUTCMinutes()}`,
-    khz: 8102,
+    khzByMonth: Array.from({ length: 12 }, () => 8102),
     note: null,
     sourceUrl: 'https://example.test',
   };
@@ -111,7 +111,7 @@ describe('checkDue', () => {
     const days = ['SU', 'MO', 'TU', 'WE', 'TH', 'FR', 'SA'];
     const schedule: Schedule = {
       rrule: `FREQ=WEEKLY;BYDAY=${days[far.getUTCDay()]};BYHOUR=${far.getUTCHours()};BYMINUTE=0`,
-      khz: null,
+      khzByMonth: Array.from({ length: 12 }, () => null),
       note: null,
       sourceUrl: 'https://example.test',
     };

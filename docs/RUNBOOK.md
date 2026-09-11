@@ -209,7 +209,9 @@ interface presents status as a dated claim for exactly that reason.
 
 1. Re-read the [ENIGMA 2000 newsletters](http://www.signalshed.com/nletter06.html),
    which publish every two months, and the Priyom category indexes.
-2. Edit [`data/stations.json`](../data/stations.json). Every frequency needs its own
+2. For schedules and their frequency lists, run `npm run import-priyom` and read the
+   diff — never hand-edit those rows. For everything else, edit
+   [`data/stations.json`](../data/stations.json) directly. Every frequency needs its own
    `sourceUrl` and `lastConfirmed`; where sources conflict, add both rows and set
    `disputed` rather than choosing. Full rules in [`data/README.md`](../data/README.md).
 3. Note in [RESEARCH.md](RESEARCH.md) what changed and why, especially anything that

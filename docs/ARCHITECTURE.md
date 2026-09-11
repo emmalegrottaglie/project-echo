@@ -106,7 +106,8 @@ wrong on a real signal are recorded in its header comment; read that before touc
 | Station facts, tiers, provenance | [`data/stations.json`](../data/stations.json) |
 | Loading, caching and refreshing that roster | [`src/data/stations.ts`](../src/data/stations.ts) |
 | Validating it, at build time and on arrival | [`src/data/schema.ts`](../src/data/schema.ts) |
-| Recurrence arithmetic, countdown formatting | [`src/schedule.ts`](../src/schedule.ts) |
+| Recurrence arithmetic, countdown formatting, which month's frequency a window uses | [`src/schedule.ts`](../src/schedule.ts) |
+| Importing schedules from Priyom | [`scripts/import-priyom.mjs`](../scripts/import-priyom.mjs) |
 | Alert subscriptions and the due check | [`src/alerts.ts`](../src/alerts.ts) |
 | Server calls, degrading when absent | [`src/api.ts`](../src/api.ts) |
 | Component markup | [`src/ui.ts`](../src/ui.ts) |

@@ -76,6 +76,63 @@ describe('the committed dataset', () => {
     }
   });
 
+  /**
+   * The month columns on Priyom's schedule pages are merged cells — E11's 03:15 slot is
+   * `colspan="2"` 8102, `colspan="2"` 12630, `colspan="4"` 16530, and so on. Reading
+   * them positionally gives Jan 8102, Feb 12630, Mar 16530, which is wrong from
+   * February onward and looks entirely plausible. This row is checked against the page
+   * by hand and pins the expansion.
+   */
+  it('expands merged month columns rather than reading them positionally', () => {
+    const result = validateStationData(parsed);
+    if (!result.ok) throw new Error('dataset is invalid');
+
+    const e11 = result.stations.find((entry) => entry.enigmaId === 'E11');
+    const slot = e11?.schedules.find((entry) => entry.rrule.includes('BYHOUR=3;BYMINUTE=15'));
+
+    expect(slot?.khzByMonth).toEqual([
+      8102, 8102, 12630, 12630, 16530, 16530, 16530, 16530, 12630, 12630, 8102, 8102,
+    ]);
+  });
+
+  it('imported the schedules that Priyom actually publishes', () => {
+    const result = validateStationData(parsed);
+    if (!result.ok) throw new Error('dataset is invalid');
+
+    const slots = (id: string): number =>
+      result.stations.find((entry) => entry.enigmaId === id)?.schedules.length ?? 0;
+
+    // Ten of the twenty-six active stations publish a schedule Priyom tabulates, and
+    // two more publish a frequency list. The remaining fourteen carry neither on
+    // Priyom at all, and stay honestly empty rather than being filled with guesses.
+    expect(slots('E11')).toBeGreaterThan(30);
+    expect(slots('XPB')).toBeGreaterThan(40);
+    expect(slots('M23')).toBeGreaterThan(0);
+    expect(slots('E06')).toBe(0);
+
+    const withSchedules = result.stations.filter(
+      (entry) => entry.tier === 'scheduled' && entry.schedules.length > 0,
+    );
+    expect(withSchedules).toHaveLength(10);
+
+    const withFrequencies = result.stations.filter(
+      (entry) => entry.tier === 'scheduled' && entry.frequencies.length > 0,
+    );
+    expect(withFrequencies.map((entry) => entry.enigmaId)).toEqual(['E25', 'V13']);
+  });
+
+  it('never stores a slot that has no frequency in any month', () => {
+    const result = validateStationData(parsed);
+    if (!result.ok) throw new Error('dataset is invalid');
+
+    for (const entry of result.stations) {
+      for (const slot of entry.schedules) {
+        expect(slot.khzByMonth, `${entry.enigmaId} ${slot.rrule}`).toHaveLength(12);
+        expect(slot.khzByMonth.some((khz) => khz !== null)).toBe(true);
+      }
+    }
+  });
+
   it('still records S32 as disputed rather than picking a winner', () => {
     const result = validateStationData(parsed);
     if (!result.ok) throw new Error('dataset is invalid');
