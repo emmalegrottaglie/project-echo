@@ -200,6 +200,11 @@ not a schema preference. Do not add content fields.
 
 ## `POST /api/observations`
 
+The client sends nothing here unless the user has turned on the switch in the live
+view. It is off by default, the gate lives in `src/api.ts` rather than in the view so
+no caller can forget it, and the endpoint itself is unauthenticated — the consent is a
+property of this client, not of the server.
+
 Records a hearing. `Content-Type: application/json`.
 
 | Field | Type | Required | Meaning |

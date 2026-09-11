@@ -274,3 +274,59 @@ describe('candidateReceivers', () => {
     expect(candidateReceivers(2)).toHaveLength(2);
   });
 });
+
+/**
+ * The consent gate.
+ *
+ * The app posted a detection a minute from the moment the detector locked, with nothing
+ * said and no way to decline. The gate lives in the one module that talks to the server,
+ * so a view cannot forget to check it, and these pin the default.
+ */
+describe('contributing detections', () => {
+  it('is off until someone turns it on', async () => {
+    const { isContributing, setContributing } = await import('../src/api');
+
+    expect(isContributing()).toBe(false);
+    setContributing(true);
+    expect(isContributing()).toBe(true);
+    setContributing(false);
+    expect(isContributing()).toBe(false);
+  });
+
+  it('sends nothing while it is off, without even asking whether a server is there', async () => {
+    const { postObservation, setContributing } = await import('../src/api');
+
+    const originalFetch = globalThis.fetch;
+    let called = 0;
+    globalThis.fetch = (async () => {
+      called += 1;
+      return new Response('{}', { status: 200 });
+    }) as unknown as typeof fetch;
+
+    setContributing(false);
+    const sent = await postObservation({ stationId: 'S28' });
+
+    globalThis.fetch = originalFetch;
+    expect(sent).toBe(false);
+    expect(called).toBe(0);
+  });
+
+  it('treats unusable storage as no answer, which means no', async () => {
+    const { isContributing } = await import('../src/api');
+
+    vi.stubGlobal('localStorage', {
+      getItem() {
+        throw new Error('storage disabled');
+      },
+      setItem() {
+        throw new Error('storage disabled');
+      },
+    });
+
+    try {
+      expect(isContributing()).toBe(false);
+    } finally {
+      vi.stubGlobal('localStorage', storage);
+    }
+  });
+});

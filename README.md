@@ -269,7 +269,11 @@ conditioned on live ionosonde data, regenerated every five minutes.
 ## Scope boundary
 
 The app records observations about signals — frequencies, markers, timing — and never
-their contents. Reception is legal nearly everywhere; publishing the contents of
+their contents. **Nothing is sent anywhere unless you turn it on.** The live view
+carries a switch, off by default, saying exactly what a detection contains and that it
+goes only to the server hosting the page: station, frequency, measured period, how
+steady it was, and the name of the receiver it was heard through. Never audio and never
+message content, because this app does not decode. Reception is legal nearly everywhere; publishing the contents of
 non-broadcast transmissions is regulated (47 U.S.C. § 605 in the US, the Wireless
 Telegraphy Act 2006 in the UK). Message decoding is not a missing feature, it is out of
 scope. [docs/RESEARCH.md](docs/RESEARCH.md) §5 has the detail.

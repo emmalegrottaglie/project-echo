@@ -10,6 +10,17 @@ wrong fact is a defect. Where a correction has evidence behind it, the evidence 
 
 ## 2026-09-11
 
+### Fixed — consent
+
+- **Detections are no longer sent without asking.** The app had been posting an
+  observation to the server every minute from the moment the detector locked — station,
+  frequency, measured period, and the name of the receiver it was heard through — with
+  nothing said and no way to decline. It is now off unless switched on, the switch is in
+  the live view rather than buried in Diagnostics, and its wording says exactly what a
+  detection contains and that it goes only to the server hosting the page. The gate is in
+  `src/api.ts`, the only module that talks to the server, so no caller can forget it, and
+  unusable storage counts as no answer, which means no.
+
 ### Data
 
 - **Transmitter sites, and a correction to where The Buzzer transmits from.** Stations

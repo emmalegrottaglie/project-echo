@@ -3,8 +3,10 @@ import {
   diagnosticNoCorsUrl,
   diagnosticUrl,
   fetchDirectory,
+  isContributing,
   postObservation,
   RELAY_URL,
+  setContributing,
   type DirectoryReceiver,
 } from '../api';
 import { createAnalyser, hasEnergy, waitForSignal } from '../audio/analyser';
@@ -38,6 +40,7 @@ import {
   searchField,
   skeleton,
   statusLine,
+  toggleSwitch,
   transportBar,
   waterfallPanel,
   type Sheet,
@@ -151,9 +154,21 @@ export function liveView(): { element: HTMLElement; destroy: () => void } {
       <p class="echo-footnote">
         The connection is released after ten minutes without interaction, and a minute
         after this tab goes to the background. A public receiver has four channels and
-        they are lent to you, not given. This app records observations about signals,
-        never their contents.
+        they are lent to you, not given.
       </p>
+      <div class="echo-contribute" hidden>
+        <div class="echo-contribute__text">
+          <strong>Send detections to the server</strong>
+          <span>
+            Off unless you turn it on. When it is on, a locked detection is sent at most
+            once a minute: the station, the frequency, the measured period, how steady it
+            was, and the name of the receiver you heard it through. Never any audio and
+            never any message content — this app does not decode, by design. It goes only
+            to the server hosting this page.
+          </span>
+        </div>
+        <div class="echo-contribute__switch"></div>
+      </div>
     </div>
     ${transportBar(false)}
   `;
@@ -169,6 +184,8 @@ export function liveView(): { element: HTMLElement; destroy: () => void } {
   const transport = element.querySelector<HTMLElement>('.echo-transport')!;
   const connectButton = transport.querySelector<HTMLButtonElement>('[name="connect"]')!;
   const syntheticButton = transport.querySelector<HTMLButtonElement>('[name="synthetic"]')!;
+  const contribute = element.querySelector<HTMLElement>('.echo-contribute')!;
+  const contributeSwitch = contribute.querySelector<HTMLElement>('.echo-contribute__switch')!;
 
   const tuning = (): Tuning | null => tunings[tuningIndex] ?? null;
 
@@ -240,6 +257,15 @@ export function liveView(): { element: HTMLElement; destroy: () => void } {
       periodSec: current.station.markerPeriodSec,
       name: 'open-station',
     });
+  };
+
+  const renderContribute = (): void => {
+    contributeSwitch.innerHTML = toggleSwitch(
+      isContributing(),
+      'data-contribute',
+      'on',
+      'Send detections to the server',
+    );
   };
 
   const renderDetector = (state: DetectorState, text: string): void => {
@@ -804,6 +830,12 @@ export function liveView(): { element: HTMLElement; destroy: () => void } {
   element.addEventListener('click', (event) => {
     const target = event.target as HTMLElement;
 
+    const contributeToggle = target.closest<HTMLElement>('[data-contribute]');
+    if (contributeToggle) {
+      setContributing(contributeToggle.getAttribute('aria-checked') !== 'true');
+      renderContribute();
+      return;
+    }
     if (target.closest('[name="find-receiver"]')) {
       void findReceiver();
       return;
@@ -846,6 +878,7 @@ export function liveView(): { element: HTMLElement; destroy: () => void } {
     }
   });
 
+  renderContribute();
   renderReceiver();
   renderStation();
   renderStatus('Not listening.');
@@ -856,6 +889,9 @@ export function liveView(): { element: HTMLElement; destroy: () => void } {
   void available().then((present) => {
     serverPresent = present;
     diagnostics.hidden = !present;
+    // Nothing is sent anywhere without a server, so offering the choice would be
+    // offering a control over something that is not happening.
+    contribute.hidden = !present;
     syntheticButton.hidden = false;
     // Re-rendered because the empty-receiver notice offers "Find one for me", which
     // needs the directory and so cannot be drawn before this resolves.

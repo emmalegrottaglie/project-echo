@@ -305,13 +305,23 @@ export function gapNotice(title: string, body: string, links: GapLink[] = []): s
 /* --------------------------------------------------------------- schedule ----- */
 
 /** 44 px switch replacing the desktop build's glyph button. */
-export function alertSwitch(on: boolean, slot: string, disabled = false): string {
+export function toggleSwitch(
+  on: boolean,
+  attribute: string,
+  value: string,
+  label: string,
+  disabled = false,
+): string {
   return (
-    `<button class="echo-switch" type="button" role="switch" data-slot="${esc(slot)}"` +
-    ` aria-checked="${on}" aria-label="Alert before this window"${disabled ? ' disabled' : ''}>` +
+    `<button class="echo-switch" type="button" role="switch" ${attribute}="${esc(value)}"` +
+    ` aria-checked="${on}" aria-label="${esc(label)}"${disabled ? ' disabled' : ''}>` +
     `<span class="echo-switch__track"><span class="echo-switch__knob"></span></span>` +
     `</button>`
   );
+}
+
+export function alertSwitch(on: boolean, slot: string, disabled = false): string {
+  return toggleSwitch(on, 'data-slot', slot, 'Alert before this window', disabled);
 }
 
 /* ------------------------------------------------------------------ sheet ----- */

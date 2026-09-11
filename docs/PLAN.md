@@ -391,7 +391,11 @@ waterfall and leaving the user to guess.
 `observation` exists in the schema from §5b and nothing meaningful writes to it. The
 detector already measures period, consistency, tracked bin and uptime every session.
 
-Phase 4 writes that, opt-in, and reads it back as aggregates. The contribution is
+Phase 4 writes that, opt-in, and reads it back as aggregates. **The opt-in is built**
+and it closed a gap rather than adding a feature: the app had been posting a detection a
+minute from the moment the detector locked, with nothing said and no way to decline. It
+is off by default and the gate sits in `src/api.ts`, the only module that talks to the
+server, so a view cannot forget to check it. The contribution is
 metadata about a signal and never its content, which is the same boundary §5 of
 [RESEARCH.md](RESEARCH.md) draws for everything else here; user-contributed data does
 not get a weaker rule than imported data.

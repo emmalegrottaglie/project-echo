@@ -50,6 +50,37 @@ export interface ObservationInput {
   notes?: string;
 }
 
+/**
+ * Whether this browser sends its detections to the server.
+ *
+ * Off unless someone turns it on. A detection is a measurement rather than a message —
+ * station, frequency, period, and the receiver it was heard through — but it is still a
+ * record of what a person listened to, and it leaves their machine. The app had been
+ * posting one a minute from the moment the detector locked, with nothing said and no way
+ * to decline, which is the sort of thing this project criticises other software for.
+ *
+ * The gate lives here rather than in the view because this is the only module that
+ * talks to the server: a view cannot forget to check it.
+ */
+const CONTRIBUTE_KEY = 'echo.contribute';
+
+export function isContributing(): boolean {
+  try {
+    return localStorage.getItem(CONTRIBUTE_KEY) === 'yes';
+  } catch {
+    // Storage unavailable, so no choice has been recorded, so nothing is sent.
+    return false;
+  }
+}
+
+export function setContributing(on: boolean): void {
+  try {
+    localStorage.setItem(CONTRIBUTE_KEY, on ? 'yes' : 'no');
+  } catch {
+    // Nothing to do: without storage the answer stays no on the next read.
+  }
+}
+
 let availability: Promise<boolean> | null = null;
 
 export function available(): Promise<boolean> {
@@ -90,6 +121,7 @@ export async function fetchObservations(stationId: string): Promise<Observation[
 }
 
 export async function postObservation(input: ObservationInput): Promise<boolean> {
+  if (!isContributing()) return false;
   if (!(await available())) return false;
   try {
     const response = await fetch('/api/observations', {
