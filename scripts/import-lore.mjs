@@ -78,7 +78,17 @@ function text(fragment) {
     .trim();
 }
 
-async function fetchPage(path) {
+/**
+ * A page, or null where `optional` and the page is gone.
+ *
+ * Only a 404 is survivable, and only for a station. Priyom's own index still links
+ * S10b, whose page has since been removed, and one dead link killing a run of 130
+ * fetches would mean the import could never be re-run at all. Anything else — a 500, a
+ * timeout, a refused connection — stays fatal on purpose: "not there" is a fact about
+ * the archive, while "we could not tell" is a fact about the network, and quietly
+ * skipping the second would drop a description that still exists.
+ */
+async function fetchPage(path, { optional = false } = {}) {
   const name = `${path.split('/').pop()}.html`;
   if (CACHE) {
     const file = join(CACHE, name);
@@ -86,9 +96,14 @@ async function fetchPage(path) {
   }
 
   const response = await fetch(ROOT + path, { headers: { 'user-agent': AGENT } });
+  if (response.status === 404 && optional) {
+    await sleep(PAUSE_MS);
+    return null;
+  }
   if (!response.ok) throw new Error(`${path}: HTTP ${response.status}`);
   const body = await response.text();
 
+  // Cached after the status check, so a failure is never stored as though it were a page.
   if (CACHE) writeFileSync(join(CACHE, name), body, 'utf8');
   await sleep(PAUSE_MS);
   return body;
@@ -211,7 +226,7 @@ async function main() {
     (station) => station.lore === null || station.lore.quotedFrom !== null,
   );
 
-  const report = { imported: 0, noPage: [], noProse: [], starts: [], ends: [] };
+  const report = { imported: 0, noPage: [], gone: [], noProse: [], starts: [], ends: [] };
 
   for (const station of wanted) {
     const path = urls.get(station.enigmaId.toLowerCase());
@@ -220,7 +235,13 @@ async function main() {
       continue;
     }
 
-    const { text: extract } = extractLore(await fetchPage(path));
+    const html = await fetchPage(path, { optional: true });
+    if (html === null) {
+      report.gone.push(station.enigmaId);
+      continue;
+    }
+
+    const { text: extract } = extractLore(html);
     if (!extract) {
       report.noProse.push(station.enigmaId);
       continue;
@@ -239,7 +260,8 @@ async function main() {
   writeFileSync('data/stations.json', `${JSON.stringify(data, null, 2)}\n`, 'utf8');
 
   console.log(`imported ${report.imported} descriptions`);
-  if (report.noPage.length) console.log(`no Priyom page: ${report.noPage.join(' ')}`);
+  if (report.noPage.length) console.log(`not in Priyom's index: ${report.noPage.join(' ')}`);
+  if (report.gone.length) console.log(`indexed but the page is gone: ${report.gone.join(' ')}`);
   if (report.noProse.length) console.log(`page carried no description: ${report.noProse.join(' ')}`);
   for (const [end, lines] of [
     ['beginning', report.starts],

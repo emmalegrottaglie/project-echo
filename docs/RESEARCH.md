@@ -406,8 +406,15 @@ than in a reviewer's head:
 - **No date is ever written.** Sentences that mention a year alongside a beginning or an
   ending are printed for a person to weigh, for the reason set out in §9.
 
-125 descriptions landed. Four stations still have none: F03 and P03 have no Priyom page,
-and S10b and V12 have pages carrying an infobox and nothing else.
+125 descriptions landed. Four stations still have none, for three different reasons:
+F03 and P03 are not in Priyom's index at all; S10b is indexed but its page has been
+removed and returns 404; and V12's page exists, carrying an infobox and an empty body.
+
+Those were one bucket until the importer was first run against the live site. The pages
+had been fetched with `curl -o`, which writes the body of a 404 to disk like any other,
+so S10b's cached copy was Priyom's error page — and an error page has no body section,
+which is indistinguishable from a page whose body is empty. The distinction only appeared
+once the fetch and the parse happened in the same process.
 
 ## Sources
 

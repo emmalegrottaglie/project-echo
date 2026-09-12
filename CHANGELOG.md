@@ -8,6 +8,36 @@ Corrections to station data are listed alongside code changes, because in an arc
 wrong fact is a defect. Where a correction has evidence behind it, the evidence lives in
 [docs/RESEARCH.md](docs/RESEARCH.md) and is linked from the entry.
 
+## 2026-09-12
+
+### Fixed
+
+- **One dead page no longer aborts the whole lore import.** `scripts/import-lore.mjs`
+  threw on any non-200, so S10b — a station Priyom still links from its own index, whose
+  page has since been removed — killed a run of 130 fetches and wrote nothing. The
+  importer could not be re-run at all, which was the one thing it was built to support.
+
+  A 404 on a station page is now survivable and reported; a 404 on an index page, and
+  every other failure, stays fatal. "Not there" is a fact about the archive and "we could
+  not tell" is a fact about the network, and quietly skipping the second would drop a
+  description that still exists. Pages are also cached only after the status check, so a
+  failure is never stored as though it were a page.
+
+  Found by running the importer against the live site for the first time. Every page
+  until then had come from a cache built with `curl -o`, which writes the body of a 404
+  to disk like any other, so the failure had no way to surface.
+
+### Data
+
+- **S10b's page is gone, not empty.** It had been recorded alongside V12 as a station
+  whose Priyom page carries an infobox and nothing else. An error page has no body
+  section either, which is indistinguishable from an empty one once it is sitting in a
+  cache — the two only separated when the fetch and the parse happened in the same
+  process. See [docs/RESEARCH.md](docs/RESEARCH.md) §10.
+
+  The live run otherwise reproduced the committed dataset exactly: 125 descriptions, no
+  diff.
+
 ## 2026-09-11
 
 ### Added
