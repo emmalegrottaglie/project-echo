@@ -416,6 +416,40 @@ so S10b's cached copy was Priyom's error page — and an error page has no body 
 which is indistinguishable from a page whose body is empty. The distinction only appeared
 once the fetch and the parse happened in the same process.
 
+## 11. The receiver directory arrives unauthenticated, and cannot not
+
+kiwisdr.com's own list is behind a captcha handshake, which §3 explains is not a gate
+this project will work around. The machine-readable alternative is Pierre Ynard's
+auto-generated list at rx.linkfanel.net, and it answers on http only — a request to the
+https port is refused outright, tested rather than assumed. There is no TLS to switch to.
+
+So the transport is unauthenticated and will stay that way until somebody else changes
+it. What matters is what that can and cannot do.
+
+**What a poisoned list could do.** Add receivers. Someone on the network path between
+this server and rx.linkfanel.net could insert an entry, and a listener who picked it out
+of the directory would connect a WebSocket to a host of the attacker's choosing and hear
+whatever it sent. That is the honest worst case, and it is bounded by the fact that a
+person chooses a receiver by hand before anything connects.
+
+**What it cannot do.** The file is a JavaScript assignment and is parsed, never
+evaluated — `parseDirectory` slices the array out and runs it through `JSON.parse`, so
+code in the source is text. `host` is rebuilt from a URL that has been parsed and checked
+for an http or https scheme and a non-empty hostname, rather than copied from the file:
+`javascript:alert(1)` parses happily with an empty hostname and used to become the host
+`:8073`. Every field the client shows goes through `esc()`, and the Content Security
+Policy refuses script from anywhere but this app's own bundle.
+
+**What was ruled out.** Pinning a certificate or a hash is meaningless against a source
+that publishes no certificate and regenerates every few minutes. Dropping the feature
+would remove the only way for somebody without their own antenna to hear anything, which
+is most people. Shipping a bundled copy of the list would be stale within the hour and
+would still have come over the same wire.
+
+The code tries https first anyway, so that the day rx.linkfanel.net serves TLS this
+starts using it without anyone remembering to come back. Until then the fallback is the
+path every fetch takes.
+
 ## Sources
 
 - [UVB-76 — Wikipedia](https://en.wikipedia.org/wiki/UVB-76)

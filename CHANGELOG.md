@@ -12,6 +12,19 @@ wrong fact is a defect. Where a correction has evidence behind it, the evidence 
 
 ### Security
 
+- **The receiver directory now refuses a URL that is not a receiver.** The list arrives
+  over http — rx.linkfanel.net refuses a connection on the https port, so there is no TLS
+  to switch to — which makes every row a claim rather than a fact. `new URL` accepts far
+  more than a web address: `javascript:alert(1)` parses with an empty hostname and became
+  the host `:8073`, which the app then offered somebody to connect to. The scheme and the
+  hostname are both checked now.
+
+  `refresh` tries https first and falls back, so the day that host serves TLS this starts
+  using it without anyone remembering to come back. [docs/RESEARCH.md](docs/RESEARCH.md)
+  §11 is new and sets out what a poisoned list could do, what it could not, and what was
+  ruled out — pinning a certificate against a source that publishes none, and dropping
+  the feature that is the only way to hear anything without an antenna of your own.
+
 - **A page the user visited could put script into the archive.** `khz` was interpolated
   straight into `innerHTML` on the station page, and it was reachable: every JSON
   response carried `Access-Control-Allow-Origin: *`, so any website could POST an

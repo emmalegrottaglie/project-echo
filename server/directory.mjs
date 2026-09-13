@@ -12,7 +12,22 @@
  * why the browser cannot read it and this proxy exists at all.
  */
 
-const SOURCE_URL = 'http://rx.linkfanel.net/kiwisdr_com.js';
+/**
+ * Tried in order. rx.linkfanel.net answers only on http today — a request to the https
+ * port is refused outright — so the plaintext URL is not a preference but the only one
+ * that works. It is listed second rather than alone so that the day TLS appears there,
+ * this starts using it without anybody noticing it had not been.
+ *
+ * What that means is written down rather than assumed: the list arrives over a transport
+ * nobody authenticates, so anything in it is a claim, not a fact. Nothing here is
+ * evaluated, `host` is rebuilt from a parsed URL rather than copied, and the client
+ * escapes every field it shows. A listener still chooses a receiver by hand before
+ * anything connects to it. See docs/RESEARCH.md §11.
+ */
+const SOURCE_URLS = [
+  'https://rx.linkfanel.net/kiwisdr_com.js',
+  'http://rx.linkfanel.net/kiwisdr_com.js',
+];
 const ATTRIBUTION = 'http://rx.linkfanel.net/';
 
 /**
@@ -39,10 +54,20 @@ function parseBands(value) {
   return Number.isFinite(low) && Number.isFinite(high) ? [low / 1000, high / 1000] : null;
 }
 
-/** 'host:port' from the directory's full URL. */
+/**
+ * 'host:port' from the directory's full URL, or null for anything that is not one.
+ *
+ * The scheme and the hostname are both checked because `new URL` is happy with a great
+ * deal that is not a receiver: `javascript:alert(1)` parses, with an empty hostname, and
+ * would have become the host `:8073`. The upstream publishes web URLs for Kiwi nodes, so
+ * anything else is either a broken row or a poisoned one, and neither belongs in a list
+ * the app offers people to connect to.
+ */
 function parseHost(url) {
   try {
     const parsed = new URL(url);
+    if (parsed.protocol !== 'http:' && parsed.protocol !== 'https:') return null;
+    if (!parsed.hostname) return null;
     return parsed.port ? `${parsed.hostname}:${parsed.port}` : `${parsed.hostname}:8073`;
   } catch {
     return null;
@@ -91,14 +116,23 @@ export function parseDirectory(text) {
 }
 
 async function refresh() {
-  // Identifies this project in the operator's logs. rx.linkfanel.net is one person's
-  // server and the polite thing is to be visible in it rather than anonymous.
-  const response = await fetch(SOURCE_URL, {
-    headers: { 'user-agent': USER_AGENT },
-  });
-  if (!response.ok) throw new Error(`directory source returned ${response.status}`);
+  let last = null;
 
-  cache = { at: Date.now(), receivers: parseDirectory(await response.text()) };
+  for (const url of SOURCE_URLS) {
+    try {
+      // Identifies this project in the operator's logs. rx.linkfanel.net is one person's
+      // server and the polite thing is to be visible in it rather than anonymous.
+      const response = await fetch(url, { headers: { 'user-agent': USER_AGENT } });
+      if (!response.ok) throw new Error(`directory source returned ${response.status}`);
+
+      cache = { at: Date.now(), receivers: parseDirectory(await response.text()) };
+      return;
+    } catch (error) {
+      last = error;
+    }
+  }
+
+  throw last ?? new Error('no directory source configured');
 }
 
 /**

@@ -95,6 +95,31 @@ describe('parseDirectory', () => {
   it('throws on something that is not the expected format', () => {
     expect(() => parseDirectory('<html>gone</html>')).toThrow(/expected format/);
   });
+
+  /**
+   * The list arrives over a transport nobody authenticates — rx.linkfanel.net answers
+   * only on http — so every row is a claim rather than a fact. `new URL` accepts far
+   * more than a receiver: `javascript:alert(1)` parses with an empty hostname and used
+   * to become the host `:8073`, which the app would then have offered someone to
+   * connect to.
+   */
+  it('drops a URL that is not a web address for a receiver', () => {
+    const hostile =
+      'var kiwisdr_com = [ ' +
+      '{ "name":"scheme", "url":"javascript:alert(1)" }, ' +
+      '{ "name":"data", "url":"data:text/html,x" }, ' +
+      '{ "name":"no host", "url":"http://" }, ' +
+      '{ "name":"real", "url":"http://good.example:8073" }, ]';
+
+    expect(parseDirectory(hostile).map((receiver: { host: string }) => receiver.host)).toEqual([
+      'good.example:8073',
+    ]);
+  });
+
+  it('keeps https, since the day a node has TLS it is still a node', () => {
+    const secure = 'var kiwisdr_com = [ { "name":"x", "url":"https://tls.example:8073" }, ]';
+    expect(parseDirectory(secure)[0].host).toBe('tls.example:8073');
+  });
 });
 
 /**
