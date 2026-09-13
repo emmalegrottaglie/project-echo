@@ -8,6 +8,47 @@ Corrections to station data are listed alongside code changes, because in an arc
 wrong fact is a defect. Where a correction has evidence behind it, the evidence lives in
 [docs/RESEARCH.md](docs/RESEARCH.md) and is linked from the entry.
 
+## 2026-09-13
+
+### Security
+
+- **A page the user visited could put script into the archive.** `khz` was interpolated
+  straight into `innerHTML` on the station page, and it was reachable: every JSON
+  response carried `Access-Control-Allow-Origin: *`, so any website could POST an
+  observation to the loopback server, and SQLite keeps a non-numeric string in a `REAL`
+  column unchanged. A crafted value survived the round trip and ran in the app's origin.
+  Confirmed end to end against a running server before and after the fix.
+
+  Closed at three points, because one of them alone would have left the others standing:
+
+  - **The write is validated.** `server/observation.mjs` is new and holds the whole
+    trust boundary: types, lengths, and a timestamp parsed and re-emitted by this
+    process. A bad field is refused with `400` naming it, rather than stored. It is a
+    module of its own because the endpoint takes writes without authentication, which
+    makes this the part that has to be right.
+  - **The API no longer answers other origins.** The client is served by the same
+    server and never needed the header. Only `/stream/` and `/diagnostic/` keep it —
+    that is the CORS which is load-bearing, where a `MediaElementAudioSourceNode` is
+    silent without it, and the `/diagnostic-nocors/` pair still reproduces that failure.
+  - **The client renders a figure only when it is one.** A measurement that is not a
+    finite number shows an em dash. Stronger than escaping, and it also keeps `toFixed`
+    off a string, which threw and took the whole hearings table with it.
+
+- **Any origin could also read the hearings.** `GET /api/observations` answered every
+  origin with the station, time and frequency of everything the user had listened to.
+  The receiver label was removed from this payload in September for a third party's
+  privacy; the server was handing the rest of it to any page in the browser. Same fix:
+  the header is gone from the API.
+
+- **Server errors no longer echo their message.** A rejected write says which field was
+  wrong, because the caller can act on that. Everything else returns `server error`.
+
+### Fixed
+
+- **The hearings table no longer throws on a malformed row.** `periodSec.toFixed(2)` on
+  a string took out the whole `<div>`. Rows written before the validation existed can
+  still be in anyone's database.
+
 ## 2026-09-12
 
 ### Fixed

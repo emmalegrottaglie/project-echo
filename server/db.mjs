@@ -1,6 +1,7 @@
 import { DatabaseSync } from 'node:sqlite';
 import { mkdirSync } from 'node:fs';
 import { dirname } from 'node:path';
+import { validateObservation } from './observation.mjs';
 
 /**
  * Observation storage.
@@ -52,10 +53,14 @@ export function open(path = 'server/data/echo.sqlite') {
  * station and receiver inside `dedupeMinutes` updates the existing row instead of
  * adding another. Without that the table becomes a log of the polling interval rather
  * than a log of transmissions.
+ *
+ * Throws `InvalidObservation` for anything malformed rather than storing it: this is an
+ * unauthenticated endpoint, so the validation is the trust boundary.
  */
-export function recordObservation(input, dedupeMinutes = 10) {
+export function recordObservation(raw, dedupeMinutes = 10) {
   const database = open();
-  const heardAt = input.heardAt ?? new Date().toISOString();
+  const input = validateObservation(raw);
+  const heardAt = input.heardAt;
   const since = new Date(Date.now() - dedupeMinutes * 60_000).toISOString();
 
   const existing = database
@@ -64,7 +69,7 @@ export function recordObservation(input, dedupeMinutes = 10) {
         WHERE station_id = ? AND IFNULL(receiver, '') = IFNULL(?, '') AND heard_at >= ?
         ORDER BY heard_at DESC LIMIT 1`,
     )
-    .get(input.stationId, input.receiver ?? null, since);
+    .get(input.stationId, input.receiver, since);
 
   if (existing) {
     database
@@ -73,14 +78,7 @@ export function recordObservation(input, dedupeMinutes = 10) {
             SET heard_at = ?, khz = ?, period_sec = ?, consistency = ?, notes = ?
           WHERE id = ?`,
       )
-      .run(
-        heardAt,
-        input.khz ?? null,
-        input.periodSec ?? null,
-        input.consistency ?? null,
-        input.notes ?? null,
-        existing.id,
-      );
+      .run(heardAt, input.khz, input.periodSec, input.consistency, input.notes, existing.id);
     return { id: existing.id, updated: true };
   }
 
@@ -93,11 +91,11 @@ export function recordObservation(input, dedupeMinutes = 10) {
     .run(
       input.stationId,
       heardAt,
-      input.khz ?? null,
-      input.receiver ?? null,
-      input.periodSec ?? null,
-      input.consistency ?? null,
-      input.notes ?? null,
+      input.khz,
+      input.receiver,
+      input.periodSec,
+      input.consistency,
+      input.notes,
     );
 
   return { id: Number(result.lastInsertRowid), updated: false };

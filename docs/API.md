@@ -33,16 +33,24 @@ different origins to a browser, which is what makes the CORS diagnostic in
 is the default for that reason. Setting `HOST=0.0.0.0` exposes an unauthenticated write
 endpoint to the network; do not do it without putting something in front.
 
+Because the endpoint is unauthenticated, the field types are the trust boundary, and
+`server/observation.mjs` is where they are checked. A row that fails is refused rather
+than stored: SQLite does not enforce a column's type, and a string in a `REAL` column is
+kept unchanged, so an unchecked write reached the rendered archive intact.
+
 ## Conventions
 
 - All responses are JSON except the file routes.
-- Every JSON response carries `Access-Control-Allow-Origin: *`.
-- `OPTIONS` on any path returns `204` with `Access-Control-Allow-Methods: GET, POST,
-  OPTIONS` and `Access-Control-Allow-Headers: content-type`.
+- **No JSON response carries `Access-Control-Allow-Origin`.** The client is served by
+  this same server, so it never needs one. The header used to be on every response,
+  which meant any page the user happened to visit could read every observation the
+  server held and write new ones. CORS is now only on the audio routes, where a
+  `MediaElementAudioSourceNode` is silent without it.
+- `OPTIONS` on any path returns `204` with `Allow: GET, POST, OPTIONS` and no
+  access-control headers, which is what refuses a cross-origin caller.
 - Errors are `{ "error": "<message>" }`.
-- Unhandled exceptions return `500` with the exception's message. That includes a
-  request body that is too large or not JSON — see the note under
-  `POST /api/observations`.
+- A rejected write returns `400` and says which field was wrong. Anything else returns
+  `500` with `server error` — the exception's message is not the caller's business.
 
 ---
 
@@ -242,6 +250,7 @@ client additionally posts at most once a minute.
 |---|---|
 | `201` | Inserted or updated. |
 | `400` | `stationId` missing. |
+| `400` | A field is the wrong type, missing, or too long. The message names the field. |
 | `500` | Body over 8192 bytes (`request body too large`) or not valid JSON. Both should be `413` and `400`; they are not, and a client cannot currently distinguish either from a server fault. |
 
 ---
@@ -253,7 +262,7 @@ client additionally posts at most once a minute.
 | `/stream/*` | yes | `no-store` on `.m3u8` | The relay's HLS output from `server/stream/`. |
 | `/diagnostic/*` | yes | default | `server/diagnostic/`. |
 | `/diagnostic-nocors/*` | **no** | default | The same directory, deliberately without the header. |
-| everything else | yes | `no-store` on `.html`, one year immutable on `/assets/*` | The built client from `dist/`. |
+| everything else | **no** | `no-store` on `.html`, one year immutable on `/assets/*` | The built client from `dist/`. |
 
 `/diagnostic-nocors/` exists to make cross-origin audio silence reproducible: a
 `MediaElementAudioSourceNode` built from a cross-origin resource outputs silence with no

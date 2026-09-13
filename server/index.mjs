@@ -46,12 +46,21 @@ const MIME = {
   '.aac': 'audio/aac',
 };
 
+/**
+ * A JSON reply, same-origin only.
+ *
+ * These routes carried `access-control-allow-origin: *`, which meant any page the user
+ * happened to visit could read every observation this server holds — the station, the
+ * time and the frequency of everything they had listened to — and write new ones. The
+ * client is served by this same server and never needs the header; the CORS that is
+ * load-bearing is on the audio under `/stream/` and `/diagnostic/`, where a
+ * `MediaElementAudioSourceNode` is silent without it.
+ */
 function sendJson(response, status, body) {
   const payload = JSON.stringify(body);
   response.writeHead(status, {
     'content-type': 'application/json; charset=utf-8',
     'content-length': Buffer.byteLength(payload),
-    'access-control-allow-origin': '*',
   });
   response.end(payload);
 }
@@ -123,12 +132,10 @@ async function handle(request, response) {
   const path = url.pathname;
 
   try {
+    // A preflight only ever arrives for a cross-origin request, and no cross-origin
+    // caller is wanted here. Answering without the allow headers is what refuses it.
     if (request.method === 'OPTIONS') {
-      response.writeHead(204, {
-        'access-control-allow-origin': '*',
-        'access-control-allow-methods': 'GET, POST, OPTIONS',
-        'access-control-allow-headers': 'content-type',
-      });
+      response.writeHead(204, { allow: 'GET, POST, OPTIONS' });
       response.end();
       return;
     }
@@ -174,7 +181,7 @@ async function handle(request, response) {
       const { body, etag } = stationPayload();
 
       if (request.headers['if-none-match'] === etag) {
-        response.writeHead(304, { etag, 'access-control-allow-origin': '*' });
+        response.writeHead(304, { etag });
         response.end();
         return;
       }
@@ -186,7 +193,6 @@ async function handle(request, response) {
         // the 304 above makes checking cheap.
         'cache-control': 'no-cache',
         etag,
-        'access-control-allow-origin': '*',
       });
       response.end(body);
       return;
@@ -220,9 +226,14 @@ async function handle(request, response) {
       return;
     }
 
-    sendFile(response, 'dist', path === '/' ? '/index.html' : path, { cors: true });
+    sendFile(response, 'dist', path === '/' ? '/index.html' : path, { cors: false });
   } catch (error) {
-    sendJson(response, 500, { error: error instanceof Error ? error.message : String(error) });
+    // A rejected write says why, because the caller can fix it. Anything else is this
+    // server's problem and its message is not the caller's business.
+    const status = error?.status ?? 500;
+    sendJson(response, status, {
+      error: status === 400 && error instanceof Error ? error.message : 'server error',
+    });
   }
 }
 

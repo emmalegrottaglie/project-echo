@@ -79,7 +79,23 @@ function provenanceTable(station: Station): string {
  * `observation` rows: what was heard, when, on what frequency, through which receiver,
  * at what measured period. Never what was said.
  */
-function observationsHtml(observations: Observation[]): string {
+/**
+ * One measured figure from an observation, or an em dash.
+ *
+ * The type says `number | null` and the runtime did not have to agree. Observations come
+ * back from a server that takes writes without authentication, and SQLite stores a string
+ * in a REAL column unchanged when it does not look like a number — so a crafted `khz`
+ * arrived here as text and went into the page. Checking the type is a stronger guarantee
+ * than escaping would be: a figure that is not a number is not a figure, and there is
+ * nothing to render. It also keeps `toFixed` off a string, which threw and took the whole
+ * table with it.
+ */
+function measure(value: number | null, format?: (value: number) => string): string {
+  if (typeof value !== 'number' || !Number.isFinite(value)) return '—';
+  return esc(format ? format(value) : String(value));
+}
+
+export function observationsHtml(observations: Observation[]): string {
   if (!observations.length) {
     return `<h4>Heard here</h4>${gapNotice(
       'No hearings yet',
@@ -95,12 +111,11 @@ function observationsHtml(observations: Observation[]): string {
     observations
       .map(
         (observation) =>
-          `<tr><td>${new Date(observation.heardAt).toLocaleString()}</td>` +
-          `<td>${observation.khz ?? '—'}</td>` +
-          `<td>${observation.periodSec ? `${observation.periodSec.toFixed(2)} s` : '—'}</td>` +
-          `<td>${
-            observation.consistency === null ? '—' : `${Math.round(observation.consistency * 100)}%`
-          }</td></tr>`,
+          `<tr><td>${esc(new Date(observation.heardAt).toLocaleString())}</td>` +
+          `<td>${measure(observation.khz)}</td>` +
+          `<td>${measure(observation.periodSec, (value) => `${value.toFixed(2)} s`)}</td>` +
+          `<td>${measure(observation.consistency, (value) => `${Math.round(value * 100)}%`)}</td>` +
+          `</tr>`,
       )
       .join('') +
     `</tbody></table></div>`
