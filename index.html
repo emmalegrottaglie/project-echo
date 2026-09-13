@@ -8,6 +8,48 @@
       name="viewport"
       content="width=device-width, initial-scale=1, viewport-fit=cover"
     />
+    <!--
+      Content Security Policy.
+
+      The whole interface is built by assigning strings to innerHTML, which is what makes
+      this worth having: a value that reaches the page without being escaped is one
+      mistake away from executing, and one of them did. It lives in the markup rather
+      than in a response header because the client is built to run with no server at all
+      — the Android wrapper loads these files from disk, and a header would protect only
+      the case that needs protecting least.
+
+      Two directives are wider than the rest, both for reasons that are in the code:
+
+        connect-src ws: wss:  — the receiver is whichever public KiwiSDR the listener
+                                picks out of a directory of thousands, so the host cannot
+                                be named in advance. Nearly all of them are plain ws://,
+                                which is why README.md's deployment constraint exists.
+        style-src 'unsafe-inline'
+                              — the timeline and the world map position elements with a
+                                style attribute, because the coordinates are computed per
+                                row. Nothing else needs it; a nonce cannot cover an
+                                attribute.
+
+      frame-ancestors is absent because a meta-tag policy may not carry it. The server
+      sends it as a header instead, for the case where there is a server.
+    -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="
+        default-src 'self';
+        base-uri 'self';
+        object-src 'none';
+        frame-src 'none';
+        script-src 'self';
+        style-src 'self' 'unsafe-inline';
+        font-src 'self';
+        img-src 'self' data: https://prop.kc2g.com;
+        media-src 'self' blob: http://localhost:* http://127.0.0.1:*;
+        connect-src 'self' ws: wss:;
+        worker-src blob:;
+        form-action 'none'
+      "
+    />
     <title>Project Echo — shortwave marker monitor</title>
     <meta
       name="description"

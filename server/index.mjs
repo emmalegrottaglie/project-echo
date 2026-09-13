@@ -104,7 +104,15 @@ function sendFile(response, root, urlPath, { cors }) {
   // index.html names the hashed asset bundles, so a cached copy keeps loading the
   // previous build's CSS and JavaScript after a rebuild. The hashed assets themselves
   // are safe to cache forever, because their names change when they do.
-  if (extname(requested) === '.html') headers['cache-control'] = 'no-store';
+  if (extname(requested) === '.html') {
+    headers['cache-control'] = 'no-store';
+    // The page carries its own Content-Security-Policy, which covers it wherever it is
+    // opened from — including the Android build, which has no server. `frame-ancestors`
+    // is the one directive a meta tag may not carry, so it is sent here instead.
+    headers['content-security-policy'] = "frame-ancestors 'none'";
+    headers['x-content-type-options'] = 'nosniff';
+    headers['referrer-policy'] = 'no-referrer';
+  }
   else if (urlPath.startsWith('/assets/')) {
     headers['cache-control'] = 'public, max-age=31536000, immutable';
   }

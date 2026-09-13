@@ -43,6 +43,26 @@ wrong fact is a defect. Where a correction has evidence behind it, the evidence 
 - **Server errors no longer echo their message.** A rejected write says which field was
   wrong, because the caller can act on that. Everything else returns `server error`.
 
+- **The page carries a Content Security Policy.** The whole interface is built by
+  assigning strings to `innerHTML`, and today proved what that costs when one value
+  escapes the escaping. The policy is the backstop: verified in the browser, an
+  `onerror=` handler injected exactly the way the stored XSS arrived is now refused by
+  `script-src-attr`, and an inline `<script>` and a third-party one by `script-src-elem`.
+  The payload would not run even if the escaping regressed.
+
+  It is a meta tag in [index.html](index.html) rather than a response header because the
+  client is built to run with no server at all — the Android wrapper loads these files
+  from disk, and a header would cover only the case that needs it least. The server adds
+  `frame-ancestors 'none'` on HTML, which a meta tag may not carry, with
+  `X-Content-Type-Options` and `Referrer-Policy`.
+
+  Two directives are wider than the rest and both are named in the markup with the reason:
+  `connect-src ws: wss:`, because the receiver is whichever public KiwiSDR the listener
+  picks out of thousands, and `style-src 'unsafe-inline'`, because the timeline and the
+  world map position elements with a `style` attribute computed per row. Checked against
+  the built app, the dev server and the timeline's 17 bars and 56 ticks: no violations,
+  and the inline positions still resolve.
+
 ### Fixed
 
 - **The hearings table no longer throws on a malformed row.** `periodSec.toFixed(2)` on

@@ -264,6 +264,11 @@ client additionally posts at most once a minute.
 | `/diagnostic-nocors/*` | **no** | default | The same directory, deliberately without the header. |
 | everything else | **no** | `no-store` on `.html`, one year immutable on `/assets/*` | The built client from `dist/`. |
 
+HTML responses also carry `Content-Security-Policy: frame-ancestors 'none'`,
+`X-Content-Type-Options: nosniff` and `Referrer-Policy: no-referrer`. The rest of the
+policy is a meta tag in the page itself, so that it holds in the Android build too, where
+there is no server — see the README.
+
 `/diagnostic-nocors/` exists to make cross-origin audio silence reproducible: a
 `MediaElementAudioSourceNode` built from a cross-origin resource outputs silence with no
 error and no log, so the only way to know the client's check still works is to trigger

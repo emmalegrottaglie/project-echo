@@ -184,6 +184,27 @@ The fix is not a proxy in front of someone else's receiver. It is owned hardware
 our own `wss://`, which is Phase 3 in [docs/PLAN.md](docs/PLAN.md) and needs a receiver
 and an antenna before it needs code.
 
+## Content Security Policy
+
+[index.html](index.html) carries one, and it is worth reading before adding anything that
+loads from somewhere new. The whole interface is built by assigning strings to
+`innerHTML`, so a value that reaches the page unescaped is one mistake from executing —
+and one did, which is why the policy is there. It blocks inline event handlers and any
+script that is not this app's own bundle.
+
+It lives in the markup rather than in a response header because the client is built to
+run with no server at all: the Android wrapper loads these files from disk. The server
+adds `frame-ancestors 'none'` on HTML, which a meta tag may not carry, along with
+`X-Content-Type-Options` and `Referrer-Policy`.
+
+Two directives are wider than the rest and both follow from the constraint above:
+
+- `connect-src ws: wss:` — the receiver is whichever public KiwiSDR the listener picks,
+  so the host cannot be named in advance.
+- `style-src 'unsafe-inline'` — the timeline and the world map position elements with a
+  `style` attribute, because the coordinates are computed per row. A nonce cannot cover
+  an attribute, and nothing else needs the concession.
+
 ## Documentation
 
 | Document | For |
