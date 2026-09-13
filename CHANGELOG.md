@@ -12,6 +12,25 @@ wrong fact is a defect. Where a correction has evidence behind it, the evidence 
 
 ### Security
 
+- **Vite 5 to 8 and Vitest 2 to 5**, which clears five advisories including the critical
+  one (arbitrary file read through the Vitest UI server) and the high (path traversal in
+  Vite's optimized-deps handling). Both were development-only — `npm audit --omit=dev`
+  read zero throughout — but they are real against anyone running `npm run dev` or the
+  test UI.
+
+  Verified rather than assumed, because these are two major versions each: the suite
+  passes, the typecheck passes, and the built app was loaded and exercised under the
+  Content Security Policy. Vite 8 builds with Rolldown and splits chunks differently, so
+  the world map is now its own file — imported dynamically and checked to load under
+  `script-src 'self'`, which it does. The dev server was checked too. The build went from
+  3.6 s to 0.35 s as a side effect.
+
+  The three advisories left are one chain, `@capacitor/cli` to `xcode` to `uuid`, and the
+  only fix npm offers is a downgrade to a CLI older than the `@capacitor/core` it must
+  match. Left alone with the reasoning written into [README.md](README.md): `xcode`
+  parses Xcode project files, this repository has no iOS platform, and nothing here
+  ships.
+
 - **The receiver directory now refuses a URL that is not a receiver.** The list arrives
   over http — rx.linkfanel.net refuses a connection on the https port, so there is no TLS
   to switch to — which makes every row a claim rather than a fact. `new URL` accepts far

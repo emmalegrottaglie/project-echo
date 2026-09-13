@@ -184,6 +184,21 @@ The fix is not a proxy in front of someone else's receiver. It is owned hardware
 our own `wss://`, which is Phase 3 in [docs/PLAN.md](docs/PLAN.md) and needs a receiver
 and an antenna before it needs code.
 
+## Dependencies
+
+Four at build time and two at runtime, and `npm audit` is expected to report three
+moderate advisories. They are all one chain — `@capacitor/cli` depends on `xcode`, which
+depends on an older `uuid` — and the only version npm offers as a fix is a downgrade to a
+CLI older than the `@capacitor/core` and `@capacitor/android` it has to match.
+
+It is left alone deliberately. `xcode` parses Xcode project files, which is an iOS
+concern; this repository has no iOS platform and the CLI is used for `cap sync android`.
+The `uuid` issue needs a `buf` argument passed to v3, v5 or v6, which is not a path the
+CLI drives with anything a stranger controls. Nothing here ships: all four are
+`devDependencies`, and the built app contains none of them.
+
+Re-check that reasoning rather than the count if `npm audit` ever reports something new.
+
 ## Content Security Policy
 
 [index.html](index.html) carries one, and it is worth reading before adding anything that
