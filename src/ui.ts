@@ -329,16 +329,30 @@ export function alertSwitch(on: boolean, slot: string, disabled = false): string
 export interface Sheet {
   element: HTMLElement;
   body: HTMLElement;
-  close(): void;
+  /**
+   * `after` runs once the sheet is gone and the history entry it added has been
+   * unwound. A caller that navigates on close has to use it: setting the hash straight
+   * after would create an entry that the pending unwind then removes.
+   */
+  close(after?: () => void): void;
 }
 
 /**
  * A bottom sheet.
  *
- * The scrim is deliberately translucent — 72 % — so the waterfall stays visible
- * behind it. Dismiss on scrim tap, on the close control, and on Escape; the
- * drag-to-dismiss gesture in the design bundle is listed there as documented but not
- * implemented, and is not implemented here either.
+ * The scrim is deliberately translucent — 72 % — so the waterfall stays visible behind
+ * it. Four ways out, and each was asked for by somebody holding a phone:
+ *
+ * - **The scrim, or the handle, tapped.**
+ * - **Escape**, on a keyboard.
+ * - **Dragging the handle down.** docs/MOBILE_UI_SPEC.md §5.2 item 3 has specified this
+ *   from the start — "tracks the finger 1:1 and releases with velocity" — and it was
+ *   never built, so the handle looked like something you could pull and was not. The
+ *   gesture is bound to the handle and header rather than the sheet, because the body
+ *   scrolls and a drag starting there has to keep scrolling it.
+ * - **The system back button.** A sheet is not a page, so nothing in the history stack
+ *   corresponded to it, and Android's back went straight past the app and closed it.
+ *   Opening a sheet now pushes an entry and back pops it.
  */
 export function openSheet(title: string, note: string, onClose?: () => void): Sheet {
   const element = document.createElement('div');
@@ -354,20 +368,120 @@ export function openSheet(title: string, note: string, onClose?: () => void): Sh
     `<div class="echo-sheet__body"></div>` +
     `</section>`;
 
-  const close = (): void => {
+  const panel = element.querySelector<HTMLElement>('.echo-sheet')!;
+  const grips = element.querySelectorAll<HTMLElement>(
+    '.echo-sheet__handle, .echo-sheet__header',
+  );
+
+  // Back should close the sheet, not leave the app.
+  history.pushState({ echoSheet: true }, '');
+  let closed = false;
+
+  const close = (after?: () => void, fromHistory = false): void => {
+    if (closed) return;
+    closed = true;
+
     document.removeEventListener('keydown', onKeydown);
+    window.removeEventListener('popstate', onPopState);
     element.remove();
     onClose?.();
+
+    if (fromHistory) {
+      after?.();
+      return;
+    }
+
+    // Unwind the entry this sheet added. `after` waits for the pop to land, because a
+    // caller that sets the hash immediately would have its new entry removed instead.
+    if (!after) {
+      history.back();
+      return;
+    }
+
+    let ran = false;
+    const run = (): void => {
+      if (ran) return;
+      ran = true;
+      after();
+    };
+    window.addEventListener('popstate', run, { once: true });
+    // A pop that never arrives must not strand the caller mid-navigation.
+    window.setTimeout(run, 300);
+    history.back();
   };
 
   function onKeydown(event: KeyboardEvent): void {
     if (event.key === 'Escape') close();
   }
 
+  function onPopState(): void {
+    close(undefined, true);
+  }
+
+  /* --- drag to dismiss: spec §5.2 item 3, 1:1 with the finger, released on velocity - */
+
+  let startY = 0;
+  let startAt = 0;
+  let travel = 0;
+  let dragging = false;
+  /** Set once a gesture has moved far enough to be a drag rather than a tap. */
+  let dragged = false;
+
+  const onPointerDown = (event: PointerEvent): void => {
+    if (!event.isPrimary) return;
+    dragging = true;
+    dragged = false;
+    travel = 0;
+    startY = event.clientY;
+    startAt = event.timeStamp;
+    // The present animation holds a transform of its own and would fight the drag.
+    panel.style.animation = 'none';
+    panel.style.transition = 'none';
+    (event.currentTarget as HTMLElement).setPointerCapture(event.pointerId);
+  };
+
+  const onPointerMove = (event: PointerEvent): void => {
+    if (!dragging) return;
+    travel = Math.max(0, event.clientY - startY);
+    if (travel > 4) dragged = true;
+    panel.style.transform = `translateY(${travel}px)`;
+  };
+
+  const onPointerUp = (event: PointerEvent): void => {
+    if (!dragging) return;
+    dragging = false;
+    panel.style.transition = 'transform var(--dur-slow) var(--ease-out)';
+
+    // Either far enough, or fast enough. A flick that has barely moved still means go.
+    const velocity = travel / Math.max(1, event.timeStamp - startAt);
+    if (travel > panel.getBoundingClientRect().height * 0.3 || velocity > 0.5) {
+      panel.style.transform = 'translateY(100%)';
+      panel.addEventListener('transitionend', () => close(), { once: true });
+      // Reduced motion shortens the transition, and an interrupted one never ends.
+      window.setTimeout(() => close(), 400);
+      return;
+    }
+    panel.style.transform = 'translateY(0)';
+  };
+
+  for (const grip of grips) {
+    grip.addEventListener('pointerdown', onPointerDown);
+    grip.addEventListener('pointermove', onPointerMove);
+    grip.addEventListener('pointerup', onPointerUp);
+    grip.addEventListener('pointercancel', onPointerUp);
+  }
+
   element.addEventListener('click', (event) => {
+    // A drag that sprang back still ends in a click, which would dismiss what the
+    // reader just decided to keep.
+    if (dragged) {
+      dragged = false;
+      return;
+    }
     if ((event.target as HTMLElement).closest('[data-dismiss]')) close();
   });
   document.addEventListener('keydown', onKeydown);
+  window.addEventListener('popstate', onPopState);
 
   document.body.appendChild(element);
 

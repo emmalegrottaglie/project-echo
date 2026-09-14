@@ -359,6 +359,25 @@ export function liveView(): { element: HTMLElement; destroy: () => void } {
     setPhase('idle');
   };
 
+  /**
+   * Carries a change of receiver or frequency over to whatever is already playing.
+   *
+   * Changing either mid-stream used to leave the old connection running: the header
+   * named one receiver and one frequency while the audio came from another, and the
+   * transport sat on "Connecting…" for a socket that was never going to replace
+   * anything. In an archive that is the failure that matters — the app saying something
+   * it cannot back. The stream follows the selection now, and nobody has to know to
+   * press Connect a second time.
+   *
+   * Idle stays idle. Picking a station while not listening is browsing, not tuning.
+   */
+  const retune = (): void => {
+    if (phase === 'idle') return;
+    attempt += 1;
+    teardownAudio();
+    void connect();
+  };
+
   /** Resolves true when the transport connected. False means try something else. */
   /**
    * Hands the receiver back and says why.
@@ -706,6 +725,7 @@ export function liveView(): { element: HTMLElement; destroy: () => void } {
       renderReceiver();
       closeSheet();
       renderStatus(`saved ${host}`);
+      retune();
     });
   }
 
@@ -743,6 +763,7 @@ export function liveView(): { element: HTMLElement; destroy: () => void } {
       renderStation();
       void renderLastHeard();
       closeSheet();
+      retune();
     });
   }
 
@@ -835,6 +856,7 @@ export function liveView(): { element: HTMLElement; destroy: () => void } {
         renderReceiver();
         closeSheet();
         renderStatus(`saved ${chosen.host}`);
+        retune();
       });
     });
   }

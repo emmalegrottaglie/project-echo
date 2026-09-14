@@ -41,7 +41,10 @@ const PERMISSION_COPY: Record<string, string> = {
   denied:
     'Notifications are blocked for this site. Alerts will not fire until that is ' +
     'changed in browser settings.',
-  unsupported: 'This browser has no Notification API, so alerts cannot fire here.',
+  unsupported:
+    'This browser has no Notification API, so alerts cannot fire here and the ' +
+    'switches are disabled. The Android app is in this state: its WebView has no ' +
+    'notifications. Opening the app in a phone browser does have them.',
 };
 
 export function scheduleView(): { element: HTMLElement; destroy: () => void } {
@@ -72,6 +75,16 @@ export function scheduleView(): { element: HTMLElement; destroy: () => void } {
   const permissionLine = element.querySelector<HTMLElement>('.echo-coverage__permission')!;
   const permissionAction = element.querySelector<HTMLElement>('.echo-permission-action')!;
   const rows = element.querySelector<HTMLElement>('.echo-rows')!;
+
+  /**
+   * Whether arming an alert could ever produce one.
+   *
+   * Android's WebView ships no Notification API, so in the packaged app this is false
+   * and no alert will fire however many switches are on. A switch that flips and then
+   * does nothing is the same lie as a button that cannot work — the reason the
+   * permission control below only renders when asking would achieve something.
+   */
+  const alertsCanFire = (): boolean => permission() === 'granted';
 
   const renderPermission = (): void => {
     const state = permission();
@@ -105,7 +118,7 @@ export function scheduleView(): { element: HTMLElement; destroy: () => void } {
 
         return (
           `<div class="echo-schedule-row">` +
-          alertSwitch(isSubscribed(key), key) +
+          alertSwitch(isSubscribed(key), key, !alertsCanFire()) +
           `<div class="echo-schedule-row__main">` +
           `<div class="echo-schedule-row__title">` +
           `<span class="echo-schedule-row__designator">${esc(station.enigmaId)}</span>` +

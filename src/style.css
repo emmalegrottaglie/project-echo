@@ -163,6 +163,20 @@ main {
   -webkit-overflow-scrolling: touch;
 }
 
+/*
+ * The archive's two panes. This had rules only in the desktop layout below, so on a
+ * phone it was a plain block that grew to its content — the scroller inside it never
+ * received a bounded height, never scrolled, and the list ran on past the bottom of the
+ * view and printed itself over the tab bar. A scroller only scrolls if something above
+ * it says how tall it may be.
+ */
+.echo-station-layout {
+  display: flex;
+  min-height: 0;
+  flex: 1 1 auto;
+  flex-direction: column;
+}
+
 .echo-tabbar {
   display: grid;
   flex: 0 0 auto;
@@ -532,6 +546,16 @@ main {
   color: var(--fg);
   font: var(--text-body) / var(--leading-body) var(--font-mono);
   transition: opacity var(--dur-fast) var(--ease-inout);
+}
+
+/*
+ * A receiver host is one unbroken token in a monospace face, and a flex child will not
+ * shrink below its own content unless it is told it may. Without this the status line
+ * pushed the whole shell sideways and the phone scrolled horizontally.
+ */
+.echo-status__message {
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 .echo-status--live {
@@ -957,7 +981,15 @@ main {
   font: var(--text-body) / var(--leading-body) var(--font-mono);
 }
 
+/*
+ * `min-width: 0` is what makes the scrolling work at all. This sits inside
+ * `.echo-detail__body`, a flex column, and a flex item will not shrink below its own
+ * content unless told it may — so a wide table stretched the container instead of
+ * scrolling inside it, and took the whole shell sideways on a phone.
+ */
 .echo-table-scroll {
+  min-width: 0;
+  max-width: 100%;
   overflow-x: auto;
 }
 
@@ -1233,11 +1265,25 @@ tr.disputed {
   }
 }
 
+/*
+ * `touch-action: none` on the grab areas: without it the browser keeps the vertical
+ * gesture for scrolling and the drag-to-dismiss never sees a pointermove. The body is
+ * deliberately not a grab area — it scrolls, and a drag starting there must scroll it.
+ */
+.echo-sheet__handle,
+.echo-sheet__header {
+  touch-action: none;
+}
+
 .echo-sheet__handle {
   display: flex;
   justify-content: center;
   padding: var(--space-2) 0 var(--space-1);
-  cursor: pointer;
+  cursor: grab;
+}
+
+.echo-sheet__handle:active {
+  cursor: grabbing;
 }
 
 .echo-sheet__handle span {

@@ -139,8 +139,7 @@ export function openHelp(): Sheet {
   sheet.body.innerHTML = `<div class="echo-help">${CONTENT}</div>`;
   sheet.body.addEventListener('click', (event) => {
     if ((event.target as HTMLElement).closest('[name="credits"]')) {
-      sheet.close();
-      openCredits();
+      sheet.close(openCredits);
     }
   });
   return sheet;

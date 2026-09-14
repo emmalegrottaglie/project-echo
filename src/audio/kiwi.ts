@@ -58,8 +58,11 @@ export class KiwiSource implements AudioSource {
     });
     this.node.connect(destination);
 
+    // The path carries a cache-busting timestamp and the stream name, which mean
+    // nothing to a reader and made the line wider than a phone. The host is the part
+    // somebody can act on.
     const url = `ws://${this.options.host}/${Math.floor(Date.now() / 1000)}/SND`;
-    this.options.onStatus(`connecting to ${url}`);
+    this.options.onStatus(`connecting to ${this.options.host}`);
 
     await new Promise<void>((resolve, reject) => {
       const socket = new WebSocket(url);

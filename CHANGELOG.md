@@ -1,3 +1,47 @@
+## 2026-09-14
+
+### Fixed
+
+Everything here came from one round of testing the Android build on a real phone.
+
+- **The system back button closed the app instead of the sheet.** A sheet was not a
+  page, so nothing in the history stack answered for it and Android's back went straight
+  past. Opening one now pushes an entry and back pops it. A sheet that navigates as it
+  closes waits for that entry to unwind first, or its own destination would be the thing
+  the pending back removed.
+
+- **The handle looked draggable and was not.** docs/MOBILE_UI_SPEC.md §5.2 item 3 has
+  specified this since the beginning — "tracks the finger 1:1 and releases with
+  velocity" — and it was never built, so the only way out was tapping a bar most people
+  read as a grip. The gesture is bound to the handle and header rather than the whole
+  sheet, because the body scrolls and a drag starting there has to keep scrolling it.
+
+- **The archive list printed itself over the tab bar.** `.echo-station-layout` had rules
+  only in the desktop layout, so on a phone it was a plain block that grew to its
+  content. The scroller inside never received a bounded height, never scrolled, and the
+  list ran on past the bottom of the view. A scroller only scrolls if something above it
+  says how tall it may be.
+
+- **Two places pushed the whole shell sideways.** The transmitter-sites table and the
+  connection status line. Both were flex children, and a flex child will not shrink
+  below its own content unless it is told it may, so `overflow-x: auto` never engaged
+  and the page scrolled horizontally instead. The status line also printed the entire
+  WebSocket URL, timestamp path and all; it names the host now, which is the part
+  somebody can act on.
+
+- **Changing receiver or station mid-stream left the old connection playing.** The
+  header named one receiver and one frequency while the audio came from another, and the
+  transport sat on "Connecting…" for a socket that was never going to replace anything.
+  In an archive that is the failure that matters: the app saying something it cannot
+  back. The stream follows the selection now, and nobody has to know to press Connect a
+  second time. Picking a station while idle stays idle — that is browsing, not tuning.
+
+- **The alert switches armed something that could never fire.** Android's WebView ships
+  no Notification API, so the packaged app cannot raise an alert however many switches
+  are on. They are disabled in that state, and the copy says which state it is in. This
+  is the same rule the permission button already followed: a control that cannot work is
+  a lie.
+
 # Changelog
 
 Every change to this project, newest first. Entries record what changed and why it

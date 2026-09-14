@@ -219,8 +219,10 @@ export function openTimeline(): Sheet {
   sheet.body.addEventListener('click', (event) => {
     const row = (event.target as HTMLElement).closest<HTMLElement>('[data-id]');
     if (!row?.dataset.id) return;
-    sheet.close();
-    location.hash = `archive/${row.dataset.id}`;
+    const id = row.dataset.id;
+    sheet.close(() => {
+      location.hash = `archive/${id}`;
+    });
   });
 
   return sheet;
