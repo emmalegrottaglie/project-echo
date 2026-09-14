@@ -151,10 +151,21 @@ design rather than by omission.
 
 ### Alerts
 
-Per-slot subscriptions, checked from the app shell every 30 seconds, notifying 10
-minutes before a window. They are per-browser and only fire while a tab is open: there
-is no service worker, because the app must be served over plain http. The schedule view
-says so rather than letting you assume otherwise.
+Per-slot subscriptions, notifying 10 minutes before a window. What that is worth
+depends entirely on where the app is running, and the schedule view says which of the
+two you have rather than letting you assume:
+
+- **In the Android build**, the schedule is handed to the OS ahead of time through
+  `@capacitor/local-notifications`, so an alert arrives with the app closed. The
+  soonest 48 are scheduled, two per subscribed slot, topped up whenever the schedule is
+  opened or a switch is flipped — Android holds a bounded number of pending alarms and
+  drops the excess silently.
+- **In a browser**, they use the `Notification` API and fire only while a tab is open,
+  because there is no service worker: the app must be served over plain http to reach
+  `ws://` receivers. A closed tab means no alert, which makes this a poor reminder and
+  a fine desk indicator.
+
+See [src/notify.ts](src/notify.ts), which picks whichever delivery the platform has.
 
 ## Why it is a marker monitor and not a numbers scanner
 
@@ -198,6 +209,23 @@ CLI drives with anything a stranger controls. Nothing here ships: all four are
 `devDependencies`, and the built app contains none of them.
 
 Re-check that reasoning rather than the count if `npm audit` ever reports something new.
+
+## Reaching the server from a phone
+
+The server binds loopback by default, and the API answers no cross-origin caller —
+`POST /api/observations` takes writes without authentication, so both of those are the
+right defaults. Neither is what the Android build needs: Capacitor serves the page from
+the phone itself, so the server is both on another machine and on another origin.
+
+```bash
+HOST=0.0.0.0 ECHO_ALLOW_ORIGIN=http://localhost npm start
+```
+
+Then set the address in the app under **Receiver → Use a server**. Both settings widen
+real boundaries — the first exposes an unauthenticated write endpoint to the network,
+the second lets a named origin read the hearings this server holds. A home network for
+an afternoon, not a shared one, and stop the server afterwards. See
+[docs/ANDROID.md](docs/ANDROID.md).
 
 ## Content Security Policy
 

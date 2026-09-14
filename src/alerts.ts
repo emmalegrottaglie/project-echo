@@ -8,10 +8,15 @@ import type { Schedule, Station } from './types';
  * product is a reminder shortly beforehand — the reason the scheduled tier gets alerts
  * instead of a live view.
  *
- * State lives in `localStorage`, so alerts are per-browser and only fire while a tab is
- * open. The fix would be a service worker, which this app cannot have: it must be
- * served over plain http to reach `ws://` receivers. The UI says so rather than letting
- * the user assume otherwise.
+ * State lives in `localStorage`, so subscriptions are per-browser. This module owns what
+ * is subscribed and when a window is due; `src/notify.ts` owns getting an alert in front
+ * of somebody, because that differs by platform and this does not.
+ *
+ * `checkDue` below is the browser path: a poll from the app shell, firing only while a
+ * tab is open. A service worker would not fix that — it cannot wake itself on a timer
+ * without a push server — and the app must be served over plain http to reach `ws://`
+ * receivers anyway. The Android build does not use this path at all: the schedule is
+ * handed to the OS ahead of time and fires with the app closed.
  */
 
 const SUBSCRIPTIONS_KEY = 'echo.alerts';

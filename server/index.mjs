@@ -32,6 +32,37 @@ const PORT = Number(process.env.PORT ?? 8080);
  */
 const HOSTS = process.env.HOST ? [process.env.HOST] : ['127.0.0.1', '::1'];
 
+/**
+ * Origins allowed to call the API cross-origin, from `ECHO_ALLOW_ORIGIN`.
+ *
+ * Empty by default, which is the safe state and the right one for a desktop: the client
+ * is served by this server, so it is same-origin and needs nothing. The Android build
+ * cannot be — Capacitor serves the page from the phone at `http://localhost` and the
+ * server is on the network — so without this, pointing the app at a server fails at the
+ * first request with no response to read.
+ *
+ * A named origin rather than `*`. `*` is what let any page the user happened to visit
+ * read every observation this server holds, which is the hole closed in 4f278e0, and
+ * reopening it for the sake of one app would undo that for every site on the internet.
+ *
+ *   ECHO_ALLOW_ORIGIN=http://localhost npm start
+ */
+const ALLOWED_ORIGINS = new Set(
+  (process.env.ECHO_ALLOW_ORIGIN ?? '')
+    .split(',')
+    .map((origin) => origin.trim())
+    .filter(Boolean),
+);
+
+/** The echo header for this request's origin, or nothing. */
+function corsFor(request) {
+  const origin = request.headers.origin;
+  if (!origin || !ALLOWED_ORIGINS.has(origin)) return {};
+  // `vary` because the answer depends on the request: a cache must not serve one
+  // origin's allowance to another.
+  return { 'access-control-allow-origin': origin, vary: 'origin' };
+}
+
 const MIME = {
   '.html': 'text/html; charset=utf-8',
   '.js': 'text/javascript; charset=utf-8',
@@ -56,11 +87,12 @@ const MIME = {
  * load-bearing is on the audio under `/stream/` and `/diagnostic/`, where a
  * `MediaElementAudioSourceNode` is silent without it.
  */
-function sendJson(response, status, body) {
+function sendJson(response, status, body, cors = {}) {
   const payload = JSON.stringify(body);
   response.writeHead(status, {
     'content-type': 'application/json; charset=utf-8',
     'content-length': Buffer.byteLength(payload),
+    ...cors,
   });
   response.end(payload);
 }
@@ -138,12 +170,24 @@ async function readJsonBody(request, limit = 8192) {
 async function handle(request, response) {
   const url = new URL(request.url ?? '/', `http://${request.headers.host ?? HOSTS[0]}`);
   const path = url.pathname;
+  const cors = corsFor(request);
 
   try {
-    // A preflight only ever arrives for a cross-origin request, and no cross-origin
-    // caller is wanted here. Answering without the allow headers is what refuses it.
+    // A preflight only ever arrives for a cross-origin request. One from an origin in
+    // ECHO_ALLOW_ORIGIN is answered; anything else gets the headers withheld, which is
+    // what refuses it.
     if (request.method === 'OPTIONS') {
-      response.writeHead(204, { allow: 'GET, POST, OPTIONS' });
+      const cors = corsFor(request);
+      response.writeHead(204, {
+        allow: 'GET, POST, OPTIONS',
+        ...cors,
+        ...(cors['access-control-allow-origin']
+          ? {
+              'access-control-allow-methods': 'GET, POST, OPTIONS',
+              'access-control-allow-headers': 'content-type',
+            }
+          : {}),
+      });
       response.end();
       return;
     }
@@ -161,6 +205,7 @@ async function handle(request, response) {
           khz: Number.isFinite(khz) ? khz : undefined,
           freeOnly: url.searchParams.get('free') === '1',
         }),
+        cors,
       );
       return;
     }
@@ -171,17 +216,17 @@ async function handle(request, response) {
           stationId: url.searchParams.get('station') ?? undefined,
           limit: url.searchParams.get('limit') ?? undefined,
         }),
-      });
+      }, cors);
       return;
     }
 
     if (path === '/api/observations' && request.method === 'POST') {
       const body = await readJsonBody(request);
       if (!body?.stationId) {
-        sendJson(response, 400, { error: 'stationId is required' });
+        sendJson(response, 400, { error: 'stationId is required' }, cors);
         return;
       }
-      sendJson(response, 201, recordObservation(body));
+      sendJson(response, 201, recordObservation(body), cors);
       return;
     }
 
@@ -189,7 +234,7 @@ async function handle(request, response) {
       const { body, etag } = stationPayload();
 
       if (request.headers['if-none-match'] === etag) {
-        response.writeHead(304, { etag });
+        response.writeHead(304, { etag, ...cors });
         response.end();
         return;
       }
@@ -201,13 +246,14 @@ async function handle(request, response) {
         // the 304 above makes checking cheap.
         'cache-control': 'no-cache',
         etag,
+        ...cors,
       });
       response.end(body);
       return;
     }
 
     if (path === '/api/health') {
-      sendJson(response, 200, { ok: true });
+      sendJson(response, 200, { ok: true }, cors);
       return;
     }
 
@@ -239,9 +285,12 @@ async function handle(request, response) {
     // A rejected write says why, because the caller can fix it. Anything else is this
     // server's problem and its message is not the caller's business.
     const status = error?.status ?? 500;
-    sendJson(response, status, {
-      error: status === 400 && error instanceof Error ? error.message : 'server error',
-    });
+    sendJson(
+      response,
+      status,
+      { error: status === 400 && error instanceof Error ? error.message : 'server error' },
+      corsFor(request),
+    );
   }
 }
 

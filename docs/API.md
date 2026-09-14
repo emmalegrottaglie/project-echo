@@ -41,11 +41,24 @@ kept unchanged, so an unchecked write reached the rendered archive intact.
 ## Conventions
 
 - All responses are JSON except the file routes.
-- **No JSON response carries `Access-Control-Allow-Origin`.** The client is served by
-  this same server, so it never needs one. The header used to be on every response,
-  which meant any page the user happened to visit could read every observation the
-  server held and write new ones. CORS is now only on the audio routes, where a
-  `MediaElementAudioSourceNode` is silent without it.
+- **No JSON response carries `Access-Control-Allow-Origin` by default.** The client is
+  served by this same server, so it normally never needs one. The header used to be on
+  every response, which meant any page the user happened to visit could read every
+  observation the server held and write new ones.
+
+  `ECHO_ALLOW_ORIGIN` names origins that may call the API cross-origin, comma separated.
+  A request whose `Origin` is on that list gets it echoed back with `Vary: Origin`;
+  anything else still gets nothing. This exists for the Android build, which serves its
+  page from the phone at `http://localhost` and therefore cannot be same-origin with a
+  server on the network:
+
+  ```bash
+  HOST=0.0.0.0 ECHO_ALLOW_ORIGIN=http://localhost npm start
+  ```
+
+  Named origins rather than `*`: `*` re-opens exactly what it closed. CORS is
+  unconditional only on the audio routes, where a `MediaElementAudioSourceNode` is
+  silent without it.
 - `OPTIONS` on any path returns `204` with `Allow: GET, POST, OPTIONS` and no
   access-control headers, which is what refuses a cross-origin caller.
 - Errors are `{ "error": "<message>" }`.

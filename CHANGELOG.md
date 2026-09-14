@@ -32,6 +32,19 @@
 
 ### Fixed
 
+- **The server address could not have worked in the Android build.** Capacitor serves
+  the page from the phone at `http://localhost`, so reaching a server on the network is
+  cross-origin — and the API has answered no origin since the stored-XSS fix removed
+  `Access-Control-Allow-Origin: *` from every JSON route. Pointing the app at a server
+  failed at the first request with nothing to read. Found while writing the
+  documentation for the feature, and confirmed in a browser: `TypeError: Failed to
+  fetch`.
+
+  `ECHO_ALLOW_ORIGIN` now names the origins allowed to call the API, comma separated,
+  echoed back with `Vary: Origin`. Empty by default, which is the safe state and right
+  for a desktop. Named origins rather than `*`, because `*` is what let any page the
+  user visited read every hearing the server holds.
+
 - **A sheet that replaced another closed both.** Opening the directory from the receiver
   sheet, or saving a server address, shut the sheet that had just appeared. The
   back-button support added the day before gave every sheet its own history entry, so

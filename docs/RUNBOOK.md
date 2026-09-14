@@ -148,10 +148,16 @@ In order:
 
 1. Permission. The Schedule tab states it plainly; **denied is not recoverable in-app**
    and needs browser settings.
-2. A tab must be open. There is no service worker, because the app must be served over
-   plain http, so a closed browser means no alert. This is a limitation, not a bug.
-3. Only slots with an imported schedule can alert, and only E11's is imported so far —
-   the coverage line says how many.
+2. **In a browser**, a tab must be open. There is no service worker, because the app
+   must be served over plain http, so a closed browser means no alert. This is a
+   limitation, not a bug.
+3. **In the Android build**, the app is closed and that is fine — the schedule is handed
+   to the OS. If nothing arrives, check Android's own switches for the app: notifications
+   must be allowed, and under **Alarms & reminders** exact alarms decide whether the
+   reminder lands on the minute or drifts. Without that one the plugin falls back to an
+   inexact alarm, which Android is free to delay while the phone is dozing, so an alert
+   can arrive late rather than not at all.
+4. Only slots with an imported schedule can alert — the coverage line says how many.
 
 ### Rebuild does not appear in the browser
 

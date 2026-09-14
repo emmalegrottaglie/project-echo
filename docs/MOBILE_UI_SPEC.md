@@ -68,12 +68,18 @@ Phosphor green, amber, midnight blue and night-vision red are all narrow-gamut o
 black. Every one must clear WCAG AA for text. Choose the accent for contrast first and
 add the glow afterwards as a shadow, never by lightening the text colour.
 
-**2.6 The app must be served over plain http, so it cannot be a PWA.**
+**2.6 The web build must be served over plain http, so it cannot be a PWA.**
 Public receivers are `http://` on odd ports, so their sockets are `ws://`, and an https
 page cannot open one. No service worker, no installability, no push, no offline. Design
 for a browser tab on a phone — visible browser chrome, no splash screen, no app icon.
-Anything that reads as "installed native app" will be a lie. If a real native shell is
-ever built, that constraint lifts; it does not lift for the web build.
+Anything that reads as "installed native app" will be a lie in that build.
+
+**The native shell that "if ever built" anticipated now exists.** The Capacitor Android
+build has its own icon, no browser chrome, and — since it gained
+`@capacitor/local-notifications` — alerts that fire with the app closed. The layout does
+not change between the two, which is the point of designing for the constrained one, but
+copy that states a limitation must state the limitation of the build it is running in.
+See 7.4.
 
 **2.7 iOS suspends audio when the tab is backgrounded.**
 "Live" means live while the screen is on and the tab is in front. The design must have
@@ -353,9 +359,20 @@ error.
 
 ### 7.4 Notification permission
 Four states: not yet asked, granted, denied, unsupported. Denied is not recoverable
-in-app and must say so rather than offering a button that does nothing. Granted must
-state the limitation: alerts fire only while a tab is open, because there is no service
-worker (see 2.6).
+in-app and must say so rather than offering a button that does nothing.
+
+Granted must state the limitation of the build it is in, and the two differ:
+
+| Build | What granted means |
+|---|---|
+| Browser | Alerts fire only while a tab is open — no service worker, see 2.6 |
+| Android | The schedule is handed to the OS; alerts arrive with the app closed |
+
+The states are read from the platform rather than from the web `Notification` API alone.
+Android's WebView reports `unsupported` for that API even though the app has
+notifications, so keying the copy to it told a user who had merely declined the OS
+prompt that the app could never notify them at all. A control that cannot work is a lie;
+so is a limitation that is not the one you are under.
 
 ### 7.5 Hearings
 "Heard here" — the local record of when this installation's own detector locked onto a

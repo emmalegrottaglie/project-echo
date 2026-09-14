@@ -184,9 +184,11 @@ Built. Three pieces, all still client-only.
 - **Schedule alerts.** Per-slot subscriptions in `localStorage`, checked from the app
   shell every 30 s, notifying 10 minutes ahead via the Notification API. The shell owns
   the poll rather than the schedule view, because a reminder that only fires while the
-  user is looking at the schedule is not a reminder. Alerts are per-browser and only
-  fire while a tab is open; a service worker or a server is the fix, and the UI states
-  the limitation instead of letting the user assume otherwise.
+  user is looking at the schedule is not a reminder. **Superseded on Android**: the
+  packaged build hands the schedule to the OS instead and fires with the app closed, and
+  its WebView has no Notification API at all, so the browser path could never have
+  worked there. A browser is still limited to an open tab, and the UI states which of
+  the two it has.
 - **Archive links.** Each station detail carries searches into the Shortwave Radio
   Audio Archive, the Internet Archive, the Signal Identification Wiki and Priyom.
   Links out rather than hosted copies: publishing message contents is the regulated

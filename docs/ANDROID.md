@@ -43,17 +43,38 @@ and the default screen timeout ends the session. Nothing requests the lock yet.
 
 ## What works on the phone, and what does not
 
-The APK carries no server, and [`src/api.ts`](../src/api.ts) calls it on relative paths,
-so `/api/health` resolves inside the app to nothing. The three server-dependent features
+Capacitor serves the page from the phone itself, so a relative `/api/...` asks the phone
+and there is nothing there to answer. Out of the box the three server-dependent features
 detect that and hide, exactly as they do in `npm run dev`:
 
-| Works | Hidden |
+| Works with no server | Hidden until a server is set |
 |---|---|
 | Live waterfall against a real KiwiSDR | In-app receiver directory |
 | Marker detection | "Heard here" hearings |
-| Schedule, countdowns, alerts | Relay and the CORS diagnostics |
-| The 141-station archive | |
+| Schedule, countdowns and alerts | Relay and the CORS diagnostics |
+| The 141-station archive | Roster updates without a new APK |
 | All four themes, the phone layout | |
+
+**Point it at a server and the right-hand column comes back**, but the server has to be
+told to answer. Two settings, both needed:
+
+```bash
+HOST=0.0.0.0 ECHO_ALLOW_ORIGIN=http://localhost npm start
+```
+
+`HOST` binds it to the network so the phone can reach it at all. `ECHO_ALLOW_ORIGIN` is
+the app's own origin: Capacitor serves the page from the phone at `http://localhost`, so
+every call to a server on the network is cross-origin, and the API answers no origin by
+default. Without it the app fails at the first request with nothing to read — the
+directory stays hidden and the roster silently never updates.
+
+A named origin rather than `*`, because `*` is what once let any page the user visited
+read every hearing this server holds. See the security note below before running either
+on anything but a home network.
+
+Then on the phone: **Receiver → Use a server**, and give the address, e.g.
+`http://192.168.1.10:8080`. Empty means "whichever origin served the page", which is
+what a desktop wants and what the phone cannot use.
 
 So the first thing to do on the phone is add a receiver by hand — **Receiver → Paste a
 host**. One that worked during on-air testing:
@@ -67,24 +88,50 @@ desktop browser do not come across.
 
 ## Testing everything, including the server
 
-For full coverage, skip the APK and open the app from your machine in the phone's
-browser. Then the server is present and every feature works.
-
-> **Security.** This binds the server to every interface, and
-> `POST /api/observations` has no authentication. Anything on the network can write to
-> it. Acceptable on a home network for a test; do not do it on a shared or public one,
-> and stop the server afterwards.
+Two ways, and they are no longer the same trade they were.
 
 ```bash
 HOST=0.0.0.0 npm start
 ```
 
-Then browse to `http://<your-machine-ip>:8080` on the phone, on the same Wi-Fi. On this
-machine that was `192.168.31.131`, but check it — it changes.
+> **Security.** This binds the server to every interface, and
+> `POST /api/observations` takes writes without authentication. Anything on the network
+> can write to it. Acceptable on a home network for a test; do not do it on a shared or
+> public one, and stop the server afterwards.
 
-This is the better way to test the app. The APK is the better way to test whether it
-*feels* like an app: no browser chrome, its own icon, the safe-area insets doing their
-job.
+**In the APK**, set the address under **Receiver → Use a server** and the
+server-dependent features come back — the directory, hearings, the relay, and roster
+updates that arrive without a new APK. This is now the better way to test, because it is
+the app people would actually install.
+
+**In the phone's browser**, browse to `http://<your-machine-ip>:8080` on the same Wi-Fi.
+Everything works with no configuration, which makes it the quicker check. What it cannot
+test is the two things only the packaged app has: alerts that fire while it is closed,
+and how the shell behaves without browser chrome.
+
+Either way, find the address with `ipconfig` — on this machine it was `192.168.31.131`,
+but it changes.
+
+## Alerts
+
+The packaged app schedules alerts with Android itself, so a reminder arrives with the
+app closed — which is the only form of it worth having, given a transmission window
+comes round a few times a week. A browser cannot do this, and the same app in a phone
+browser still cannot: its alerts need an open tab.
+
+Two Android switches decide whether this works, and both live outside the app:
+
+- **Notifications** must be allowed. The app asks the first time a switch is flipped in
+  the Schedule tab. Declining is recoverable in system settings, and the schedule says
+  so rather than reporting the app as incapable.
+- **Alarms & reminders**, under the app's settings, decides whether the reminder lands
+  on the minute. Without it the plugin falls back to an inexact alarm, which Android may
+  delay while the phone is dozing — so a late alert rather than none.
+
+The soonest 48 are scheduled, two occurrences per subscribed slot, and topped up
+whenever the schedule is opened or a switch is flipped. Android holds a bounded number
+of pending alarms and drops the excess without saying which, and this roster has 186
+slots.
 
 ## Rebuilding after a change
 
@@ -101,7 +148,10 @@ artefacts, and `npx cap sync` regenerates the copies from `dist/`.
 
 - **Release signing.** Debug only. A distributable build needs a keystore and
   `assembleRelease`, and there is nothing to distribute to yet.
-- **Nothing has been run on a phone.** This build has never been installed; it compiles
-  and contains the right assets and permissions, and that is all that has been verified
-  from here.
+- **The notification handover is unverified on a device.** Everything that decides
+  *which* alerts get scheduled is tested in `test/notify.test.ts`, but whether Android
+  actually delivers one can only be found out by waiting for a window on a real phone.
+- **The `ws://` connection and the propagation image are only testable on a device.**
+  Both are permitted by the Content Security Policy on paper; an Android WebView is not
+  a desktop browser, and both fail quietly rather than with an error.
 - **iOS.** `npx cap add ios` needs macOS.
