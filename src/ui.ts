@@ -326,6 +326,14 @@ export function alertSwitch(on: boolean, slot: string, disabled = false): string
 
 /* ------------------------------------------------------------------ sheet ----- */
 
+/**
+ * Whether a history entry currently stands for "a sheet is open", and any queued
+ * removal of it. Module-level because sheets replace one another and the entry is
+ * shared: see the comment in `openSheet`.
+ */
+let sheetEntry = false;
+let unwindEntry: number | null = null;
+
 export interface Sheet {
   element: HTMLElement;
   body: HTMLElement;
@@ -373,8 +381,19 @@ export function openSheet(title: string, note: string, onClose?: () => void): Sh
     '.echo-sheet__handle, .echo-sheet__header',
   );
 
-  // Back should close the sheet, not leave the app.
-  history.pushState({ echoSheet: true }, '');
+  // Back should close the sheet, not leave the app. One entry means "a sheet is open"
+  // rather than one per sheet: several controls close the current sheet and open
+  // another in the same tick, and an entry each would have the outgoing sheet's unwind
+  // pop the incoming sheet's entry and shut it again the moment it appeared.
+  if (unwindEntry !== null) {
+    window.clearTimeout(unwindEntry);
+    unwindEntry = null;
+  }
+  if (!sheetEntry) {
+    history.pushState({ echoSheet: true }, '');
+    sheetEntry = true;
+  }
+
   let closed = false;
 
   const close = (after?: () => void, fromHistory = false): void => {
@@ -387,27 +406,36 @@ export function openSheet(title: string, note: string, onClose?: () => void): Sh
     onClose?.();
 
     if (fromHistory) {
+      sheetEntry = false;
       after?.();
       return;
     }
 
-    // Unwind the entry this sheet added. `after` waits for the pop to land, because a
-    // caller that sets the hash immediately would have its new entry removed instead.
-    if (!after) {
-      history.back();
-      return;
-    }
+    // Queued rather than immediate, so a sheet opening in this same tick can cancel it
+    // and inherit the entry instead of racing it.
+    unwindEntry = window.setTimeout(() => {
+      unwindEntry = null;
+      if (!sheetEntry) {
+        after?.();
+        return;
+      }
+      sheetEntry = false;
 
-    let ran = false;
-    const run = (): void => {
-      if (ran) return;
-      ran = true;
-      after();
-    };
-    window.addEventListener('popstate', run, { once: true });
-    // A pop that never arrives must not strand the caller mid-navigation.
-    window.setTimeout(run, 300);
-    history.back();
+      // `after` waits for the pop to land, because a caller that navigates immediately
+      // would have its own new entry removed by this one.
+      if (after) {
+        let ran = false;
+        const run = (): void => {
+          if (ran) return;
+          ran = true;
+          after();
+        };
+        window.addEventListener('popstate', run, { once: true });
+        // A pop that never arrives must not strand the caller mid-navigation.
+        window.setTimeout(run, 300);
+      }
+      history.back();
+    }, 0);
   };
 
   function onKeydown(event: KeyboardEvent): void {

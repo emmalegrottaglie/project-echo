@@ -24,6 +24,7 @@
  */
 
 import type { Station, Tier } from '../types';
+import { serverUrl } from '../api';
 import bundled from '../../data/stations.json';
 import { SCHEMA_VERSION, validateStationData } from './schema';
 
@@ -151,7 +152,10 @@ export function loadCachedStations(): void {
  */
 export async function refreshStations(): Promise<boolean> {
   try {
-    const response = await fetch('/api/stations', { cache: 'no-cache' });
+    // Through the same helper as every other server call: a phone that has been told
+    // where the server is must reach it for the roster too, and a relative path here
+    // would ask Capacitor's own origin and quietly never update.
+    const response = await fetch(serverUrl('/api/stations'), { cache: 'no-cache' });
     if (!response.ok) return false;
 
     const text = await response.text();

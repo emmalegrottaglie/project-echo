@@ -89,31 +89,60 @@ export function scheduleView(): { element: HTMLElement; destroy: () => void } {
 
   const alertsCanFire = (): boolean => canFire;
 
-  /** Re-reads the platform's answer, then repaints whatever depended on it. */
+  /**
+   * Re-reads the platform's answer, then repaints whatever depended on it.
+   *
+   * Never rejects. Both switches and copy are drawn from these two values, so a thrown
+   * permission query would otherwise leave every switch disabled for the life of the
+   * view with nothing on screen saying why.
+   */
   const refreshDelivery = async (): Promise<void> => {
-    how = await delivery();
-    canFire = await granted();
+    try {
+      how = await delivery();
+      canFire = await granted();
+    } catch {
+      how = 'none';
+      canFire = false;
+    }
     renderPermission();
     render();
   };
 
+  /**
+   * What the reader is told, which has to match what will actually happen.
+   *
+   * That turns on the platform as much as on the permission. Android is handed the
+   * schedule and fires with the app shut; a browser fires only while it is open; and
+   * neither is true where there is no delivery at all. Falling through to the web
+   * permission state on Android would be the worst of the three — it reports
+   * 'unsupported' there even when the app is perfectly capable and the person simply
+   * has not said yes yet.
+   */
+  const deliveryCopy = (state: ReturnType<typeof permission>): string => {
+    if (how === 'none') return PERMISSION_COPY['unsupported']!;
+
+    if (how === 'native') {
+      return canFire
+        ? `Alerts fire ${LEAD_MS / 60_000} minutes ahead. The schedule is handed to ` +
+            'Android, so they arrive with the app closed.'
+        : 'Android has not been asked yet, or said no. Alerts cannot fire until it ' +
+            'allows them, which is a permission you can change in system settings.';
+    }
+
+    return canFire
+      ? PERMISSION_COPY['granted']!
+      : (PERMISSION_COPY[state] ?? PERMISSION_COPY['default']!);
+  };
+
   const renderPermission = (): void => {
     const state = permission();
+    permissionLine.textContent = deliveryCopy(state);
 
-    // What the reader is told has to match what will actually happen, and that differs
-    // by platform rather than by permission: Android is handed the schedule and fires
-    // with the app shut, while a browser can only fire while it is open.
-    permissionLine.textContent =
-      how === 'none'
-        ? PERMISSION_COPY['unsupported']!
-        : canFire
-          ? how === 'native'
-            ? `Alerts fire ${LEAD_MS / 60_000} minutes ahead. The schedule is handed to ` +
-              'Android, so they arrive with the app closed.'
-            : PERMISSION_COPY['granted']!
-          : (PERMISSION_COPY[state] ?? PERMISSION_COPY['default']!);
-
-    permissionLine.classList.toggle('echo-coverage__permission--denied', state === 'denied');
+    // On Android the web permission state is always 'unsupported' — the WebView has no
+    // Notification API even though the app has notifications — so what counts as denied
+    // there is the OS answer, not this one.
+    const refused = how === 'native' ? !canFire : state === 'denied';
+    permissionLine.classList.toggle('echo-coverage__permission--denied', refused);
 
     // The button renders only where asking could still change the answer: denied is not
     // recoverable in-app, and offering a control that cannot work would be a lie.
@@ -172,10 +201,11 @@ export function scheduleView(): { element: HTMLElement; destroy: () => void } {
     const target = event.target as HTMLElement;
 
     if (target.closest('[name="permission"]')) {
+      // Granting permission is the moment the schedule can first be handed over.
       void ensurePermission()
         .then(refreshDelivery)
-        // Granting permission is the moment the schedule can first be handed over.
-        .then(() => sync(allStations()));
+        .then(() => sync(allStations()))
+        .catch(() => undefined);
       return;
     }
 
@@ -184,12 +214,15 @@ export function scheduleView(): { element: HTMLElement; destroy: () => void } {
 
     const on = toggleSubscription(toggle.dataset.slot);
     toggle.setAttribute('aria-checked', String(on));
-    if (on && permission() === 'default') {
-      void ensurePermission().then(refreshDelivery).then(() => sync(allStations()));
+    if (on && !canFire) {
+      void ensurePermission()
+        .then(refreshDelivery)
+        .then(() => sync(allStations()))
+        .catch(() => undefined);
       return;
     }
     // Android holds the alarms, so a switch has to reach it rather than only storage.
-    void sync(allStations());
+    void sync(allStations()).catch(() => undefined);
   });
 
   renderPermission();
@@ -198,7 +231,9 @@ export function scheduleView(): { element: HTMLElement; destroy: () => void } {
   // Asking the platform what it can do is asynchronous, and so is topping the alarms
   // up: a slot scheduled two occurrences ahead needs replacing once those are spent,
   // and opening this view is the reliable moment to do it.
-  void refreshDelivery().then(() => sync(allStations()));
+  void refreshDelivery()
+    .then(() => sync(allStations()))
+    .catch(() => undefined);
 
   const timer = window.setInterval(render, TICK_MS);
 

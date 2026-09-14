@@ -140,14 +140,14 @@ export function setServerBase(value: string): boolean {
 }
 
 /** A server path against whichever server is configured. */
-function url(path: string): string {
+export function serverUrl(path: string): string {
   return `${serverBase()}${path}`;
 }
 
 let availability: Promise<boolean> | null = null;
 
 export function available(): Promise<boolean> {
-  availability ??= fetch(url('/api/health'))
+  availability ??= fetch(serverUrl('/api/health'))
     .then((response) => response.ok)
     .catch(() => false);
   return availability;
@@ -156,7 +156,7 @@ export function available(): Promise<boolean> {
 async function getJson<T>(path: string): Promise<T | null> {
   if (!(await available())) return null;
   try {
-    const response = await fetch(url(path));
+    const response = await fetch(serverUrl(path));
     return response.ok ? ((await response.json()) as T) : null;
   } catch {
     return null;
@@ -187,7 +187,7 @@ export async function postObservation(input: ObservationInput): Promise<boolean>
   if (!isContributing()) return false;
   if (!(await available())) return false;
   try {
-    const response = await fetch(url('/api/observations'), {
+    const response = await fetch(serverUrl('/api/observations'), {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify(input),
@@ -200,7 +200,7 @@ export async function postObservation(input: ObservationInput): Promise<boolean>
 
 /** The relay's HLS playlist, served with the CORS headers the audio graph needs. */
 export function relayUrl(): string {
-  return url('/stream/live.m3u8');
+  return serverUrl('/stream/live.m3u8');
 }
 
 /**

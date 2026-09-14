@@ -30,6 +30,16 @@
   sheet now takes an address, validated by the same `isSafeUrl` rule as every other URL
   here, and empty still means the origin that served the page.
 
+### Fixed
+
+- **A sheet that replaced another closed both.** Opening the directory from the receiver
+  sheet, or saving a server address, shut the sheet that had just appeared. The
+  back-button support added the day before gave every sheet its own history entry, so
+  the outgoing sheet's unwind popped the incoming sheet's entry and its own listener
+  closed it. One entry now means "a sheet is open" rather than one per sheet, and the
+  unwind is queued so a sheet opening in the same tick inherits it instead of racing it.
+  This shipped, and was found reviewing the change that followed it.
+
 ### Changed
 
 - **The Content Security Policy is wider, and this is the cost.** `connect-src` and

@@ -167,7 +167,22 @@ function alertBody(schedule: Schedule, at: Date): string {
  *
  * Returns how many alerts are now pending, or null where the platform schedules nothing.
  */
-export async function sync(stations: readonly Station[], now = new Date()): Promise<number | null> {
+export function sync(stations: readonly Station[], now?: Date): Promise<number | null> {
+  // Serialised. Every call cancels what is pending and schedules the current plan, so
+  // two overlapping runs interleave as cancel, cancel, schedule(A), schedule(B) — and
+  // A's alarms for a slot switched off in B survive, because ids are derived and
+  // scheduling one does not remove another. Running them in turn means the later
+  // cancel always wipes the earlier plan.
+  // `now` is read when the run starts, not when it was queued: a plan built from a
+  // stale clock could schedule a window that has already passed, which Android fires
+  // on the spot.
+  queue = queue.then(() => run(stations, now ?? new Date())).catch(() => null);
+  return queue;
+}
+
+let queue: Promise<number | null> = Promise.resolve(null);
+
+async function run(stations: readonly Station[], now: Date): Promise<number | null> {
   const native = await local();
   if (!native) return null;
   if (!(await granted())) return null;

@@ -711,10 +711,15 @@ export function liveView(): { element: HTMLElement; destroy: () => void } {
       }
       serverStatus.textContent = 'Checking…';
       void refreshServerPresence().then((present) => {
+        // Rebuilding the sheet here would destroy the line this message is written to
+        // before anybody read it, and would reopen the sheet if they had closed it
+        // while the check was still in flight. The controls that depend on a server
+        // are redrawn by `refreshServerPresence` already; this sheet only has to say
+        // what happened.
+        if (!serverStatus.isConnected) return;
         serverStatus.textContent = present
           ? `Answering at ${serverBase() || 'this origin'}.`
           : 'Saved, but nothing answered there.';
-        openReceiverSheet();
       });
     };
 
