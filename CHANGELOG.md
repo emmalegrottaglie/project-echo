@@ -1,3 +1,45 @@
+## Unreleased
+
+### Added
+
+- **Alerts that arrive with the app closed.** The schedule is handed to Android ahead of
+  time through `@capacitor/local-notifications`, so a reminder fires whether or not the
+  app is running. Until now the packaged build could raise nothing at all — its WebView
+  ships no Notification API — and every switch in the schedule was arming something that
+  would never happen.
+
+  `src/notify.ts` picks the delivery the platform actually has: the OS on Android, the
+  `Notification` API in a browser (still only while a tab is open, and the copy says so),
+  and nothing where neither exists. The plugin is imported lazily behind
+  `Capacitor.isNativePlatform()`, so a browser never loads it.
+
+  Two occurrences per subscribed slot, soonest first, capped at 48. Android holds a
+  bounded number of pending alarms and drops the excess silently, and the roster has 186
+  slots; the cap is topped up whenever the schedule is opened or a switch is flipped.
+  Notification ids are derived from the slot and the instant rather than counted, so
+  rescheduling replaces an alarm instead of duplicating it.
+
+  **This is the project's first native plugin.** The Android build was a bare WebView
+  wrapper with `capacitor.plugins.json` empty, and that is no longer true. The trade was
+  deliberate: alerts are the reason the scheduled tier exists, and there is no web
+  mechanism that fires while the app is closed.
+
+- **A server address you can set.** The directory, saved hearings and the relay all come
+  from this app's own server, and the Android build has none — Capacitor serves the page
+  from the phone, so a relative `/api/...` asks the phone and always would. The receiver
+  sheet now takes an address, validated by the same `isSafeUrl` rule as every other URL
+  here, and empty still means the origin that served the page.
+
+### Changed
+
+- **The Content Security Policy is wider, and this is the cost.** `connect-src` and
+  `media-src` now allow `http:` and `https:` rather than naming loopback. Both addresses
+  this app needs are unknowable when it is built: the receiver is whichever public
+  KiwiSDR somebody picks, and the server is wherever they ran `npm start`. Script is
+  still confined to this app's own bundle — which is what stops an injected value from
+  executing — but a script that did run could now talk to any host. The alternative was
+  naming hosts that change daily, or dropping the features.
+
 ## 2026-09-14
 
 ### Fixed

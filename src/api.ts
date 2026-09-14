@@ -8,6 +8,8 @@
  * so a static deployment pays a single failed request rather than one per interaction.
  */
 
+import { isSafeUrl } from './url';
+
 export interface DirectoryReceiver {
   host: string;
   name: string;
@@ -89,10 +91,63 @@ export function setContributing(on: boolean): void {
   }
 }
 
+/* ------------------------------------------------------------------ server ---- */
+
+const SERVER_KEY = 'echo.server';
+
+/**
+ * Where the server is, when it is not this origin.
+ *
+ * Empty means same origin, which is right for `npm start` on a desktop and is the only
+ * thing that ever worked before. The packaged Android app is the reason this exists:
+ * Capacitor serves the bundle from its own local origin, so a relative `/api/...` asks
+ * Capacitor for it and always will. A phone can only reach a server by being told where
+ * one is.
+ *
+ * Stored rather than built in, because it is one person's machine on one network and
+ * nobody else's business.
+ */
+export function serverBase(): string {
+  try {
+    return localStorage.getItem(SERVER_KEY) ?? '';
+  } catch {
+    return '';
+  }
+}
+
+/**
+ * Points the app at a server, or at this origin when given nothing.
+ *
+ * Returns false for anything that is not an http or https origin — the value is used to
+ * build request URLs and is typed by hand on a phone keyboard, so it is checked in the
+ * same place and by the same rule as every other URL this app accepts.
+ */
+export function setServerBase(value: string): boolean {
+  const trimmed = value.trim().replace(/\/+$/, '');
+
+  if (trimmed !== '' && !isSafeUrl(trimmed)) return false;
+
+  try {
+    if (trimmed === '') localStorage.removeItem(SERVER_KEY);
+    else localStorage.setItem(SERVER_KEY, trimmed);
+  } catch {
+    return false;
+  }
+
+  // The old answer was about the old server.
+  availability = null;
+  return true;
+}
+
+/** A server path against whichever server is configured. */
+function url(path: string): string {
+  return `${serverBase()}${path}`;
+}
+
 let availability: Promise<boolean> | null = null;
 
 export function available(): Promise<boolean> {
-  availability ??= fetch('/api/health')
+  availability ??= fetch(url('/api/health'))
     .then((response) => response.ok)
     .catch(() => false);
   return availability;
@@ -101,7 +156,7 @@ export function available(): Promise<boolean> {
 async function getJson<T>(path: string): Promise<T | null> {
   if (!(await available())) return null;
   try {
-    const response = await fetch(path);
+    const response = await fetch(url(path));
     return response.ok ? ((await response.json()) as T) : null;
   } catch {
     return null;
@@ -132,7 +187,7 @@ export async function postObservation(input: ObservationInput): Promise<boolean>
   if (!isContributing()) return false;
   if (!(await available())) return false;
   try {
-    const response = await fetch('/api/observations', {
+    const response = await fetch(url('/api/observations'), {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify(input),
@@ -143,8 +198,10 @@ export async function postObservation(input: ObservationInput): Promise<boolean>
   }
 }
 
-/** The relay's HLS playlist, served by the same origin with CORS headers. */
-export const RELAY_URL = '/stream/live.m3u8';
+/** The relay's HLS playlist, served with the CORS headers the audio graph needs. */
+export function relayUrl(): string {
+  return url('/stream/live.m3u8');
+}
 
 /**
  * Diagnostic marker recording, served correctly and — deliberately — without CORS
@@ -158,10 +215,15 @@ export const RELAY_URL = '/stream/live.m3u8';
  * to load — which is why they live under Diagnostics and not in the main controls.
  */
 function crossOrigin(path: string): string {
-  const url = new URL(path, location.href);
-  if (url.hostname === 'localhost') url.hostname = '127.0.0.1';
-  else if (url.hostname === '127.0.0.1') url.hostname = 'localhost';
-  return url.toString();
+  // A configured server is already a different origin to this page, which is the whole
+  // point of the fixture, so the loopback swap has nothing to add.
+  const base = serverBase();
+  if (base !== '') return `${base}${path}`;
+
+  const target = new URL(path, location.href);
+  if (target.hostname === 'localhost') target.hostname = '127.0.0.1';
+  else if (target.hostname === '127.0.0.1') target.hostname = 'localhost';
+  return target.toString();
 }
 
 export function diagnosticUrl(): string {

@@ -20,10 +20,21 @@
 
       Two directives are wider than the rest, both for reasons that are in the code:
 
-        connect-src ws: wss:  — the receiver is whichever public KiwiSDR the listener
-                                picks out of a directory of thousands, so the host cannot
-                                be named in advance. Nearly all of them are plain ws://,
-                                which is why README.md's deployment constraint exists.
+        connect-src / media-src http: https: ws: wss:
+                              — two things here are addresses this app cannot know when
+                                it is built. The receiver is whichever public KiwiSDR the
+                                listener picks out of a directory of thousands, nearly all
+                                of them plain ws://. And the server is wherever somebody
+                                ran `npm start`, which the Android build has to be told,
+                                because Capacitor serves the page from the phone and a
+                                relative path never leaves it.
+
+                                This is the weakest part of the policy and it is worth
+                                being plain about: script is still confined to this app's
+                                own bundle, which is what stops an injected value from
+                                executing, but a script that did run could talk to any
+                                host. The alternative was naming hosts that change daily,
+                                or dropping the features that need them.
         style-src 'unsafe-inline'
                               — the timeline and the world map position elements with a
                                 style attribute, because the coordinates are computed per
@@ -44,8 +55,8 @@
         style-src 'self' 'unsafe-inline';
         font-src 'self';
         img-src 'self' data: https://prop.kc2g.com;
-        media-src 'self' blob: http://localhost:* http://127.0.0.1:*;
-        connect-src 'self' ws: wss:;
+        media-src 'self' blob: http: https:;
+        connect-src 'self' ws: wss: http: https:;
         worker-src blob:;
         form-action 'none'
       "

@@ -2,11 +2,11 @@ import {
   isSubscribed,
   LEAD_MS,
   permission,
-  requestPermission,
   slotKey,
   toggleSubscription,
 } from '../alerts';
 import { allStations } from '../data/stations';
+import { delivery, ensurePermission, granted, sync } from '../notify';
 import {
   countdown,
   describeScheduleKhz,
@@ -84,17 +84,41 @@ export function scheduleView(): { element: HTMLElement; destroy: () => void } {
    * does nothing is the same lie as a button that cannot work — the reason the
    * permission control below only renders when asking would achieve something.
    */
-  const alertsCanFire = (): boolean => permission() === 'granted';
+  let canFire = permission() === 'granted';
+  let how: Awaited<ReturnType<typeof delivery>> = 'none';
+
+  const alertsCanFire = (): boolean => canFire;
+
+  /** Re-reads the platform's answer, then repaints whatever depended on it. */
+  const refreshDelivery = async (): Promise<void> => {
+    how = await delivery();
+    canFire = await granted();
+    renderPermission();
+    render();
+  };
 
   const renderPermission = (): void => {
     const state = permission();
-    permissionLine.textContent = PERMISSION_COPY[state] ?? PERMISSION_COPY['default']!;
+
+    // What the reader is told has to match what will actually happen, and that differs
+    // by platform rather than by permission: Android is handed the schedule and fires
+    // with the app shut, while a browser can only fire while it is open.
+    permissionLine.textContent =
+      how === 'none'
+        ? PERMISSION_COPY['unsupported']!
+        : canFire
+          ? how === 'native'
+            ? `Alerts fire ${LEAD_MS / 60_000} minutes ahead. The schedule is handed to ` +
+              'Android, so they arrive with the app closed.'
+            : PERMISSION_COPY['granted']!
+          : (PERMISSION_COPY[state] ?? PERMISSION_COPY['default']!);
+
     permissionLine.classList.toggle('echo-coverage__permission--denied', state === 'denied');
 
-    // The button renders only in the not-asked state: denied is not recoverable
-    // in-app, so offering a control that cannot work would be a lie.
+    // The button renders only where asking could still change the answer: denied is not
+    // recoverable in-app, and offering a control that cannot work would be a lie.
     permissionAction.innerHTML =
-      state === 'default'
+      how !== 'none' && !canFire && state !== 'denied'
         ? button({ label: 'Enable notifications', variant: 'primary', name: 'permission' })
         : '';
   };
@@ -148,7 +172,10 @@ export function scheduleView(): { element: HTMLElement; destroy: () => void } {
     const target = event.target as HTMLElement;
 
     if (target.closest('[name="permission"]')) {
-      void requestPermission().then(renderPermission);
+      void ensurePermission()
+        .then(refreshDelivery)
+        // Granting permission is the moment the schedule can first be handed over.
+        .then(() => sync(allStations()));
       return;
     }
 
@@ -157,11 +184,22 @@ export function scheduleView(): { element: HTMLElement; destroy: () => void } {
 
     const on = toggleSubscription(toggle.dataset.slot);
     toggle.setAttribute('aria-checked', String(on));
-    if (on && permission() === 'default') void requestPermission().then(renderPermission);
+    if (on && permission() === 'default') {
+      void ensurePermission().then(refreshDelivery).then(() => sync(allStations()));
+      return;
+    }
+    // Android holds the alarms, so a switch has to reach it rather than only storage.
+    void sync(allStations());
   });
 
   renderPermission();
   render();
+
+  // Asking the platform what it can do is asynchronous, and so is topping the alarms
+  // up: a slot scheduled two occurrences ahead needs replacing once those are spent,
+  // and opening this view is the reliable moment to do it.
+  void refreshDelivery().then(() => sync(allStations()));
+
   const timer = window.setInterval(render, TICK_MS);
 
   return { element, destroy: () => window.clearInterval(timer) };

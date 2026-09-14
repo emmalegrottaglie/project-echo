@@ -6,7 +6,9 @@ import {
   fetchObservations,
   isContributing,
   postObservation,
-  RELAY_URL,
+  relayUrl,
+  serverBase,
+  setServerBase,
   setContributing,
   type DirectoryReceiver,
 } from '../api';
@@ -656,8 +658,26 @@ export function liveView(): { element: HTMLElement; destroy: () => void } {
       button({ label: 'Find one for me', variant: 'primary', name: 'find-receiver', hidden: !serverPresent }) +
       button({ label: 'Browse directory', name: 'browse', hidden: !serverPresent }) +
       button({ label: 'Paste a host', name: 'manual' }) +
+      button({ label: serverBase() ? 'Change server' : 'Use a server', name: 'server' }) +
       (selected ? button({ label: 'Forget', variant: 'ghost', name: 'forget' }) : '') +
       `</div>` +
+      `<form class="echo-form echo-form--server" hidden>
+         <p class="echo-gap__body">
+           The directory, saved hearings and the relay all come from this app's own
+           server, and the Android build has none of its own — Capacitor serves the page
+           from the phone, so a request for the directory goes to the phone and stays
+           there. Run <code>npm start</code> on a machine and give its address here to
+           reach it. Leave this empty to use whatever origin served the page, which is
+           what a desktop wants.
+         </p>
+         <label>Server<input name="server" type="url" inputmode="url"
+           placeholder="http://192.168.1.10:8080" value="${esc(serverBase())}" /></label>
+         <p class="echo-form__status" role="status" aria-live="polite"></p>
+         <div class="echo-sheet__actions">
+           ${button({ label: 'Save', variant: 'primary', name: 'save-server' })}
+           ${button({ label: 'Clear', variant: 'ghost', name: 'clear-server' })}
+         </div>
+       </form>` +
       `<form class="echo-form" hidden>
          <p class="echo-gap__body">
            Pick a node from
@@ -673,7 +693,30 @@ export function liveView(): { element: HTMLElement; destroy: () => void } {
          </div>
        </form>`;
 
-    const form = current.body.querySelector<HTMLFormElement>('.echo-form')!;
+    const form = current.body.querySelector<HTMLFormElement>('.echo-form:not(.echo-form--server)')!;
+    const serverForm = current.body.querySelector<HTMLFormElement>('.echo-form--server')!;
+    const serverStatus = serverForm.querySelector<HTMLElement>('.echo-form__status')!;
+
+    /**
+     * Saves the server address and re-asks whether anything is there.
+     *
+     * The answer to "is there a server" is cached for the life of the page, so changing
+     * the address without re-asking would leave every server-backed control hidden
+     * until the next launch.
+     */
+    const applyServer = (value: string): void => {
+      if (!setServerBase(value)) {
+        serverStatus.textContent = 'That has to be an http or https address, or empty.';
+        return;
+      }
+      serverStatus.textContent = 'Checking…';
+      void refreshServerPresence().then((present) => {
+        serverStatus.textContent = present
+          ? `Answering at ${serverBase() || 'this origin'}.`
+          : 'Saved, but nothing answered there.';
+        openReceiverSheet();
+      });
+    };
 
     current.body.addEventListener('click', (event) => {
       const target = event.target as HTMLElement;
@@ -687,6 +730,16 @@ export function liveView(): { element: HTMLElement; destroy: () => void } {
       }
 
       if (target.closest('[name="manual"]')) form.hidden = !form.hidden;
+      if (target.closest('[name="server"]')) serverForm.hidden = !serverForm.hidden;
+      if (target.closest('[name="save-server"]')) {
+        const field = serverForm.elements.namedItem('server') as HTMLInputElement;
+        applyServer(field.value);
+        return;
+      }
+      if (target.closest('[name="clear-server"]')) {
+        applyServer('');
+        return;
+      }
       if (target.closest('[name="find-receiver"]')) void findReceiver();
       if (target.closest('[name="browse"]')) openDirectorySheet();
       if (target.closest('[name="forget"]')) {
@@ -937,7 +990,7 @@ export function liveView(): { element: HTMLElement; destroy: () => void } {
       return;
     }
     if (target.closest('[name="relay"]')) {
-      void run(new RelaySource(RELAY_URL, 'relay stream'), tuning());
+      void run(new RelaySource(relayUrl(), 'relay stream'), tuning());
       return;
     }
     if (target.closest('[name="diagnostic"]')) {
@@ -960,7 +1013,15 @@ export function liveView(): { element: HTMLElement; destroy: () => void } {
 
   // The relay and the diagnostics need the server. Without it the app is the static
   // client, so those controls stay hidden rather than failing when pressed.
-  void available().then((present) => {
+  /**
+   * Asks whether a server is there and shows or hides everything that needs one.
+   *
+   * Called at startup and again whenever the server address changes: `available()`
+   * caches its answer for the life of the page, so without a second ask a newly
+   * configured server would stay invisible until the next launch.
+   */
+  async function refreshServerPresence(): Promise<boolean> {
+    const present = await available();
     serverPresent = present;
     diagnostics.hidden = !present;
     // Nothing is sent anywhere without a server, so offering the choice would be
@@ -971,7 +1032,10 @@ export function liveView(): { element: HTMLElement; destroy: () => void } {
     // Re-rendered because the empty-receiver notice offers "Find one for me", which
     // needs the directory and so cannot be drawn before this resolves.
     renderReceiver();
-  });
+    return present;
+  }
+
+  void refreshServerPresence();
 
   return {
     element,

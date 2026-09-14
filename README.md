@@ -212,10 +212,15 @@ run with no server at all: the Android wrapper loads these files from disk. The 
 adds `frame-ancestors 'none'` on HTML, which a meta tag may not carry, along with
 `X-Content-Type-Options` and `Referrer-Policy`.
 
-Two directives are wider than the rest and both follow from the constraint above:
+Two directives are wider than the rest, and it is worth being plain about the first:
 
-- `connect-src ws: wss:` — the receiver is whichever public KiwiSDR the listener picks,
-  so the host cannot be named in advance.
+- `connect-src` and `media-src` allow `http:` and `https:`. Two addresses here cannot be
+  known when the app is built — the receiver is whichever public KiwiSDR the listener
+  picks, and the server is wherever they ran `npm start`, which the Android build has to
+  be told. Script stays confined to this app's own bundle, which is what stops an
+  injected value from executing; but a script that did run could reach any host. The
+  alternative was naming hosts that change daily, or dropping the features that need
+  them.
 - `style-src 'unsafe-inline'` — the timeline and the world map position elements with a
   `style` attribute, because the coordinates are computed per row. A nonce cannot cover
   an attribute, and nothing else needs the concession.
