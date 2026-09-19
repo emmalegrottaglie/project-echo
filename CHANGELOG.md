@@ -46,6 +46,16 @@
   sheet now takes an address, validated by the same `isSafeUrl` rule as every other URL
   here, and empty still means the origin that served the page.
 
+- **The detail view now pushes and pulls the way it always said it did.** The archive's
+  full-screen detail already slid in from the trailing edge; the reverse never existed.
+  Tapping back, or swiping in from the leading 24 px, now plays the same transition
+  backward — 1:1 with the finger, cancellable mid-drag, released by distance or
+  velocity — before the hash change actually tears the view down. The gesture reuses
+  the sheet's own drag-to-dismiss logic in [src/ui.ts](src/ui.ts) `openSheet`, ported
+  from a vertical dismiss to a horizontal back. Closes the last item in
+  [docs/MOBILE_UI_SPEC.md](docs/MOBILE_UI_SPEC.md) §5.2's inventory that was specified
+  and never built.
+
 - **Touch feedback.** `@capacitor/haptics` fires a light tick on the transport button
   (connect/stop) and an alert switch, and a stronger confirm buzz the moment the
   detector locks — the same moment the confirm animation already marks as significant.
@@ -103,6 +113,19 @@
   still confined to this app's own bundle — which is what stops an injected value from
   executing — but a script that did run could now talk to any host. The alternative was
   naming hosts that change daily, or dropping the features.
+
+### Verified
+
+- **The motion spec's own inventory, checked against the code that is supposed to
+  implement it.** [docs/MOBILE_UI_SPEC.md](docs/MOBILE_UI_SPEC.md) §5.2 lists fourteen
+  animations and says plainly that anything not in the list does not exist; ten of the
+  thirteen not already rebuilt this cycle still match. Three do not, and are recorded
+  in [docs/PLATFORM_POLISH.md](docs/PLATFORM_POLISH.md) Phase C rather than fixed here:
+  the transport button's Connect/Stop swap is a bare text replacement with no crossfade,
+  the countdown's three specified threshold flashes collapsed into one static colour
+  change at the one-hour mark, and the status line's declared CSS transition is dead —
+  the element is replaced wholesale on every update rather than having its text
+  changed, so the transition never animates anything. None is a functional defect.
 
 ## 2026-09-14
 

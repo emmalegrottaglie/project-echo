@@ -218,6 +218,38 @@ building):** re-check the other thirteen inventory rows against the current code
 that the app has grown since the spec was written, the way row 2 turned out to have
 drifted. A one-hour audit, not a rebuild.
 
+**Done, row 2.** [src/views/stations.ts](../src/views/stations.ts): the push-in
+animation (`translateX 100%→0`, `echo-push`) was already in place from an earlier fix;
+what was missing was the reverse. Both ways out — the visible back button and an edge
+swipe — now play the same transition backward before the hash actually changes, so the
+old detail is off-screen before `route()` tears it down rather than vanishing under it.
+The drag itself is the sheet's own pattern (`openSheet` in
+[src/ui.ts](../src/ui.ts)): pointer capture, 1:1 tracking, release decided by distance
+or velocity, cancellable mid-flight by starting a new drag. Scoped to the leading 24 px
+so it cannot steal a tap meant for the page underneath, and excludes the back button
+itself so the two paths do not fight over the same pointerdown. Verified in the browser
+preview: entrance, tap-to-close, a fast edge drag past threshold, and a slow small drag
+that springs back all behave as specified, with no console errors.
+
+**Done, the audit.** The other thirteen rows, checked against the current CSS and view
+code — ten match the spec as written. Three do not, and are recorded here rather than
+fixed, per this phase's own scope:
+
+- **Row 8, Transport swap.** Specified as a label crossfade; the code does a bare
+  `textContent` replacement on the Connect/Stop button with no animation at all.
+- **Row 10, Countdown threshold.** Specified as an opacity flash at three crossings —
+  one hour, ten minutes, one minute. The code only recolours the row past the one-hour
+  mark, with no opacity change and no ten-minute or one-minute step.
+- **Row 11, Status line update.** `.echo-status` still declares the crossfade
+  transition the spec asks for, but `renderStatus` replaces the element's `innerHTML`
+  on every update rather than changing its text, so the declared transition never has
+  anything to animate between — dead CSS.
+
+None of the three is a functional bug — the countdown still counts down, the button
+still swaps, the status line still updates — and none was touched by this phase's own
+changes. Left for whoever picks up the inventory next, rather than folded into a phase
+whose acceptance was one row.
+
 ### Phase D — Measure, don't assume, on performance
 
 **Acceptance:** a number, not an opinion. `document.querySelectorAll('*').length` on the

@@ -407,6 +407,81 @@ export function stationsView(param = ''): {
   /** The designator whose detail is on screen, so a hash echo does not re-render it. */
   let openId: string | null = null;
 
+  /* --- back: edge swipe, 1:1 with the finger, spec §5.2 item 2 and §6 "Edge swipe" - */
+
+  /** Touch has to start within this many px of the leading edge to count as the back
+   *  gesture, so it never steals a drag or a tap meant for the detail body. */
+  const EDGE_PX = 24;
+
+  const currentPanel = (): HTMLElement | null =>
+    detailSlot.querySelector<HTMLElement>('.echo-detail');
+
+  /** Slides the open detail off to the trailing edge, then hands off to `route`. */
+  const animateBack = (panel: HTMLElement): void => {
+    panel.style.transition = 'transform var(--dur-slow) var(--ease-out)';
+    panel.style.transform = 'translateX(100%)';
+    const done = (): void => {
+      location.hash = 'archive';
+    };
+    panel.addEventListener('transitionend', done, { once: true });
+    // Reduced motion shortens the transition, and an interrupted one never ends.
+    window.setTimeout(done, 400);
+  };
+
+  let dragStartX = 0;
+  let dragStartAt = 0;
+  let dragging = false;
+
+  const onPointerDown = (event: PointerEvent): void => {
+    if (!event.isPrimary || event.clientX > EDGE_PX) return;
+    // A control that happens to sit near the edge — the back button itself — keeps its
+    // own tap; the gesture is for the bare margin next to it.
+    if ((event.target as HTMLElement).closest('button, a')) return;
+    const panel = currentPanel();
+    if (!panel) return;
+
+    dragging = true;
+    dragStartX = event.clientX;
+    dragStartAt = event.timeStamp;
+    // The push-in animation holds a transform of its own and would fight the drag.
+    panel.style.animation = 'none';
+    panel.style.transition = 'none';
+    detailSlot.setPointerCapture(event.pointerId);
+  };
+
+  const onPointerMove = (event: PointerEvent): void => {
+    if (!dragging) return;
+    const panel = currentPanel();
+    if (!panel) return;
+    const width = panel.getBoundingClientRect().width || 1;
+    const dx = Math.min(width, Math.max(0, event.clientX - dragStartX));
+    panel.style.transform = `translateX(${dx}px)`;
+  };
+
+  const onPointerUp = (event: PointerEvent): void => {
+    if (!dragging) return;
+    dragging = false;
+    const panel = currentPanel();
+    if (!panel) return;
+
+    const width = panel.getBoundingClientRect().width || 1;
+    const dx = Math.min(width, Math.max(0, event.clientX - dragStartX));
+    const velocity = dx / Math.max(1, event.timeStamp - dragStartAt);
+    panel.style.transition = 'transform var(--dur-slow) var(--ease-out)';
+
+    // Either far enough, or fast enough. A flick that has barely moved still means go.
+    if (dx > width * 0.3 || velocity > 0.5) {
+      animateBack(panel);
+      return;
+    }
+    panel.style.transform = 'translateX(0)';
+  };
+
+  detailSlot.addEventListener('pointerdown', onPointerDown);
+  detailSlot.addEventListener('pointermove', onPointerMove);
+  detailSlot.addEventListener('pointerup', onPointerUp);
+  detailSlot.addEventListener('pointercancel', onPointerUp);
+
   const openDetail = (station: Station): void => {
     openId = station.enigmaId;
     detailSlot.innerHTML = detailHtml(station);
@@ -469,7 +544,11 @@ export function stationsView(param = ''): {
       if (station) openCorrection(station);
       return;
     }
-    if (target.closest('[name="back"]')) location.hash = 'archive';
+    if (target.closest('[name="back"]')) {
+      const panel = currentPanel();
+      if (panel) animateBack(panel);
+      else location.hash = 'archive';
+    }
   });
 
   element.addEventListener('click', (event) => {
