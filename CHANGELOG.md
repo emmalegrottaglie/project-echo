@@ -14,6 +14,25 @@
   [docs/PLATFORM_POLISH.md](docs/PLATFORM_POLISH.md) Phase A, so a device that does have
   one is not the first place it is noticed.
 
+- **Archive DOM weight, and what actually loads `hls.js`, both checked on device rather
+  than assumed.** The full 141-row archive list is 762 DOM nodes on the Motorola Edge 50
+  Pro — comfortably under the ~1500-node guidance research surfaced, no virtualization
+  needed at this roster size.
+
+  The `hls.js` check found the more interesting number: watching real network traffic
+  over Chrome DevTools Protocol while exercising the relay button, the app never
+  requests the `hls.js` chunk at all. `new Audio().canPlayType('application/vnd.apple.
+  mpegurl')` returns `"maybe"` on this WebView, not `""`, so
+  [src/audio/relay.ts](src/audio/relay.ts)'s native-HLS branch is what actually runs —
+  `audio.src` set directly, fetched with a real range request — and the
+  `await import('hls.js')` a few lines above it never executes. The split itself is
+  correctly out of the main bundle; the code path that would load it is dead on the one
+  platform this app ships a packaged build for. Recorded in
+  [docs/PLATFORM_POLISH.md](docs/PLATFORM_POLISH.md) Phase D rather than acted on: fixing
+  it means deciding whether Android's native HLS handling is trustworthy enough to force
+  unconditionally or unreliable enough that the dependency should be dropped, and that
+  decision needs more evidence than one device and one phase's acceptance criterion.
+
 ## Unreleased
 
 ### Added

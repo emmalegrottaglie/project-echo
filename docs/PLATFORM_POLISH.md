@@ -260,6 +260,33 @@ healthy — plausible, given the loader pattern already in place — this phase 
 documented result, the same shape as Phase A. If not, the fix is scoped after the
 number, not before it.
 
+**Done. First number, healthy:** the archive list at its full 141 rows, unfiltered, is
+762 DOM nodes on the Motorola Edge 50 Pro (763 in a desktop browser — the one-node
+difference is an incidental render-state gap, not a platform split). Comfortably under
+the ~1500-node guidance, with no list virtualization needed at this roster size.
+
+**Second number, not what the comment implied.** Checked the same way as the rest of
+this document — Chrome DevTools Protocol attached to the installed app, `Network.enable`
+watching real request traffic — and the relay button on the Live tab, which exercises
+[src/audio/relay.ts](../src/audio/relay.ts)'s `RelaySource`, produces exactly one
+request: `GET http://localhost/stream/live.m3u8` → `206 Partial Content`, served
+straight to a native `<audio>` element. **No `hls.js` chunk is ever requested.** The
+reason is upstream of the loader entirely: `new Audio().canPlayType('application/vnd.
+apple.mpegurl')` returns `"maybe"` on this WebView, not `""`. `RelaySource.start()`
+reads that as native HLS support and takes the `else` branch — `audio.src = this.url`
+— so the `await import('hls.js')` a few lines above it never runs. The lazy-load itself
+is real and correctly split out of the main bundle (confirmed separately: it is absent
+from network traffic on every screen that does not touch the relay), but on the one
+platform this app ships as a packaged build for, the branch that loads it is dead code.
+
+Not fixed here — this is a measurement, and the fix depends on a question this phase
+did not ask: whether Android's native HLS handling is actually reliable across the
+WebView versions this app's users will carry, which decides whether `hls.js` should be
+forced on unconditionally for Android or the `canPlayType` gate is doing its job and
+the dependency can be dropped instead. Either answer removes weight from the bundle —
+this WebView never asked for it — but which one is a decision, not a measurement, and
+belongs in a phase of its own rather than folded into this one's single acceptance.
+
 ## What this deliberately leaves out, and why
 
 - **Dark/light "system" theme switching.** The app already has four deliberately
