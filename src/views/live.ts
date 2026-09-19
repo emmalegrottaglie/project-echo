@@ -13,6 +13,7 @@ import {
   type DirectoryReceiver,
 } from '../api';
 import { createAnalyser, hasEnergy, waitForSignal } from '../audio/analyser';
+import { confirm, tick } from '../haptics';
 import { KiwiSource } from '../audio/kiwi';
 import { RelaySource } from '../audio/relay';
 import { createContext, type AudioSource } from '../audio/source';
@@ -330,6 +331,10 @@ export function liveView(): { element: HTMLElement; destroy: () => void } {
       if (line) line.textContent = text;
       return;
     }
+    // The same transition-guard that gates the confirm animation (5.5) gates the buzz
+    // that goes with it, so the phone does not tick once a second for as long as the
+    // marker stays locked.
+    if (state === 'detected' && detectorSlot.dataset.state !== 'detected') void confirm();
     detectorSlot.dataset.state = state;
     detectorSlot.innerHTML = detectorStrip(state, text);
   };
@@ -981,6 +986,7 @@ export function liveView(): { element: HTMLElement; destroy: () => void } {
       return;
     }
     if (target.closest('[name="connect"]')) {
+      void tick();
       if (phase === 'idle') void connect();
       else {
         attempt += 1;

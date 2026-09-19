@@ -6,6 +6,7 @@ import {
   toggleSubscription,
 } from '../alerts';
 import { allStations } from '../data/stations';
+import { tick } from '../haptics';
 import { delivery, ensurePermission, granted, sync } from '../notify';
 import {
   countdown,
@@ -212,6 +213,7 @@ export function scheduleView(): { element: HTMLElement; destroy: () => void } {
     const toggle = target.closest<HTMLButtonElement>('.echo-switch');
     if (!toggle?.dataset.slot) return;
 
+    void tick();
     const on = toggleSubscription(toggle.dataset.slot);
     toggle.setAttribute('aria-checked', String(on));
     if (on && !canFire) {

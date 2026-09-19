@@ -36,37 +36,42 @@ const MAX_PENDING = 48;
 /** How many occurrences of a single slot to schedule ahead. */
 const PER_SLOT = 2;
 
-let plugin: typeof import('@capacitor/local-notifications').LocalNotifications | null = null;
-let looked = false;
+type LocalNotificationsPlugin = typeof import('@capacitor/local-notifications').LocalNotifications;
 
-/** The plugin, or null in a browser. Resolved once. */
-async function local(): Promise<
-  typeof import('@capacitor/local-notifications').LocalNotifications | null
-> {
-  if (looked) return plugin;
-  looked = true;
+let plugin: LocalNotificationsPlugin | null = null;
+let ready: Promise<boolean> | null = null;
 
-  try {
-    const { Capacitor } = await import('@capacitor/core');
-    if (!Capacitor.isNativePlatform()) return null;
-    const module = await import('@capacitor/local-notifications');
-    plugin = module.LocalNotifications;
-  } catch {
-    plugin = null;
-  }
-  return plugin;
+/**
+ * Whether the native plugin is loaded. `plugin` itself never crosses an `await`: a
+ * Capacitor plugin is a `Proxy` whose catch-all trap answers *any* property, including
+ * `.then`. Returned across an async boundary, the engine's thenable check sees that
+ * `.then` and calls it as a resolver, which throws inside Capacitor's stub and hangs the
+ * awaiting caller forever. Resolved once.
+ */
+async function ensureLoaded(): Promise<boolean> {
+  ready ??= (async () => {
+    try {
+      const { Capacitor } = await import('@capacitor/core');
+      if (!Capacitor.isNativePlatform()) return false;
+      const module = await import('@capacitor/local-notifications');
+      plugin = module.LocalNotifications;
+      return true;
+    } catch {
+      return false;
+    }
+  })();
+  return ready;
 }
 
 export async function delivery(): Promise<Delivery> {
-  if (await local()) return 'native';
+  if (await ensureLoaded()) return 'native';
   return 'Notification' in globalThis ? 'web' : 'none';
 }
 
 /** Asks for permission on whichever delivery this platform has. */
 export async function ensurePermission(): Promise<boolean> {
-  const native = await local();
-
-  if (native) {
+  if (await ensureLoaded()) {
+    const native = plugin!;
     const status = await native.checkPermissions();
     if (status.display === 'granted') return true;
     if (status.display === 'denied') return false;
@@ -79,8 +84,7 @@ export async function ensurePermission(): Promise<boolean> {
 }
 
 export async function granted(): Promise<boolean> {
-  const native = await local();
-  if (native) return (await native.checkPermissions()).display === 'granted';
+  if (await ensureLoaded()) return (await plugin!.checkPermissions()).display === 'granted';
   return 'Notification' in globalThis && Notification.permission === 'granted';
 }
 
@@ -183,9 +187,9 @@ export function sync(stations: readonly Station[], now?: Date): Promise<number |
 let queue: Promise<number | null> = Promise.resolve(null);
 
 async function run(stations: readonly Station[], now: Date): Promise<number | null> {
-  const native = await local();
-  if (!native) return null;
+  if (!(await ensureLoaded())) return null;
   if (!(await granted())) return null;
+  const native = plugin!;
 
   const pending = await native.getPending();
   if (pending.notifications.length > 0) {

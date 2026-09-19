@@ -1,3 +1,19 @@
+## 2026-09-19
+
+### Verified
+
+- **Safe-area insets checked against a real device rather than assumed.** Read live off
+  an installed build via Chrome DevTools Protocol and cross-checked against
+  `dumpsys window`'s own inset frames: portrait matches native to within a rounding
+  pixel, on a Motorola Edge 50 Pro running Android 16 with gesture navigation.
+
+  Landscape surfaced a real gap while checking a different axis: the OS reports a
+  genuine left inset when rotated, and this app defines `--safe-top` and `--safe-bottom`
+  only — no left or right token exists. Not fixed, because this device has no
+  landscape-relevant camera cutout for the gap to actually obscure; recorded instead, in
+  [docs/PLATFORM_POLISH.md](docs/PLATFORM_POLISH.md) Phase A, so a device that does have
+  one is not the first place it is noticed.
+
 ## Unreleased
 
 ### Added
@@ -30,6 +46,16 @@
   sheet now takes an address, validated by the same `isSafeUrl` rule as every other URL
   here, and empty still means the origin that served the page.
 
+- **Touch feedback.** `@capacitor/haptics` fires a light tick on the transport button
+  (connect/stop) and an alert switch, and a stronger confirm buzz the moment the
+  detector locks — the same moment the confirm animation already marks as significant.
+  `src/haptics.ts` uses the same lazy-load shape as `src/notify.ts`:
+  `Capacitor.isNativePlatform()` gates the import, so a browser pays nothing. Verified on
+  a Motorola Edge 50 Pro via `dumpsys vibrator_manager` against a reference signature
+  taken from a direct plugin call, on all three call sites. The project's second native
+  plugin; no manifest change beyond `VIBRATE`, a normal permission with no runtime
+  prompt.
+
 ### Fixed
 
 - **The server address could not have worked in the Android build.** Capacitor serves
@@ -44,6 +70,21 @@
   echoed back with `Vary: Origin`. Empty by default, which is the safe state and right
   for a desktop. Named origins rather than `*`, because `*` is what let any page the
   user visited read every hearing the server holds.
+
+- **Local notifications never actually reached Android.** `src/notify.ts`'s plugin
+  loader returned the raw `LocalNotifications` proxy across an `await` boundary. A
+  Capacitor plugin is a `Proxy` that answers any property access, including `.then`,
+  with a stub that throws for anything that is not a real plugin method; the JS engine's
+  thenable check saw that truthy `.then`, called it to try to unwrap the return value,
+  and the throw left every caller — `delivery()`, `ensurePermission()`, `granted()`, the
+  schedule sync — awaiting a promise that never settled. This is why the alert switches
+  always rendered disabled: `refreshDelivery()` never came back. Shipped with the
+  feature above; unnoticed because `test/notify.test.ts` only pins the pure planning
+  logic, and the native handover needed a device to catch. Found chasing an unrelated
+  silent haptics failure with the same shape, and fixed in both files by keeping the
+  plugin reference in module scope and having the async loader return a boolean rather
+  than the plugin itself. Re-verified on device: permission prompt → granted → alerts
+  actually reached Android's `schedule()` call.
 
 - **A sheet that replaced another closed both.** Opening the directory from the receiver
   sheet, or saving a server address, shut the sheet that had just appeared. The

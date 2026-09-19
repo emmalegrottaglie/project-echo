@@ -264,6 +264,7 @@ Two directives are wider than the rest, and it is worth being plain about the fi
 | [docs/PLAN.md](docs/PLAN.md) | Product definition, data model, the three phases |
 | [docs/MOBILE_UI_SPEC.md](docs/MOBILE_UI_SPEC.md) | The phone layout and the fourteen-item motion inventory |
 | [docs/ANDROID.md](docs/ANDROID.md) | Building and installing the test APK, and what does not work inside it |
+| [docs/PLATFORM_POLISH.md](docs/PLATFORM_POLISH.md) | Research-backed plan for platform conformance and motion-spec completion |
 | [data/README.md](data/README.md) | Editing the station roster, and how a correction reaches an installed app |
 | [CHANGELOG.md](CHANGELOG.md) | Every change to the project, newest first, including corrections to station data |
 
