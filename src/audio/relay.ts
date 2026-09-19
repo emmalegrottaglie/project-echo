@@ -1,5 +1,16 @@
 import type { AudioSource } from './source';
 
+/** Waits for the element to have loaded enough to play, or to fail trying. */
+function loadNative(audio: HTMLAudioElement, url: string): Promise<void> {
+  audio.src = url;
+  return new Promise<void>((resolve, reject) => {
+    audio.addEventListener('loadedmetadata', () => resolve(), { once: true });
+    audio.addEventListener('error', () => reject(new Error(`could not load ${url}`)), {
+      once: true,
+    });
+  });
+}
+
 /**
  * Audio from an HTTP stream — the relay, or the diagnostic recording.
  *
@@ -15,6 +26,15 @@ import type { AudioSource } from './source';
  *     attached, because creating it earlier yields silence or an init failure.
  *
  * The caller's `hasSignal` check is what catches it when either of those regresses.
+ *
+ * `Hls.isSupported()`, not `canPlayType`, decides whether hls.js runs. Checked on a real
+ * device (docs/PLATFORM_POLISH.md Phase D): Chromium's WebView answers "maybe" for
+ * `application/vnd.apple.mpegurl` without ever actually decoding a multi-segment
+ * playlist, and trusting that skipped hls.js on the one platform this app ships a
+ * packaged build for. `Hls.isSupported()` checks for a real MediaSource Extensions
+ * capability instead, which is what hls.js itself needs and does not lie about. Native
+ * playback is now the fallback for engines hls.js declines on purpose — Safari, whose
+ * own decoder is the better path — rather than the default everywhere else.
  */
 export class RelaySource implements AudioSource {
   private audio: HTMLAudioElement | null = null;
@@ -38,34 +58,29 @@ export class RelaySource implements AudioSource {
     audio.loop = this.url.endsWith('.wav');
     this.audio = audio;
 
-    const nativeHls = audio.canPlayType('application/vnd.apple.mpegurl') !== '';
-
-    if (this.url.endsWith('.m3u8') && !nativeHls) {
+    if (this.url.endsWith('.m3u8')) {
       // Loaded on demand so a session that never plays the relay never pays for it.
       const { default: Hls } = await import('hls.js');
-      if (!Hls.isSupported()) throw new Error('this browser cannot play HLS');
 
-      const hls = new Hls({ lowLatencyMode: true });
-      this.hls = hls;
+      if (Hls.isSupported()) {
+        const hls = new Hls({ lowLatencyMode: true });
+        this.hls = hls;
 
-      await new Promise<void>((resolve, reject) => {
-        hls.on(Hls.Events.MANIFEST_PARSED, () => resolve());
-        hls.on(Hls.Events.ERROR, (_event, data) => {
-          if (data.fatal) reject(new Error(`HLS error: ${data.details}`));
+        await new Promise<void>((resolve, reject) => {
+          hls.on(Hls.Events.MANIFEST_PARSED, () => resolve());
+          hls.on(Hls.Events.ERROR, (_event, data) => {
+            if (data.fatal) reject(new Error(`HLS error: ${data.details}`));
+          });
+          hls.loadSource(this.url);
+          hls.attachMedia(audio);
         });
-        hls.loadSource(this.url);
-        hls.attachMedia(audio);
-      });
+      } else if (audio.canPlayType('application/vnd.apple.mpegurl') !== '') {
+        await loadNative(audio, this.url);
+      } else {
+        throw new Error('this browser cannot play HLS');
+      }
     } else {
-      audio.src = this.url;
-      await new Promise<void>((resolve, reject) => {
-        audio.addEventListener('loadedmetadata', () => resolve(), { once: true });
-        audio.addEventListener(
-          'error',
-          () => reject(new Error(`could not load ${this.url}`)),
-          { once: true },
-        );
-      });
+      await loadNative(audio, this.url);
     }
 
     this.node = context.createMediaElementSource(audio);

@@ -279,13 +279,23 @@ is real and correctly split out of the main bundle (confirmed separately: it is 
 from network traffic on every screen that does not touch the relay), but on the one
 platform this app ships as a packaged build for, the branch that loads it is dead code.
 
-Not fixed here — this is a measurement, and the fix depends on a question this phase
-did not ask: whether Android's native HLS handling is actually reliable across the
-WebView versions this app's users will carry, which decides whether `hls.js` should be
-forced on unconditionally for Android or the `canPlayType` gate is doing its job and
-the dependency can be dropped instead. Either answer removes weight from the bundle —
-this WebView never asked for it — but which one is a decision, not a measurement, and
-belongs in a phase of its own rather than folded into this one's single acceptance.
+**Fixed, in a follow-up to this phase.** The open question was whether Android's native
+HLS handling is trustworthy — it is not, and not because it is slow or partial: the
+`canPlayType` answer that gates it is decoupled from reality. Confirmed directly on
+device: `Hls.isSupported()`, which checks for a real MediaSource Extensions capability,
+returns `true` on the same WebView where `canPlayType` said `"maybe"`. Reordered
+[src/audio/relay.ts](../src/audio/relay.ts) to check `Hls.isSupported()` first and use
+native playback only when hls.js itself declines — which in practice means Safari,
+where the platform decoder is the better path, not Chromium engines answering a
+heuristic they cannot back up. Re-verified on the same device: the relay button now
+requests `hls-*.js` (`200 OK`) before the manifest, and a bad manifest now fails
+correctly (`404` → `Hls.Events.ERROR`, `fatal: true`) instead of the native element's
+silent partial-content response that never resolves or rejects.
+
+Found on the way, not fixed here: a connection that fails through this path leaves the
+status line reading "Connecting…" forever, even though the transport button correctly
+returns to idle. Pre-existing, and not specific to HLS — `teardownAudio()` never calls
+`renderStatus`. Filed separately rather than folded into this fix.
 
 ## What this deliberately leaves out, and why
 

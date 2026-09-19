@@ -123,6 +123,18 @@
   unwind is queued so a sheet opening in the same tick inherits it instead of racing it.
   This shipped, and was found reviewing the change that followed it.
 
+- **The Android build never actually used `hls.js`.** Recorded as a measurement in
+  [docs/PLATFORM_POLISH.md](docs/PLATFORM_POLISH.md) Phase D, fixed here: the reason was
+  `new Audio().canPlayType('application/vnd.apple.mpegurl')` answering `"maybe"` on this
+  WebView, which [src/audio/relay.ts](src/audio/relay.ts) read as real native HLS support
+  and used to skip hls.js entirely. `canPlayType` was the wrong signal — confirmed
+  on device that `Hls.isSupported()`, which checks for actual MediaSource Extensions
+  capability, returns `true` on the same WebView. Reordered to check `Hls.isSupported()`
+  first and fall back to native playback only when hls.js itself declines, which in
+  practice means Safari. Re-verified on device: the relay button now requests the
+  `hls.js` chunk before the manifest, and a bad manifest now fails with a real error
+  instead of a native `<audio>` element that neither resolves nor rejects.
+
 ### Changed
 
 - **The Content Security Policy is wider, and this is the cost.** `connect-src` and
