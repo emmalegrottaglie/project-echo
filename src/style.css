@@ -333,6 +333,12 @@ main {
   -webkit-tap-highlight-color: transparent;
 }
 
+/* Connect ↔ Stop: a fresh span per label swap (see setPhase in live.ts) carries this so
+   the crossfade replays on every swap, without resizing the button around it. */
+.echo-button__label {
+  animation: echo-fade var(--dur-fast) var(--ease-inout) both;
+}
+
 .echo-button--lg {
   min-height: 48px;
   padding: 0 var(--space-4);
@@ -545,7 +551,10 @@ main {
   background: var(--panel);
   color: var(--fg);
   font: var(--text-body) / var(--leading-body) var(--font-mono);
-  transition: opacity var(--dur-fast) var(--ease-inout);
+  /* renderStatus() replaces this element wholesale rather than mutating it in place, so
+     a `transition` here would have nothing to observe — an `animation` plays on the
+     fresh element itself instead, the same way the view crossfade below does. */
+  animation: echo-fade var(--dur-fast) var(--ease-inout) both;
 }
 
 /*
@@ -1164,6 +1173,20 @@ tr.disputed {
 /* Under an hour the countdown takes the accent. It never animates on the tick. */
 .echo-schedule-row__countdown--urgent {
   color: var(--accent);
+}
+
+/* Applied only on the render that crosses a threshold — see urgencyTier in schedule.ts. */
+.echo-schedule-row__countdown--flash {
+  animation: echo-countdown-flash var(--dur-fast) var(--ease-out) both;
+}
+
+@keyframes echo-countdown-flash {
+  from {
+    opacity: 0.6;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .echo-switch {

@@ -232,23 +232,41 @@ preview: entrance, tap-to-close, a fast edge drag past threshold, and a slow sma
 that springs back all behave as specified, with no console errors.
 
 **Done, the audit.** The other thirteen rows, checked against the current CSS and view
-code — ten match the spec as written. Three do not, and are recorded here rather than
-fixed, per this phase's own scope:
+code — ten match the spec as written. Three did not, and were recorded here rather than
+fixed, per this phase's own scope. All three were closed in a follow-up:
 
-- **Row 8, Transport swap.** Specified as a label crossfade; the code does a bare
-  `textContent` replacement on the Connect/Stop button with no animation at all.
-- **Row 10, Countdown threshold.** Specified as an opacity flash at three crossings —
-  one hour, ten minutes, one minute. The code only recolours the row past the one-hour
-  mark, with no opacity change and no ten-minute or one-minute step.
-- **Row 11, Status line update.** `.echo-status` still declares the crossfade
-  transition the spec asks for, but `renderStatus` replaces the element's `innerHTML`
-  on every update rather than changing its text, so the declared transition never has
-  anything to animate between — dead CSS.
+- **Row 8, Transport swap.** Was a bare `textContent` replacement on the Connect/Stop
+  button, no animation. `setPhase` now writes the label into a fresh
+  `<span class="echo-button__label">` each time — an `animation` replays on a
+  recreated element the way a `transition` on a mutated one would, and the confirmed
+  reason nothing moved before is that nothing about the button was ever recreated.
+  Reuses the existing `echo-fade` keyframe at `--dur-fast`/`--ease-inout`, matching the
+  row's own duration/easing. Confirmed in the browser preview:
+  `getComputedStyle` on the fresh span reports `animation-name: echo-fade`,
+  `animation-duration: 0.12s`.
+- **Row 10, Countdown threshold.** Was one static colour change past the one-hour
+  mark, no opacity flash, no ten-minute or one-minute step. `schedule.ts` now tracks,
+  per slot and keyed to that occurrence's own instant, how many of the three
+  thresholds it had already crossed as of the last render; the countdown span gets a
+  one-shot flash class only on the render where that count goes up, the same
+  fire-once-on-entry discipline row 5 already uses for the detector confirm. Keying on
+  the occurrence's instant, not just the slot, matters: once a window fires and the
+  next occurrence starts back at zero, comparing against the tier the one that just
+  passed reached would have silenced every flash for its replacement. Not verified
+  live — the thresholds are real wall-clock hours out, and reproducing a crossing
+  would need faking the view's clock, which is more scaffolding than this fix
+  warrants. Checked by tracing the guard against the same real data the render already
+  had, and by `tsc`/the existing suite passing.
+- **Row 11, Status line update.** The declared `transition: opacity` had nothing to
+  transition — `renderStatus` replaces `.echo-status` wholesale every call, and a
+  transition needs a property to change on the *same* element, not a new one arriving
+  with the value already set. Swapped for the same `echo-fade` animation, which plays
+  correctly on a fresh element regardless. Confirmed the same way as row 8:
+  `animation-name: echo-fade` on the live element after a status change.
 
-None of the three is a functional bug — the countdown still counts down, the button
-still swaps, the status line still updates — and none was touched by this phase's own
-changes. Left for whoever picks up the inventory next, rather than folded into a phase
-whose acceptance was one row.
+None of the three was a functional bug — the countdown still counted down, the button
+still swapped, the status line still updated — and fixing them did not touch this
+phase's own row 2 or audit findings.
 
 ### Phase D — Measure, don't assume, on performance
 

@@ -143,6 +143,23 @@
   failure there, the same way the receiver chain already did for its own retries —
   callers with nothing more specific to say get this instead of silence.
 
+- **Three animations the motion spec described but the code never built,** all found
+  by the [docs/PLATFORM_POLISH.md](docs/PLATFORM_POLISH.md) Phase C audit and closed
+  here:
+  - The Connect/Stop label swap now actually crossfades — `setPhase` in
+    [src/views/live.ts](src/views/live.ts) writes the label into a fresh span each
+    time, because a `textContent` mutation left nothing for an animation to replay on.
+  - The countdown now flashes once on each of its three specified thresholds — an
+    hour, ten minutes, one minute — instead of one static colour change at the
+    one-hour mark, with no flash and no crossing at ten minutes or one minute at all.
+    [src/views/schedule.ts](src/views/schedule.ts) tracks how many thresholds each
+    occurrence has already crossed so the flash fires once, not on every 30-second
+    re-render while already past a threshold.
+  - The status line's declared crossfade transition was dead: `renderStatus` replaces
+    the element wholesale on every call, so a `transition` had nothing to observe.
+    Swapped for the same `echo-fade` animation the other two now use, which plays
+    correctly on a freshly-created element.
+
 ### Changed
 
 - **The Content Security Policy is wider, and this is the cost.** `connect-src` and

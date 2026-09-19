@@ -341,7 +341,11 @@ export function liveView(): { element: HTMLElement; destroy: () => void } {
 
   const setPhase = (next: Phase): void => {
     phase = next;
-    connectButton.textContent = next === 'connecting' ? 'Connecting…' : next === 'idle' ? 'Connect' : 'Stop';
+    const label = next === 'connecting' ? 'Connecting…' : next === 'idle' ? 'Connect' : 'Stop';
+    // A fresh span, not a `textContent` write: the crossfade in spec §5.2 row 8 is an
+    // `animation`, and an animation only replays when the element carrying it is
+    // recreated — mutating the same node's text would leave it with nothing to trigger.
+    connectButton.innerHTML = `<span class="echo-button__label">${label}</span>`;
     connectButton.disabled = next === 'connecting' || (next === 'idle' && !selectedReceiver());
   };
 

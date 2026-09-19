@@ -32,7 +32,9 @@ import { alertSwitch, button, esc, gapNotice } from '../ui';
  */
 
 const TICK_MS = 30_000;
-const URGENT_MS = 60 * 60 * 1000;
+
+/** Countdown thresholds, soonest last: an hour, ten minutes, one minute out. */
+const URGENCY_THRESHOLDS_MS = [60 * 60 * 1000, 10 * 60 * 1000, 60 * 1000];
 
 const PERMISSION_COPY: Record<string, string> = {
   default: 'Enable notifications to be reminded before a window opens.',
@@ -76,6 +78,23 @@ export function scheduleView(): { element: HTMLElement; destroy: () => void } {
   const permissionLine = element.querySelector<HTMLElement>('.echo-coverage__permission')!;
   const permissionAction = element.querySelector<HTMLElement>('.echo-permission-action')!;
   const rows = element.querySelector<HTMLElement>('.echo-rows')!;
+
+  /**
+   * How many urgency thresholds each window had already crossed last render, keyed by
+   * slot so the flash below fires once on the tick that crosses a threshold and never
+   * again on the ordinary 30-second tick that follows it — `rows.innerHTML` is rebuilt
+   * from scratch every tick, so nothing about the DOM itself can remember that.
+   *
+   * Keyed on the occurrence's own instant, not just the slot: once a window fires, the
+   * slot's next occurrence starts back at zero thresholds crossed, and comparing against
+   * a tier left over from the window that just passed would have silenced every flash
+   * for its replacement.
+   */
+  const urgencyTier = new Map<string, { at: number; tier: number }>();
+
+  /** How many thresholds in `URGENCY_THRESHOLDS_MS` a window has already passed. */
+  const urgencyTierOf = (remainingMs: number): number =>
+    URGENCY_THRESHOLDS_MS.filter((threshold) => remainingMs < threshold).length;
 
   /**
    * Whether arming an alert could ever produce one.
@@ -168,7 +187,13 @@ export function scheduleView(): { element: HTMLElement; destroy: () => void } {
     rows.innerHTML = windows
       .map(({ station, schedule, at }) => {
         const key = slotKey(station, schedule);
-        const urgent = at.getTime() - now.getTime() < URGENT_MS;
+        const atMs = at.getTime();
+        const tier = urgencyTierOf(atMs - now.getTime());
+        const urgent = tier > 0;
+
+        const seen = urgencyTier.get(key);
+        const justCrossed = seen !== undefined && seen.at === atMs && tier > seen.tier;
+        urgencyTier.set(key, { at: atMs, tier });
 
         return (
           `<div class="echo-schedule-row">` +
@@ -189,7 +214,9 @@ export function scheduleView(): { element: HTMLElement; destroy: () => void } {
           `</div>` +
           `<span class="echo-schedule-row__countdown${
             urgent ? ' echo-schedule-row__countdown--urgent' : ''
-          }">${esc(countdown(at, now))}</span>` +
+          }${justCrossed ? ' echo-schedule-row__countdown--flash' : ''}">${esc(
+            countdown(at, now),
+          )}</span>` +
           `</div>`
         );
       })
