@@ -135,6 +135,14 @@
   `hls.js` chunk before the manifest, and a bad manifest now fails with a real error
   instead of a native `<audio>` element that neither resolves nor rejects.
 
+- **A failed relay or diagnostic connection left the status line reading "Connecting…"
+  forever.** Found while verifying the `hls.js` fix above: the transport button
+  correctly relabelled back to Connect, but nothing had told the status line the
+  attempt was over. `teardownAudio()` resets the transport but was never the place
+  that decides what the status line says; `run()`'s own catch block now renders the
+  failure there, the same way the receiver chain already did for its own retries —
+  callers with nothing more specific to say get this instead of silence.
+
 ### Changed
 
 - **The Content Security Policy is wider, and this is the cost.** `connect-src` and

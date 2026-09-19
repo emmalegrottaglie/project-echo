@@ -445,6 +445,12 @@ export function liveView(): { element: HTMLElement; destroy: () => void } {
     } catch (error) {
       lastFailure = error instanceof Error ? error.message : String(error);
       teardownAudio();
+      // teardownAudio() puts the transport back to idle but says nothing about why —
+      // without this the status line is left reading "Connecting…" forever. The
+      // receiver chain in `connect` below renders its own, more specific message right
+      // after this returns, so this is what a caller with nothing more specific to say
+      // — the relay and diagnostic buttons — actually shows.
+      renderStatus(`${lastFailure}.`, 'danger');
       return false;
     }
 
